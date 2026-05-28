@@ -160,7 +160,7 @@
       "fuelTankLitres": 83,
       "towingCapacityKg": 3000,
       "referenceL100km": 8.5,
-      "engineCC": 1499,
+      "engineCC": 1498,
       "engineCylinders": 4,
       "systemPowerKW": 400,
       "systemTorqueNm": 760,
@@ -171,8 +171,8 @@
         "EV Central",
         "4x4Australia"
       ],
-      "lastVerifiedDate": "2026-02-23",
-      "notes": "batteryUsableKWh estimated at 90% of gross — manufacturer has not confirmed exact usable figure"
+      "lastVerifiedDate": "2026-05-28",
+      "notes": "83L tank confirmed RACV/CarsGuide/OpenRoad. 31.8kWh LFP Blade. 400kW/760Nm. 3000kg towing. 100kW DC. 90km WLTP EV range. Body-on-frame DMO platform."
     },
     {
       "id": "A1B2C3D4-0002-0002-0002-000000000001",
