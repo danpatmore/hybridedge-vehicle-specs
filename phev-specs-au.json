@@ -1,6 +1,6 @@
 {
-  "version": "1.7.1",
-  "lastUpdated": "2026-05-29",
+  "version": "1.7.2",
+  "lastUpdated": "2026-05-30",
   "vehicles": [
     {
       "id": "B2D3E4F5-0001-0001-0001-000000000001",
@@ -2904,7 +2904,7 @@
       "notes": "14.3 kWh battery. 51km WLTP EV range. 3.0L V6 + electric. 3,500kg towing. No DC charging \u2014 11kW AC only. 75L tank \u2014 standard Touareg tank (PHEV same as petrol). Depleted 9.2-9.7 L/100km (VW Newsroom WLTP). 95 RON."
     },
     {
-      "id": "D4E5F6A7-0010-0010-0010-000000000001",
+      "id": "D4E5F6A7-0010-0010-0010-000000000002",
       "make": "GWM",
       "model": "Tank 500",
       "variant": "Hi4-T PHEV",
@@ -3300,7 +3300,7 @@
       "notes": "Cupra's Gen2 PHEV system. 1.5L turbo petrol + electric motor via 6-speed DSG. 20kWh battery (19.7kWh usable per Autocar UK test of same VW Group system). 110km WLTP EV range. 200kW/400Nm. FWD only. 0-100 7.3sec. 11kW AC 3-phase, 50kW DC (10-80% ~26 min). VW Group DCC adaptive suspension. 400L boot (reduced vs petrol due to battery). On sale AU Nov 2025. $77,990 before ORCs. Shares 1.5L PHEV powertrain with VW Tiguan 200TSI eHybrid R-Line and Cupra Leon VZe. Fuel tank 45L (VW Group MQB PHEV standard \u2014 not AU-confirmed but consistent across platform)."
     },
     {
-      "id": "D3E4F5G6-0030-0030-0030-000000000001",
+      "id": "D3E4F596-0030-0030-0030-000000000001",
       "make": "Skoda",
       "model": "Superb",
       "variant": "PHEV Select",
@@ -3344,7 +3344,7 @@
       "notes": "Australia's cheapest PHEV wagon at launch (Mar 2026), before BYD Seal 6 Touring arrived. VW Group Gen2 PHEV \u2014 same 25.7kWh battery and 150kW tune as Kodiaq PHEV and Tiguan 150TSI eHybrid. 112km WLTP EV range. 1.5L TSI 110kW + 85kW/330Nm e-motor. 150kW/350Nm system. FWD only. 10-80% DC in 25 min. 11kW AC 3-phase. 660L boot (wagon). Large practical load area. $62,990 before ORCs / $66,990 D/A at launch (national offer). Select trim only at launch. Primarily fleet-oriented per Skoda AU director. Liftback variant to follow later in 2026. Fuel tank 45L (VW Group MQB PHEV platform standard). Towing not confirmed AU."
     },
     {
-      "id": "E4F5G6H7-0040-0040-0040-000000000001",
+      "id": "E4F596A7-0040-0040-0040-000000000001",
       "make": "GWM",
       "model": "Haval H6",
       "variant": "PHEV Lux FWD",
