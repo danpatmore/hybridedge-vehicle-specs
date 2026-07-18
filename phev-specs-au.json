@@ -1,6 +1,6 @@
 {
-  "version": "1.7.2",
-  "lastUpdated": "2026-05-30",
+  "version": "1.7.3",
+  "lastUpdated": "2026-07-18",
   "vehicles": [
     {
       "id": "B2D3E4F5-0001-0001-0001-000000000001",
@@ -39,7 +39,7 @@
       "systemTorqueNm": 300,
       "driveType": "fwd",
       "specSources": [
-        "BYD AU official spec sheet 2025 \u2014 byd.com.au/sealion-6"
+        "BYD AU official spec sheet 2025 — byd.com.au/sealion-6"
       ],
       "lastVerifiedDate": "2025-05-24",
       "notes": "18.3 kWh Blade LFP confirmed AU spec. Usable est 90%. Depleted 4.8 L/100km ADR81/02."
@@ -81,7 +81,7 @@
       "systemTorqueNm": 550,
       "driveType": "awd",
       "specSources": [
-        "BYD AU official spec sheet 2025 \u2014 byd.com.au/sealion-6"
+        "BYD AU official spec sheet 2025 — byd.com.au/sealion-6"
       ],
       "lastVerifiedDate": "2025-05-24",
       "notes": "18.3 kWh Blade LFP confirmed AU spec. Usable est 90%. Depleted 5.8 L/100km ADR81/02."
@@ -96,7 +96,7 @@
       "marketRegion": [
         "AU"
       ],
-      "batteryGrossKWh": 29.6,
+      "batteryGrossKWh": 29.58,
       "batteryUsableKWh": 26.6,
       "batteryUsableIsEstimated": true,
       "batteryChemistry": "lfp",
@@ -105,14 +105,14 @@
       "acChargerKW": 7.0,
       "acChargerPhases": 1,
       "acPlugType": "type2",
-      "dcChargerKW": 100.0,
+      "dcChargerKW": 55.0,
       "dcPlugType": "ccs2",
       "estimatedHomeChargeHours": 4.2,
       "evRangeKmWLTP": null,
       "evRangeKmNEDC": 100,
       "combinedRangeKm": 840,
       "fuelConsumptionL100kmWLTP": 2.9,
-      "fuelConsumptionL100kmDepleted": null,
+      "fuelConsumptionL100kmDepleted": 7.9,
       "electricConsumptionKWh100km": null,
       "fuelTankLitres": 60,
       "towingCapacityKg": 3000,
@@ -123,10 +123,11 @@
       "systemTorqueNm": 650,
       "driveType": "awd",
       "specSources": [
-        "BYD Australia official specs 2025"
+        "BYD Australia official specs 2025",
+        "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)"
       ],
-      "lastVerifiedDate": "2025-10-01",
-      "notes": "Depleted L/100km not published by BYD AU \u2014 omitted. EV range is NEDC."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "Depleted L/100km not published by BYD AU — omitted. EV range is NEDC. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
     },
     {
       "id": "A1B2C3D4-0001-0001-0001-000000000001",
@@ -341,12 +342,12 @@
       "systemTorqueNm": 642,
       "driveType": "awd",
       "specSources": [
-        "The Beep AU Apr 2026 \u2014 Hi4, 321kW/642Nm, 4.6sec, $52,990 D/A",
-        "Zecar AU Apr 2026 \u2014 35.43kWh, 183km NEDC, redesigned interior confirmed",
-        "CarSauce AU Apr 2026 \u2014 specs and pricing confirmed"
+        "The Beep AU Apr 2026 — Hi4, 321kW/642Nm, 4.6sec, $52,990 D/A",
+        "Zecar AU Apr 2026 — 35.43kWh, 183km NEDC, redesigned interior confirmed",
+        "CarSauce AU Apr 2026 — specs and pricing confirmed"
       ],
       "lastVerifiedDate": "2026-04-17",
-      "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A \u2014 $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery."
+      "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A — $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery."
     },
     {
       "id": "D4E5F6A7-0002-0002-0002-000000000001",
@@ -476,7 +477,7 @@
         "kia.com/au"
       ],
       "lastVerifiedDate": "2025-07-01",
-      "notes": "Euro 6e: towing drops 1350\u21921010 kg, requires 95 RON. Same battery/powertrain as MY24."
+      "notes": "Euro 6e: towing drops 1350→1010 kg, requires 95 RON. Same battery/powertrain as MY24."
     },
     {
       "id": "A1B2C3D4-0004-0004-0004-000000000002",
@@ -519,7 +520,7 @@
         "Mitsubishi Australia official specs 2022"
       ],
       "lastVerifiedDate": "2022-09-01",
-      "notes": "Gen 3 launch year \u2014 lower system power than 2024 update"
+      "notes": "Gen 3 launch year — lower system power than 2024 update"
     },
     {
       "id": "A1B2C3D4-0004-0004-0004-000000000001",
@@ -562,7 +563,7 @@
         "Mitsubishi Australia 2024"
       ],
       "lastVerifiedDate": "2024-09-01",
-      "notes": "17.8 kWh usable \u2014 manufacturer confirmed figure"
+      "notes": "17.8 kWh usable — manufacturer confirmed figure"
     },
     {
       "id": "F6A7B8C9-0001-0001-0001-000000000001",
@@ -601,7 +602,7 @@
       "systemTorqueNm": 709,
       "driveType": "awd",
       "specSources": [
-        "volvocars.com/au/cars/xc60-hybrid/specifications \u2014 fetched 2026-05-24"
+        "volvocars.com/au/cars/xc60-hybrid/specifications — fetched 2026-05-24"
       ],
       "lastVerifiedDate": "2026-05-24",
       "notes": "19 kWh nominal confirmed Volvo AU. No DC charging. Depleted not published."
@@ -649,7 +650,7 @@
         "Ford AU official"
       ],
       "lastVerifiedDate": "2026-01-20",
-      "notes": "No DC charging \u2014 3.5kW AC only. Depleted ~9 L/100km (4x4Australia 180km highway run). 70L tank. 6.9kW Pro Power Onboard V2L."
+      "notes": "No DC charging — 3.5kW AC only. Depleted ~9 L/100km (4x4Australia 180km highway run). 70L tank. 6.9kW Pro Power Onboard V2L."
     },
     {
       "id": "A9B0C1D2-0001-0001-0001-000000000001",
@@ -999,7 +1000,7 @@
         "Lexus AU press release Jul 2025"
       ],
       "lastVerifiedDate": "2025-10-03",
-      "notes": "18.7 kWh (Luxury) vs 18.1 kWh (F Sport) \u2014 confirmed CarExpert. From $84,500 before ORCs. 10yr battery warranty."
+      "notes": "18.7 kWh (Luxury) vs 18.1 kWh (F Sport) — confirmed CarExpert. From $84,500 before ORCs. 10yr battery warranty."
     },
     {
       "id": "D4E5F6A7-0010-0010-0010-000000000001",
@@ -1012,7 +1013,7 @@
         "AU"
       ],
       "batteryGrossKWh": 37.1,
-      "batteryUsableKWh": 33.4,
+      "batteryUsableKWh": 37.1,
       "batteryUsableIsEstimated": true,
       "batteryChemistry": "nmc",
       "batteryWarrantyYears": 8,
@@ -1023,7 +1024,7 @@
       "dcChargerKW": 50.0,
       "dcPlugType": "ccs2",
       "estimatedHomeChargeHours": 5.3,
-      "evRangeKmWLTP": 110,
+      "evRangeKmWLTP": null,
       "evRangeKmNEDC": 115,
       "combinedRangeKm": 1060,
       "fuelConsumptionL100kmWLTP": 1.7,
@@ -1041,10 +1042,11 @@
         "CarExpert AU Nov 2025",
         "ExhaustNotes AU Dec 2025",
         "4x4Australia Jan 2026",
-        "NRMA 2025"
+        "NRMA 2025",
+        "GWM ANZ official page (verified 18 Jul 2026) — '37.11kWh battery pack', '37.1kWh usable', 115km NEDC, 1060km NEDC"
       ],
-      "lastVerifiedDate": "2026-01-20",
-      "notes": "37.1 kWh NMC confirmed. 75L tank confirmed 4x4Australia. Depleted 7.9 L/100km GWM official; real-world 10-11 L/100km NRMA. 3,500kg towing. 6kW V2L. 7yr vehicle warranty, 8yr battery."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "37.1 kWh NMC confirmed. 75L tank confirmed 4x4Australia. Depleted 7.9 L/100km GWM official; real-world 10-11 L/100km NRMA. 3,500kg towing. 6kW V2L. 7yr vehicle warranty, 8yr battery. [Sweep 18 Jul 2026: usable corrected 33.4→37.1 (GWM's own published figure; kept estimated — 0.01 below pack smells like marketing; Chasing Cars: two packs 15.2+21.9); WLTP 110 removed — no WLTP exists, 115km is NEDC (CarExpert/WhichCar confirmed); tank 75L is secondary-sourced, GWM doesn't publish it; 1.7 L/100km is blended NOT charge-sustaining (real-world CS ~9.5-10.7).]"
     },
     {
       "id": "F8A9B0C1-0001-0001-0001-000000000001",
@@ -1087,8 +1089,8 @@
         "CarExpert AU Nov 2025",
         "RACQ"
       ],
-      "lastVerifiedDate": "2026-03-04",
-      "notes": "REEV: petrol engine is generator only \u2014 never drives wheels. Included as user pays for both plug-in electricity and petrol. 28.4 kWh LFP. 50L tank CarsGuide. Generator ~5.5 L/100km. RWD."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "REEV: petrol engine is generator only — never drives wheels. Included as user pays for both plug-in electricity and petrol. 28.4 kWh LFP. 50L tank CarsGuide. Generator ~5.5 L/100km. RWD. [Sweep 18 Jul 2026: 28.4 kWh is manufacturer-quoted but gross/usable unlabelled; AC 6.6/DC 65 and tank 50L are secondary-sourced (Stellantis press omits them); 0.9 L/100km is weighted NEDC NOT charge-sustaining (real-world CS ~8.0-8.5); ranges are NEDC.]"
     },
     {
       "id": "A0B1C2D3-0001-0001-0001-000000000001",
@@ -1386,9 +1388,9 @@
       "systemTorqueNm": 700,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU 2025 \u2014 2700kg towing",
+        "CarExpert AU 2025 — 2700kg towing",
         "BMWBlog Dec 2025",
-        "KBB US 2026 \u2014 69L tank"
+        "KBB US 2026 — 69L tank"
       ],
       "lastVerifiedDate": "2025-12-07",
       "notes": "25.7 kWh usable confirmed BMWBlog. 69L tank (18.2 US gal KBB). 11kW AC updated from 7kW. No DC. 2,700kg towing AU."
@@ -1645,7 +1647,7 @@
       "driveType": "awd",
       "specSources": [
         "CarExpert AU review Dec 2025",
-        "CarsGuide AU \u2014 72L tank"
+        "CarsGuide AU — 72L tank"
       ],
       "lastVerifiedDate": "2025-12-08",
       "notes": "17.3 kWh confirmed CarExpert. 72L tank CarsGuide. 52km EV. 2,722kg towing. 95 RON. AWD with low-range."
@@ -1816,8 +1818,8 @@
       "systemTorqueNm": 620,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU \u2014 3000kg towing, 338kW",
-        "ultimatespecs \u2014 113km WLTP"
+        "CarExpert AU — 3000kg towing, 338kW",
+        "ultimatespecs — 113km WLTP"
       ],
       "lastVerifiedDate": "2025-06-01",
       "notes": "31.8 kWh usable confirmed (JLR dealer). 113km WLTP. 3,000kg towing AU. Also P550e (460kW, same battery). Covers SUV and Coupe."
@@ -1859,8 +1861,8 @@
       "systemTorqueNm": 660,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU \u2014 3500kg towing, 338kW",
-        "ultimatespecs \u2014 109km WLTP"
+        "CarExpert AU — 3500kg towing, 338kW",
+        "ultimatespecs — 109km WLTP"
       ],
       "lastVerifiedDate": "2025-06-01",
       "notes": "31.8 kWh usable confirmed. 109km WLTP. 3,500kg towing AU. Also P550e (460kW, same battery). Covers SWB and LWB."
@@ -1947,10 +1949,10 @@
       "driveType": "rwd",
       "specSources": [
         "CarExpert AU Sep 2025",
-        "Chasing Cars AU Feb 2026 \u2014 19.5 kWh usable confirmed"
+        "Chasing Cars AU Feb 2026 — 19.5 kWh usable confirmed"
       ],
       "lastVerifiedDate": "2025-09-22",
-      "notes": "19.5 kWh usable confirmed Chasing Cars. DC 55kW optional $1500 \u2014 0-80% ~20 min. 104km NEDC. ~$98,200 AU. 50L tank estimated. RWD sedan."
+      "notes": "19.5 kWh usable confirmed Chasing Cars. DC 55kW optional $1500 — 0-80% ~20 min. 104km NEDC. ~$98,200 AU. 50L tank estimated. RWD sedan."
     },
     {
       "id": "F6A7B8C9-0012-0012-0012-000000000001",
@@ -1989,9 +1991,9 @@
       "systemTorqueNm": 550,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Sep 2025 \u2014 25.28 kWh confirmed",
+        "CarExpert AU Sep 2025 — 25.28 kWh confirmed",
         "CarsGuide AU Mar 2026",
-        "CarExpert base GLC \u2014 66L tank"
+        "CarExpert base GLC — 66L tank"
       ],
       "lastVerifiedDate": "2025-09-12",
       "notes": "25.28 kWh confirmed CarExpert AU. 132km NEDC. 66L tank (base GLC CarExpert). 2,000kg towing AU. DC 55kW standard. ~$99,900 AU."
@@ -2033,11 +2035,11 @@
       "systemTorqueNm": 750,
       "driveType": "awd",
       "specSources": [
-        "Porsche Newsroom \u2014 depleted 10.6-9.9 L/100km confirmed",
-        "CarExpert AU \u2014 3500kg towing"
+        "Porsche Newsroom — depleted 10.6-9.9 L/100km confirmed",
+        "CarExpert AU — 3500kg towing"
       ],
       "lastVerifiedDate": "2026-01-01",
-      "notes": "25.9 kWh Porsche confirmed. E-Hybrid 346kW, S E-Hybrid 382kW \u2014 same battery. Depleted ~10 L/100km. No DC. Covers SUV and Coupe."
+      "notes": "25.9 kWh Porsche confirmed. E-Hybrid 346kW, S E-Hybrid 382kW — same battery. Depleted ~10 L/100km. No DC. Covers SUV and Coupe."
     },
     {
       "id": "A0B1C2D3-0011-0011-0011-000000000001",
@@ -2076,7 +2078,7 @@
       "systemTorqueNm": 900,
       "driveType": "awd",
       "specSources": [
-        "Porsche Newsroom \u2014 depleted 11.9-11.3 L/100km confirmed"
+        "Porsche Newsroom — depleted 11.9-11.3 L/100km confirmed"
       ],
       "lastVerifiedDate": "2026-01-01",
       "notes": "25.9 kWh. 4.0L V8 twin-turbo PHEV. Depleted 11.9-11.3 L/100km Porsche Newsroom. No DC. Covers SUV and Coupe."
@@ -2122,7 +2124,7 @@
         "CarExpert AU"
       ],
       "lastVerifiedDate": "2026-01-01",
-      "notes": "25.9 kWh. Covers Panamera 4/4S/Turbo S E-Hybrid \u2014 same battery, different power. ~100km WLTP. No DC. Also Sport Turismo."
+      "notes": "25.9 kWh. Covers Panamera 4/4S/Turbo S E-Hybrid — same battery, different power. ~100km WLTP. No DC. Also Sport Turismo."
     },
     {
       "id": "F6A7B8C9-0002-0002-0002-000000000001",
@@ -2163,10 +2165,10 @@
       "specSources": [
         "CarExpert AU 2023 price/specs",
         "Carsales AU Feb 2026 review",
-        "Volvo AU official \u2014 77km EV range"
+        "Volvo AU official — 77km EV range"
       ],
       "lastVerifiedDate": "2026-02-01",
-      "notes": "18.8 kWh confirmed CarExpert. 71L tank confirmed. 77km WLTP Volvo AU official. 2,350kg towing AU. No DC \u2014 6.4kW AC only. 7-seat capable."
+      "notes": "18.8 kWh confirmed CarExpert. 71L tank confirmed. 77km WLTP Volvo AU official. 2,350kg towing AU. No DC — 6.4kW AC only. 7-seat capable."
     },
     {
       "id": "B1C2D3E4-0001-0001-0001-000000000001",
@@ -2210,7 +2212,7 @@
         "Chasing Cars Feb 2026 review"
       ],
       "lastVerifiedDate": "2026-02-11",
-      "notes": "12.9 kWh LFP Blade. 71km NEDC EV range. AC only 3.3kW \u2014 no DC charging. Depleted 4.5 L/100km official. 750kg towing. FWD. Fuel tank not published \u2014 BYD AU has not confirmed tank size. From $33,990. Australia's cheapest PHEV."
+      "notes": "12.9 kWh LFP Blade. 71km NEDC EV range. AC only 3.3kW — no DC charging. Depleted 4.5 L/100km official. 750kg towing. FWD. Fuel tank not published — BYD AU has not confirmed tank size. From $33,990. Australia's cheapest PHEV."
     },
     {
       "id": "B1C2D3E4-0002-0002-0002-000000000001",
@@ -2253,7 +2255,7 @@
         "RACV Feb 2026"
       ],
       "lastVerifiedDate": "2026-02-11",
-      "notes": "18.3 kWh LFP Blade. 100km NEDC EV range. AC only 3.3kW \u2014 no DC charging. Depleted 4.6 L/100km official. 750kg towing. FWD. Fuel tank not published. From $37,990."
+      "notes": "18.3 kWh LFP Blade. 100km NEDC EV range. AC only 3.3kW — no DC charging. Depleted 4.6 L/100km official. 750kg towing. FWD. Fuel tank not published. From $37,990."
     },
     {
       "id": "B1C2D3E4-0003-0003-0003-000000000001",
@@ -2383,7 +2385,7 @@
         "CarExpert AU model overview Nov 2025"
       ],
       "lastVerifiedDate": "2026-04-01",
-      "notes": "18.3 kWh LFP confirmed Chery AU. 51L tank \u2014 CarExpert AU confirmed (petrol Tiggo 7 tank). 90km WLTP / 93km NEDC EV range. No towing (0kg CarExpert AU). 40kW DC: 30-80% in 20 min. FWD. From $34,990 D/A."
+      "notes": "18.3 kWh LFP confirmed Chery AU. 51L tank — CarExpert AU confirmed (petrol Tiggo 7 tank). 90km WLTP / 93km NEDC EV range. No towing (0kg CarExpert AU). 40kW DC: 30-80% in 20 min. FWD. From $34,990 D/A."
     },
     {
       "id": "C2D3E4F5-0002-0002-0002-000000000001",
@@ -2422,8 +2424,8 @@
       "systemTorqueNm": 525,
       "driveType": "fwd",
       "specSources": [
-        "Chery AU official cherymotor.com.au \u2014 18.4 kWh confirmed",
-        "CarsGuide AU long-term review \u2014 60L tank, 5.4 L/100km depleted",
+        "Chery AU official cherymotor.com.au — 18.4 kWh confirmed",
+        "CarsGuide AU long-term review — 60L tank, 5.4 L/100km depleted",
         "CarExpert AU Nov 2025 review"
       ],
       "lastVerifiedDate": "2026-03-04",
@@ -2466,8 +2468,8 @@
       "systemTorqueNm": 580,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Nov 2025 \u2014 34 kWh confirmed",
-        "CarExpert AU price/specs Mar 2026 \u2014 71kW DC, 6.6kW AC"
+        "CarExpert AU Nov 2025 — 34 kWh confirmed",
+        "CarExpert AU price/specs Mar 2026 — 71kW DC, 6.6kW AC"
       ],
       "lastVerifiedDate": "2026-03-16",
       "notes": "34 kWh LFP battery confirmed CarExpert. 170km NEDC EV range. AWD via rear e-motor. 315kW/580Nm. 71kW DC + 6.6kW AC charging. Fuel tank and towing not confirmed AU. 7-seat. From $59,990. 8yr unlimited km battery warranty."
@@ -2509,12 +2511,12 @@
       "systemTorqueNm": null,
       "driveType": "fwd",
       "specSources": [
-        "NRMA launch review \u2014 51L tank confirmed",
-        "Chasing Cars pre-launch specs \u2014 5.9 L/100km depleted confirmed",
-        "RACV Oct 2025 \u2014 83km WLTP, 943km combined"
+        "NRMA launch review — 51L tank confirmed",
+        "Chasing Cars pre-launch specs — 5.9 L/100km depleted confirmed",
+        "RACV Oct 2025 — 83km WLTP, 943km combined"
       ],
       "lastVerifiedDate": "2025-10-17",
-      "notes": "18.4 kWh LFP. 51L tank confirmed NRMA review. 83km WLTP EV range. Depleted 5.9 L/100km Chasing Cars. FWD only. No towing (0kg \u2014 tow hitch prep added MY27). No DC charging. From $37,490. MY27 Extended Range variant has 29.8 kWh battery (136km WLTP) \u2014 separate entry needed."
+      "notes": "18.4 kWh LFP. 51L tank confirmed NRMA review. 83km WLTP EV range. Depleted 5.9 L/100km Chasing Cars. FWD only. No towing (0kg — tow hitch prep added MY27). No DC charging. From $37,490. MY27 Extended Range variant has 29.8 kWh battery (136km WLTP) — separate entry needed."
     },
     {
       "id": "D3E4F5A6-0002-0002-0002-000000000001",
@@ -2553,8 +2555,8 @@
       "systemTorqueNm": null,
       "driveType": "fwd",
       "specSources": [
-        "Whichcar AU May 2026 \u2014 29.8 kWh, 136km WLTP confirmed",
-        "CarSauce May 2026 \u2014 $41,490"
+        "Whichcar AU May 2026 — 29.8 kWh, 136km WLTP confirmed",
+        "CarSauce May 2026 — $41,490"
       ],
       "lastVerifiedDate": "2026-05-18",
       "notes": "29.8 kWh LFP battery (MY27 Inspire Extended Range only). 136km WLTP EV range. Same 51L tank assumed. Tow prep hardware added MY27 but no rated capacity confirmed. No DC charging. From $41,490. Deliveries from late May 2026."
@@ -2596,10 +2598,10 @@
       "systemTorqueNm": 750,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Mar 2026 \u2014 37.11 kWh, 300kW/750Nm, 3000kg towing, 8.3 L/100km depleted"
+        "CarExpert AU Mar 2026 — 37.11 kWh, 300kW/750Nm, 3000kg towing, 8.3 L/100km depleted"
       ],
       "lastVerifiedDate": "2026-03-27",
-      "notes": "37.11 kWh NMC confirmed. 115km NEDC EV. Depleted 8.3 L/100km CarExpert. 3,000kg towing. 6kW V2L. Ladder-frame with locking diffs + low-range. From $55,990 D/A. 72L tank \u2014 standard Tank 300 petrol tank (PHEV-specific not confirmed; used as estimate)."
+      "notes": "37.11 kWh NMC confirmed. 115km NEDC EV. Depleted 8.3 L/100km CarExpert. 3,000kg towing. 6kW V2L. Ladder-frame with locking diffs + low-range. From $55,990 D/A. 72L tank — standard Tank 300 petrol tank (PHEV-specific not confirmed; used as estimate)."
     },
     {
       "id": "E5F6A7B8-0020-0020-0020-000000000001",
@@ -2611,7 +2613,7 @@
       "marketRegion": [
         "AU"
       ],
-      "batteryGrossKWh": 18.32,
+      "batteryGrossKWh": 18.3,
       "batteryUsableKWh": 16.5,
       "batteryUsableIsEstimated": true,
       "batteryChemistry": "lfp",
@@ -2623,13 +2625,13 @@
       "dcChargerKW": 40.0,
       "dcPlugType": "ccs2",
       "estimatedHomeChargeHours": 2.8,
-      "evRangeKmWLTP": 88,
+      "evRangeKmWLTP": 90,
       "evRangeKmNEDC": 106,
       "combinedRangeKm": 1200,
       "fuelConsumptionL100kmWLTP": 1.0,
       "fuelConsumptionL100kmDepleted": null,
       "electricConsumptionKWh100km": null,
-      "fuelTankLitres": null,
+      "fuelTankLitres": 60,
       "towingCapacityKg": 750,
       "referenceL100km": 7.0,
       "engineCC": 1498,
@@ -2638,12 +2640,13 @@
       "systemTorqueNm": 525,
       "driveType": "fwd",
       "specSources": [
-        "CarExpert AU pre-launch details \u2014 18.32 kWh, 40kW DC, 88km WLTP",
-        "Jaecoo AU official \u2014 1200km combined",
-        "Wikipedia Jaecoo J7 \u2014 18.32 kWh FinDreams LFP, 88km WLTP"
+        "CarExpert AU pre-launch details — 18.32 kWh, 40kW DC, 88km WLTP",
+        "Jaecoo AU official — 1200km combined",
+        "Wikipedia Jaecoo J7 — 18.32 kWh FinDreams LFP, 88km WLTP",
+        "Omoda Jaecoo AU official spec sheet PDF v11 (verified 18 Jul 2026) — 18.3 kWh LFP, 60L tank, 6.6kW AC / 40kW DC, 90km WLTP / 106km NEDC"
       ],
-      "lastVerifiedDate": "2026-03-19",
-      "notes": "18.32 kWh LFP FinDreams (Wikipedia confirmed). 88km WLTP / 106km NEDC EV range. 40kW DC: 30-80% in 20 min. Fuel tank not published AU. 750kg towing (CarsGuide confirmed). FWD. From $44,990 D/A (inc $3,000 EOFY bonus). Shares powertrain with Chery Tiggo 7 SHS."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "18.32 kWh LFP FinDreams (Wikipedia confirmed). 88km WLTP / 106km NEDC EV range. 40kW DC: 30-80% in 20 min. Fuel tank not published AU. 750kg towing (CarsGuide confirmed). FWD. From $44,990 D/A (inc $3,000 EOFY bonus). Shares powertrain with Chery Tiggo 7 SHS. [Sweep 18 Jul 2026: tank 60L official (PHEV differs from petrol J7 51-57L); WLTP corrected 88→90 per official sheet; gross 18.3 per sheet; sheet's '6.6W' AC is a typo for 6.6kW (charge-time maths confirms).]"
     },
     {
       "id": "F6A7B8C9-0020-0020-0020-000000000001",
@@ -2682,13 +2685,13 @@
       "systemTorqueNm": null,
       "driveType": "awd",
       "specSources": [
-        "Lexus AU official \u2014 85km NEDC, 1.3 L/100km ADR",
-        "Carsales AU review \u2014 55L tank, 68km WLTP, 1,500kg towing",
-        "Man of Many Apr 2025 \u2014 55L tank",
-        "CarsGuide AU \u2014 1,500kg towing"
+        "Lexus AU official — 85km NEDC, 1.3 L/100km ADR",
+        "Carsales AU review — 55L tank, 68km WLTP, 1,500kg towing",
+        "Man of Many Apr 2025 — 55L tank",
+        "CarsGuide AU — 1,500kg towing"
       ],
       "lastVerifiedDate": "2025-04-01",
-      "notes": "18.1 kWh NMC confirmed Lexus AU. 55L tank confirmed Carsales/Man of Many. 68km WLTP / 85km NEDC. No DC charging \u2014 6.6kW AC. 1,500kg towing confirmed CarsGuide. 10yr unlimited km battery warranty. 95 RON. From $123,500."
+      "notes": "18.1 kWh NMC confirmed Lexus AU. 55L tank confirmed Carsales/Man of Many. 68km WLTP / 85km NEDC. No DC charging — 6.6kW AC. 1,500kg towing confirmed CarsGuide. 10yr unlimited km battery warranty. 95 RON. From $123,500."
     },
     {
       "id": "F7A8B9C0-0002-0002-0002-000000000001",
@@ -2727,7 +2730,7 @@
       "systemTorqueNm": null,
       "driveType": "awd",
       "specSources": [
-        "Mitsubishi AU official \u2014 20 kWh, 84km WLTP, CarExpert AU 2025"
+        "Mitsubishi AU official — 20 kWh, 84km WLTP, CarExpert AU 2025"
       ],
       "lastVerifiedDate": "2025-11-01",
       "notes": "2025 update: 20 kWh battery (up from 13.8 kWh), 84km WLTP (up from 55km). 56L tank confirmed. DC 50kW (new for 2025 update). AC 3.3kW only. 1,500kg towing. 5 or 7 seat. From $57,290."
@@ -2769,10 +2772,10 @@
       "systemTorqueNm": null,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Sep 2025 \u2014 19.7 kWh, 120km WLTP confirmed for VW Group MQB Evo PHEV"
+        "CarExpert AU Sep 2025 — 19.7 kWh, 120km WLTP confirmed for VW Group MQB Evo PHEV"
       ],
       "lastVerifiedDate": "2026-01-01",
-      "notes": "Shares VW Group MQB Evo PHEV platform with Tiguan/Tayron eHybrid. 19.7 kWh battery confirmed CarExpert. 116km WLTP EV range (Kodiaq-specific WLTP \u2014 heavier than Tiguan). 50kW DC + 11kW AC. Due AU Q1 2026. 50L tank estimated (standard Kodiaq petrol tank). 2,000kg towing."
+      "notes": "Shares VW Group MQB Evo PHEV platform with Tiguan/Tayron eHybrid. 19.7 kWh battery confirmed CarExpert. 116km WLTP EV range (Kodiaq-specific WLTP — heavier than Tiguan). 50kW DC + 11kW AC. Due AU Q1 2026. 50L tank estimated (standard Kodiaq petrol tank). 2,000kg towing."
     },
     {
       "id": "A9B0C1D2-0010-0010-0010-000000000001",
@@ -2811,11 +2814,11 @@
       "systemTorqueNm": null,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Mar 2026 \u2014 19.7 kWh, 113-117km WLTP, 40kW DC, 11kW AC",
-        "Zecar AU \u2014 $62,390-$74,550"
+        "CarExpert AU Mar 2026 — 19.7 kWh, 113-117km WLTP, 40kW DC, 11kW AC",
+        "Zecar AU — $62,390-$74,550"
       ],
       "lastVerifiedDate": "2026-03-28",
-      "notes": "19.7 kWh confirmed. 113-117km WLTP (variant-dependent). 40kW DC + 11kW AC. AWD. From $62,390. 150TSI (150kW) and 200TSI (200kW) grades. 45L tank \u2014 standard Tiguan PHEV tank (smaller than petrol). 2,000kg towing."
+      "notes": "19.7 kWh confirmed. 113-117km WLTP (variant-dependent). 40kW DC + 11kW AC. AWD. From $62,390. 150TSI (150kW) and 200TSI (200kW) grades. 45L tank — standard Tiguan PHEV tank (smaller than petrol). 2,000kg towing."
     },
     {
       "id": "A9B0C1D2-0011-0011-0011-000000000001",
@@ -2854,8 +2857,8 @@
       "systemTorqueNm": null,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Mar 2026 \u2014 19.7 kWh, 113km WLTP, 40kW DC, 11kW AC",
-        "Zecar AU \u2014 $64,590-$74,550"
+        "CarExpert AU Mar 2026 — 19.7 kWh, 113km WLTP, 40kW DC, 11kW AC",
+        "Zecar AU — $64,590-$74,550"
       ],
       "lastVerifiedDate": "2026-03-28",
       "notes": "Larger sibling of Tiguan eHybrid. Same 19.7 kWh battery. 113km WLTP (slightly less than Tiguan due to extra weight). 7-seat available. From $64,590. 45L tank assumed (same PHEV platform). 2,000kg towing."
@@ -2897,11 +2900,11 @@
       "systemTorqueNm": 700,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU 2024 price/specs \u2014 14.3 kWh, 51km WLTP, 3.3 L/100km, 3500kg towing",
-        "VW Newsroom \u2014 depleted 9.2-9.7 L/100km"
+        "CarExpert AU 2024 price/specs — 14.3 kWh, 51km WLTP, 3.3 L/100km, 3500kg towing",
+        "VW Newsroom — depleted 9.2-9.7 L/100km"
       ],
       "lastVerifiedDate": "2024-06-01",
-      "notes": "14.3 kWh battery. 51km WLTP EV range. 3.0L V6 + electric. 3,500kg towing. No DC charging \u2014 11kW AC only. 75L tank \u2014 standard Touareg tank (PHEV same as petrol). Depleted 9.2-9.7 L/100km (VW Newsroom WLTP). 95 RON."
+      "notes": "14.3 kWh battery. 51km WLTP EV range. 3.0L V6 + electric. 3,500kg towing. No DC charging — 11kW AC only. 75L tank — standard Touareg tank (PHEV same as petrol). Depleted 9.2-9.7 L/100km (VW Newsroom WLTP). 95 RON."
     },
     {
       "id": "D4E5F6A7-0010-0010-0010-000000000002",
@@ -2946,7 +2949,7 @@
         "4x4Australia Sep 2025"
       ],
       "lastVerifiedDate": "2026-05-28",
-      "notes": "37.11kWh NMC. 70L tank (not 80L \u2014 HEV variant is 80L). 102km WLTP / 120km NEDC EV range. 50kW DC CCS2, 30-80% in 24min. 11kW AC 3-phase. V2L 6kW. 3000kg braked tow. One variant (Ultra). Launched AU Q4 2025 priced $79,990 d/a. batteryUsableKWh estimated at 90% of gross."
+      "notes": "37.11kWh NMC. 70L tank (not 80L — HEV variant is 80L). 102km WLTP / 120km NEDC EV range. 50kW DC CCS2, 30-80% in 24min. 11kW AC 3-phase. V2L 6kW. 3000kg braked tow. One variant (Ultra). Launched AU Q4 2025 priced $79,990 d/a. batteryUsableKWh estimated at 90% of gross."
     },
     {
       "id": "E5F6A7B8-0030-0030-0030-000000000001",
@@ -2985,9 +2988,9 @@
       "systemTorqueNm": 650,
       "driveType": "awd",
       "specSources": [
-        "Omoda Jaecoo AU official \u2014 omodajaecoo.com.au/models/omoda-9",
-        "CarSauce AU Jul 2025 \u2014 34kWh, 395kW, 70kW DC",
-        "OnlineAuto AU \u2014 145km WLTP confirmed"
+        "Omoda Jaecoo AU official — omodajaecoo.com.au/models/omoda-9",
+        "CarSauce AU Jul 2025 — 34kWh, 395kW, 70kW DC",
+        "OnlineAuto AU — 145km WLTP confirmed"
       ],
       "lastVerifiedDate": "2026-05-28",
       "notes": "34.46 kWh LFP battery (European review confirmed 34.46 kWh gross). 145km WLTP / 169km NEDC EV range. 70kW DC CCS2: 30-80% in 25 min. 6.6kW AC Type 2. 3-motor AWD: 2 front + 1 rear. 395kW/650Nm combined. 0-100 in 4.9 sec. V2L 6.6kW. Fuel tank and towing not confirmed AU. 8yr unlimited km battery warranty. From $61,990. On sale AU Aug 2025. batteryUsableKWh estimated at 90% of gross."
@@ -3029,9 +3032,9 @@
       "systemTorqueNm": 650,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Apr 2026 \u2014 34.36 kWh LFP, 70kW DC, 70L tank",
-        "Chasing Cars AU Apr 2026 \u2014 134km WLTP, 25 min 30-80% DC",
-        "Zecar AU Apr 2026 \u2014 395kW/650Nm, 1100km+ combined range"
+        "CarExpert AU Apr 2026 — 34.36 kWh LFP, 70kW DC, 70L tank",
+        "Chasing Cars AU Apr 2026 — 134km WLTP, 25 min 30-80% DC",
+        "Zecar AU Apr 2026 — 395kW/650Nm, 1100km+ combined range"
       ],
       "lastVerifiedDate": "2026-05-28",
       "notes": "34.36 kWh LFP FinDreams battery (CarExpert confirmed). 134km WLTP EV range. 70kW DC CCS2: 30-80% in 25 min. 6.6kW AC. 3-motor AWD: 395kW/650Nm. 0-100 in 5.4 sec. 70L fuel tank confirmed CarExpert. V2L 6.6kW. 7-seat. Towing not confirmed AU. Shares platform/powertrain with Chery Tiggo 9 and Omoda 9 SHS. Due AU Q3 2026 (July 2026). Pricing ~$60,000 before ORCs. batteryUsableKWh estimated at 90% of gross."
@@ -3055,14 +3058,14 @@
       "acChargerKW": 7.0,
       "acChargerPhases": 1,
       "acPlugType": "type2",
-      "dcChargerKW": 100.0,
+      "dcChargerKW": 55.0,
       "dcPlugType": "ccs2",
       "estimatedHomeChargeHours": 4.2,
       "evRangeKmWLTP": 85,
       "evRangeKmNEDC": 100,
       "combinedRangeKm": 840,
       "fuelConsumptionL100kmWLTP": 2.0,
-      "fuelConsumptionL100kmDepleted": null,
+      "fuelConsumptionL100kmDepleted": 7.9,
       "electricConsumptionKWh100km": null,
       "fuelTankLitres": 60,
       "towingCapacityKg": 2500,
@@ -3074,11 +3077,12 @@
       "driveType": "awd",
       "specSources": [
         "CarExpert AU Apr 2026 price/specs",
-        "Wikipedia BYD Shark \u2014 29.58 kWh, 85km WLTP confirmed",
-        "NRMA Open Road Apr 2026 \u2014 2500kg towing"
+        "Wikipedia BYD Shark — 29.58 kWh, 85km WLTP confirmed",
+        "NRMA Open Road Apr 2026 — 2500kg towing",
+        "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)"
       ],
-      "lastVerifiedDate": "2026-04-17",
-      "notes": "2026 Premium: same powertrain as 2025 launch variant. 1.5L turbo, 321kW/650Nm. 29.58 kWh LFP. 85km WLTP / 100km NEDC EV. 2,500kg towing. 6.6kW V2L. $57,900 before ORCs. Depleted L/100km not published BYD AU."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "2026 Premium: same powertrain as 2025 launch variant. 1.5L turbo, 321kW/650Nm. 29.58 kWh LFP. 85km WLTP / 100km NEDC EV. 2,500kg towing. 6.6kW V2L. $57,900 before ORCs. Depleted L/100km not published BYD AU. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
     },
     {
       "id": "A1B2C3D4-0003-0003-0003-000000000003",
@@ -3099,14 +3103,14 @@
       "acChargerKW": 7.0,
       "acChargerPhases": 1,
       "acPlugType": "type2",
-      "dcChargerKW": 100.0,
+      "dcChargerKW": 55.0,
       "dcPlugType": "ccs2",
       "estimatedHomeChargeHours": 4.2,
       "evRangeKmWLTP": 85,
       "evRangeKmNEDC": 100,
       "combinedRangeKm": 840,
       "fuelConsumptionL100kmWLTP": 1.3,
-      "fuelConsumptionL100kmDepleted": null,
+      "fuelConsumptionL100kmDepleted": 7.9,
       "electricConsumptionKWh100km": null,
       "fuelTankLitres": 60,
       "towingCapacityKg": 3500,
@@ -3117,12 +3121,13 @@
       "systemTorqueNm": 700,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Apr 2026 \u2014 350kW/700Nm, 2.0L, 3500kg towing",
-        "NRMA Open Road Apr 2026 \u2014 1.3 L/100km, 3500kg towing confirmed",
-        "The Beep AU Apr 2026 \u2014 200kW front motor (from Denza B5)"
+        "CarExpert AU Apr 2026 — 350kW/700Nm, 2.0L, 3500kg towing",
+        "NRMA Open Road Apr 2026 — 1.3 L/100km, 3500kg towing confirmed",
+        "The Beep AU Apr 2026 — 200kW front motor (from Denza B5)",
+        "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)"
       ],
-      "lastVerifiedDate": "2026-04-17",
-      "notes": "2026 Performance only: 2.0L turbo (180kW) replaces 1.5L. Upgraded 200kW front motor (sourced from Denza B5 platform) + 150kW rear. Combined 350kW/700Nm. Same 29.58 kWh LFP battery \u2014 same EV range. Towing jumps to 3,500kg (was 2,500kg). Adds Crawl Mode. 1.3 L/100km claimed vs 2.0 L/100km base. 6.6kW V2L. Launched AU May 2026. $66,744 D/A."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "2026 Performance only: 2.0L turbo (180kW) replaces 1.5L. Upgraded 200kW front motor (sourced from Denza B5 platform) + 150kW rear. Combined 350kW/700Nm. Same 29.58 kWh LFP battery — same EV range. Towing jumps to 3,500kg (was 2,500kg). Adds Crawl Mode. 1.3 L/100km claimed vs 2.0 L/100km base. 6.6kW V2L. Launched AU May 2026. $66,744 D/A. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
     },
     {
       "id": "A1B2C3D4-0003-0003-0003-000000000004",
@@ -3143,14 +3148,14 @@
       "acChargerKW": 7.0,
       "acChargerPhases": 1,
       "acPlugType": "type2",
-      "dcChargerKW": 100.0,
+      "dcChargerKW": 55.0,
       "dcPlugType": "ccs2",
       "estimatedHomeChargeHours": 4.2,
       "evRangeKmWLTP": 85,
       "evRangeKmNEDC": 100,
       "combinedRangeKm": 840,
       "fuelConsumptionL100kmWLTP": 2.0,
-      "fuelConsumptionL100kmDepleted": null,
+      "fuelConsumptionL100kmDepleted": 7.9,
       "electricConsumptionKWh100km": null,
       "fuelTankLitres": 60,
       "towingCapacityKg": 2500,
@@ -3161,11 +3166,12 @@
       "systemTorqueNm": 650,
       "driveType": "awd",
       "specSources": [
-        "CarExpert AU Apr 2026 \u2014 $55,900, same 1.5L PHEV as Premium",
-        "NRMA Open Road Apr 2026"
+        "CarExpert AU Apr 2026 — $55,900, same 1.5L PHEV as Premium",
+        "NRMA Open Road Apr 2026",
+        "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)"
       ],
-      "lastVerifiedDate": "2026-04-17",
-      "notes": "Cab-chassis (no tray). Same 1.5L turbo PHEV as Premium \u2014 321kW/650Nm. Smaller 12.8-inch screen vs 15.6-inch in Premium. Optional Ironman 4x4 alloy tray (price TBC). 2,500kg towing. $55,900 before ORCs \u2014 entry of 2026 Shark 6 range. On sale Apr 2026."
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "Cab-chassis (no tray). Same 1.5L turbo PHEV as Premium — 321kW/650Nm. Smaller 12.8-inch screen vs 15.6-inch in Premium. Optional Ironman 4x4 alloy tray (price TBC). 2,500kg towing. $55,900 before ORCs — entry of 2026 Shark 6 range. On sale Apr 2026. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
     },
     {
       "id": "B1C2D3E4-0010-0010-0010-000000000001",
@@ -3204,12 +3210,12 @@
       "systemTorqueNm": 210,
       "driveType": "fwd",
       "specSources": [
-        "Carsales AU Apr 2026 \u2014 10.08kWh, 55km WLTP, 130kW/210Nm, 3.3kW AC only",
-        "CarExpert AU Apr 2026 \u2014 $34,990 before ORCs, Australia cheapest PHEV sedan",
-        "RACV AU Apr 2026 \u2014 1.1L/100km claimed, >1400km combined"
+        "Carsales AU Apr 2026 — 10.08kWh, 55km WLTP, 130kW/210Nm, 3.3kW AC only",
+        "CarExpert AU Apr 2026 — $34,990 before ORCs, Australia cheapest PHEV sedan",
+        "RACV AU Apr 2026 — 1.1L/100km claimed, >1400km combined"
       ],
       "lastVerifiedDate": "2026-04-14",
-      "notes": "Australia's cheapest PHEV sedan at $34,990 before ORCs. BYD DM 5.0 Super Hybrid. 10.08kWh LFP blade battery. 55km WLTP EV range. 1.5L Atkinson-cycle petrol (46% thermal eff). 130kW/210Nm system. FWD only. 3.3kW AC charging only \u2014 NO DC fast charge. ~3.5hr home charge. 0-100 ~8.5sec. Cd 0.255 (very aerodynamic). 491L boot. 1.1L/100km claimed with battery >25% SoC. $34,990 before ORCs. On sale Apr 2026. Sedan only \u2014 does not share powertrain with BYD electric Seal. batteryUsableKWh estimated 90% of gross. No towing rating published."
+      "notes": "Australia's cheapest PHEV sedan at $34,990 before ORCs. BYD DM 5.0 Super Hybrid. 10.08kWh LFP blade battery. 55km WLTP EV range. 1.5L Atkinson-cycle petrol (46% thermal eff). 130kW/210Nm system. FWD only. 3.3kW AC charging only — NO DC fast charge. ~3.5hr home charge. 0-100 ~8.5sec. Cd 0.255 (very aerodynamic). 491L boot. 1.1L/100km claimed with battery >25% SoC. $34,990 before ORCs. On sale Apr 2026. Sedan only — does not share powertrain with BYD electric Seal. batteryUsableKWh estimated 90% of gross. No towing rating published."
     },
     {
       "id": "B1C2D3E4-0010-0010-0010-000000000002",
@@ -3248,12 +3254,12 @@
       "systemTorqueNm": 260,
       "driveType": "fwd",
       "specSources": [
-        "Carsales AU Apr 2026 \u2014 19kWh, 100km WLTP, 163kW/260Nm, 6.6kW AC, 27kW DC",
-        "CarExpert AU Apr 2026 \u2014 Australia's cheapest wagon of any kind at $39,990",
-        "RACV AU \u2014 0.8L/100km claimed, wagon body 1505mm tall, 670L boot"
+        "Carsales AU Apr 2026 — 19kWh, 100km WLTP, 163kW/260Nm, 6.6kW AC, 27kW DC",
+        "CarExpert AU Apr 2026 — Australia's cheapest wagon of any kind at $39,990",
+        "RACV AU — 0.8L/100km claimed, wagon body 1505mm tall, 670L boot"
       ],
       "lastVerifiedDate": "2026-04-14",
-      "notes": "Australia's cheapest wagon of any kind at $39,990 before ORCs. BYD DM 5.0 Super Hybrid. 19kWh LFP blade battery. 100km WLTP EV range. More powerful 160kW e-motor vs sedan's 130kW. 163kW/260Nm system. FWD only. 6.6kW AC + 27kW DC fast charge (30-80% time not published). 0.8L/100km claimed with battery >25% SoC. 670L boot / 1535L seats folded. Roof rails + powered tailgate. Wagon Touring Premium only \u2014 sedan is Essential only, different battery and no DC charge. On sale mid-2026. batteryUsableKWh estimated 90% of gross. No towing rating published."
+      "notes": "Australia's cheapest wagon of any kind at $39,990 before ORCs. BYD DM 5.0 Super Hybrid. 19kWh LFP blade battery. 100km WLTP EV range. More powerful 160kW e-motor vs sedan's 130kW. 163kW/260Nm system. FWD only. 6.6kW AC + 27kW DC fast charge (30-80% time not published). 0.8L/100km claimed with battery >25% SoC. 670L boot / 1535L seats folded. Roof rails + powered tailgate. Wagon Touring Premium only — sedan is Essential only, different battery and no DC charge. On sale mid-2026. batteryUsableKWh estimated 90% of gross. No towing rating published."
     },
     {
       "id": "C2D3E4F5-0020-0020-0020-000000000001",
@@ -3292,12 +3298,12 @@
       "systemTorqueNm": 400,
       "driveType": "fwd",
       "specSources": [
-        "CarSauce AU Sep 2025 \u2014 20kWh, 110km WLTP, 200kW/400Nm, 11kW AC, 50kW DC, $77,990",
-        "WhichCar AU Sep 2025 \u2014 Cupra Gen2 PHEV system, launched Nov 2025",
-        "Chasing Cars AU Oct 2025 \u2014 0.5L/100km claimed, 7.3sec 0-100, FWD only"
+        "CarSauce AU Sep 2025 — 20kWh, 110km WLTP, 200kW/400Nm, 11kW AC, 50kW DC, $77,990",
+        "WhichCar AU Sep 2025 — Cupra Gen2 PHEV system, launched Nov 2025",
+        "Chasing Cars AU Oct 2025 — 0.5L/100km claimed, 7.3sec 0-100, FWD only"
       ],
       "lastVerifiedDate": "2026-03-28",
-      "notes": "Cupra's Gen2 PHEV system. 1.5L turbo petrol + electric motor via 6-speed DSG. 20kWh battery (19.7kWh usable per Autocar UK test of same VW Group system). 110km WLTP EV range. 200kW/400Nm. FWD only. 0-100 7.3sec. 11kW AC 3-phase, 50kW DC (10-80% ~26 min). VW Group DCC adaptive suspension. 400L boot (reduced vs petrol due to battery). On sale AU Nov 2025. $77,990 before ORCs. Shares 1.5L PHEV powertrain with VW Tiguan 200TSI eHybrid R-Line and Cupra Leon VZe. Fuel tank 45L (VW Group MQB PHEV standard \u2014 not AU-confirmed but consistent across platform)."
+      "notes": "Cupra's Gen2 PHEV system. 1.5L turbo petrol + electric motor via 6-speed DSG. 20kWh battery (19.7kWh usable per Autocar UK test of same VW Group system). 110km WLTP EV range. 200kW/400Nm. FWD only. 0-100 7.3sec. 11kW AC 3-phase, 50kW DC (10-80% ~26 min). VW Group DCC adaptive suspension. 400L boot (reduced vs petrol due to battery). On sale AU Nov 2025. $77,990 before ORCs. Shares 1.5L PHEV powertrain with VW Tiguan 200TSI eHybrid R-Line and Cupra Leon VZe. Fuel tank 45L (VW Group MQB PHEV standard — not AU-confirmed but consistent across platform)."
     },
     {
       "id": "D3E4F596-0030-0030-0030-000000000001",
@@ -3336,12 +3342,12 @@
       "systemTorqueNm": 350,
       "driveType": "fwd",
       "specSources": [
-        "CarExpert AU Mar 2026 \u2014 25.7kWh, 112km WLTP, 150kW/350Nm, 11kW AC, 50kW DC, $62,990",
-        "CarsGuide AU Mar 2026 \u2014 $66,990 D/A, cheapest PHEV wagon in AU at launch",
-        "Fleet EV News AU Mar 2026 \u2014 1.5L TSI 110kW + 85kW e-motor, 6-speed DSG, FWD"
+        "CarExpert AU Mar 2026 — 25.7kWh, 112km WLTP, 150kW/350Nm, 11kW AC, 50kW DC, $62,990",
+        "CarsGuide AU Mar 2026 — $66,990 D/A, cheapest PHEV wagon in AU at launch",
+        "Fleet EV News AU Mar 2026 — 1.5L TSI 110kW + 85kW e-motor, 6-speed DSG, FWD"
       ],
       "lastVerifiedDate": "2026-03-05",
-      "notes": "Australia's cheapest PHEV wagon at launch (Mar 2026), before BYD Seal 6 Touring arrived. VW Group Gen2 PHEV \u2014 same 25.7kWh battery and 150kW tune as Kodiaq PHEV and Tiguan 150TSI eHybrid. 112km WLTP EV range. 1.5L TSI 110kW + 85kW/330Nm e-motor. 150kW/350Nm system. FWD only. 10-80% DC in 25 min. 11kW AC 3-phase. 660L boot (wagon). Large practical load area. $62,990 before ORCs / $66,990 D/A at launch (national offer). Select trim only at launch. Primarily fleet-oriented per Skoda AU director. Liftback variant to follow later in 2026. Fuel tank 45L (VW Group MQB PHEV platform standard). Towing not confirmed AU."
+      "notes": "Australia's cheapest PHEV wagon at launch (Mar 2026), before BYD Seal 6 Touring arrived. VW Group Gen2 PHEV — same 25.7kWh battery and 150kW tune as Kodiaq PHEV and Tiguan 150TSI eHybrid. 112km WLTP EV range. 1.5L TSI 110kW + 85kW/330Nm e-motor. 150kW/350Nm system. FWD only. 10-80% DC in 25 min. 11kW AC 3-phase. 660L boot (wagon). Large practical load area. $62,990 before ORCs / $66,990 D/A at launch (national offer). Select trim only at launch. Primarily fleet-oriented per Skoda AU director. Liftback variant to follow later in 2026. Fuel tank 45L (VW Group MQB PHEV platform standard). Towing not confirmed AU."
     },
     {
       "id": "E4F596A7-0040-0040-0040-000000000001",
@@ -3380,12 +3386,138 @@
       "systemTorqueNm": 530,
       "driveType": "fwd",
       "specSources": [
-        "CarExpert AU Nov 2025 quick drive \u2014 179kW/530Nm FWD, 100km NEDC, 1043km combined",
-        "Chasing Cars AU Oct 2025 \u2014 entry PHEV Lux from $42,990 D/A, FWD only",
-        "GWM AU official \u2014 two PHEV variants: Lux FWD and Ultra AWD (Hi4)"
+        "CarExpert AU Nov 2025 quick drive — 179kW/530Nm FWD, 100km NEDC, 1043km combined",
+        "Chasing Cars AU Oct 2025 — entry PHEV Lux from $42,990 D/A, FWD only",
+        "GWM AU official — two PHEV variants: Lux FWD and Ultra AWD (Hi4)"
       ],
       "lastVerifiedDate": "2026-04-17",
-      "notes": "Entry PHEV variant \u2014 FWD only, single front electric motor (179kW/530Nm combined). 18.3kWh NMC battery. ~100km NEDC EV range (WLTP not published for AU). 1043km combined. 6.6kW AC only \u2014 no DC fast charge on this variant. Dedicated hybrid transmission (2-speed). No AWD \u2014 AWD only on Ultra Hi4 variant. $42,990 D/A (Lux). $4,000 less than Ultra AWD PHEV. batteryUsableKWh estimated 90% of gross. WLTP EV range not AU-confirmed; 100km is NEDC."
+      "notes": "Entry PHEV variant — FWD only, single front electric motor (179kW/530Nm combined). 18.3kWh NMC battery. ~100km NEDC EV range (WLTP not published for AU). 1043km combined. 6.6kW AC only — no DC fast charge on this variant. Dedicated hybrid transmission (2-speed). No AWD — AWD only on Ultra Hi4 variant. $42,990 D/A (Lux). $4,000 less than Ultra AWD PHEV. batteryUsableKWh estimated 90% of gross. WLTP EV range not AU-confirmed; 100km is NEDC."
+    },
+    {
+      "id": "D17744BC-55B8-4484-848E-E67D87659CD0",
+      "make": "BYD",
+      "model": "Sealion 6",
+      "variant": "Essential",
+      "modelYear": 2026,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 18.3,
+      "batteryUsableKWh": 16.5,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "lfp",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 160000,
+      "acChargerKW": 7.0,
+      "acChargerPhases": 1,
+      "acPlugType": "type2",
+      "dcChargerKW": 18.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 2.6,
+      "evRangeKmWLTP": null,
+      "evRangeKmNEDC": 92,
+      "combinedRangeKm": 1092,
+      "fuelConsumptionL100kmWLTP": 1.1,
+      "fuelConsumptionL100kmDepleted": 4.8,
+      "electricConsumptionKWh100km": 16.9,
+      "fuelTankLitres": 60,
+      "towingCapacityKg": 1300,
+      "referenceL100km": 7.5,
+      "engineCC": 1498,
+      "engineCylinders": 4,
+      "systemPowerKW": 160,
+      "systemTorqueNm": 300,
+      "driveType": "fwd",
+      "specSources": [
+        "BYD AU sealion-6 page (verified 18 Jul 2026) — 2026 facelift lineup, 60L tank all variants, SoC-windowed NEDC-type ranges"
+      ],
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "2026 facelift. Battery not published by BYD; 18.3 kWh per secondary sources (estimated). 92km (SOC 25-100%). Range is SoC-windowed NEDC-type per BYD page. Charger figures carried from MY25 — unverified this sweep."
+    },
+    {
+      "id": "247A9239-5A1B-49EA-89BA-9D9C1F42924F",
+      "make": "BYD",
+      "model": "Sealion 6",
+      "variant": "Dynamic Extended",
+      "modelYear": 2026,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 26.6,
+      "batteryUsableKWh": 23.9,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "lfp",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 160000,
+      "acChargerKW": 7.0,
+      "acChargerPhases": 1,
+      "acPlugType": "type2",
+      "dcChargerKW": 18.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 2.6,
+      "evRangeKmWLTP": null,
+      "evRangeKmNEDC": 140,
+      "combinedRangeKm": 1092,
+      "fuelConsumptionL100kmWLTP": 1.1,
+      "fuelConsumptionL100kmDepleted": 4.8,
+      "electricConsumptionKWh100km": 16.9,
+      "fuelTankLitres": 60,
+      "towingCapacityKg": 1300,
+      "referenceL100km": 7.5,
+      "engineCC": 1498,
+      "engineCylinders": 4,
+      "systemPowerKW": 160,
+      "systemTorqueNm": 300,
+      "driveType": "fwd",
+      "specSources": [
+        "BYD AU sealion-6 page (verified 18 Jul 2026) — 2026 facelift lineup, 60L tank all variants, SoC-windowed NEDC-type ranges"
+      ],
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "2026 facelift. Battery NOT published; 26.6 assumed same pack as Premium Extended based on 140km (SOC 20-100%) range — INFERENCE, estimated. Range is SoC-windowed NEDC-type per BYD page. Charger figures carried from MY25 — unverified this sweep."
+    },
+    {
+      "id": "F390E530-7652-44EC-A08D-64F193E05486",
+      "make": "BYD",
+      "model": "Sealion 6",
+      "variant": "Premium Extended",
+      "modelYear": 2026,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 26.6,
+      "batteryUsableKWh": 23.9,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "lfp",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 160000,
+      "acChargerKW": 7.0,
+      "acChargerPhases": 1,
+      "acPlugType": "type2",
+      "dcChargerKW": 18.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 2.6,
+      "evRangeKmWLTP": null,
+      "evRangeKmNEDC": 128,
+      "combinedRangeKm": 1092,
+      "fuelConsumptionL100kmWLTP": 1.1,
+      "fuelConsumptionL100kmDepleted": 4.8,
+      "electricConsumptionKWh100km": 16.9,
+      "fuelTankLitres": 60,
+      "towingCapacityKg": 1300,
+      "referenceL100km": 7.5,
+      "engineCC": 1498,
+      "engineCylinders": 4,
+      "systemPowerKW": 253,
+      "systemTorqueNm": 300,
+      "driveType": "awd",
+      "specSources": [
+        "BYD AU sealion-6 page (verified 18 Jul 2026) — 2026 facelift lineup, 60L tank all variants, SoC-windowed NEDC-type ranges"
+      ],
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "2026 facelift. 26.6 kWh BYD-quoted (gross/usable unlabelled). 128km (SOC 20-100%). 1.5T AWD 253kW. Range is SoC-windowed NEDC-type per BYD page. Charger figures carried from MY25 — unverified this sweep."
     }
   ]
 }
