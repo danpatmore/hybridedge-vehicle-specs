@@ -52,3 +52,12 @@ zecar's AU PHEV census (Jun 2026): 35 brands / 50 models / ~90 variants.
 Compare each sweep — the gap between census and database is the new-vehicle
 to-do list. (zecar's spec pages are JS-rendered; unusable as a source, fine
 as a count.)
+
+## Powertrain field (added 20 Jul 2026)
+
+Entries MAY carry `"powertrain": "phev" | "bev" | "reev"`. Absent means
+`phev` (the founding population — app-side default). The field exists so
+pure EVs can enter this same database when the EVEdge path opens; the app
+hides petrol surfaces when `powertrain` is `bev`. Do not backfill the
+existing PHEV entries — absence already means phev, and a no-op diff over
+80+ entries pollutes blame history.
