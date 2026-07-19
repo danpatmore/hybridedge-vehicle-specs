@@ -1,5 +1,5 @@
 {
-  "version": "1.7.3",
+  "version": "1.7.4",
   "lastUpdated": "2026-07-18",
   "vehicles": [
     {
@@ -141,8 +141,8 @@
         "NZ"
       ],
       "batteryGrossKWh": 31.8,
-      "batteryUsableKWh": 28.6,
-      "batteryUsableIsEstimated": true,
+      "batteryUsableKWh": 31.8,
+      "batteryUsableIsEstimated": false,
       "batteryChemistry": "lfp",
       "batteryWarrantyYears": 8,
       "batteryWarrantyKm": 160000,
@@ -170,10 +170,11 @@
         "RACV Jan 2026",
         "RACQ Dec 2025",
         "EV Central",
-        "4x4Australia"
+        "4x4Australia",
+        "owner-measured 13 Jul 2026 (dash-SoC delta vs Denza cloud, within 2%)"
       ],
-      "lastVerifiedDate": "2026-05-28",
-      "notes": "83L tank confirmed RACV/CarsGuide/OpenRoad. 31.8kWh LFP Blade. 400kW/760Nm. 3000kg towing. 100kW DC. 90km WLTP EV range. Body-on-frame DMO platform."
+      "lastVerifiedDate": "2026-07-13",
+      "notes": "83L tank confirmed RACV/CarsGuide/OpenRoad. 31.8kWh LFP Blade — usable measured at full 31.8 (owner instrumentation 13 Jul 2026: dash-SoC delta x 31.8 matches Denza cloud energy within 2%; the earlier 28.6 '90% of gross' estimate under-read every trip by 10%). 400kW/760Nm. 3000kg towing. 100kW DC. 90km WLTP EV range. Body-on-frame DMO platform."
     },
     {
       "id": "A1B2C3D4-0002-0002-0002-000000000001",
