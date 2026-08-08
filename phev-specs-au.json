@@ -1,5 +1,5 @@
 {
- "version": "1.9.0",
+ "version": "1.10.0",
  "lastUpdated": "2026-07-31",
  "vehicles": [
   {
@@ -97,8 +97,8 @@
     "AU"
    ],
    "batteryGrossKWh": 29.58,
-   "batteryUsableKWh": 26.6,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableKWh": 28.9,
+   "batteryUsableIsEstimated": false,
    "socCalibrationSlope": 0.405,
    "socCalibrationIntercept": -1.15,
    "batteryChemistry": "lfp",
@@ -117,7 +117,8 @@
    "fuelConsumptionL100kmDepleted": 7.9,
    "electricConsumptionKWh100km": null,
    "fuelTankLitres": 60,
-   "towingCapacityKg": 3000,
+   "fullScaleFuelPct": 93.0,
+   "towingCapacityKg": 2500,
    "referenceL100km": 9.5,
    "engineCC": 1499,
    "engineCylinders": 4,
@@ -127,7 +128,10 @@
    "specSources": [
     "BYD Australia official specs 2025",
     "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)",
-    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)"
+    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)",
+    "Usable kWh: measured 8 Aug 2026 - 3 instrumented drives, 2 cars (28.93/28.87/28.77), dash energy vs app-measured SoC delta",
+    "Fuel sender scale: OBD reads ~93% of true level - brim 93.3@100, 74.9@dash81, 86.7@app93 (fullScaleFuelPct 93.0)",
+    "Towing corrected 3000->2500 kg 8 Aug 2026 (tester report + internal consistency with 2026 notes)"
    ],
    "lastVerifiedDate": "2026-07-18",
    "notes": "Depleted L/100km not published by BYD AU — omitted. EV range is NEDC. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
@@ -3056,8 +3060,8 @@
     "AU"
    ],
    "batteryGrossKWh": 29.58,
-   "batteryUsableKWh": 26.6,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableKWh": 28.9,
+   "batteryUsableIsEstimated": false,
    "socCalibrationSlope": 0.405,
    "socCalibrationIntercept": -1.15,
    "batteryChemistry": "lfp",
@@ -3076,6 +3080,7 @@
    "fuelConsumptionL100kmDepleted": 7.9,
    "electricConsumptionKWh100km": null,
    "fuelTankLitres": 60,
+   "fullScaleFuelPct": 93.0,
    "towingCapacityKg": 2500,
    "referenceL100km": 9.5,
    "engineCC": 1499,
@@ -3088,7 +3093,9 @@
     "Wikipedia BYD Shark — 29.58 kWh, 85km WLTP confirmed",
     "NRMA Open Road Apr 2026 — 2500kg towing",
     "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)",
-    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)"
+    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)",
+    "Usable kWh: measured 8 Aug 2026 - 3 instrumented drives, 2 cars (28.93/28.87/28.77), dash energy vs app-measured SoC delta",
+    "Fuel sender scale: OBD reads ~93% of true level - brim 93.3@100, 74.9@dash81, 86.7@app93 (fullScaleFuelPct 93.0)"
    ],
    "lastVerifiedDate": "2026-07-18",
    "notes": "2026 Premium: same powertrain as 2025 launch variant. 1.5L turbo, 321kW/650Nm. 29.58 kWh LFP. 85km WLTP / 100km NEDC EV. 2,500kg towing. 6.6kW V2L. $57,900 before ORCs. Depleted L/100km not published BYD AU. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
@@ -3104,8 +3111,8 @@
     "AU"
    ],
    "batteryGrossKWh": 29.58,
-   "batteryUsableKWh": 26.6,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableKWh": 28.9,
+   "batteryUsableIsEstimated": false,
    "socCalibrationSlope": 0.405,
    "socCalibrationIntercept": -1.15,
    "batteryChemistry": "lfp",
@@ -3124,6 +3131,7 @@
    "fuelConsumptionL100kmDepleted": 7.9,
    "electricConsumptionKWh100km": null,
    "fuelTankLitres": 60,
+   "fullScaleFuelPct": 93.0,
    "towingCapacityKg": 3500,
    "referenceL100km": 10.0,
    "engineCC": 1998,
@@ -3136,7 +3144,9 @@
     "NRMA Open Road Apr 2026 — 1.3 L/100km, 3500kg towing confirmed",
     "The Beep AU Apr 2026 — 200kW front motor (from Denza B5)",
     "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)",
-    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)"
+    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)",
+    "Usable kWh: measured 8 Aug 2026 - 3 instrumented drives, 2 cars (28.93/28.87/28.77), dash energy vs app-measured SoC delta",
+    "Fuel sender scale: OBD reads ~93% of true level - brim 93.3@100, 74.9@dash81, 86.7@app93 (fullScaleFuelPct 93.0)"
    ],
    "lastVerifiedDate": "2026-07-18",
    "notes": "2026 Performance only: 2.0L turbo (180kW) replaces 1.5L. Upgraded 200kW front motor (sourced from Denza B5 platform) + 150kW rear. Combined 350kW/700Nm. Same 29.58 kWh LFP battery — same EV range. Towing jumps to 3,500kg (was 2,500kg). Adds Crawl Mode. 1.3 L/100km claimed vs 2.0 L/100km base. 6.6kW V2L. Launched AU May 2026. $66,744 D/A. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
@@ -3152,8 +3162,8 @@
     "AU"
    ],
    "batteryGrossKWh": 29.58,
-   "batteryUsableKWh": 26.6,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableKWh": 28.9,
+   "batteryUsableIsEstimated": false,
    "socCalibrationSlope": 0.405,
    "socCalibrationIntercept": -1.15,
    "batteryChemistry": "lfp",
@@ -3172,6 +3182,7 @@
    "fuelConsumptionL100kmDepleted": 7.9,
    "electricConsumptionKWh100km": null,
    "fuelTankLitres": 60,
+   "fullScaleFuelPct": 93.0,
    "towingCapacityKg": 2500,
    "referenceL100km": 9.5,
    "engineCC": 1499,
@@ -3183,7 +3194,9 @@
     "CarExpert AU Apr 2026 — $55,900, same 1.5L PHEV as Premium",
     "NRMA Open Road Apr 2026",
     "BYD AU official brochure PDF (verified 18 Jul 2026) — 55kW DC, 7.9 L/100km SOC<25%, 60L tank, 100km ADR81/02 (SOC25-100%)",
-    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)"
+    "SoC transform: HybridEdge fleet fit 6 Aug 2026 - 4 pairs, 3+ cars, R2 0.999 (dash = 0.4050 x raw015B - 1.15)",
+    "Usable kWh: measured 8 Aug 2026 - 3 instrumented drives, 2 cars (28.93/28.87/28.77), dash energy vs app-measured SoC delta",
+    "Fuel sender scale: OBD reads ~93% of true level - brim 93.3@100, 74.9@dash81, 86.7@app93 (fullScaleFuelPct 93.0)"
    ],
    "lastVerifiedDate": "2026-07-18",
    "notes": "Cab-chassis (no tray). Same 1.5L turbo PHEV as Premium — 321kW/650Nm. Smaller 12.8-inch screen vs 15.6-inch in Premium. Optional Ironman 4x4 alloy tray (price TBC). 2,500kg towing. $55,900 before ORCs — entry of 2026 Shark 6 range. On sale Apr 2026. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
