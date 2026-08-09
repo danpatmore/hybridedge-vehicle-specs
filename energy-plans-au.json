@@ -1,6 +1,6 @@
 {
- "version": "0.6.0",
- "asOf": "2026-08-08",
+ "version": "0.6.1",
+ "asOf": "2026-08-09",
  "currency": "AUD",
  "disclaimer": "All rates are indicative starting points, not current offers. Electricity prices vary by distribution zone and change at least annually (1 July). The app must always show the user the prefilled numbers and let them correct every rate against their own bill before use.",
  "states": [
@@ -1720,22 +1720,50 @@
        "type": "timeOfUse",
        "windows": [
         {
-         "label": "EV super off-peak",
+         "label": "EV Night",
          "start": "00:00",
          "end": "06:00",
          "days": "all",
          "ratePerKWh": 0.08
         },
         {
-         "label": "All other times",
+         "label": "Off Peak",
          "start": "06:00",
+         "end": "10:00",
+         "days": "all",
+         "ratePerKWh": 0.2882
+        },
+        {
+         "label": "Shoulder",
+         "start": "10:00",
+         "end": "14:00",
+         "days": "all",
+         "ratePerKWh": 0.2052
+        },
+        {
+         "label": "Off Peak",
+         "start": "14:00",
+         "end": "15:00",
+         "days": "all",
+         "ratePerKWh": 0.2882
+        },
+        {
+         "label": "Peak",
+         "start": "15:00",
+         "end": "21:00",
+         "days": "all",
+         "ratePerKWh": 0.4362
+        },
+        {
+         "label": "Off Peak",
+         "start": "21:00",
          "end": "24:00",
          "days": "all",
-         "ratePerKWh": 0.34
+         "ratePerKWh": 0.2882
         }
        ],
        "indicative": true,
-       "source": "agl.com.au Night Saver EV plan page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('Charge for only 8c/kWh between 12 and 6am'). Proven ABSENT from AGL's government CDR feed (all 1,276 plans checked), so day rates are network-dependent indicative estimates - correct against your bill. Needs an EV in the household and a smart meter. 8c does not apply to controlled load."
+       "source": "Full rate card VERIFIED from a NSW customer's AGL app (Ausgrid area, 9 Aug 2026): EV Night 8c 12am-6am, Off Peak 28.82c, Shoulder 20.52c 10am-2pm, Peak 43.62c 3pm-9pm, all inc GST. Supply 87.16c/day, solar FiT 4c ex GST. Night Saver EV overlays YOUR network's TOU windows, so times and day rates differ outside Ausgrid - check your bill and correct here. 8c window is AGL-published, absent from the CDR feed."
       }
      ]
     },
