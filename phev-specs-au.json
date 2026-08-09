@@ -1,6 +1,6 @@
 {
- "version": "1.11.0",
- "lastUpdated": "2026-08-09",
+ "version": "1.11.1",
+ "lastUpdated": "2026-08-10",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -3796,6 +3796,90 @@
    ],
    "lastVerifiedDate": "2026-08-09",
    "notes": "Long-standing gap filled 9 Aug 2026. ~$138,000-$144,700 drive-away depending on trim. 69 km / 2.3 L/100km are ADR figures. System 297 kW (press 221 kW is engine-only). AC kW assumed 7 (JLR standard, not stated by source). Warranty/chemistry carried from Range Rover P460e entry. Usable estimated 0.9 x gross."
+  },
+  {
+   "id": "B2D3E4F5-0001-0001-0001-000000000001",
+   "make": "BYD",
+   "model": "Sealion 6",
+   "variant": "Essential FWD",
+   "modelYear": 2025,
+   "bodyType": "suv",
+   "marketRegion": [
+    "AU"
+   ],
+   "batteryGrossKWh": 18.3,
+   "batteryUsableKWh": 16.5,
+   "batteryUsableIsEstimated": true,
+   "batteryChemistry": "lfp",
+   "batteryWarrantyYears": 8,
+   "batteryWarrantyKm": 160000,
+   "acChargerKW": 7.0,
+   "acChargerPhases": 1,
+   "acPlugType": "type2",
+   "dcChargerKW": 18.0,
+   "dcPlugType": "ccs2",
+   "estimatedHomeChargeHours": 2.6,
+   "evRangeKmWLTP": null,
+   "evRangeKmNEDC": null,
+   "combinedRangeKm": 1092,
+   "fuelConsumptionL100kmWLTP": 1.1,
+   "fuelConsumptionL100kmDepleted": 4.8,
+   "electricConsumptionKWh100km": 16.9,
+   "fuelTankLitres": 60,
+   "towingCapacityKg": 1300,
+   "referenceL100km": 7.5,
+   "engineCC": 1498,
+   "engineCylinders": 4,
+   "systemPowerKW": 160,
+   "systemTorqueNm": 300,
+   "driveType": "fwd",
+   "specSources": [
+    "BYD AU official spec sheet 2025 — byd.com.au/sealion-6"
+   ],
+   "lastVerifiedDate": "2026-08-10",
+   "notes": "18.3 kWh Blade LFP confirmed AU spec. Usable est 90%. Depleted 4.8 L/100km ADR81/02. | RESTORED 10 Aug 2026 (Dan's ruling: every model year sold in AU stays in the database — an owner of this year's car must find THEIR car, not be defaulted to 2026). Superseded in showrooms by the MY2026 lineup; specs correct for MY2025 cars."
+  },
+  {
+   "id": "B2D3E4F5-0002-0002-0002-000000000001",
+   "make": "BYD",
+   "model": "Sealion 6",
+   "variant": "Premium AWD",
+   "modelYear": 2025,
+   "bodyType": "suv",
+   "marketRegion": [
+    "AU"
+   ],
+   "batteryGrossKWh": 18.3,
+   "batteryUsableKWh": 16.5,
+   "batteryUsableIsEstimated": true,
+   "batteryChemistry": "lfp",
+   "batteryWarrantyYears": 8,
+   "batteryWarrantyKm": 160000,
+   "acChargerKW": 7.0,
+   "acChargerPhases": 1,
+   "acPlugType": "type2",
+   "dcChargerKW": 18.0,
+   "dcPlugType": "ccs2",
+   "estimatedHomeChargeHours": 2.6,
+   "evRangeKmWLTP": null,
+   "evRangeKmNEDC": null,
+   "combinedRangeKm": 961,
+   "fuelConsumptionL100kmWLTP": 1.4,
+   "fuelConsumptionL100kmDepleted": 5.8,
+   "electricConsumptionKWh100km": 17.9,
+   "fuelTankLitres": 60,
+   "towingCapacityKg": 1300,
+   "referenceL100km": 7.5,
+   "engineCC": 1498,
+   "engineCylinders": 4,
+   "systemPowerKW": 238,
+   "systemTorqueNm": 550,
+   "driveType": "awd",
+   "specSources": [
+    "BYD AU official spec sheet 2025 — byd.com.au/sealion-6"
+   ],
+   "lastVerifiedDate": "2026-08-10",
+   "notes": "18.3 kWh Blade LFP confirmed AU spec. Usable est 90%. Depleted 5.8 L/100km ADR81/02. | RESTORED 10 Aug 2026 (Dan's ruling: every model year sold in AU stays in the database — an owner of this year's car must find THEIR car, not be defaulted to 2026). Superseded in showrooms by the MY2026 lineup; specs correct for MY2025 cars."
   }
  ]
 }
