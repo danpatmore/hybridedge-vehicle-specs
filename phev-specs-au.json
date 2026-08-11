@@ -1,6 +1,6 @@
 {
- "version": "1.13.0",
- "lastUpdated": "2026-08-10",
+ "version": "1.13.1",
+ "lastUpdated": "2026-08-11",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -2378,7 +2378,8 @@
     "Zecar AU Jan 2026"
    ],
    "lastVerifiedDate": "2026-03-04",
-   "notes": "19 kWh battery. 7-seat SUV. 100km NEDC EV range. 60L tank confirmed CarsGuide (full tank + charge = 1000km+). 1,800kg towing. FWD. DC 50kW: 30-80% in 20 min. From $56,990."
+   "notes": "19 kWh battery. 7-seat SUV. 100km NEDC EV range. 60L tank confirmed CarsGuide (full tank + charge = 1000km+). 1,800kg towing. FWD. DC 50kW: 30-80% in 20 min. From $56,990. quietOnKeyOff: arming check treats parked OBD polling as tampering (2 owner reports + Lam Tran's isolation test, 11 Aug 2026).",
+   "quietOnKeyOff": true
   },
   {
    "id": "B1C2D3E4-0004-0004-0004-000000000001",
@@ -2421,7 +2422,8 @@
     "Chasing Cars Apr 2026 review"
    ],
    "lastVerifiedDate": "2026-03-04",
-   "notes": "35.6 kWh battery. 7-seat. 152km NEDC EV range. 60L tank confirmed CarsGuide. 2,000kg towing AWD (1,800kg FWD). DC 50kW: 30-80% in 20 min. 359kW/675Nm."
+   "notes": "35.6 kWh battery. 7-seat. 152km NEDC EV range. 60L tank confirmed CarsGuide. 2,000kg towing AWD (1,800kg FWD). DC 50kW: 30-80% in 20 min. 359kW/675Nm. quietOnKeyOff: arming check treats parked OBD polling as tampering (2 owner reports + Lam Tran's isolation test, 11 Aug 2026).",
+   "quietOnKeyOff": true
   },
   {
    "id": "C2D3E4F5-0001-0001-0001-000000000001",
