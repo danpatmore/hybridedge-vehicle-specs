@@ -1,5 +1,5 @@
 {
-  "version": "1.14.1",
+  "version": "1.14.2",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -4428,6 +4428,52 @@
       ],
       "lastVerifiedDate": "2026-08-12",
       "notes": "ZL MY21 (Aug 2020, incl. GSR variant). Drive battery 8 yr/160,000 km for purchases from 1 Oct 2020."
+    },
+    {
+      "id": "F7A8B9C0-0013-0013-0013-000000000001",
+      "make": "GWM",
+      "model": "Tank 500",
+      "variant": "Hi4-T PHEV",
+      "modelYear": 2025,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 37.11,
+      "batteryUsableKWh": 33.4,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "nmc",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 0,
+      "acChargerKW": 11.0,
+      "acChargerPhases": 3,
+      "acPlugType": "type2",
+      "dcChargerKW": 50.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 6.5,
+      "evRangeKmWLTP": 102,
+      "evRangeKmNEDC": 120,
+      "combinedRangeKm": 950,
+      "fuelConsumptionL100kmWLTP": 2.1,
+      "fuelConsumptionL100kmDepleted": 8.4,
+      "electricConsumptionKWh100km": null,
+      "fuelTankLitres": 70,
+      "towingCapacityKg": 3000,
+      "referenceL100km": 8.5,
+      "engineCC": 1998,
+      "engineCylinders": 4,
+      "systemPowerKW": 300,
+      "systemTorqueNm": 750,
+      "driveType": "awd",
+      "specSources": [
+        "CarExpert AU Nov 2025",
+        "EV Central AU Apr 2026",
+        "CarsGuide AU 2026",
+        "4x4Australia Sep 2025",
+        "MY2025 AU launch year backfilled 13 Aug 2026 (carsales, CarSauce: Tank 500 Hi4-T launched AU 2025 as flagship, same spec)"
+      ],
+      "lastVerifiedDate": "2026-05-28",
+      "notes": "AU launch year of the Hi4-T PHEV (2025 flagship). Same spec as MY2026."
     }
   ]
 }
