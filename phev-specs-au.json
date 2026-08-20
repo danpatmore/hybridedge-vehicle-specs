@@ -1,5 +1,5 @@
 {
-  "version": "1.14.2",
+  "version": "1.15.0",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -141,7 +141,8 @@
         "4x4Australia Feb 2026"
       ],
       "lastVerifiedDate": "2026-02-23",
-      "notes": "batteryUsableKWh estimated at 90% of gross"
+      "notes": "batteryUsableKWh estimated at 90% of gross",
+      "udsFallbackHeader": "7E0"
     },
     {
       "id": "C3D4E5F6-0001-0001-0001-000000000001",
