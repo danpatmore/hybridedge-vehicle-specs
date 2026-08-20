@@ -1,5 +1,5 @@
 {
-  "version": "0.7.0",
+  "version": "0.8.0",
   "asOf": "2026-08-09",
   "currency": "AUD",
   "disclaimer": "All rates are indicative starting points, not current offers. Electricity prices vary by distribution zone and change at least annually (1 July). The app must always show the user the prefilled numbers and let them correct every rate against their own bill before use.",
@@ -5944,45 +5944,6 @@
       "name": "New Zealand",
       "providers": [
         {
-          "name": "Meridian Energy",
-          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
-          "plans": [
-            {
-              "id": "nz-meridian-ev-tou",
-              "name": "EV TOU Fixed Rate Standard",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Night",
-                  "start": "21:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1743
-                },
-                {
-                  "label": "Day",
-                  "start": "07:00",
-                  "end": "21:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3215
-                }
-              ],
-              "indicative": false,
-              "source": "Tester bill (Marius De Lange, Palmerston North, 24 Jul 2026)",
-              "notes": "Bill-verified: Night 10 hours at 17.43c, Day 14 hours at 32.15c, both NZD including GST. Daily charge 106.52c/day not modelled. Rates differ by network region."
-            },
-            {
-              "id": "nz-meridian-simple-flat",
-              "name": "Simple (flat rate)",
-              "type": "flat",
-              "flatRatePerKWh": 0.31,
-              "indicative": true,
-              "source": "Public rate cards, checked Aug 2026 (indicative)",
-              "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
-            }
-          ]
-        },
-        {
           "name": "Contact Energy",
           "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
           "plans": [
@@ -6075,6 +6036,29 @@
               "indicative": true,
               "source": "Public rate cards, checked Aug 2026 (indicative)",
               "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            },
+            {
+              "id": "nz-genesis-ev",
+              "name": "Energy EV (half price nights)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night (half price)",
+                  "start": "21:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.17
+                },
+                {
+                  "label": "Day",
+                  "start": "07:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.34
+                }
+              ],
+              "indicative": true,
+              "source": "NZ rates vary by network region — indicative NZD from retailer-published plans (Aug 2026); edit every rate to your bill."
             }
           ]
         },
@@ -6090,6 +6074,117 @@
               "indicative": true,
               "source": "Public rate cards, checked Aug 2026 (indicative)",
               "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            },
+            {
+              "id": "nz-mercury-offpeak",
+              "name": "Off Peak / EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night",
+                  "start": "23:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.185
+                },
+                {
+                  "label": "Day",
+                  "start": "07:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.32
+                }
+              ],
+              "indicative": true,
+              "source": "NZ rates vary by network region — indicative NZD from retailer-published plans (Aug 2026); edit every rate to your bill."
+            }
+          ]
+        },
+        {
+          "name": "Meridian Energy",
+          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
+          "plans": [
+            {
+              "id": "nz-meridian-ev-tou",
+              "name": "EV TOU Fixed Rate Standard",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night",
+                  "start": "21:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1743
+                },
+                {
+                  "label": "Day",
+                  "start": "07:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3215
+                }
+              ],
+              "indicative": false,
+              "source": "Tester bill (Marius De Lange, Palmerston North, 24 Jul 2026)",
+              "notes": "Bill-verified: Night 10 hours at 17.43c, Day 14 hours at 32.15c, both NZD including GST. Daily charge 106.52c/day not modelled. Rates differ by network region."
+            },
+            {
+              "id": "nz-meridian-simple-flat",
+              "name": "Simple (flat rate)",
+              "type": "flat",
+              "flatRatePerKWh": 0.31,
+              "indicative": true,
+              "source": "Public rate cards, checked Aug 2026 (indicative)",
+              "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            }
+          ]
+        },
+        {
+          "name": "Octopus Energy",
+          "plans": [
+            {
+              "id": "nz-octopus-peaker",
+              "name": "OctopusPeaker",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night",
+                  "start": "23:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.17
+                },
+                {
+                  "label": "Peak",
+                  "start": "07:00",
+                  "end": "09:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "09:00",
+                  "end": "17:00",
+                  "days": "all",
+                  "ratePerKWh": 0.25
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "21:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.25
+                }
+              ],
+              "indicative": true,
+              "source": "NZ rates vary by network region — indicative NZD from retailer-published plans (Aug 2026); edit every rate to your bill."
             }
           ]
         }
