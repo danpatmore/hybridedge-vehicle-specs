@@ -1,5 +1,5 @@
 {
-  "version": "1.15.2",
+  "version": "1.15.3",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -4604,6 +4604,96 @@
       ],
       "lastVerifiedDate": "2025-11-01",
       "notes": "19.09 kWh LFP confirmed. 55L tank confirmed. Depleted not published. EV range NEDC. 30-80% DC in 28 min."
+    },
+    {
+      "id": "618443E7-51FB-403F-BEBA-ECFEE92F0B83",
+      "make": "GWM",
+      "model": "Haval H6 GT",
+      "variant": "PHEV Ultra",
+      "modelYear": 2025,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 35.43,
+      "batteryUsableKWh": 31.9,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "nmc",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 0,
+      "acChargerKW": 11.0,
+      "acChargerPhases": 3,
+      "acPlugType": "type2",
+      "dcChargerKW": 34.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 3.4,
+      "evRangeKmWLTP": null,
+      "evRangeKmNEDC": 180,
+      "combinedRangeKm": null,
+      "fuelConsumptionL100kmWLTP": 0.8,
+      "fuelConsumptionL100kmDepleted": null,
+      "electricConsumptionKWh100km": null,
+      "fuelTankLitres": 55,
+      "towingCapacityKg": 1500,
+      "referenceL100km": 8.0,
+      "engineCC": 1499,
+      "engineCylinders": 4,
+      "systemPowerKW": 321,
+      "systemTorqueNm": 642,
+      "driveType": "awd",
+      "specSources": [
+        "The Beep AU Apr 2026 — Hi4, 321kW/642Nm, 4.6sec, $52,990 D/A",
+        "Zecar AU Apr 2026 — 35.43kWh, 183km NEDC, redesigned interior confirmed",
+        "CarSauce AU Apr 2026 — specs and pricing confirmed"
+      ],
+      "lastVerifiedDate": "2026-04-17",
+      "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A — $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery."
+    },
+    {
+      "id": "1B6B7AD5-4F6B-49FD-9D97-09ABDCB84CA0",
+      "make": "GWM",
+      "model": "Cannon Alpha",
+      "variant": "PHEV",
+      "modelYear": 2026,
+      "bodyType": "ute",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 37.1,
+      "batteryUsableKWh": 37.1,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "nmc",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 0,
+      "acChargerKW": 7.0,
+      "acChargerPhases": 1,
+      "acPlugType": "type2",
+      "dcChargerKW": 50.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 5.3,
+      "evRangeKmWLTP": null,
+      "evRangeKmNEDC": 115,
+      "combinedRangeKm": 1060,
+      "fuelConsumptionL100kmWLTP": 1.7,
+      "fuelConsumptionL100kmDepleted": 7.9,
+      "electricConsumptionKWh100km": 21.2,
+      "fuelTankLitres": 75,
+      "towingCapacityKg": 3500,
+      "referenceL100km": 9.0,
+      "engineCC": 1996,
+      "engineCylinders": 4,
+      "systemPowerKW": 300,
+      "systemTorqueNm": 750,
+      "driveType": "awd",
+      "specSources": [
+        "CarExpert AU Nov 2025",
+        "ExhaustNotes AU Dec 2025",
+        "4x4Australia Jan 2026",
+        "NRMA 2025",
+        "GWM ANZ official page (verified 18 Jul 2026) — '37.11kWh battery pack', '37.1kWh usable', 115km NEDC, 1060km NEDC"
+      ],
+      "lastVerifiedDate": "2026-07-18",
+      "notes": "37.1 kWh NMC confirmed. 75L tank confirmed 4x4Australia. Depleted 7.9 L/100km GWM official; real-world 10-11 L/100km NRMA. 3,500kg towing. 6kW V2L. 7yr vehicle warranty, 8yr battery. [Sweep 18 Jul 2026: usable corrected 33.4→37.1 (GWM's own published figure; kept estimated — 0.01 below pack smells like marketing; Chasing Cars: two packs 15.2+21.9); WLTP 110 removed — no WLTP exists, 115km is NEDC (CarExpert/WhichCar confirmed); tank 75L is secondary-sourced, GWM doesn't publish it; 1.7 L/100km is blended NOT charge-sustaining (real-world CS ~9.5-10.7).]"
     }
   ]
 }
