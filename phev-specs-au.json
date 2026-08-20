@@ -1,5 +1,5 @@
 {
-  "version": "1.15.3",
+  "version": "1.15.4",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -4694,6 +4694,51 @@
       ],
       "lastVerifiedDate": "2026-07-18",
       "notes": "37.1 kWh NMC confirmed. 75L tank confirmed 4x4Australia. Depleted 7.9 L/100km GWM official; real-world 10-11 L/100km NRMA. 3,500kg towing. 6kW V2L. 7yr vehicle warranty, 8yr battery. [Sweep 18 Jul 2026: usable corrected 33.4→37.1 (GWM's own published figure; kept estimated — 0.01 below pack smells like marketing; Chasing Cars: two packs 15.2+21.9); WLTP 110 removed — no WLTP exists, 115km is NEDC (CarExpert/WhichCar confirmed); tank 75L is secondary-sourced, GWM doesn't publish it; 1.7 L/100km is blended NOT charge-sustaining (real-world CS ~9.5-10.7).]"
+    },
+    {
+      "id": "8DEFD95E-4F7B-4153-BB2A-DFB0EC057CB4",
+      "make": "Ford",
+      "model": "Ranger",
+      "variant": "PHEV",
+      "modelYear": 2026,
+      "bodyType": "ute",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 11.8,
+      "batteryUsableKWh": 10.6,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "nmc",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 160000,
+      "acChargerKW": 3.5,
+      "acChargerPhases": 1,
+      "acPlugType": "type2",
+      "dcChargerKW": null,
+      "dcPlugType": null,
+      "estimatedHomeChargeHours": 3.5,
+      "evRangeKmWLTP": 45,
+      "evRangeKmNEDC": 49,
+      "combinedRangeKm": null,
+      "fuelConsumptionL100kmWLTP": 2.9,
+      "fuelConsumptionL100kmDepleted": 9.0,
+      "electricConsumptionKWh100km": 18.7,
+      "fuelTankLitres": 70,
+      "towingCapacityKg": 3500,
+      "referenceL100km": 9.0,
+      "engineCC": 2300,
+      "engineCylinders": 4,
+      "systemPowerKW": 207,
+      "systemTorqueNm": 697,
+      "driveType": "awd",
+      "specSources": [
+        "CarExpert AU Nov 2025",
+        "NRMA Nov 2025",
+        "4x4Australia Jan 2026",
+        "Ford AU official"
+      ],
+      "lastVerifiedDate": "2026-01-20",
+      "notes": "No DC charging — 3.5kW AC only. Depleted ~9 L/100km (4x4Australia 180km highway run). 70L tank. 6.9kW Pro Power Onboard V2L."
     }
   ]
 }
