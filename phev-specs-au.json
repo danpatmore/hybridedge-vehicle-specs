@@ -1,5 +1,5 @@
 {
-  "version": "1.15.1",
+  "version": "1.15.2",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -4524,6 +4524,49 @@
       "make": "GWM",
       "model": "Haval H6",
       "variant": "PHEV Lux FWD",
+      "modelYear": 2025,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU"
+      ],
+      "batteryGrossKWh": 19.09,
+      "batteryUsableKWh": 17.2,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "lfp",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 0,
+      "acChargerKW": 11.0,
+      "acChargerPhases": 3,
+      "acPlugType": "type2",
+      "dcChargerKW": 34.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 1.9,
+      "evRangeKmWLTP": null,
+      "evRangeKmNEDC": 100,
+      "combinedRangeKm": 1043,
+      "fuelConsumptionL100kmWLTP": 1.1,
+      "fuelConsumptionL100kmDepleted": null,
+      "electricConsumptionKWh100km": null,
+      "fuelTankLitres": 55,
+      "towingCapacityKg": 1500,
+      "referenceL100km": 8.0,
+      "engineCC": 1499,
+      "engineCylinders": 4,
+      "systemPowerKW": 268,
+      "systemTorqueNm": 760,
+      "driveType": "awd",
+      "specSources": [
+        "CarExpert AU Nov 2025",
+        "CarExpert towing & specs page"
+      ],
+      "lastVerifiedDate": "2025-11-01",
+      "notes": "19.09 kWh LFP confirmed. 55L tank confirmed. Depleted not published. EV range NEDC. 30-80% DC in 28 min."
+    },
+    {
+      "id": "3ED90C3D-0369-410C-BE79-B262D730F13C",
+      "make": "GWM",
+      "model": "Haval H6",
+      "variant": "PHEV Ultra AWD",
       "modelYear": 2025,
       "bodyType": "suv",
       "marketRegion": [
