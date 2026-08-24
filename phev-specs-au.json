@@ -1,5 +1,5 @@
 {
-  "version": "1.15.4",
+  "version": "1.16.0",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -56,7 +56,7 @@
       "id": "A1B2C3D4-0001-0001-0001-000000000001",
       "make": "Denza",
       "model": "B5",
-      "variant": "2026",
+      "variant": "Leopard",
       "modelYear": 2026,
       "bodyType": "suv",
       "marketRegion": [
@@ -100,10 +100,57 @@
       "notes": "83L tank confirmed RACV/CarsGuide/OpenRoad. 31.8kWh LFP Blade — usable measured at full 31.8 (owner instrumentation 13 Jul 2026: dash-SoC delta x 31.8 matches Denza cloud energy within 2%; the earlier 28.6 '90% of gross' estimate under-read every trip by 10%). 400kW/760Nm. 3000kg towing. 100kW DC. 90km WLTP EV range. Body-on-frame DMO platform."
     },
     {
+      "id": "A1B2C3D4-0001-0001-0001-000000000002",
+      "make": "Denza",
+      "model": "B5",
+      "variant": null,
+      "modelYear": 2026,
+      "bodyType": "suv",
+      "marketRegion": [
+        "AU",
+        "NZ"
+      ],
+      "batteryGrossKWh": 31.8,
+      "batteryUsableKWh": 31.8,
+      "batteryUsableIsEstimated": false,
+      "batteryChemistry": "lfp",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 160000,
+      "acChargerKW": 11.0,
+      "acChargerPhases": 3,
+      "acPlugType": "type2",
+      "dcChargerKW": 100.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 2.9,
+      "evRangeKmWLTP": 90,
+      "evRangeKmNEDC": 100,
+      "combinedRangeKm": 850,
+      "fuelConsumptionL100kmWLTP": 3.9,
+      "fuelConsumptionL100kmDepleted": 10.9,
+      "electricConsumptionKWh100km": 14.2,
+      "fuelTankLitres": 83,
+      "towingCapacityKg": 3000,
+      "referenceL100km": 8.5,
+      "engineCC": 1498,
+      "engineCylinders": 4,
+      "systemPowerKW": 400,
+      "systemTorqueNm": 760,
+      "driveType": "awd",
+      "specSources": [
+        "RACV Jan 2026",
+        "RACQ Dec 2025",
+        "EV Central",
+        "4x4Australia",
+        "owner-measured 13 Jul 2026 (dash-SoC delta vs Denza cloud, within 2%)"
+      ],
+      "lastVerifiedDate": "2026-07-13",
+      "notes": "Base B5. Identical to the Leopard for everything the app measures: same 1.5L PHEV, same 31.8 kWh pack, same 83 L tank. The Leopard adds DiSus-P adaptive hydraulic suspension and trim for $5,000 (CarExpert, Aug 2026). 83L tank confirmed RACV/CarsGuide/OpenRoad. 31.8kWh LFP Blade — usable measured at full 31.8 (owner instrumentation 13 Jul 2026: dash-SoC delta x 31.8 matches Denza cloud energy within 2%; the earlier 28.6 '90% of gross' estimate under-read every trip by 10%). 400kW/760Nm. 3000kg towing. 100kW DC. 90km WLTP EV range. Body-on-frame DMO platform."
+    },
+    {
       "id": "A1B2C3D4-0002-0002-0002-000000000001",
       "make": "Denza",
       "model": "B8",
-      "variant": "2026",
+      "variant": "7 Seater",
       "modelYear": 2026,
       "bodyType": "wagon",
       "marketRegion": [
@@ -142,6 +189,51 @@
       ],
       "lastVerifiedDate": "2026-02-23",
       "notes": "batteryUsableKWh estimated at 90% of gross",
+      "udsFallbackHeader": "7E0"
+    },
+    {
+      "id": "A1B2C3D4-0002-0002-0002-000000000002",
+      "make": "Denza",
+      "model": "B8",
+      "variant": "6 Seater",
+      "modelYear": 2026,
+      "bodyType": "wagon",
+      "marketRegion": [
+        "AU",
+        "NZ"
+      ],
+      "batteryGrossKWh": 36.8,
+      "batteryUsableKWh": 33.1,
+      "batteryUsableIsEstimated": true,
+      "batteryChemistry": "lfp",
+      "batteryWarrantyYears": 8,
+      "batteryWarrantyKm": 160000,
+      "acChargerKW": 11.0,
+      "acChargerPhases": 3,
+      "acPlugType": "type2",
+      "dcChargerKW": 120.0,
+      "dcPlugType": "ccs2",
+      "estimatedHomeChargeHours": 3.3,
+      "evRangeKmWLTP": 100,
+      "evRangeKmNEDC": null,
+      "combinedRangeKm": 905,
+      "fuelConsumptionL100kmWLTP": 3.9,
+      "fuelConsumptionL100kmDepleted": 11.36,
+      "electricConsumptionKWh100km": null,
+      "fuelTankLitres": 91,
+      "towingCapacityKg": 3500,
+      "referenceL100km": 8.5,
+      "engineCC": 1998,
+      "engineCylinders": 4,
+      "systemPowerKW": 425,
+      "systemTorqueNm": 760,
+      "driveType": "awd",
+      "specSources": [
+        "RACQ Dec 2025",
+        "4x4Australia Feb 2026"
+      ],
+      "lastVerifiedDate": "2026-02-23",
+      "notes": "Six-seat B8. Same 2.0L PHEV, 36.8 kWh pack, 91 L tank and 3,500 kg towing as the 7 Seater. The premium adds captains chairs, Nappa leather, head-up display and a mechanical front diff lock for $6,990 (CarExpert / Chasing Cars, Aug 2026). batteryUsableKWh estimated at 90% of gross",
       "udsFallbackHeader": "7E0"
     },
     {
