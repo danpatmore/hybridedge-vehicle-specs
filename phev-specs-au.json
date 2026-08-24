@@ -1,5 +1,5 @@
 {
-  "version": "1.16.0",
+  "version": "1.17.0",
   "lastUpdated": "2026-08-11",
   "vehicles": [
     {
@@ -50,7 +50,17 @@
         "Towing corrected 3000->2500 kg 8 Aug 2026 (tester report + internal consistency with 2026 notes)"
       ],
       "lastVerifiedDate": "2026-07-18",
-      "notes": "Depleted L/100km not published by BYD AU — omitted. EV range is NEDC. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
+      "notes": "Depleted L/100km not published by BYD AU — omitted. EV range is NEDC. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]",
+      "calibrationSeeds": {
+        "fuelLevel": {
+          "slope": 0.999254,
+          "intercept": 0.0427,
+          "r2": 0.99999,
+          "pairCount": 45,
+          "vehicleCount": 7,
+          "fittedOn": "2026-08-24"
+        }
+      }
     },
     {
       "id": "A1B2C3D4-0001-0001-0001-000000000001",
