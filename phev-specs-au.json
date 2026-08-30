@@ -1,6 +1,6 @@
 {
- "version": "1.18.0",
- "lastUpdated": "2026-08-11",
+ "version": "1.19.0",
+ "lastUpdated": "2026-08-30",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -3279,7 +3279,17 @@
     "Fuel sender scale: OBD reads ~93% of true level - brim 93.3@100, 74.9@dash81, 86.7@app93 (fullScaleFuelPct 93.0)"
    ],
    "lastVerifiedDate": "2026-07-18",
-   "notes": "2026 Premium: same powertrain as 2025 launch variant. 1.5L turbo, 321kW/650Nm. 29.58 kWh LFP. 85km WLTP / 100km NEDC EV. 2,500kg towing. 6.6kW V2L. $57,900 before ORCs. Depleted L/100km not published BYD AU. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]"
+   "notes": "2026 Premium: same powertrain as 2025 launch variant. 1.5L turbo, 321kW/650Nm. 29.58 kWh LFP. 85km WLTP / 100km NEDC EV. 2,500kg towing. 6.6kW V2L. $57,900 before ORCs. Depleted L/100km not published BYD AU. [Sweep 18 Jul 2026: DC corrected 100→55kW per official brochure; 7.9 CS consumption is official (SOC<25%); EV range measured over SOC 25-100%, ADR 81/02 not WLTP; battery kWh gross/usable unlabelled by BYD.]",
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 0.999254,
+     "intercept": 0.0427,
+     "r2": 0.99999,
+     "pairCount": 45,
+     "vehicleCount": 7,
+     "fittedOn": "2026-08-24"
+    }
+   }
   },
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000003",
@@ -4039,7 +4049,25 @@
     "BYD AU official spec sheet 2025 — byd.com.au/sealion-6"
    ],
    "lastVerifiedDate": "2026-08-10",
-   "notes": "18.3 kWh Blade LFP confirmed AU spec. Usable est 90%. Depleted 5.8 L/100km ADR81/02. | RESTORED 10 Aug 2026 (Dan's ruling: every model year sold in AU stays in the database — an owner of this year's car must find THEIR car, not be defaulted to 2026). Superseded in showrooms by the MY2026 lineup; specs correct for MY2025 cars."
+   "notes": "18.3 kWh Blade LFP confirmed AU spec. Usable est 90%. Depleted 5.8 L/100km ADR81/02. | RESTORED 10 Aug 2026 (Dan's ruling: every model year sold in AU stays in the database — an owner of this year's car must find THEIR car, not be defaulted to 2026). Superseded in showrooms by the MY2026 lineup; specs correct for MY2025 cars.",
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 1.210184,
+     "intercept": 0.2025,
+     "r2": 0.99924,
+     "pairCount": 20,
+     "vehicleCount": 2,
+     "fittedOn": "2026-08-30"
+    },
+    "soc": {
+     "slope": 0.391032,
+     "intercept": 0.3294,
+     "r2": 0.99998,
+     "pairCount": 8,
+     "vehicleCount": 2,
+     "fittedOn": "2026-08-30"
+    }
+   }
   },
   {
    "id": "B2D3E4F5-0003-0003-0003-000000000001",
@@ -4165,7 +4193,25 @@
     "BYD AU official spec sheet 2025 — byd.com.au/sealion-6"
    ],
    "lastVerifiedDate": "2026-08-10",
-   "notes": "AU launch year variant (deliveries from mid-2024, $52,990). 238 kW AWD, 18.3 kWh Blade LFP, 81 km NEDC, 1300 kg braked towing. 10 Aug 2026 sweep: evcentral.com.au, carexpert.com.au, carsguide.com.au, zecar.com, bydautomotive.com.au."
+   "notes": "AU launch year variant (deliveries from mid-2024, $52,990). 238 kW AWD, 18.3 kWh Blade LFP, 81 km NEDC, 1300 kg braked towing. 10 Aug 2026 sweep: evcentral.com.au, carexpert.com.au, carsguide.com.au, zecar.com, bydautomotive.com.au.",
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 1.210184,
+     "intercept": 0.2025,
+     "r2": 0.99924,
+     "pairCount": 20,
+     "vehicleCount": 2,
+     "fittedOn": "2026-08-30"
+    },
+    "soc": {
+     "slope": 0.391032,
+     "intercept": 0.3294,
+     "r2": 0.99998,
+     "pairCount": 8,
+     "vehicleCount": 2,
+     "fittedOn": "2026-08-30"
+    }
+   }
   },
   {
    "id": "F7A8B9C0-0012-0012-0012-000000000001",
