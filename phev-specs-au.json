@@ -1,6 +1,6 @@
 {
- "version": "1.19.0",
- "lastUpdated": "2026-08-30",
+ "version": "1.20.0",
+ "lastUpdated": "2026-09-01",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -420,7 +420,17 @@
    ],
    "lastVerifiedDate": "2025-11-01",
    "notes": "19.09 kWh LFP confirmed. 55L tank confirmed. Depleted not published. EV range NEDC. 30-80% DC in 28 min.",
-   "socNotReadable": true
+   "socNotReadable": true,
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 1.1553,
+     "intercept": -11.894,
+     "r2": 0.9381,
+     "pairCount": 67,
+     "vehicleCount": 2,
+     "fittedOn": "2026-09-01"
+    }
+   }
   },
   {
    "id": "E5F6A7B8-0001-0001-0001-000000000001",
@@ -4758,7 +4768,17 @@
    ],
    "lastVerifiedDate": "2025-11-01",
    "notes": "19.09 kWh LFP confirmed. 55L tank confirmed. Depleted not published. EV range NEDC. 30-80% DC in 28 min.",
-   "socNotReadable": true
+   "socNotReadable": true,
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 1.1553,
+     "intercept": -11.894,
+     "r2": 0.9381,
+     "pairCount": 67,
+     "vehicleCount": 2,
+     "fittedOn": "2026-09-01"
+    }
+   }
   },
   {
    "id": "618443E7-51FB-403F-BEBA-ECFEE92F0B83",
