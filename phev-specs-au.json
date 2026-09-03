@@ -2070,8 +2070,8 @@
     "AU"
    ],
    "batteryGrossKWh": 11.5,
-   "batteryUsableKWh": 10.4,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableKWh": 11.5,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -2087,7 +2087,7 @@
    "fuelConsumptionL100kmWLTP": 2.9,
    "fuelConsumptionL100kmDepleted": null,
    "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 43,
+   "fuelTankLitres": 35.0,
    "towingCapacityKg": 1800,
    "referenceL100km": 7.5,
    "engineCC": 1332,
@@ -2101,8 +2101,8 @@
     "Mercedes AU official",
     "CarsGuide/carsales 2026 GLA lineup, checked 9 Aug 2026"
    ],
-   "lastVerifiedDate": "2026-08-09",
-   "notes": "11.5 kWh confirmed Mercedes AU. 65km WLTP. From $78,000 AU. FWD. 11kW AC (upgrade option). No DC. 43L tank. 1,800kg towing UK spec. | DISCONTINUED in AU (2026 GLA range is petrol/mild-hybrid only). Kept for existing owners."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "MB Australia publishes 11.5 kWh net. The PHEV tank is 35 L, not the 43 L of the petrol and diesel GLA. A 15.6 kWh gross figure appears on one aggregator only and is NOT recorded here."
   },
   {
    "id": "F6A7B8C9-0011-0011-0011-000000000001",
@@ -2158,8 +2158,8 @@
     "AU"
    ],
    "batteryGrossKWh": 25.28,
-   "batteryUsableKWh": 22.75,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableKWh": 25.28,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -2175,7 +2175,7 @@
    "fuelConsumptionL100kmWLTP": null,
    "fuelConsumptionL100kmDepleted": null,
    "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 66,
+   "fuelTankLitres": 60.0,
    "towingCapacityKg": 2000,
    "referenceL100km": 8.5,
    "engineCC": 1991,
@@ -2188,8 +2188,8 @@
     "CarsGuide AU Mar 2026",
     "CarExpert base GLC — 66L tank"
    ],
-   "lastVerifiedDate": "2026-08-09",
-   "notes": "25.28 kWh confirmed CarExpert AU. 132km NEDC. 66L tank (base GLC CarExpert). 2,000kg towing AU. DC 55kW standard. ~$99,900 AU."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "25.28 kWh is the published usable figure (NRMA, Chasing Cars). 66 L was the petrol GLC's tank; AU spec tables give 60 L for the PHEV, though WhichCar says 62 and European sources 49-50, so the tank is the weakest figure on this row. A 31.2 kWh gross appears on one source only and is NOT recorded here."
   },
   {
    "id": "A0B1C2D3-0010-0010-0010-000000000001",
