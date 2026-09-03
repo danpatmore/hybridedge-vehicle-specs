@@ -301,7 +301,7 @@
     "AU"
    ],
    "batteryGrossKWh": 14.4,
-   "batteryUsableKWh": 13.0,
+   "batteryUsableKWh": 14.4,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -331,7 +331,7 @@
     "CarExpert AU 2024",
     "CarExpert/Chasing Cars (Escape axed), checked 9 Aug 2026"
    ],
-   "lastVerifiedDate": "2026-08-09",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "Final model year AU. Powertrain unchanged from 2022 launch. No DC charging. | DISCONTINUED in AU end-2023 (whole Escape line axed). 2019-23 PHEVs had an AU battery recall. Kept for existing owners."
   },
   {
@@ -443,7 +443,7 @@
     "AU"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 7,
@@ -475,7 +475,7 @@
     "EVCentral Oct 2025 (4-grade expansion)",
     "CarExpert 2025 Sorento PHEV"
    ],
-   "lastVerifiedDate": "2026-08-09",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "No DC charging. Depleted L/100km not published. 7-seat capable. 3.5hr charge at 3.3kW. | Tank corrected 47->67 L (9 Aug 2026 sweep)."
   },
   {
@@ -489,7 +489,7 @@
     "AU"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 7,
@@ -520,7 +520,7 @@
     "EVCentral Oct 2025 (4-grade expansion)",
     "CarExpert 2025 Sorento PHEV"
    ],
-   "lastVerifiedDate": "2026-08-09",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "Euro 6e: towing drops 1350→1010 kg, requires 95 RON. Same battery/powertrain as MY24. | Oct 2025: expanded to four grades S/Sport/Sport+/GT-Line ($70,880-$86,790). 95 RON required from MY25 facelift. Towing 1010 kg (cut from 1350). Tank corrected 47->67 L (two press sources)."
   },
   {
@@ -799,7 +799,7 @@
     "AU"
    ],
    "batteryGrossKWh": 17.8,
-   "batteryUsableKWh": 16.0,
+   "batteryUsableKWh": 17.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -828,7 +828,7 @@
     "Mazda AU official press release Nov 2022",
     "CarExpert AU 2024 price/specs"
    ],
-   "lastVerifiedDate": "2024-06-01",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "76km ADR / ~60-65km real-world EV range. No DC charging. 50L tank (petrol/diesel CX-60 has 58L). Depleted not published."
   },
   {
@@ -842,7 +842,7 @@
     "AU"
    ],
    "batteryGrossKWh": 17.8,
-   "batteryUsableKWh": 16.0,
+   "batteryUsableKWh": 17.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -872,7 +872,7 @@
     "CarExpert AU Nov 2025 review",
     "CarsGuide AU"
    ],
-   "lastVerifiedDate": "2025-11-12",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "Same PHEV powertrain as CX-60. 50L tank (PHEV; petrol/diesel CX-80 has 74L). No DC charging. Depleted not published. 6/7 seat."
   },
   {
@@ -1331,7 +1331,7 @@
     "AU"
    ],
    "batteryGrossKWh": 15.5,
-   "batteryUsableKWh": 14.0,
+   "batteryUsableKWh": 15.5,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1362,7 +1362,7 @@
     "CarExpert 2026 Tonale price and specs",
     "EVCentral 2026 Tonale review"
    ],
-   "lastVerifiedDate": "2026-08-09",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "15.5 kWh battery. 40L tank. No DC charging. AWD via rear e-motor. | 2026: single Veloce trim, power 208->198 kW, range basis now WLTP 59 km (was 61 NEDC), $78,990. 95 RON required."
   },
   {
@@ -1419,7 +1419,7 @@
     "AU"
    ],
    "batteryGrossKWh": 14.2,
-   "batteryUsableKWh": 12.8,
+   "batteryUsableKWh": 14.2,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1448,7 +1448,7 @@
     "BMW AU official bmw.com.au",
     "CarExpert AU"
    ],
-   "lastVerifiedDate": "2026-01-01",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "14.2 kWh confirmed BMW AU. 86km WLTP. No DC charging. Mid-2026 AU arrival."
   },
   {
@@ -1506,7 +1506,7 @@
    ],
    "batteryGrossKWh": 16.3,
    "batteryUsableKWh": 14.2,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -1534,8 +1534,8 @@
     "BMW AU official bmw.com.au",
     "CarExpert AU"
    ],
-   "lastVerifiedDate": "2026-01-01",
-   "notes": "14.2 kWh confirmed BMW AU. 86km WLTP. No DC charging. Arriving AU mid-2026."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "CarExpert quotes BMW's 'usable capacity of 14.2 kWh' for the AU car."
   },
   {
    "id": "B2C3D4E5-0004-0004-0004-000000000001",
@@ -1724,7 +1724,7 @@
    ],
    "batteryGrossKWh": 25.7,
    "batteryUsableKWh": 19.7,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -1752,8 +1752,8 @@
     "CarExpert AU Apr 2026",
     "EV Central AU May 2026"
    ],
-   "lastVerifiedDate": "2026-04-15",
-   "notes": "2026 update: battery almost doubled, 114km WLTP, DC fast-charging added first time. Battery ~25.7 kWh (VW Group gen-2 PHEV). 40L tank unchanged."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "19.7 kWh is VW Group's published net for this 25.7 kWh MQB-evo pack."
   },
   {
    "id": "C3D4E5F6-0021-0021-0021-000000000001",
@@ -1808,7 +1808,7 @@
     "AU"
    ],
    "batteryGrossKWh": 17.3,
-   "batteryUsableKWh": 15.6,
+   "batteryUsableKWh": 17.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1837,7 +1837,7 @@
     "CarExpert AU review Dec 2025",
     "CarsGuide AU — 72L tank"
    ],
-   "lastVerifiedDate": "2025-12-08",
+   "lastVerifiedDate": "2026-09-03",
    "notes": "17.3 kWh confirmed CarExpert. 72L tank CarsGuide. 52km EV. 2,722kg towing. 95 RON. AWD with low-range."
   },
   {
@@ -2944,7 +2944,7 @@
    ],
    "batteryGrossKWh": 25.7,
    "batteryUsableKWh": 19.7,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -2971,8 +2971,8 @@
    "specSources": [
     "CarExpert AU Sep 2025 — 19.7 kWh, 120km WLTP confirmed for VW Group MQB Evo PHEV"
    ],
-   "lastVerifiedDate": "2026-01-01",
-   "notes": "Shares VW Group MQB Evo PHEV platform with Tiguan/Tayron eHybrid. 19.7 kWh battery confirmed CarExpert. 116km WLTP EV range (Kodiaq-specific WLTP — heavier than Tiguan). 50kW DC + 11kW AC. Due AU Q1 2026. 50L tank estimated (standard Kodiaq petrol tank). 2,000kg towing."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "19.7 kWh is VW Group's published net for this 25.7 kWh MQB-evo pack."
   },
   {
    "id": "A9B0C1D2-0010-0010-0010-000000000001",
@@ -3547,7 +3547,7 @@
    ],
    "batteryGrossKWh": 25.7,
    "batteryUsableKWh": 19.7,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -3576,8 +3576,8 @@
     "CarsGuide AU Mar 2026 — $66,990 D/A, cheapest PHEV wagon in AU at launch",
     "Fleet EV News AU Mar 2026 — 1.5L TSI 110kW + 85kW e-motor, 6-speed DSG, FWD"
    ],
-   "lastVerifiedDate": "2026-03-05",
-   "notes": "Australia's cheapest PHEV wagon at launch (Mar 2026), before BYD Seal 6 Touring arrived. VW Group Gen2 PHEV — same 25.7kWh battery and 150kW tune as Kodiaq PHEV and Tiguan 150TSI eHybrid. 112km WLTP EV range. 1.5L TSI 110kW + 85kW/330Nm e-motor. 150kW/350Nm system. FWD only. 10-80% DC in 25 min. 11kW AC 3-phase. 660L boot (wagon). Large practical load area. $62,990 before ORCs / $66,990 D/A at launch (national offer). Select trim only at launch. Primarily fleet-oriented per Skoda AU director. Liftback variant to follow later in 2026. Fuel tank 45L (VW Group MQB PHEV platform standard). Towing not confirmed AU."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "19.7 kWh is VW Group's published net for this 25.7 kWh MQB-evo pack."
   },
   {
    "id": "E4F596A7-0040-0040-0040-000000000001",
