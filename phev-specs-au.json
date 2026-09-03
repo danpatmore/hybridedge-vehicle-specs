@@ -1673,7 +1673,7 @@
    "id": "B2C3D4E5-0008-0008-0008-000000000001",
    "make": "BMW",
    "model": "XM",
-   "variant": "XM / XM Label",
+   "variant": "Label",
    "modelYear": 2026,
    "bodyType": "suv",
    "marketRegion": [
@@ -1709,8 +1709,8 @@
     "BMW AU official",
     "BMW global XM specs"
    ],
-   "lastVerifiedDate": "2026-01-01",
-   "notes": "XM (480kW) and XM Label (575kW) share same battery/EV range. 25.7 kWh usable. No DC. 4.4L V8 PHEV."
+   "lastVerifiedDate": "2026-09-03",
+   "notes": "For MY2026 BMW Australia cut the range to the single XM Label. The base XM and Label Red are gone, and the six-cylinder XM 50e was never sold in Australia."
   },
   {
    "id": "C3D4E5F6-0020-0020-0020-000000000001",
