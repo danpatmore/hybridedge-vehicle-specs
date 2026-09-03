@@ -168,7 +168,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 36.8,
-   "batteryUsableKWh": 33.1,
+   "batteryUsableKWh": 36.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -213,7 +213,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 36.8,
-   "batteryUsableKWh": 33.1,
+   "batteryUsableKWh": 36.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -345,7 +345,7 @@
     "AU"
    ],
    "batteryGrossKWh": 35.43,
-   "batteryUsableKWh": 31.9,
+   "batteryUsableKWh": 35.43,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -709,7 +709,7 @@
     "AU"
    ],
    "batteryGrossKWh": 22.7,
-   "batteryUsableKWh": 20.4,
+   "batteryUsableKWh": 22.7,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -754,7 +754,7 @@
     "AU"
    ],
    "batteryGrossKWh": 22.7,
-   "batteryUsableKWh": 20.4,
+   "batteryUsableKWh": 22.7,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -887,7 +887,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -932,7 +932,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -977,7 +977,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1022,7 +1022,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1067,7 +1067,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1111,7 +1111,7 @@
     "AU"
    ],
    "batteryGrossKWh": 24.7,
-   "batteryUsableKWh": 22.2,
+   "batteryUsableKWh": 24.7,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -1154,7 +1154,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.1,
-   "batteryUsableKWh": 16.3,
+   "batteryUsableKWh": 18.1,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 10,
@@ -1198,7 +1198,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.1,
-   "batteryUsableKWh": 16.3,
+   "batteryUsableKWh": 18.1,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 10,
@@ -1287,7 +1287,7 @@
     "AU"
    ],
    "batteryGrossKWh": 28.4,
-   "batteryUsableKWh": 25.6,
+   "batteryUsableKWh": 28.4,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -1854,7 +1854,7 @@
    ],
    "batteryGrossKWh": 15.0,
    "batteryUsableKWh": 12.2,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -1898,7 +1898,7 @@
    ],
    "batteryGrossKWh": 19.2,
    "batteryUsableKWh": 15.4,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -1943,7 +1943,7 @@
    ],
    "batteryGrossKWh": 15.0,
    "batteryUsableKWh": 12.0,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -2290,7 +2290,7 @@
    ],
    "batteryGrossKWh": 25.9,
    "batteryUsableKWh": 21.8,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -2376,7 +2376,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.9,
-   "batteryUsableKWh": 11.6,
+   "batteryUsableKWh": 12.9,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2420,7 +2420,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2463,7 +2463,7 @@
     "AU"
    ],
    "batteryGrossKWh": 19.0,
-   "batteryUsableKWh": 17.1,
+   "batteryUsableKWh": 19.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2508,7 +2508,7 @@
     "AU"
    ],
    "batteryGrossKWh": 35.6,
-   "batteryUsableKWh": 32.0,
+   "batteryUsableKWh": 35.6,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2552,7 +2552,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2595,7 +2595,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.4,
-   "batteryUsableKWh": 16.6,
+   "batteryUsableKWh": 18.4,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2639,7 +2639,7 @@
     "AU"
    ],
    "batteryGrossKWh": 34.0,
-   "batteryUsableKWh": 30.6,
+   "batteryUsableKWh": 34.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -2682,7 +2682,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.4,
-   "batteryUsableKWh": 16.6,
+   "batteryUsableKWh": 18.4,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2726,7 +2726,7 @@
     "AU"
    ],
    "batteryGrossKWh": 29.8,
-   "batteryUsableKWh": 26.8,
+   "batteryUsableKWh": 29.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2769,7 +2769,7 @@
     "AU"
    ],
    "batteryGrossKWh": 37.11,
-   "batteryUsableKWh": 33.4,
+   "batteryUsableKWh": 37.11,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -2811,7 +2811,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2856,7 +2856,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.1,
-   "batteryUsableKWh": 16.3,
+   "batteryUsableKWh": 18.1,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 10,
@@ -2903,7 +2903,7 @@
    ],
    "batteryGrossKWh": 20.0,
    "batteryUsableKWh": 17.8,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 10,
    "batteryWarrantyKm": 160000,
@@ -2944,7 +2944,7 @@
    "marketRegion": [
     "AU"
    ],
-   "batteryGrossKWh": 19.7,
+   "batteryGrossKWh": 25.7,
    "batteryUsableKWh": 19.7,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
@@ -2988,7 +2988,7 @@
    ],
    "batteryGrossKWh": 25.7,
    "batteryUsableKWh": 19.7,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -3031,7 +3031,7 @@
    ],
    "batteryGrossKWh": 25.7,
    "batteryUsableKWh": 19.7,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -3074,7 +3074,7 @@
    ],
    "batteryGrossKWh": 17.9,
    "batteryUsableKWh": 14.3,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 160000,
@@ -3117,7 +3117,7 @@
     "AU"
    ],
    "batteryGrossKWh": 37.11,
-   "batteryUsableKWh": 33.4,
+   "batteryUsableKWh": 37.11,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -3163,7 +3163,7 @@
     "AU"
    ],
    "batteryGrossKWh": 34.46,
-   "batteryUsableKWh": 31.0,
+   "batteryUsableKWh": 34.46,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -3207,7 +3207,7 @@
     "AU"
    ],
    "batteryGrossKWh": 34.36,
-   "batteryUsableKWh": 30.9,
+   "batteryUsableKWh": 34.36,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3413,7 +3413,7 @@
     "AU"
    ],
    "batteryGrossKWh": 10.08,
-   "batteryUsableKWh": 9.1,
+   "batteryUsableKWh": 10.08,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3459,7 +3459,7 @@
     "AU"
    ],
    "batteryGrossKWh": 19.0,
-   "batteryUsableKWh": 17.1,
+   "batteryUsableKWh": 19.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3637,7 +3637,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3679,7 +3679,7 @@
     "AU"
    ],
    "batteryGrossKWh": 26.6,
-   "batteryUsableKWh": 23.9,
+   "batteryUsableKWh": 26.6,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3721,7 +3721,7 @@
     "AU"
    ],
    "batteryGrossKWh": 26.6,
-   "batteryUsableKWh": 23.9,
+   "batteryUsableKWh": 26.6,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3763,7 +3763,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.1,
-   "batteryUsableKWh": 16.3,
+   "batteryUsableKWh": 18.1,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 10,
@@ -3810,7 +3810,7 @@
     "NZ"
    ],
    "batteryGrossKWh": 22.7,
-   "batteryUsableKWh": 20.4,
+   "batteryUsableKWh": 22.7,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -3856,7 +3856,7 @@
     "AU"
    ],
    "batteryGrossKWh": 25.57,
-   "batteryUsableKWh": 23.0,
+   "batteryUsableKWh": 25.57,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -3945,7 +3945,7 @@
    ],
    "batteryGrossKWh": 19.2,
    "batteryUsableKWh": 15.4,
-   "batteryUsableIsEstimated": true,
+   "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
@@ -3988,7 +3988,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -4030,7 +4030,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -4090,7 +4090,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -4132,7 +4132,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -4174,7 +4174,7 @@
     "AU"
    ],
    "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 16.5,
+   "batteryUsableKWh": 18.3,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -4234,7 +4234,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.0,
-   "batteryUsableKWh": 10.8,
+   "batteryUsableKWh": 12.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4280,7 +4280,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.0,
-   "batteryUsableKWh": 10.8,
+   "batteryUsableKWh": 12.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4326,7 +4326,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.0,
-   "batteryUsableKWh": 10.8,
+   "batteryUsableKWh": 12.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4372,7 +4372,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.0,
-   "batteryUsableKWh": 10.8,
+   "batteryUsableKWh": 12.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4418,7 +4418,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.0,
-   "batteryUsableKWh": 10.8,
+   "batteryUsableKWh": 12.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4464,7 +4464,7 @@
     "AU"
    ],
    "batteryGrossKWh": 12.0,
-   "batteryUsableKWh": 10.8,
+   "batteryUsableKWh": 12.0,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4510,7 +4510,7 @@
     "AU"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 5,
@@ -4556,7 +4556,7 @@
     "AU"
    ],
    "batteryGrossKWh": 13.8,
-   "batteryUsableKWh": 12.4,
+   "batteryUsableKWh": 13.8,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -4602,7 +4602,7 @@
     "AU"
    ],
    "batteryGrossKWh": 37.11,
-   "batteryUsableKWh": 33.4,
+   "batteryUsableKWh": 37.11,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -4791,7 +4791,7 @@
     "AU"
    ],
    "batteryGrossKWh": 35.43,
-   "batteryUsableKWh": 31.9,
+   "batteryUsableKWh": 35.43,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
