@@ -1506,8 +1506,8 @@
    "marketRegion": [
     "AU"
    ],
-   "batteryGrossKWh": 14.2,
-   "batteryUsableKWh": 12.8,
+   "batteryGrossKWh": 16.3,
+   "batteryUsableKWh": 14.2,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "nmc",
    "batteryWarrantyYears": 8,
@@ -1524,7 +1524,7 @@
    "fuelConsumptionL100kmWLTP": null,
    "fuelConsumptionL100kmDepleted": null,
    "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 50,
+   "fuelTankLitres": 47,
    "towingCapacityKg": 1500,
    "referenceL100km": 7.0,
    "engineCC": 1499,
@@ -1549,7 +1549,7 @@
    "marketRegion": [
     "AU"
    ],
-   "batteryGrossKWh": 19.7,
+   "batteryGrossKWh": 22.1,
    "batteryUsableKWh": 19.7,
    "batteryUsableIsEstimated": false,
    "batteryChemistry": "nmc",
@@ -1656,7 +1656,7 @@
    "fuelConsumptionL100kmWLTP": null,
    "fuelConsumptionL100kmDepleted": null,
    "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 80,
+   "fuelTankLitres": 60,
    "towingCapacityKg": 2000,
    "referenceL100km": 10.0,
    "engineCC": 4394,
@@ -1699,7 +1699,7 @@
    "fuelConsumptionL100kmWLTP": null,
    "fuelConsumptionL100kmDepleted": null,
    "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 90,
+   "fuelTankLitres": 69,
    "towingCapacityKg": 2700,
    "referenceL100km": 11.0,
    "engineCC": 4394,
