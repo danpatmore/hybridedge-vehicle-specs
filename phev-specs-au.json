@@ -1,6 +1,6 @@
 {
- "version": "1.21.0",
- "lastUpdated": "2026-09-03",
+ "version": "1.21.1",
+ "lastUpdated": "2026-09-09",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -92,6 +92,7 @@
    "fuelConsumptionL100kmDepleted": 10.9,
    "electricConsumptionKWh100km": 14.2,
    "fuelTankLitres": 83,
+   "fullScaleFuelPct": 93.7,
    "towingCapacityKg": 3000,
    "referenceL100km": 8.5,
    "engineCC": 1498,
@@ -139,6 +140,7 @@
    "fuelConsumptionL100kmDepleted": 10.9,
    "electricConsumptionKWh100km": 14.2,
    "fuelTankLitres": 83,
+   "fullScaleFuelPct": 93.7,
    "towingCapacityKg": 3000,
    "referenceL100km": 8.5,
    "engineCC": 1498,
