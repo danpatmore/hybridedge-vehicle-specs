@@ -1,6 +1,6 @@
 {
- "version": "1.21.1",
- "lastUpdated": "2026-09-09",
+ "version": "1.22.0",
+ "lastUpdated": "2026-09-12",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -432,6 +432,14 @@
      "vehicleCount": 2,
      "fittedOn": "2026-09-01"
     }
+   },
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
    }
   },
   {
@@ -3624,7 +3632,15 @@
    ],
    "lastVerifiedDate": "2026-04-17",
    "notes": "Entry PHEV variant — FWD only, single front electric motor (179kW/530Nm combined). 18.3kWh NMC battery. ~100km NEDC EV range (WLTP not published for AU). 1043km combined. 6.6kW AC only — no DC fast charge on this variant. Dedicated hybrid transmission (2-speed). No AWD — AWD only on Ultra Hi4 variant. $42,990 D/A (Lux). $4,000 less than Ultra AWD PHEV. batteryUsableKWh estimated 90% of gross. WLTP EV range not AU-confirmed; 100km is NEDC.",
-   "socNotReadable": true
+   "socNotReadable": true,
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
+   }
   },
   {
    "id": "D17744BC-55B8-4484-848E-E67D87659CD0",
@@ -4680,7 +4696,15 @@
    ],
    "lastVerifiedDate": "2025-11-01",
    "notes": "19.09 kWh LFP confirmed. 55L tank confirmed. Depleted not published. EV range NEDC. 30-80% DC in 28 min.",
-   "socNotReadable": true
+   "socNotReadable": true,
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
+   }
   },
   {
    "id": "CD845644-20FF-4BF2-BA9E-73A0A761E589",
@@ -4724,7 +4748,15 @@
    ],
    "lastVerifiedDate": "2025-11-01",
    "notes": "19.09 kWh LFP confirmed. 55L tank confirmed. Depleted not published. EV range NEDC. 30-80% DC in 28 min.",
-   "socNotReadable": true
+   "socNotReadable": true,
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
+   }
   },
   {
    "id": "3ED90C3D-0369-410C-BE79-B262D730F13C",
@@ -4778,6 +4810,14 @@
      "vehicleCount": 2,
      "fittedOn": "2026-09-01"
     }
+   },
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
    }
   },
   {
@@ -4966,6 +5006,14 @@
      "vehicleCount": 2,
      "fittedOn": "2026-09-01"
     }
+   },
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
    }
   },
   {
