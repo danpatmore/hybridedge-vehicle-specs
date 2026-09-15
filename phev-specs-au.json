@@ -1,5 +1,5 @@
 {
- "version": "1.23.0",
+ "version": "1.24.0",
  "lastUpdated": "2026-09-15",
  "vehicles": [
   {
@@ -1449,49 +1449,6 @@
    "kerbMassKg": 2290
   },
   {
-   "id": "B2C3D4E5-0001-0001-0001-000000000001",
-   "make": "BMW",
-   "model": "225e",
-   "variant": "xDrive Active Tourer",
-   "modelYear": 2026,
-   "bodyType": "suv",
-   "marketRegion": [
-    "AU"
-   ],
-   "batteryGrossKWh": 14.2,
-   "batteryUsableKWh": 14.2,
-   "batteryUsableIsEstimated": true,
-   "batteryChemistry": "nmc",
-   "batteryWarrantyYears": 8,
-   "batteryWarrantyKm": 160000,
-   "acChargerKW": 11.0,
-   "acChargerPhases": 3,
-   "acPlugType": "type2",
-   "dcChargerKW": null,
-   "dcPlugType": null,
-   "estimatedHomeChargeHours": 1.4,
-   "evRangeKmWLTP": 86,
-   "evRangeKmNEDC": null,
-   "combinedRangeKm": null,
-   "fuelConsumptionL100kmWLTP": null,
-   "fuelConsumptionL100kmDepleted": null,
-   "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 45,
-   "towingCapacityKg": 1500,
-   "referenceL100km": 7.0,
-   "engineCC": 1499,
-   "engineCylinders": 3,
-   "systemPowerKW": 180,
-   "systemTorqueNm": 350,
-   "driveType": "awd",
-   "specSources": [
-    "BMW AU official bmw.com.au",
-    "CarExpert AU"
-   ],
-   "lastVerifiedDate": "2026-09-03",
-   "notes": "14.2 kWh confirmed BMW AU. 86km WLTP. No DC charging. Mid-2026 AU arrival."
-  },
-  {
    "id": "B2C3D4E5-0002-0002-0002-000000000001",
    "make": "BMW",
    "model": "330e",
@@ -1801,48 +1758,6 @@
    "lastVerifiedDate": "2026-09-03",
    "notes": "19.7 kWh is VW Group's published net for this 25.7 kWh MQB-evo pack.",
    "kerbMassKg": 1754
-  },
-  {
-   "id": "C3D4E5F6-0021-0021-0021-000000000001",
-   "make": "Cupra",
-   "model": "Leon",
-   "variant": "VZe",
-   "modelYear": 2026,
-   "bodyType": "hatch",
-   "marketRegion": [
-    "AU"
-   ],
-   "batteryGrossKWh": 25.7,
-   "batteryUsableKWh": 20.0,
-   "batteryUsableIsEstimated": false,
-   "batteryChemistry": "nmc",
-   "batteryWarrantyYears": 8,
-   "batteryWarrantyKm": 160000,
-   "acChargerKW": 11.0,
-   "acChargerPhases": 3,
-   "acPlugType": "type2",
-   "dcChargerKW": null,
-   "dcPlugType": null,
-   "estimatedHomeChargeHours": 2.0,
-   "evRangeKmWLTP": 123,
-   "evRangeKmNEDC": null,
-   "combinedRangeKm": null,
-   "fuelConsumptionL100kmWLTP": null,
-   "fuelConsumptionL100kmDepleted": null,
-   "electricConsumptionKWh100km": null,
-   "fuelTankLitres": 40,
-   "towingCapacityKg": 1200,
-   "referenceL100km": 7.0,
-   "engineCC": 1498,
-   "engineCylinders": 4,
-   "systemPowerKW": 150,
-   "systemTorqueNm": 350,
-   "driveType": "fwd",
-   "specSources": [
-    "CarExpert AU May 2026"
-   ],
-   "lastVerifiedDate": "2026-05-20",
-   "notes": "20 kWh usable confirmed CarExpert AU. 123km WLTP. FWD. Also Sportstourer wagon. 150kW (Ve grade). No DC."
   },
   {
    "id": "D4E5F6A7-0020-0020-0020-000000000001",
