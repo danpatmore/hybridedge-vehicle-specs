@@ -1,6 +1,6 @@
 {
- "version": "1.24.0",
- "lastUpdated": "2026-09-15",
+ "version": "1.25.0",
+ "lastUpdated": "2026-09-19",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -2781,7 +2781,17 @@
    ],
    "lastVerifiedDate": "2026-03-27",
    "notes": "37.11 kWh NMC confirmed. 115km NEDC EV. Depleted 8.3 L/100km CarExpert. 3,000kg towing. 6kW V2L. Ladder-frame with locking diffs + low-range. From $55,990 D/A. 72L tank — standard Tank 300 petrol tank (PHEV-specific not confirmed; used as estimate).",
-   "kerbMassKg": 2615
+   "kerbMassKg": 2615,
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 0.945363,
+     "intercept": -3.298,
+     "r2": 0.98298,
+     "pairCount": 32,
+     "vehicleCount": 2,
+     "fittedOn": "2026-09-19"
+    }
+   }
   },
   {
    "id": "E5F6A7B8-0020-0020-0020-000000000001",
