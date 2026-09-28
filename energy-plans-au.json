@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.8.1",
   "asOf": "2026-08-09",
   "currency": "AUD",
   "disclaimer": "All rates are indicative starting points, not current offers. Electricity prices vary by distribution zone and change at least annually (1 July). The app must always show the user the prefilled numbers and let them correct every rate against their own bill before use.",
@@ -605,7 +605,7 @@
               ],
               "indicative": false,
               "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)",
-              "notes": "Free 11 am to 2 pm capped at 24 kWh per day, then 8.1c. Matches the tester-reported EV plan (Dennis B.), now CDR-verified."
+              "notes": "Free 11 am to 2 pm capped at 24 kWh per day, then 8.1c. Matches an EV plan a tester reported, now CDR-verified."
             },
             {
               "id": "ergon-t12e-solar-soaker",
