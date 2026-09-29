@@ -1,6 +1,6 @@
 {
- "version": "1.25.1",
- "lastUpdated": "2026-09-19",
+ "version": "1.26.0",
+ "lastUpdated": "2026-09-29",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -205,7 +205,17 @@
    "lastVerifiedDate": "2026-02-23",
    "notes": "batteryUsableKWh estimated at 90% of gross",
    "udsFallbackHeader": "7E0",
-   "kerbMassKg": 3290
+   "kerbMassKg": 3290,
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 0.992869,
+     "intercept": -7.379,
+     "r2": 0.99518,
+     "pairCount": 102,
+     "vehicleCount": 2,
+     "fittedOn": "2026-09-29"
+    }
+   }
   },
   {
    "id": "A1B2C3D4-0002-0002-0002-000000000002",
@@ -251,7 +261,17 @@
    "lastVerifiedDate": "2026-02-23",
    "notes": "Six-seat B8. Same 2.0L PHEV, 36.8 kWh pack, 91 L tank and 3,500 kg towing as the 7 Seater. The premium adds captains chairs, Nappa leather, head-up display and a mechanical front diff lock for $6,990 (CarExpert / Chasing Cars, Aug 2026). batteryUsableKWh estimated at 90% of gross",
    "udsFallbackHeader": "7E0",
-   "kerbMassKg": 3290
+   "kerbMassKg": 3290,
+   "calibrationSeeds": {
+    "fuelLevel": {
+     "slope": 0.992869,
+     "intercept": -7.379,
+     "r2": 0.99518,
+     "pairCount": 102,
+     "vehicleCount": 2,
+     "fittedOn": "2026-09-29"
+    }
+   }
   },
   {
    "id": "C3D4E5F6-0001-0001-0001-000000000001",
