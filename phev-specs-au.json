@@ -1,6 +1,6 @@
 {
- "version": "1.28.0",
- "lastUpdated": "2026-10-04",
+ "version": "1.29.0",
+ "lastUpdated": "2026-10-11",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -470,7 +470,8 @@
     "byteOffset": 0,
     "byteWidth": 2
    },
-   "kerbMassKg": 1980
+   "kerbMassKg": 1980,
+   "petrolFromEngine": true
   },
   {
    "id": "E5F6A7B8-0001-0001-0001-000000000001",
@@ -2822,7 +2823,8 @@
      "vehicleCount": 2,
      "fittedOn": "2026-09-19"
     }
-   }
+   },
+   "petrolFromEngine": true
   },
   {
    "id": "E5F6A7B8-0020-0020-0020-000000000001",
@@ -3182,7 +3184,8 @@
    "lastVerifiedDate": "2026-05-28",
    "notes": "37.11kWh NMC. 70L tank (not 80L — HEV variant is 80L). 102km WLTP / 120km NEDC EV range. 50kW DC CCS2, 30-80% in 24min. 11kW AC 3-phase. V2L 6kW. 3000kg braked tow. One variant (Ultra). Launched AU Q4 2025 priced $79,990 d/a. batteryUsableKWh estimated at 90% of gross.",
    "socNotReadable": true,
-   "kerbMassKg": 2820
+   "kerbMassKg": 2820,
+   "petrolFromEngine": true
   },
   {
    "id": "E5F6A7B8-0030-0030-0030-000000000001",
@@ -3769,7 +3772,8 @@
     "byteOffset": 0,
     "byteWidth": 2
    },
-   "kerbMassKg": 1895
+   "kerbMassKg": 1895,
+   "petrolFromEngine": true
   },
   {
    "id": "D17744BC-55B8-4484-848E-E67D87659CD0",
@@ -5090,7 +5094,8 @@
    "lastVerifiedDate": "2026-05-28",
    "notes": "AU launch year of the Hi4-T PHEV (2025 flagship). Same spec as MY2026.",
    "socNotReadable": true,
-   "kerbMassKg": 2820
+   "kerbMassKg": 2820,
+   "petrolFromEngine": true
   },
   {
    "id": "065D1107-C34F-4167-9BC6-EC2991E65AFE",
@@ -5144,7 +5149,8 @@
     "byteOffset": 0,
     "byteWidth": 2
    },
-   "kerbMassKg": 1895
+   "kerbMassKg": 1895,
+   "petrolFromEngine": true
   },
   {
    "id": "CD845644-20FF-4BF2-BA9E-73A0A761E589",
@@ -5198,7 +5204,8 @@
     "byteOffset": 0,
     "byteWidth": 2
    },
-   "kerbMassKg": 1895
+   "kerbMassKg": 1895,
+   "petrolFromEngine": true
   },
   {
    "id": "3ED90C3D-0369-410C-BE79-B262D730F13C",
@@ -5262,7 +5269,8 @@
     "byteOffset": 0,
     "byteWidth": 2
    },
-   "kerbMassKg": 1980
+   "kerbMassKg": 1980,
+   "petrolFromEngine": true
   },
   {
    "id": "618443E7-51FB-403F-BEBA-ECFEE92F0B83",
@@ -5466,7 +5474,8 @@
     "byteOffset": 0,
     "byteWidth": 2
    },
-   "kerbMassKg": 1895
+   "kerbMassKg": 1895,
+   "petrolFromEngine": true
   },
   {
    "id": "61BD736A-319D-44D7-8771-C380EC90130A",
