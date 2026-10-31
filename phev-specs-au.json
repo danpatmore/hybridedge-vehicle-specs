@@ -1,6 +1,6 @@
 {
- "version": "1.29.0",
- "lastUpdated": "2026-10-11",
+ "version": "1.30.0",
+ "lastUpdated": "2026-10-31",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -406,6 +406,7 @@
    ],
    "lastVerifiedDate": "2026-04-17",
    "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A — $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery.",
+   "socNotReadable": true,
    "kerbMassKg": 2045
   },
   {
@@ -1342,6 +1343,7 @@
    ],
    "lastVerifiedDate": "2026-07-18",
    "notes": "37.1 kWh NMC confirmed. 75L tank confirmed 4x4Australia. Depleted 7.9 L/100km GWM official; real-world 10-11 L/100km NRMA. 3,500kg towing. 6kW V2L. 7yr vehicle warranty, 8yr battery. [Sweep 18 Jul 2026: usable corrected 33.4→37.1 (GWM's own published figure; kept estimated — 0.01 below pack smells like marketing; Chasing Cars: two packs 15.2+21.9); WLTP 110 removed — no WLTP exists, 115km is NEDC (CarExpert/WhichCar confirmed); tank 75L is secondary-sourced, GWM doesn't publish it; 1.7 L/100km is blended NOT charge-sustaining (real-world CS ~9.5-10.7).]",
+   "socNotReadable": true,
    "kerbMassKg": 2810
   },
   {
@@ -5315,6 +5317,7 @@
    ],
    "lastVerifiedDate": "2026-04-17",
    "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A — $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery.",
+   "socNotReadable": true,
    "kerbMassKg": 2075
   },
   {
@@ -5362,6 +5365,7 @@
    ],
    "lastVerifiedDate": "2026-07-18",
    "notes": "37.1 kWh NMC confirmed. 75L tank confirmed 4x4Australia. Depleted 7.9 L/100km GWM official; real-world 10-11 L/100km NRMA. 3,500kg towing. 6kW V2L. 7yr vehicle warranty, 8yr battery. [Sweep 18 Jul 2026: usable corrected 33.4→37.1 (GWM's own published figure; kept estimated — 0.01 below pack smells like marketing; Chasing Cars: two packs 15.2+21.9); WLTP 110 removed — no WLTP exists, 115km is NEDC (CarExpert/WhichCar confirmed); tank 75L is secondary-sourced, GWM doesn't publish it; 1.7 L/100km is blended NOT charge-sustaining (real-world CS ~9.5-10.7).]",
+   "socNotReadable": true,
    "kerbMassKg": 2810
   },
   {
