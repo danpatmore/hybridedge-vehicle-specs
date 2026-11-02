@@ -1,6 +1,6 @@
 {
- "version": "1.30.0",
- "lastUpdated": "2026-10-31",
+ "version": "1.31.0",
+ "lastUpdated": "2026-11-03",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -407,7 +407,17 @@
    "lastVerifiedDate": "2026-04-17",
    "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A — $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery.",
    "socNotReadable": true,
-   "kerbMassKg": 2045
+   "kerbMassKg": 2045,
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
+   },
+   "socCalibrationSlope": 0.106022,
+   "socCalibrationIntercept": -0.7936
   },
   {
    "id": "D4E5F6A7-0002-0002-0002-000000000001",
@@ -5318,7 +5328,17 @@
    "lastVerifiedDate": "2026-04-17",
    "notes": "Updated Apr 2026 to Hi4 intelligent AWD system. New 80kW front + 170kW rear motors (replaces 130kW/135kW). 4-speed hybrid transmission (was 2-speed). Combined 321kW/642Nm (torque down from 762Nm but 0-100 improves to 4.6sec). 35.43kWh NMC battery unchanged. 183km NEDC / ~120km WLTP EV range. Redesigned interior: 14.6-inch Coffee OS screen (was 12.3-inch), column gear selector, 50W wireless charger. $52,990 D/A — $1,000 less than outgoing model. 7yr unlimited km warranty, 8yr/160,000km battery.",
    "socNotReadable": true,
-   "kerbMassKg": 2075
+   "kerbMassKg": 2075,
+   "packSoC": {
+    "door": "78B",
+    "responder": "7CB",
+    "did": "E0F4",
+    "scale": 0.1,
+    "byteOffset": 0,
+    "byteWidth": 2
+   },
+   "socCalibrationSlope": 0.106022,
+   "socCalibrationIntercept": -0.7936
   },
   {
    "id": "1B6B7AD5-4F6B-49FD-9D97-09ABDCB84CA0",
