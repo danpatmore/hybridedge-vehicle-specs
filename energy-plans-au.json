@@ -1,6 +1,6 @@
 {
-  "version": "0.10.0",
-  "asOf": "2026-10-19",
+  "version": "0.11.0",
+  "asOf": "2026-11-02",
   "currency": "AUD",
   "disclaimer": "All rates are indicative starting points, not current offers. Electricity prices vary by distribution zone and change at least annually (1 July). The app must always show the user the prefilled numbers and let them correct every rate against their own bill before use.",
   "states": [
@@ -738,39 +738,62 @@
           "name": "Engie",
           "plans": [
             {
-              "id": "eng1111496mre1",
-              "name": "QLD _ ENGIE EV Flex Charge Elec",
+              "id": "eng1208007mbe2",
+              "name": "QLD ENGIE - Business Everyday Elec",
               "type": "timeOfUse",
               "windows": [
                 {
                   "label": "Peak",
-                  "start": "16:00",
-                  "end": "21:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3489
+                  "start": "17:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.302
                 },
                 {
                   "label": "Off-Peak",
                   "start": "11:00",
-                  "end": "16:00",
+                  "end": "13:00",
                   "days": "all",
-                  "ratePerKWh": 0.1327
+                  "ratePerKWh": 0.1478
                 },
                 {
                   "label": "Shoulder",
-                  "start": "21:00",
+                  "start": "13:00",
+                  "end": "17:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2698
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
                   "end": "11:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3035
+                  "days": "weekday",
+                  "ratePerKWh": 0.2698
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "13:00",
+                  "end": "11:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2698
                 }
               ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 7% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "eng1214626mre1",
+              "name": "QLD ENGIE - EV Flex Charge Elec",
+              "type": "flat",
+              "flatRatePerKWh": 0.2797,
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
               "feedInTariffPerKWh": 0.08
             },
             {
-              "id": "eng1111497mre1",
-              "name": "QLD _ ENGIE EV Flex Charge Elec",
+              "id": "eng1208039mre2",
+              "name": "QLD ENGIE - Everyday Elec",
               "type": "timeOfUse",
               "windows": [
                 {
@@ -778,26 +801,57 @@
                   "start": "16:00",
                   "end": "21:00",
                   "days": "all",
-                  "ratePerKWh": 0.3489
+                  "ratePerKWh": 0.3175
                 },
                 {
                   "label": "Off-Peak",
                   "start": "11:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.1327
+                  "ratePerKWh": 0.1207
                 },
                 {
                   "label": "Shoulder",
                   "start": "21:00",
                   "end": "11:00",
                   "days": "all",
-                  "ratePerKWh": 0.3035
+                  "ratePerKWh": 0.2762
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.08
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "eng1207995mre2",
+              "name": "QLD ENGIE - Home Business Everyday Elec",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3175
+                },
+                {
+                  "label": "Off-Peak",
+                  "start": "11:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1207
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "21:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2762
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount",
+              "feedInTariffPerKWh": 0.01
             },
             {
               "id": "eng1111424mre1",
@@ -1007,37 +1061,6 @@
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
               "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "eng1111310mre2",
-              "name": "QLD _ ENGIE Movie Perks Elec",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "21:00",
-                  "days": "all",
-                  "ratePerKWh": 0.4778
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "11:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.0697
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "21:00",
-                  "end": "11:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2529
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
             }
           ]
         },
@@ -1096,7 +1119,7 @@
               "source": "AER Energy Made Easy CDR feed"
             },
             {
-              "id": "glo1202251mre1",
+              "id": "glo1215754mre1",
               "name": "FOUR4FREE Residential (Flexible Rate)-Energex",
               "type": "timeOfUse",
               "windows": [
@@ -1105,7 +1128,7 @@
                   "start": "16:00",
                   "end": "23:00",
                   "days": "all",
-                  "ratePerKWh": 0.451
+                  "ratePerKWh": 0.44
                 },
                 {
                   "label": "Off Peak Usage",
@@ -1119,21 +1142,21 @@
                   "start": "15:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.231
+                  "ratePerKWh": 0.275
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "23:00",
                   "end": "24:00",
                   "days": "all",
-                  "ratePerKWh": 0.231
+                  "ratePerKWh": 0.275
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
-                  "ratePerKWh": 0.231
+                  "ratePerKWh": 0.275
                 }
               ],
               "indicative": false,
@@ -1185,7 +1208,7 @@
               "feedInTariffPerKWh": 0.0
             },
             {
-              "id": "glo1202228mre1",
+              "id": "glo1212444mre1",
               "name": "SOLARPLUS Residential (Flexible Energy)-Energex",
               "type": "timeOfUse",
               "windows": [
@@ -1194,28 +1217,28 @@
                   "start": "16:00",
                   "end": "21:00",
                   "days": "all",
-                  "ratePerKWh": 0.352
+                  "ratePerKWh": 0.3685
                 },
                 {
                   "label": "Off Peak Usage",
                   "start": "09:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.2288
+                  "ratePerKWh": 0.253
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "21:00",
                   "end": "24:00",
                   "days": "all",
-                  "ratePerKWh": 0.2288
+                  "ratePerKWh": 0.253
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "00:00",
                   "end": "09:00",
                   "days": "all",
-                  "ratePerKWh": 0.2288
+                  "ratePerKWh": 0.253
                 }
               ],
               "indicative": false,
@@ -1228,7 +1251,7 @@
           "name": "Momentum Energy",
           "plans": [
             {
-              "id": "mom1162902mre1",
+              "id": "mom1162902mre2",
               "name": "Bill Boss Electricity",
               "type": "flat",
               "flatRatePerKWh": 0.2794,
@@ -2390,6 +2413,53 @@
           "name": "1st Energy",
           "plans": [
             {
+              "id": "1st1213185mre1",
+              "name": "1st Emerald - Single Rate (Essential)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2714,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 4% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1213189mre1",
+              "name": "1st Emerald - Time of Use (Essential)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "07:00",
+                  "end": "10:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3432
+                },
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "22:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3432
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "10:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1964
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "22:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1964
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 4% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
               "id": "1st1203990mre1",
               "name": "1st Home - Single Rate (Essential)",
               "type": "flat",
@@ -2437,15 +2507,6 @@
               "feedInTariffPerKWh": 0.01
             },
             {
-              "id": "1st1122828mre1",
-              "name": "1st Opal - Single Rate (Essential)",
-              "type": "flat",
-              "flatRatePerKWh": 0.2827,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
               "id": "1st1161167mbe1",
               "name": "1st Opal - Time of Use (Essential)",
               "type": "timeOfUse",
@@ -2484,6 +2545,237 @@
               "feedInTariffPerKWh": 0.01
             },
             {
+              "id": "1st1213178mre1",
+              "name": "1st Emerald - Single Rate (Endeavour)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2587,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 4% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1213182mre1",
+              "name": "1st Emerald - Time of Use (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Summer Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3569
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "10:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2735
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2735
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "10:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2735
+                },
+                {
+                  "label": "Solar Soak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.094
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 4% discount; Summer Peak rates",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1203983mre1",
+              "name": "1st Home - Single Rate (Endeavour)",
+              "type": "flat",
+              "flatRatePerKWh": 0.3201,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1203987mre1",
+              "name": "1st Home - Time of Use (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Summer Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.4422
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "10:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3388
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3388
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "10:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3388
+                },
+                {
+                  "label": "Solar Soak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1166
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Summer Peak rates",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1161160mbe1",
+              "name": "1st Opal - Time of Use (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Summer Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3971
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "10:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3102
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3102
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "10:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3102
+                },
+                {
+                  "label": "Solar Soak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1133
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Summer Peak rates",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1122806mre1",
+              "name": "1st Quartz - Time of Use + Controlled Load 2 (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Summer Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3718
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "10:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2849
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2849
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "10:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2849
+                },
+                {
+                  "label": "Solar Soak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0979
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Summer Peak rates",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1213171mre1",
+              "name": "1st Emerald - Single Rate (Ausgrid)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2534,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 4% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "1st1213175mre1",
+              "name": "1st Emerald - Time of Use (Ausgrid)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4615
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1837
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 4% discount; Peak rates",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
               "id": "1st1203976mre1",
               "name": "1st Home - Single Rate (Ausgrid)",
               "type": "flat",
@@ -2502,7 +2794,7 @@
                   "start": "15:00",
                   "end": "21:00",
                   "days": "all",
-                  "ratePerKWh": 0.2277
+                  "ratePerKWh": 0.5709
                 },
                 {
                   "label": "Off Peak",
@@ -2549,172 +2841,26 @@
                   "label": "Peak",
                   "start": "15:00",
                   "end": "21:00",
-                  "days": "all",
-                  "ratePerKWh": 0.242
+                  "days": "weekday",
+                  "ratePerKWh": 0.6996
                 },
                 {
                   "label": "Off Peak",
                   "start": "21:00",
                   "end": "15:00",
-                  "days": "all",
+                  "days": "weekday",
+                  "ratePerKWh": 0.242
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekend",
                   "ratePerKWh": 0.242
                 }
               ],
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed; Peak rates",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "1st1203983mre1",
-              "name": "1st Home - Single Rate (Endeavour)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3201,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "1st1203987mre1",
-              "name": "1st Home - Time of Use (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Winter Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.4422
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "10:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3388
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3388
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "10:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3388
-                },
-                {
-                  "label": "Solar Soak",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1166
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter Peak rates",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "1st1122821mre1",
-              "name": "1st Opal - Single Rate (Endeavour)",
-              "type": "flat",
-              "flatRatePerKWh": 0.2695,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "1st1161160mbe1",
-              "name": "1st Opal - Time of Use (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Winter Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3971
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "10:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3102
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3102
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "10:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3102
-                },
-                {
-                  "label": "Solar Soak",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1133
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter Peak rates",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "1st1122806mre1",
-              "name": "1st Quartz - Time of Use + Controlled Load 2 (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Winter Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3718
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "10:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2849
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2849
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "10:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2849
-                },
-                {
-                  "label": "Solar Soak",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.0979
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter Peak rates",
               "feedInTariffPerKWh": 0.01
             }
           ]
@@ -3050,14 +3196,28 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Time Of Use Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6371
+                },
+                {
                   "label": "Time Of Use Off Peak",
                   "start": "14:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2756
+                },
+                {
+                  "label": "Time Of Use Off Peak",
+                  "start": "21:00",
                   "end": "11:00",
                   "days": "all",
                   "ratePerKWh": 0.2756
                 },
                 {
-                  "label": "Solar Sharer Offer Free Period",
+                  "label": "Time Of Use Shoulder",
                   "start": "11:00",
                   "end": "14:00",
                   "days": "all",
@@ -3073,14 +3233,28 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Time Of Use Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6371
+                },
+                {
                   "label": "Time Of Use Off Peak",
                   "start": "14:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2756
+                },
+                {
+                  "label": "Time Of Use Off Peak",
+                  "start": "21:00",
                   "end": "11:00",
                   "days": "all",
                   "ratePerKWh": 0.2756
                 },
                 {
-                  "label": "Solar Sharer Offer Free Period",
+                  "label": "Time Of Use Shoulder",
                   "start": "11:00",
                   "end": "14:00",
                   "days": "all",
@@ -3105,17 +3279,17 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Time Of Use Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2404
+                  "label": "Time Of Use Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.602
                 },
                 {
                   "label": "Time Of Use Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
                   "ratePerKWh": 0.2404
                 }
               ],
@@ -3138,17 +3312,17 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Time Of Use Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2404
+                  "label": "Time Of Use Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.602
                 },
                 {
                   "label": "Time Of Use Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
                   "ratePerKWh": 0.2404
                 }
               ],
@@ -3322,7 +3496,7 @@
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4714
+                  "ratePerKWh": 0.4657
                 },
                 {
                   "label": "Time Of Use Off Peak",
@@ -3354,7 +3528,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Low Season Peak rates",
+              "source": "AER Energy Made Easy CDR feed; High Season Peak rates",
               "feedInTariffPerKWh": 0.08
             },
             {
@@ -3376,7 +3550,7 @@
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4714
+                  "ratePerKWh": 0.4657
                 },
                 {
                   "label": "Time Of Use Off Peak",
@@ -3408,7 +3582,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Low Season Peak rates",
+              "source": "AER Energy Made Easy CDR feed; High Season Peak rates",
               "feedInTariffPerKWh": 0.08
             }
           ]
@@ -3498,7 +3672,7 @@
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4714
+                  "ratePerKWh": 0.4657
                 },
                 {
                   "label": "Off-Peak",
@@ -3697,6 +3871,13 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "14:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3115
+                },
+                {
                   "label": "Off-Peak",
                   "start": "00:00",
                   "end": "07:00",
@@ -3713,13 +3894,27 @@
                 {
                   "label": "Shoulder",
                   "start": "07:00",
+                  "end": "14:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.1668
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
                   "end": "22:00",
-                  "days": "all",
+                  "days": "weekday",
+                  "ratePerKWh": 0.1668
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "22:00",
+                  "days": "weekend",
                   "ratePerKWh": 0.1668
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Season 4 - 1 Sep to 31 Oct rates",
+              "source": "AER Energy Made Easy CDR feed; Season 1 - 1 Nov to 31 Mar rates",
               "feedInTariffPerKWh": 0.08
             },
             {
@@ -3759,7 +3954,7 @@
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4431
+                  "ratePerKWh": 0.4378
                 },
                 {
                   "label": "Off-Peak",
@@ -3798,7 +3993,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Season 2 - 1 Apr to 31 Oct rates",
+              "source": "AER Energy Made Easy CDR feed; Season 1 - 1 Nov to 31 Mar rates",
               "feedInTariffPerKWh": 0.08
             },
             {
@@ -4184,6 +4379,13 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "14:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.5201
+                },
+                {
                   "label": "Off-Peak",
                   "start": "22:00",
                   "end": "07:00",
@@ -4193,13 +4395,27 @@
                 {
                   "label": "Shoulder",
                   "start": "07:00",
+                  "end": "14:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2578
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
                   "end": "22:00",
-                  "days": "all",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2578
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "22:00",
+                  "days": "weekend",
                   "ratePerKWh": 0.2578
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 12% discount; Non-Summer/Non-Winter rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 12% discount; Summer rates",
               "feedInTariffPerKWh": 0.03
             },
             {
@@ -4244,11 +4460,11 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Non-Summer Peak",
+                  "label": "Summer Peak",
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4714
+                  "ratePerKWh": 0.4657
                 },
                 {
                   "label": "Off-Peak",
@@ -4287,7 +4503,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Non-summer rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.08
             },
             {
@@ -4305,11 +4521,11 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Non-Summer Peak",
+                  "label": "Summer Peak",
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4148
+                  "ratePerKWh": 0.4098
                 },
                 {
                   "label": "Off-Peak",
@@ -4348,7 +4564,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 12% discount; Non-summer rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 12% discount; Summer rates",
               "feedInTariffPerKWh": 0.03
             },
             {
@@ -4366,11 +4582,11 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Non-Summer Peak",
+                  "label": "Summer Peak",
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4148
+                  "ratePerKWh": 0.4098
                 },
                 {
                   "label": "Off-Peak",
@@ -4409,7 +4625,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 12% discount; Non-summer rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 12% discount; Summer rates",
               "feedInTariffPerKWh": 0.03
             }
           ]
@@ -4427,244 +4643,17 @@
               "notes": "Single rate any time, 9% guaranteed discount and GST included. Billed as blocks: first 420 kWh per 30 days at 38.86c, above that 40.80c. Solar feed-in 12c. Controlled load meter (26.14c) is separate and usually not the EV circuit."
             },
             {
-              "id": "eng1112373mbe1",
-              "name": "NSW _ ENGIE Business Everyday Elec (Essential)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3673,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "eng1112388mbe1",
-              "name": "NSW _ ENGIE Business Everyday Elec (Essential)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "07:00",
-                  "end": "09:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.4726
-                },
-                {
-                  "label": "Peak",
-                  "start": "17:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.4726
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "22:00",
-                  "end": "07:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2576
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2576
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "09:00",
-                  "end": "17:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3188
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "20:00",
-                  "end": "22:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3188
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "eng1111835mre1",
-              "name": "NSW _ ENGIE EV Flex Charge Elec (Essential)",
-              "type": "flat",
-              "flatRatePerKWh": 0.35,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.08
-            },
-            {
-              "id": "eng1111845mre1",
-              "name": "NSW _ ENGIE EV Flex Charge Elec (Essential)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "07:00",
-                  "end": "10:00",
-                  "days": "all",
-                  "ratePerKWh": 0.4211
-                },
-                {
-                  "label": "Peak",
-                  "start": "15:00",
-                  "end": "22:00",
-                  "days": "all",
-                  "ratePerKWh": 0.4211
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "10:00",
-                  "end": "15:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2413
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "22:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2413
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.08
-            },
-            {
-              "id": "eng1112253mre1",
-              "name": "NSW _ ENGIE Home Business Everyday Elec (Essential)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3115,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "eng1112264mre1",
-              "name": "NSW _ ENGIE Home Business Everyday Elec (Essential)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "07:00",
-                  "end": "10:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3748
-                },
-                {
-                  "label": "Peak",
-                  "start": "15:00",
-                  "end": "22:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3748
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "10:00",
-                  "end": "15:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2148
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "22:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2148
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "eng1112362mbe1",
-              "name": "NSW _ ENGIE Business Everyday Elec (Ausgrid)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Non-Summer Non-Winter Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.1129
-                },
-                {
-                  "label": "Non-Summer Non-Winter Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.1129
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount; Non-Summer Non-Winter rates",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "eng1112383mbe1",
-              "name": "NSW _ ENGIE Business Everyday Elec (Ausgrid)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Non-Summer Non-Winter Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2256
-                },
-                {
-                  "label": "Non-Summer Non-Winter Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2256
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount; Non-Summer Non-Winter rates",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "eng1111833mre1",
-              "name": "NSW _ ENGIE EV Flex Charge Elec (Ausgrid)",
+              "id": "eng1209046mre3",
+              "name": "NSW ENGIE - EV Flex Charge Elec (Ausgrid)",
               "type": "flat",
               "flatRatePerKWh": 0.3313,
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.08
+              "feedInTariffPerKWh": 0.1
             },
             {
-              "id": "eng1111840mre1",
-              "name": "NSW _ ENGIE EV Flex Charge Elec (Ausgrid)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Non-Summer Non-Winter Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2717
-                },
-                {
-                  "label": "Non-Summer Non-Winter Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2717
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Non-Summer Non-Winter rates",
-              "feedInTariffPerKWh": 0.08
-            },
-            {
-              "id": "eng1112251mre1",
-              "name": "NSW _ ENGIE Home Business Everyday Elec (Ausgrid)",
+              "id": "eng1207086mre2",
+              "name": "NSW ENGIE - Everyday Elec (Ausgrid)",
               "type": "flat",
               "flatRatePerKWh": 0.2949,
               "indicative": false,
@@ -4672,27 +4661,12 @@
               "feedInTariffPerKWh": 0.03
             },
             {
-              "id": "eng1112273mre1",
-              "name": "NSW _ ENGIE Home Business Everyday Elec (Ausgrid)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Non-Summer Non-Winter Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2139
-                },
-                {
-                  "label": "Non-Summer Non-Winter Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2139
-                }
-              ],
+              "id": "eng1207653mre3",
+              "name": "NSW ENGIE -Home Business Everyday Elec (Ausgrid)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2949,
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount; Non-Summer Non-Winter rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
               "feedInTariffPerKWh": 0.03
             },
             {
@@ -4701,105 +4675,63 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Non-Summer Non-Winter Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
+                  "label": "Summer Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3329
+                },
+                {
+                  "label": "Summer Off Peak",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
                   "ratePerKWh": 0.277
-                },
-                {
-                  "label": "Non-Summer Non-Winter Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.277
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount; Non-Summer Non-Winter rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount; Summer Peak rates",
               "feedInTariffPerKWh": 0.03
             },
             {
-              "id": "eng1114917mbe1",
-              "name": "NSW _ ENGIE Business Everyday Elec (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "14:00",
-                  "end": "10:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3126
-                },
-                {
-                  "label": "Solar Sponge",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2374
-                }
-              ],
+              "id": "eng1209048mre3",
+              "name": "NSW ENGIE - EV Flex Charge Elec (Essential)",
+              "type": "flat",
+              "flatRatePerKWh": 0.35,
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount",
-              "feedInTariffPerKWh": 0.03
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.1
             },
             {
-              "id": "eng1115010mbe1",
-              "name": "NSW _ ENGIE Business Everyday Elec (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Winter Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.452
-                },
-                {
-                  "label": "Winter Off Peak",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.353
-                },
-                {
-                  "label": "Winter Off Peak",
-                  "start": "20:00",
-                  "end": "10:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.353
-                },
-                {
-                  "label": "Winter Off Peak",
-                  "start": "14:00",
-                  "end": "10:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.353
-                },
-                {
-                  "label": "Winter Solar Sponge",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1291
-                }
-              ],
+              "id": "eng1207088mre2",
+              "name": "NSW ENGIE - Everyday Elec (Essential)",
+              "type": "flat",
+              "flatRatePerKWh": 0.3115,
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 9% discount; Winter Peak rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
               "feedInTariffPerKWh": 0.03
             },
             {
-              "id": "eng1114410mre1",
-              "name": "NSW _ ENGIE EV Flex Charge Elec (Endeavour)",
+              "id": "eng1207655mre2",
+              "name": "NSW ENGIE -Home Business Everyday Elec (Essential)",
+              "type": "flat",
+              "flatRatePerKWh": 0.3115,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "eng1209047mre3",
+              "name": "NSW ENGIE - EV Flex Charge Elec (Endeavour)",
               "type": "flat",
               "flatRatePerKWh": 0.3373,
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.08
+              "feedInTariffPerKWh": 0.1
             },
             {
-              "id": "eng1114578mre1",
-              "name": "NSW _ ENGIE Home Business Everyday Elec (Endeavour)",
+              "id": "eng1208296mre2",
+              "name": "NSW ENGIE - Everyday Elec (Endeavour)",
               "type": "flat",
               "flatRatePerKWh": 0.3002,
               "indicative": false,
@@ -4807,48 +4739,12 @@
               "feedInTariffPerKWh": 0.03
             },
             {
-              "id": "eng1114585mre1",
-              "name": "NSW _ ENGIE Home Business Everyday Elec (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Winter Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.4144
-                },
-                {
-                  "label": "Winter Off Peak",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3176
-                },
-                {
-                  "label": "Winter Off Peak",
-                  "start": "20:00",
-                  "end": "10:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3176
-                },
-                {
-                  "label": "Winter Off Peak",
-                  "start": "14:00",
-                  "end": "10:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3176
-                },
-                {
-                  "label": "Winter Solar Sponge",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1098
-                }
-              ],
+              "id": "eng1208551mre3",
+              "name": "NSW ENGIE -Home Business Everyday Elec (Endeavour)",
+              "type": "flat",
+              "flatRatePerKWh": 0.3002,
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount; Winter Peak rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
               "feedInTariffPerKWh": 0.03
             },
             {
@@ -4932,7 +4828,7 @@
               "source": "AER Energy Made Easy CDR feed"
             },
             {
-              "id": "glo1202253mre1",
+              "id": "glo1215756mre1",
               "name": "FOUR4FREE Residential (Flexible Rate)-Essential",
               "type": "timeOfUse",
               "windows": [
@@ -4941,7 +4837,7 @@
                   "start": "16:00",
                   "end": "23:00",
                   "days": "all",
-                  "ratePerKWh": 0.462
+                  "ratePerKWh": 0.451
                 },
                 {
                   "label": "Off Peak Usage",
@@ -4955,21 +4851,21 @@
                   "start": "15:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.264
+                  "ratePerKWh": 0.308
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "23:00",
                   "end": "24:00",
                   "days": "all",
-                  "ratePerKWh": 0.264
+                  "ratePerKWh": 0.308
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
-                  "ratePerKWh": 0.264
+                  "ratePerKWh": 0.308
                 }
               ],
               "indicative": false,
@@ -5086,7 +4982,7 @@
               "source": "AER Energy Made Easy CDR feed"
             },
             {
-              "id": "glo1202249mre1",
+              "id": "glo1215752mre1",
               "name": "FOUR4FREE Residential (Flexible Rate)-Endeavour",
               "type": "timeOfUse",
               "windows": [
@@ -5095,7 +4991,7 @@
                   "start": "16:00",
                   "end": "23:00",
                   "days": "all",
-                  "ratePerKWh": 0.4785
+                  "ratePerKWh": 0.451
                 },
                 {
                   "label": "Off Peak Usage",
@@ -5109,21 +5005,21 @@
                   "start": "15:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.2893
+                  "ratePerKWh": 0.319
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "23:00",
                   "end": "24:00",
                   "days": "all",
-                  "ratePerKWh": 0.2893
+                  "ratePerKWh": 0.319
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
-                  "ratePerKWh": 0.2893
+                  "ratePerKWh": 0.319
                 }
               ],
               "indicative": false,
@@ -5247,7 +5143,7 @@
               "source": "AER Energy Made Easy CDR feed"
             },
             {
-              "id": "glo1202247mre1",
+              "id": "glo1215750mre1",
               "name": "FOUR4FREE Residential (Flexible Rate)-Ausgrid",
               "type": "timeOfUse",
               "windows": [
@@ -5256,7 +5152,7 @@
                   "start": "16:00",
                   "end": "23:00",
                   "days": "all",
-                  "ratePerKWh": 0.506
+                  "ratePerKWh": 0.462
                 },
                 {
                   "label": "Off Peak Usage",
@@ -5270,21 +5166,21 @@
                   "start": "15:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.253
+                  "ratePerKWh": 0.319
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "23:00",
                   "end": "24:00",
                   "days": "all",
-                  "ratePerKWh": 0.253
+                  "ratePerKWh": 0.319
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
-                  "ratePerKWh": 0.253
+                  "ratePerKWh": 0.319
                 }
               ],
               "indicative": false,
@@ -5296,8 +5192,15 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak Usage",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6372
+                },
+                {
                   "label": "Off Peak Usage",
-                  "start": "14:00",
+                  "start": "21:00",
                   "end": "24:00",
                   "days": "all",
                   "ratePerKWh": 0.2756
@@ -5306,6 +5209,13 @@
                   "label": "Off Peak Usage",
                   "start": "00:00",
                   "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2756
+                },
+                {
+                  "label": "Off Peak Usage",
+                  "start": "14:00",
+                  "end": "15:00",
                   "days": "all",
                   "ratePerKWh": 0.2756
                 },
@@ -5318,7 +5228,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Sep to Oct rates",
+              "source": "AER Energy Made Easy CDR feed; November to March rates",
               "feedInTariffPerKWh": 0.0
             }
           ]
@@ -5327,7 +5237,98 @@
           "name": "Momentum Energy",
           "plans": [
             {
-              "id": "mom1162867mre1",
+              "id": "mom1162811mre2",
+              "name": "Bill Boss Electricity (Ausgrid)",
+              "type": "flat",
+              "flatRatePerKWh": 0.3311,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "mom1173805mbe1",
+              "name": "Busy Business (Ausgrid)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2728,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "mom1173819mbe1",
+              "name": "Busy Business (Ausgrid)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.616
+                },
+                {
+                  "label": "Off-Peak",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2134
+                },
+                {
+                  "label": "Off-Peak",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2134
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "mom1173867mre1",
+              "name": "Home Comfort Electricity (Ausgrid)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2805,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "mom1173876mre1",
+              "name": "Home Comfort Electricity (Ausgrid)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2706
+                },
+                {
+                  "label": "Off-Peak",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2706
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "mom1163195mre2",
+              "name": "Warm Welcome (Ausgrid)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2805,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "mom1162867mre2",
               "name": "Bill Boss Electricity (Essential)",
               "type": "flat",
               "flatRatePerKWh": 0.3498,
@@ -5519,91 +5520,7 @@
               "feedInTariffPerKWh": 0.03
             },
             {
-              "id": "mom1162811mre1",
-              "name": "Bill Boss Electricity (Ausgrid)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3311,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "mom1173805mbe1",
-              "name": "Busy Business (Ausgrid)",
-              "type": "flat",
-              "flatRatePerKWh": 0.2728,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "mom1173819mbe1",
-              "name": "Busy Business (Ausgrid)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2134
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2134
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "mom1173867mre1",
-              "name": "Home Comfort Electricity (Ausgrid)",
-              "type": "flat",
-              "flatRatePerKWh": 0.2805,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "mom1173876mre1",
-              "name": "Home Comfort Electricity (Ausgrid)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Shoulder",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2706
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2706
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "mom1163195mre2",
-              "name": "Warm Welcome (Ausgrid)",
-              "type": "flat",
-              "flatRatePerKWh": 0.2805,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "mom1162839mre1",
+              "id": "mom1162839mre2",
               "name": "Bill Boss Electricity (Endeavour)",
               "type": "flat",
               "flatRatePerKWh": 0.3377,
@@ -5644,18 +5561,25 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Off-Peak",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1056
-                },
-                {
                   "label": "Peak",
                   "start": "16:00",
                   "end": "20:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.4026
+                  "ratePerKWh": 0.3971
+                },
+                {
+                  "label": "Off-Peak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.1056
+                },
+                {
+                  "label": "Off-Peak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.1056
                 },
                 {
                   "label": "Shoulder",
@@ -5934,8 +5858,22 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6019
+                },
+                {
                   "label": "Off Peak",
                   "start": "06:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2404
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "21:00",
                   "end": "24:00",
                   "days": "all",
                   "ratePerKWh": 0.2404
@@ -5949,7 +5887,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Shoulder 2: 1 Sep to 31 Oct rates",
+              "source": "AER Energy Made Easy CDR feed; Summer: 1 Nov to 31 Mar rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -5958,8 +5896,22 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6019
+                },
+                {
                   "label": "Off Peak",
                   "start": "06:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2404
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "21:00",
                   "end": "24:00",
                   "days": "all",
                   "ratePerKWh": 0.2404
@@ -5973,7 +5925,7 @@
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Shoulder 2: 1 Sep to 31 Oct rates",
+              "source": "AER Energy Made Easy CDR feed; Summer: 1 Nov to 31 Mar rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -5982,6 +5934,13 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6321
+                },
+                {
                   "label": "Shoulder",
                   "start": "11:00",
                   "end": "15:00",
@@ -5989,22 +5948,22 @@
                   "ratePerKWh": 0.0
                 },
                 {
-                  "label": "Off Peak",
+                  "label": "Off-Peak",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
                   "ratePerKWh": 0.2523
                 },
                 {
-                  "label": "Off Peak",
-                  "start": "15:00",
+                  "label": "Off-Peak",
+                  "start": "21:00",
                   "end": "24:00",
                   "days": "all",
                   "ratePerKWh": 0.2523
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Shoulder 2: 1 Sep to 31 Oct rates",
+              "source": "AER Energy Made Easy CDR feed; Summer: 1 Nov to 31 Mar rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -6013,6 +5972,13 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6321
+                },
+                {
                   "label": "Shoulder",
                   "start": "11:00",
                   "end": "15:00",
@@ -6020,22 +5986,22 @@
                   "ratePerKWh": 0.0
                 },
                 {
-                  "label": "Off Peak",
+                  "label": "Off-Peak",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
                   "ratePerKWh": 0.2523
                 },
                 {
-                  "label": "Off Peak",
-                  "start": "15:00",
+                  "label": "Off-Peak",
+                  "start": "21:00",
                   "end": "24:00",
                   "days": "all",
                   "ratePerKWh": 0.2523
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Shoulder 2: 1 Sep to 31 Oct rates",
+              "source": "AER Energy Made Easy CDR feed; Summer: 1 Nov to 31 Mar rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -6367,108 +6333,6 @@
               "feedInTariffPerKWh": 0.03
             },
             {
-              "id": "ori1134182mre2",
-              "name": "Origin Everyday Rewards Variable Ongoing (Endeavour)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3237,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "ori1140735mre2",
-              "name": "Origin Everyday Rewards Variable Ongoing (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.4525
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3427
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "10:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3427
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3427
-                },
-                {
-                  "label": "Solar Soak",
-                  "start": "10:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1186
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "ori1157114mre2",
-              "name": "Origin Night Shift (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.08
-                },
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "24:00",
-                  "days": "all",
-                  "ratePerKWh": 0.352
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "ori1206206mre1",
-              "name": "Origin Night Shift - New and Moving Customers Only (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.08
-                },
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "24:00",
-                  "days": "all",
-                  "ratePerKWh": 0.352
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
               "id": "ori1134181mre3",
               "name": "Origin Everyday Rewards Variable Ongoing (Ausgrid)",
               "type": "flat",
@@ -6492,22 +6356,22 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2259
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.5653
                 },
                 {
                   "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
                   "ratePerKWh": 0.2259
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
+              "source": "AER Energy Made Easy CDR feed; All Usage rates",
               "feedInTariffPerKWh": 0.03
             },
             {
@@ -6657,23 +6521,125 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2404
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6014
                 },
                 {
                   "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
-                  "days": "weekend",
+                  "start": "21:00",
+                  "end": "15:00",
+                  "days": "all",
                   "ratePerKWh": 0.2404
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
+              "source": "AER Energy Made Easy CDR feed; All Usage rates",
               "feedInTariffPerKWh": 0.12
+            },
+            {
+              "id": "ori1134182mre2",
+              "name": "Origin Everyday Rewards Variable Ongoing (Endeavour)",
+              "type": "flat",
+              "flatRatePerKWh": 0.3237,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "ori1140735mre2",
+              "name": "Origin Everyday Rewards Variable Ongoing (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.447
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3427
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "10:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3427
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3427
+                },
+                {
+                  "label": "Solar Soak",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1186
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; All Usage rates",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "ori1157114mre2",
+              "name": "Origin Night Shift (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Off Peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "Peak",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.352
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
+            },
+            {
+              "id": "ori1206206mre1",
+              "name": "Origin Night Shift - New and Moving Customers Only (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Off Peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "Peak",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.352
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.03
             }
           ]
         },
@@ -6993,6 +6959,243 @@
               "feedInTariffPerKWh": 0.025
             },
             {
+              "id": "red552165mre21",
+              "name": "Living Energy Saver (Endeavour)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2955,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
+              "id": "red552234mre21",
+              "name": "Living Energy Saver (Demand) (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "13:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2826
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "22:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2742
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "13:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2742
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
+                  "end": "22:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2742
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "22:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2742
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
+              "id": "red552262mre21",
+              "name": "Living Energy Saver (TOU Seasonal) (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.4373
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2706
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2706
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
+              "id": "red552222mbe16",
+              "name": "Red Business Saver (TOU Seasonal) (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.484
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3457
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3457
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
+              "id": "red899457mre9",
+              "name": "Red Rotary D9815 Saver (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "13:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.4028
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "22:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2565
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "13:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.304
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
+                  "end": "22:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.304
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "22:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.304
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
+              "id": "red899393mre10",
+              "name": "Red Rotary D9815 Saver (Demand) (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "13:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2826
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "22:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2742
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "13:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2742
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
+                  "end": "22:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2742
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "22:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2742
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
+              "id": "red899447mre10",
+              "name": "Red Rotary D9815 Saver (TOU Seasonal) (Endeavour)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.4373
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "20:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2706
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "16:00",
+                  "end": "20:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2706
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
+              "feedInTariffPerKWh": 0.025
+            },
+            {
               "id": "red552163mre19",
               "name": "Living Energy Saver (Ausgrid)",
               "type": "flat",
@@ -7092,7 +7295,7 @@
               "feedInTariffPerKWh": 0.025
             },
             {
-              "id": "red552627mbe13",
+              "id": "red552627mbe14",
               "name": "Qantas Red Business Saver (TOU Transitional) (Ausgrid)",
               "type": "timeOfUse",
               "windows": [
@@ -7108,28 +7311,28 @@
                   "start": "22:00",
                   "end": "07:00",
                   "days": "all",
-                  "ratePerKWh": 0.3086
+                  "ratePerKWh": 0.2885
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
                   "end": "14:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.3086
+                  "ratePerKWh": 0.2834
                 },
                 {
                   "label": "Shoulder",
                   "start": "20:00",
                   "end": "22:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.3086
+                  "ratePerKWh": 0.2834
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
                   "end": "22:00",
                   "days": "weekend",
-                  "ratePerKWh": 0.3086
+                  "ratePerKWh": 0.2834
                 }
               ],
               "indicative": false,
@@ -7233,243 +7436,6 @@
               ],
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red552165mre21",
-              "name": "Living Energy Saver (Endeavour)",
-              "type": "flat",
-              "flatRatePerKWh": 0.2955,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red552234mre21",
-              "name": "Living Energy Saver (Demand) (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "13:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2826
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "22:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2742
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "07:00",
-                  "end": "13:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2742
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "20:00",
-                  "end": "22:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2742
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "07:00",
-                  "end": "22:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2742
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red552262mre21",
-              "name": "Living Energy Saver (TOU Seasonal) (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3566
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2706
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2706
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red552222mbe15",
-              "name": "Red Business Saver (TOU Seasonal) (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.451
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.363
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.363
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red899457mre9",
-              "name": "Red Rotary D9815 Saver (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "13:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.4028
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "22:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2565
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "07:00",
-                  "end": "13:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.304
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "20:00",
-                  "end": "22:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.304
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "07:00",
-                  "end": "22:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.304
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red899393mre10",
-              "name": "Red Rotary D9815 Saver (Demand) (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "13:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2826
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "22:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2742
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "07:00",
-                  "end": "13:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2742
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "20:00",
-                  "end": "22:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.2742
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "07:00",
-                  "end": "22:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2742
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.025
-            },
-            {
-              "id": "red899447mre10",
-              "name": "Red Rotary D9815 Saver (TOU Seasonal) (Endeavour)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3566
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "20:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2706
-                },
-                {
-                  "label": "Off Peak",
-                  "start": "16:00",
-                  "end": "20:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2706
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
               "feedInTariffPerKWh": 0.025
             }
           ]
@@ -7902,36 +7868,43 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.6215
+                },
+                {
+                  "label": "Summer Off Peak",
                   "start": "00:00",
                   "end": "07:00",
                   "days": "weekday",
                   "ratePerKWh": 0.2882
                 },
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Off Peak",
                   "start": "21:00",
                   "end": "24:00",
-                  "days": "weekday",
+                  "days": "all",
                   "ratePerKWh": 0.2882
                 },
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Off Peak",
                   "start": "00:00",
-                  "end": "24:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.2882
                 },
                 {
-                  "label": "Winter Shoulder",
+                  "label": "Summer Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3575
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -7949,36 +7922,43 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.7436
+                },
+                {
+                  "label": "Summer Off Peak",
                   "start": "00:00",
                   "end": "07:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3443
                 },
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Off Peak",
                   "start": "21:00",
                   "end": "24:00",
-                  "days": "weekday",
+                  "days": "all",
                   "ratePerKWh": 0.3443
                 },
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Off Peak",
                   "start": "00:00",
-                  "end": "24:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.3443
                 },
                 {
-                  "label": "Winter Shoulder",
+                  "label": "Summer Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.4268
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -7987,36 +7967,43 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.7436
+                },
+                {
+                  "label": "Summer Off Peak",
                   "start": "00:00",
                   "end": "07:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3443
                 },
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Off Peak",
                   "start": "21:00",
                   "end": "24:00",
-                  "days": "weekday",
+                  "days": "all",
                   "ratePerKWh": 0.3443
                 },
                 {
-                  "label": "Winter Off Peak",
+                  "label": "Summer Off Peak",
                   "start": "00:00",
-                  "end": "24:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.3443
                 },
                 {
-                  "label": "Winter Shoulder",
+                  "label": "Summer Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.4268
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.01
             }
           ]
@@ -8714,6 +8701,20 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.6833
+                },
+                {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.6833
+                },
+                {
                   "label": "Off Peak",
                   "start": "21:00",
                   "end": "07:00",
@@ -8722,21 +8723,21 @@
                 },
                 {
                   "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
+                  "start": "21:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.317
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3926
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 10% discount; Non Summer rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 10% discount; Summer rates",
               "feedInTariffPerKWh": 0.033
             },
             {
@@ -8745,6 +8746,20 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.451
+                },
+                {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.451
+                },
+                {
                   "label": "Off Peak",
                   "start": "21:00",
                   "end": "07:00",
@@ -8753,21 +8768,21 @@
                 },
                 {
                   "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
+                  "start": "21:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.2606
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3716
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 10% discount; Non Summer rates",
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 10% discount; Summer rates",
               "feedInTariffPerKWh": 0.033
             },
             {
@@ -8807,8 +8822,35 @@
           "name": "Engie",
           "plans": [
             {
-              "id": "eng1159268mre1",
-              "name": "SA ENGIE - Everyday Elec",
+              "id": "eng1208185mbe2",
+              "name": "SA ENGIE - Business Everyday Elec",
+              "type": "flat",
+              "flatRatePerKWh": 0.3766,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 16% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "eng1208903mre3",
+              "name": "SA ENGIE - EV Flex Charge Elec",
+              "type": "flat",
+              "flatRatePerKWh": 0.4191,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.08
+            },
+            {
+              "id": "eng1208127mre2",
+              "name": "SA ENGIE - Home Business Everyday Elec",
+              "type": "flat",
+              "flatRatePerKWh": 0.373,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "eng1208153mre2",
+              "name": "SA ENGIE -Everyday Elec",
               "type": "flat",
               "flatRatePerKWh": 0.373,
               "indicative": false,
@@ -8827,109 +8869,6 @@
             {
               "id": "eng1165813mre1",
               "name": "SA ENGIE Everyday Plus Elec",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "10:00",
-                  "days": "all",
-                  "ratePerKWh": 0.5004
-                },
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "24:00",
-                  "days": "all",
-                  "ratePerKWh": 0.5004
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2897
-                },
-                {
-                  "label": "Solar Sponge",
-                  "start": "10:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1516
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "eng1111476mre1",
-              "name": "SA _ ENGIE EV Flex Charge Elec",
-              "type": "flat",
-              "flatRatePerKWh": 0.4191,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.08
-            },
-            {
-              "id": "eng1111689mre1",
-              "name": "SA _ ENGIE Home Business Everyday Elec",
-              "type": "flat",
-              "flatRatePerKWh": 0.373,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "eng1111692mre1",
-              "name": "SA _ ENGIE Home Business Everyday Elec",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "10:00",
-                  "days": "all",
-                  "ratePerKWh": 0.5004
-                },
-                {
-                  "label": "Peak",
-                  "start": "16:00",
-                  "end": "24:00",
-                  "days": "all",
-                  "ratePerKWh": 0.5004
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2897
-                },
-                {
-                  "label": "Solar Sponge",
-                  "start": "10:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.1516
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 11% discount",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "eng1111718mbe1",
-              "name": "SA- ENGIE Business Everyday Elec",
-              "type": "flat",
-              "flatRatePerKWh": 0.3766,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; rates include the plan's guaranteed 16% discount",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "eng1159315mre1",
-              "name": "SA_ENGIE Everyday Plus Elec",
               "type": "timeOfUse",
               "windows": [
                 {
@@ -9022,7 +8961,7 @@
               "source": "AER Energy Made Easy CDR feed"
             },
             {
-              "id": "glo1202255mre1",
+              "id": "glo1215758mre1",
               "name": "FOUR4FREE Residential (Flexible Rate)-SAPN",
               "type": "timeOfUse",
               "windows": [
@@ -9031,7 +8970,7 @@
                   "start": "16:00",
                   "end": "23:00",
                   "days": "all",
-                  "ratePerKWh": 0.616
+                  "ratePerKWh": 0.5995
                 },
                 {
                   "label": "Off Peak Usage",
@@ -9045,21 +8984,21 @@
                   "start": "15:00",
                   "end": "16:00",
                   "days": "all",
-                  "ratePerKWh": 0.2915
+                  "ratePerKWh": 0.3036
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "23:00",
                   "end": "24:00",
                   "days": "all",
-                  "ratePerKWh": 0.2915
+                  "ratePerKWh": 0.3036
                 },
                 {
                   "label": "Shoulder Usage",
                   "start": "00:00",
                   "end": "11:00",
                   "days": "all",
-                  "ratePerKWh": 0.2915
+                  "ratePerKWh": 0.3036
                 }
               ],
               "indicative": false,
@@ -9274,29 +9213,36 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Off Peak",
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.451
+                },
+                {
+                  "label": "Off-Peak",
                   "start": "21:00",
                   "end": "07:00",
                   "days": "weekday",
                   "ratePerKWh": 0.23
                 },
                 {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
+                  "label": "Off-Peak",
+                  "start": "21:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.23
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3355
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -9305,29 +9251,36 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Off Peak",
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.5363
+                },
+                {
+                  "label": "Off-Peak",
                   "start": "21:00",
                   "end": "07:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3738
                 },
                 {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
+                  "label": "Off-Peak",
+                  "start": "21:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.3738
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3298
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.01
             },
             {
@@ -9345,7 +9298,7 @@
           "name": "Momentum Energy",
           "plans": [
             {
-              "id": "mom1162916mre1",
+              "id": "mom1162916mre2",
               "name": "Bill Boss Electricity",
               "type": "flat",
               "flatRatePerKWh": 0.4191,
@@ -9368,11 +9321,11 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Shoulder",
-                  "start": "07:00",
+                  "label": "Peak",
+                  "start": "17:00",
                   "end": "21:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3443
+                  "days": "all",
+                  "ratePerKWh": 0.4246
                 },
                 {
                   "label": "Off-Peak",
@@ -9383,10 +9336,17 @@
                 },
                 {
                   "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "24:00",
+                  "start": "21:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.2618
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "07:00",
+                  "end": "17:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3443
                 }
               ],
               "indicative": false,
@@ -9849,6 +9809,13 @@
               "type": "timeOfUse",
               "windows": [
                 {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.7592
+                },
+                {
                   "label": "Off Peak",
                   "start": "21:00",
                   "end": "07:00",
@@ -9858,13 +9825,13 @@
                 {
                   "label": "Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "all",
                   "ratePerKWh": 0.4362
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Time of Use Tariff Period rates",
+              "source": "AER Energy Made Easy CDR feed; All Usage rates",
               "feedInTariffPerKWh": 0.08
             },
             {
@@ -10128,29 +10095,36 @@
               "type": "timeOfUse",
               "windows": [
                 {
-                  "label": "Off Peak",
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.451
+                },
+                {
+                  "label": "Off-Peak",
                   "start": "21:00",
                   "end": "07:00",
                   "days": "weekday",
                   "ratePerKWh": 0.23
                 },
                 {
-                  "label": "Off Peak",
-                  "start": "00:00",
-                  "end": "24:00",
+                  "label": "Off-Peak",
+                  "start": "21:00",
+                  "end": "17:00",
                   "days": "weekend",
                   "ratePerKWh": 0.23
                 },
                 {
                   "label": "Shoulder",
                   "start": "07:00",
-                  "end": "21:00",
+                  "end": "17:00",
                   "days": "weekday",
                   "ratePerKWh": 0.3355
                 }
               ],
               "indicative": false,
-              "source": "AER Energy Made Easy CDR feed; Winter rates",
+              "source": "AER Energy Made Easy CDR feed; Summer rates",
               "feedInTariffPerKWh": 0.02
             },
             {
@@ -10192,15 +10166,6 @@
               "feedInTariffPerKWh": 0.02
             },
             {
-              "id": "red552769mre16",
-              "name": "Red BCNA Saver (TOUCL)",
-              "type": "flat",
-              "flatRatePerKWh": 0.4169,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.02
-            },
-            {
               "id": "red552641mre15",
               "name": "Red Wildlife Saver",
               "type": "flat",
@@ -10212,6 +10177,15 @@
             {
               "id": "red552675mre16",
               "name": "Red Wildlife Saver (TOUCL)",
+              "type": "flat",
+              "flatRatePerKWh": 0.4169,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.02
+            },
+            {
+              "id": "red552769mre17",
+              "name": "Red BCNA (TOUCL)",
               "type": "flat",
               "flatRatePerKWh": 0.4169,
               "indicative": false,
@@ -10490,51 +10464,6 @@
           "name": "ActewAGL",
           "plans": [
             {
-              "id": "act854785mre7",
-              "name": "evEnergy Saver",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3122
-                },
-                {
-                  "label": "Peak",
-                  "start": "14:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3122
-                },
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "12:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3122
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.12
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "12:00",
-                  "end": "14:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.0
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
               "id": "act486853mre13",
               "name": "Solar Saver - single rate",
               "type": "flat",
@@ -10602,51 +10531,6 @@
               "name": "Business Saver",
               "type": "flat",
               "flatRatePerKWh": 0.4077,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.03
-            },
-            {
-              "id": "act854786mre7",
-              "name": "evEnergy Saver with controlled load",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "24:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.3122
-                },
-                {
-                  "label": "Peak",
-                  "start": "14:00",
-                  "end": "24:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3122
-                },
-                {
-                  "label": "Peak",
-                  "start": "06:00",
-                  "end": "12:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.3122
-                },
-                {
-                  "label": "Off-Peak",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.12
-                },
-                {
-                  "label": "Shoulder",
-                  "start": "12:00",
-                  "end": "14:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.0
-                }
-              ],
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
               "feedInTariffPerKWh": 0.03
@@ -12022,5 +11906,292 @@
       "indicative": true,
       "source": "user edits every window"
     }
+  ],
+  "pendingReview": [
+    {
+      "identity": "act854785mre",
+      "state": "ACT",
+      "provider": "ActewAGL",
+      "name": "evEnergy Saver",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "act854786mre",
+      "state": "ACT",
+      "provider": "ActewAGL",
+      "name": "evEnergy Saver with controlled load",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "1st1122821mre",
+      "state": "NSW",
+      "provider": "1st Energy",
+      "name": "1st Opal - Single Rate (Endeavour)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "1st1122828mre",
+      "state": "NSW",
+      "provider": "1st Energy",
+      "name": "1st Opal - Single Rate (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111833mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE EV Flex Charge Elec (Ausgrid)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111835mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE EV Flex Charge Elec (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111840mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE EV Flex Charge Elec (Ausgrid)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111845mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE EV Flex Charge Elec (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112251mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Home Business Everyday Elec (Ausgrid)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112253mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Home Business Everyday Elec (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112264mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Home Business Everyday Elec (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112273mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Home Business Everyday Elec (Ausgrid)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112362mbe",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Business Everyday Elec (Ausgrid)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112373mbe",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Business Everyday Elec (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112383mbe",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Business Everyday Elec (Ausgrid)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1112388mbe",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Business Everyday Elec (Essential)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1114410mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE EV Flex Charge Elec (Endeavour)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1114578mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Home Business Everyday Elec (Endeavour)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1114585mre",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Home Business Everyday Elec (Endeavour)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1114917mbe",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Business Everyday Elec (Endeavour)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1115010mbe",
+      "state": "NSW",
+      "provider": "Engie",
+      "name": "NSW _ ENGIE Business Everyday Elec (Endeavour)",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "glo1202247mre",
+      "state": "NSW",
+      "provider": "GloBird Energy",
+      "name": "FOUR4FREE Residential (Flexible Rate)-Ausgrid",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "glo1202249mre",
+      "state": "NSW",
+      "provider": "GloBird Energy",
+      "name": "FOUR4FREE Residential (Flexible Rate)-Endeavour",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "glo1202253mre",
+      "state": "NSW",
+      "provider": "GloBird Energy",
+      "name": "FOUR4FREE Residential (Flexible Rate)-Essential",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111310mre",
+      "state": "QLD",
+      "provider": "Engie",
+      "name": "QLD _ ENGIE Movie Perks Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111496mre",
+      "state": "QLD",
+      "provider": "Engie",
+      "name": "QLD _ ENGIE EV Flex Charge Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111497mre",
+      "state": "QLD",
+      "provider": "Engie",
+      "name": "QLD _ ENGIE EV Flex Charge Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "glo1202228mre",
+      "state": "QLD",
+      "provider": "GloBird Energy",
+      "name": "SOLARPLUS Residential (Flexible Energy)-Energex",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "glo1202251mre",
+      "state": "QLD",
+      "provider": "GloBird Energy",
+      "name": "FOUR4FREE Residential (Flexible Rate)-Energex",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111476mre",
+      "state": "SA",
+      "provider": "Engie",
+      "name": "SA _ ENGIE EV Flex Charge Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111689mre",
+      "state": "SA",
+      "provider": "Engie",
+      "name": "SA _ ENGIE Home Business Everyday Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111692mre",
+      "state": "SA",
+      "provider": "Engie",
+      "name": "SA _ ENGIE Home Business Everyday Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1111718mbe",
+      "state": "SA",
+      "provider": "Engie",
+      "name": "SA- ENGIE Business Everyday Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1159268mre",
+      "state": "SA",
+      "provider": "Engie",
+      "name": "SA ENGIE - Everyday Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "eng1159315mre",
+      "state": "SA",
+      "provider": "Engie",
+      "name": "SA_ENGIE Everyday Plus Elec",
+      "since": "2026-11-02"
+    },
+    {
+      "identity": "glo1202255mre",
+      "state": "SA",
+      "provider": "GloBird Energy",
+      "name": "FOUR4FREE Residential (Flexible Rate)-SAPN",
+      "since": "2026-11-02"
+    }
+  ],
+  "complete": true,
+  "completeFor": [
+    "ACT|Energy Locals",
+    "ACT|EnergyAustralia",
+    "ACT|Origin Energy",
+    "ACT|Red Energy",
+    "NSW|AGL",
+    "NSW|ActewAGL",
+    "NSW|Alinta Energy",
+    "NSW|EnergyAustralia",
+    "NSW|Momentum Energy",
+    "NSW|OVO Energy",
+    "NSW|Origin Energy",
+    "NSW|Red Energy",
+    "QLD|1st Energy",
+    "QLD|AGL",
+    "QLD|Alinta Energy",
+    "QLD|EnergyAustralia",
+    "QLD|Momentum Energy",
+    "QLD|OVO Energy",
+    "QLD|Origin Energy",
+    "QLD|Red Energy",
+    "SA|1st Energy",
+    "SA|AGL",
+    "SA|Alinta Energy",
+    "SA|EnergyAustralia",
+    "SA|Lumo Energy",
+    "SA|Momentum Energy",
+    "SA|OVO Energy",
+    "SA|Origin Energy",
+    "SA|Red Energy",
+    "TAS|1st Energy"
   ]
 }
