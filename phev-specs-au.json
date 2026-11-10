@@ -1,6 +1,6 @@
 {
- "version": "1.31.0",
- "lastUpdated": "2026-11-03",
+ "version": "1.32.0",
+ "lastUpdated": "2026-11-10",
  "vehicles": [
   {
    "id": "A1B2C3D4-0003-0003-0003-000000000001",
@@ -785,7 +785,7 @@
    "dcChargerKW": 50.0,
    "dcPlugType": "ccs2",
    "estimatedHomeChargeHours": 2.1,
-   "evRangeKmWLTP": 122,
+   "evRangeKmWLTP": 121,
    "evRangeKmNEDC": 154,
    "combinedRangeKm": null,
    "fuelConsumptionL100kmWLTP": null,
@@ -804,10 +804,11 @@
     "RACV May 2026",
     "Zecar AU March 2026",
     "zecar Jun 2026 — 154 km NEDC / 105 km WLTP (2WD); launch late Jun 2026 confirmed in showrooms",
-    "https://www.chasingcars.com.au/reviews/midsize-suvs/toyota-rav4-phev-2026-review-australian-first-drive/"
+    "https://www.chasingcars.com.au/reviews/midsize-suvs/toyota-rav4-phev-2026-review-australian-first-drive/",
+    "https://www.toyota.com.au/discover/news/toyota-first-ever-rav4-plug-in-hybrid-to-arrive-in-dealership-in-late-june"
    ],
-   "lastVerifiedDate": "2026-10-01",
-   "notes": "95 RON. Depleted not published. 50kW DC: 10-80% in 30 min. 1500W V2L. FWD towing 800kg. Due Q3 2026. | EV range 122 km WLTP per Chasing Cars' Australian first drive (single source; Toyota AU not reachable). The 154 km NEDC came from a search snippet of Toyota's pressroom and is unverified (1 Oct 2026).",
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "95 RON. Depleted not published. 50kW DC: 10-80% in 30 min. 1500W V2L. FWD towing 800kg. Due Q3 2026. | EV range 122 km WLTP per Chasing Cars' Australian first drive (single source; Toyota AU not reachable). The 154 km NEDC came from a search snippet of Toyota's pressroom and is unverified (1 Oct 2026). | 10 Nov 2026: EV range 121 km WLTP per Toyota AU's release (search snippet; the page returns 403) and CarExpert (29 Sep 2026); was 122 from Chasing Cars.",
    "kerbMassKg": 1970
   },
   {
@@ -833,7 +834,7 @@
    "dcPlugType": "ccs2",
    "estimatedHomeChargeHours": 2.1,
    "evRangeKmWLTP": 113,
-   "evRangeKmNEDC": null,
+   "evRangeKmNEDC": 144,
    "combinedRangeKm": null,
    "fuelConsumptionL100kmWLTP": null,
    "fuelConsumptionL100kmDepleted": null,
@@ -851,10 +852,11 @@
     "RACV May 2026",
     "Man of Many Nov 2025",
     "Sweep 31 Jul 2026 — specs corroborated CarExpert + zecar; Toyota pressroom unretrievable, NEDC figure withheld",
-    "https://www.chasingcars.com.au/reviews/midsize-suvs/toyota-rav4-phev-2026-review-australian-first-drive/"
+    "https://www.chasingcars.com.au/reviews/midsize-suvs/toyota-rav4-phev-2026-review-australian-first-drive/",
+    "https://www.toyota.com.au/discover/news/toyota-first-ever-rav4-plug-in-hybrid-to-arrive-in-dealership-in-late-june"
    ],
-   "lastVerifiedDate": "2026-10-01",
-   "notes": "95 RON. Depleted not published. AWD adds rear motor. 50kW DC: 10-80% in 30 min. 1500W V2L. Due Q3 2026. | EV range 113 km WLTP for AWD and GR Sport per Chasing Cars' Australian first drive (single source; Toyota AU not reachable) (1 Oct 2026).",
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "95 RON. Depleted not published. AWD adds rear motor. 50kW DC: 10-80% in 30 min. 1500W V2L. Due Q3 2026. | EV range 113 km WLTP for AWD and GR Sport per Chasing Cars' Australian first drive (single source; Toyota AU not reachable) (1 Oct 2026). | 10 Nov 2026: 144 km NEDC added from Toyota AU's release (search snippet; the page returns 403), which also gives the 113 km WLTP already here.",
    "kerbMassKg": 2025
   },
   {
@@ -2571,8 +2573,8 @@
    "marketRegion": [
     "AU"
    ],
-   "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 18.3,
+   "batteryGrossKWh": 18.4,
+   "batteryUsableKWh": 18.4,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2599,10 +2601,11 @@
    "driveType": "fwd",
    "specSources": [
     "Chery AU official cherymotor.com.au",
-    "CarExpert AU model overview Nov 2025"
+    "CarExpert AU model overview Nov 2025",
+    "https://cherymotor.com.au/models/tiggo-7-super-hybrid"
    ],
-   "lastVerifiedDate": "2026-04-01",
-   "notes": "18.3 kWh LFP confirmed Chery AU. 51L tank — CarExpert AU confirmed (petrol Tiggo 7 tank). 90km WLTP / 93km NEDC EV range. No towing (0kg CarExpert AU). 40kW DC: 30-80% in 20 min. FWD. From $34,990 D/A. | CarExpert's MY27 review (12 Sep 2026) gives 750 kg braked towing; this MY26 row keeps the recorded 0 kg until a MY26 source confirms otherwise (1 Oct 2026).",
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "18.3 kWh LFP confirmed Chery AU. 51L tank — CarExpert AU confirmed (petrol Tiggo 7 tank). 90km WLTP / 93km NEDC EV range. No towing (0kg CarExpert AU). 40kW DC: 30-80% in 20 min. FWD. From $34,990 D/A. | CarExpert's MY27 review (12 Sep 2026) gives 750 kg braked towing; this MY26 row keeps the recorded 0 kg until a MY26 source confirms otherwise (1 Oct 2026). | 10 Nov 2026: battery 18.4 kWh (unlabelled) per Chery AU's Tiggo 7 Super Hybrid page, read 10 Nov; was 18.3 from the earlier spec sheet. No source says the pack changed.",
    "kerbMassKg": 1788
   },
   {
@@ -2785,6 +2788,52 @@
    "kerbMassKg": 1815
   },
   {
+   "id": "146C02A0-B549-46FF-8757-E431DF7F9FCD",
+   "make": "Geely",
+   "model": "Starray",
+   "variant": "EM-i Inspire AWD",
+   "modelYear": 2027,
+   "bodyType": "suv",
+   "marketRegion": [
+    "AU"
+   ],
+   "batteryGrossKWh": 29.8,
+   "batteryUsableKWh": 29.8,
+   "batteryUsableIsEstimated": true,
+   "batteryChemistry": "lfp",
+   "batteryWarrantyYears": 8,
+   "batteryWarrantyKm": 0,
+   "acChargerKW": 6.6,
+   "acChargerPhases": 1,
+   "acPlugType": "type2",
+   "dcChargerKW": 78,
+   "dcPlugType": "ccs2",
+   "estimatedHomeChargeHours": 4.5,
+   "evRangeKmWLTP": 130,
+   "evRangeKmNEDC": null,
+   "combinedRangeKm": 1065,
+   "fuelConsumptionL100kmWLTP": 1.7,
+   "fuelConsumptionL100kmDepleted": null,
+   "electricConsumptionKWh100km": 17.9,
+   "fuelTankLitres": 60,
+   "towingCapacityKg": 1050,
+   "referenceL100km": 7.0,
+   "engineCC": 1499,
+   "engineCylinders": 4,
+   "systemPowerKW": 220,
+   "systemTorqueNm": 412,
+   "driveType": "awd",
+   "specSources": [
+    "https://www.carexpert.com.au/geely/starray-em-i/inspire-awd/features-and-specs",
+    "https://www.chasingcars.com.au/news/car-industry/geely-starray-em-i-awd-outlander-and-sealion-6-gain-direct-awd-phev-suv-rival/",
+    "https://www.goauto.com.au/new-models/geely/starray/2025-09-18/97427.html",
+    "https://www.racq.com.au/articles/car-reviews/geely-starray-em-i-inspire-review"
+   ],
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "Added 10 Nov 2026 (vehicle sweep). On sale since mid-Sep 2026, $44,990 BOC (Chasing Cars, 1 Sep 2026). 29.8 kWh LFP; CarExpert's spec page labels it usable (one outlet), no gross figure found, so both fields carry it. 130 km EV range and 1,065 km total range are WLTP (Chasing Cars); 1.7 L/100km is WLTP weighted and 17.9 kWh/100km, 6.6 kW AC, 78 kW CCS DC, 60 L tank, 1,050 kg braked towing (750 unbraked), kerb 1,910 kg (tare 1,873), 1,499 cc 73 kW / 125 Nm engine, front 160 kW and rear 80 kW motors all from CarExpert's spec page alone. System 220 kW / 412 Nm (Chasing Cars). Battery warranty 8 years / unlimited km is stated for the Starray range (GoAuto, RACQ; search snippets). Reference L/100km follows the other Starray rows. AC phases follow from the 6.6 kW rating (single-phase Type 2 tops out at 7.4 kW); the maker doesn't state them.",
+   "kerbMassKg": 1910
+  },
+  {
    "id": "D4E5F6A7-0021-0021-0021-000000000001",
    "make": "GWM",
    "model": "Tank 300",
@@ -2848,8 +2897,8 @@
    "marketRegion": [
     "AU"
    ],
-   "batteryGrossKWh": 18.3,
-   "batteryUsableKWh": 18.3,
+   "batteryGrossKWh": 18.4,
+   "batteryUsableKWh": 18.4,
    "batteryUsableIsEstimated": true,
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
@@ -2878,11 +2927,106 @@
     "CarExpert AU pre-launch details — 18.32 kWh, 40kW DC, 88km WLTP",
     "Jaecoo AU official — 1200km combined",
     "Wikipedia Jaecoo J7 — 18.32 kWh FinDreams LFP, 88km WLTP",
-    "Omoda Jaecoo AU official spec sheet PDF v11 (verified 18 Jul 2026) — 18.3 kWh LFP, 60L tank, 6.6kW AC / 40kW DC, 90km WLTP / 106km NEDC"
+    "Omoda Jaecoo AU official spec sheet PDF v11 (verified 18 Jul 2026) — 18.3 kWh LFP, 60L tank, 6.6kW AC / 40kW DC, 90km WLTP / 106km NEDC",
+    "https://www.omodajaecoo.com.au/models/jaecoo-j7-shs"
    ],
-   "lastVerifiedDate": "2026-07-18",
-   "notes": "18.32 kWh LFP FinDreams (Wikipedia confirmed). 88km WLTP / 106km NEDC EV range. 40kW DC: 30-80% in 20 min. Fuel tank not published AU. 750kg towing (CarsGuide confirmed). FWD. From $44,990 D/A (inc $3,000 EOFY bonus). Shares powertrain with Chery Tiggo 7 SHS. [Sweep 18 Jul 2026: tank 60L official (PHEV differs from petrol J7 51-57L); WLTP corrected 88→90 per official sheet; gross 18.3 per sheet; sheet's '6.6W' AC is a typo for 6.6kW (charge-time maths confirms).]",
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "18.32 kWh LFP FinDreams (Wikipedia confirmed). 88km WLTP / 106km NEDC EV range. 40kW DC: 30-80% in 20 min. Fuel tank not published AU. 750kg towing (CarsGuide confirmed). FWD. From $44,990 D/A (inc $3,000 EOFY bonus). Shares powertrain with Chery Tiggo 7 SHS. [Sweep 18 Jul 2026: tank 60L official (PHEV differs from petrol J7 51-57L); WLTP corrected 88→90 per official sheet; gross 18.3 per sheet; sheet's '6.6W' AC is a typo for 6.6kW (charge-time maths confirms).] | 10 Nov 2026: battery 18.4 kWh (unlabelled) per Jaecoo AU's J7 SHS-P page, read 10 Nov; was 18.3 from the earlier spec sheet. No source says the pack changed.",
    "kerbMassKg": 1794
+  },
+  {
+   "id": "79503F07-765B-4F72-9BA7-FD477C56F655",
+   "make": "Jaecoo",
+   "model": "J7",
+   "variant": "SHS-P AWD (Summit AWD / Black Edition)",
+   "modelYear": 2027,
+   "bodyType": "suv",
+   "marketRegion": [
+    "AU"
+   ],
+   "batteryGrossKWh": 18.4,
+   "batteryUsableKWh": 18.4,
+   "batteryUsableIsEstimated": true,
+   "batteryChemistry": "lfp",
+   "batteryWarrantyYears": 8,
+   "batteryWarrantyKm": 0,
+   "acChargerKW": 6.6,
+   "acChargerPhases": 1,
+   "acPlugType": "type2",
+   "dcChargerKW": 40,
+   "dcPlugType": "ccs2",
+   "estimatedHomeChargeHours": 2.8,
+   "evRangeKmWLTP": null,
+   "evRangeKmNEDC": 80,
+   "combinedRangeKm": null,
+   "fuelConsumptionL100kmWLTP": null,
+   "fuelConsumptionL100kmDepleted": null,
+   "electricConsumptionKWh100km": null,
+   "fuelTankLitres": 60,
+   "towingCapacityKg": 0,
+   "referenceL100km": 7.0,
+   "engineCC": 1499,
+   "engineCylinders": 4,
+   "systemPowerKW": 260,
+   "systemTorqueNm": 490,
+   "driveType": "awd",
+   "specSources": [
+    "https://www.omodajaecoo.com.au/models/jaecoo-j7-shs",
+    "https://www.omodajaecoo.com.au/models/j7-black-edition",
+    "https://www.carexpert.com.au/omoda-jaecoo/jaecoo-j7/2027/summit/features-and-specs",
+    "https://www.chasingcars.com.au/news/new-car-prices/jaecoo-j7-my27-chery-refreshes-eclipse-cross-zr-v-and-karoq-rival/",
+    "https://evcentral.com.au/2027-jaecoo-j7-shs-p-gets-cheaper-and-more-powerful-new-260kw-awd-phev-flagship-joins-range-for-47990-drive-away/",
+    "https://www.carexpert.com.au/car-news/2027-jaecoo-j7-shs-p-black-edition-prices-another-month-another-black-pack"
+   ],
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "Added 10 Nov 2026 (vehicle sweep). Summit AWD on sale since Sep 2026 ($47,990 d/a); the Black Edition (Nov 2026, $49,990 d/a November offer) is styling only on the same mechanicals. 18.4 kWh unlabelled on Jaecoo AU's page (CarExpert's data still shows 18.3), so usable repeats it; LFP per Chasing Cars, EV Central and CarExpert (the maker says lithium-ion). Battery warranty 8 years / unlimited km, 6.6 kW AC and 40 kW DC from Jaecoo AU. 80 km EV range is NEDC; 1.9 L/100km is ADR 81/02, not WLTP, so the WLTP field is blank. AWD adds a 113 kW / 210 Nm rear motor to the 105 kW / 215 Nm 1.5 turbo and 150 kW / 310 Nm front motor; system 260 kW / 490 Nm (EV Central, Chasing Cars). 60 L tank, 1,499 cc, published kerb 1,960 kg (tare 1,923, the figure the 1 Oct sweep quoted) and 0 kg braked towing (750 kg unbraked, as Chery publishes for its Super Hybrids) from CarExpert's spec data. The 2026 J7 row's 750 kg braked came from CarsGuide. Reference L/100km follows the 2026 J7 row. AC phases follow from the 6.6 kW rating (single-phase Type 2 tops out at 7.4 kW); the maker doesn't state them.",
+   "kerbMassKg": 1960
+  },
+  {
+   "id": "29CE883D-529F-448C-854A-CEFF88A07746",
+   "make": "Jaecoo",
+   "model": "J7",
+   "variant": "SHS-P 2WD (Track / Summit)",
+   "modelYear": 2027,
+   "bodyType": "suv",
+   "marketRegion": [
+    "AU"
+   ],
+   "batteryGrossKWh": 18.4,
+   "batteryUsableKWh": 18.4,
+   "batteryUsableIsEstimated": true,
+   "batteryChemistry": "lfp",
+   "batteryWarrantyYears": 8,
+   "batteryWarrantyKm": 0,
+   "acChargerKW": 6.6,
+   "acChargerPhases": 1,
+   "acPlugType": "type2",
+   "dcChargerKW": 40,
+   "dcPlugType": "ccs2",
+   "estimatedHomeChargeHours": 2.8,
+   "evRangeKmWLTP": null,
+   "evRangeKmNEDC": 100,
+   "combinedRangeKm": null,
+   "fuelConsumptionL100kmWLTP": null,
+   "fuelConsumptionL100kmDepleted": null,
+   "electricConsumptionKWh100km": 15.9,
+   "fuelTankLitres": 60,
+   "towingCapacityKg": 0,
+   "referenceL100km": 7.0,
+   "engineCC": 1499,
+   "engineCylinders": 4,
+   "systemPowerKW": 205,
+   "systemTorqueNm": 365,
+   "driveType": "fwd",
+   "specSources": [
+    "https://www.omodajaecoo.com.au/models/jaecoo-j7-shs",
+    "https://www.carexpert.com.au/omoda-jaecoo/jaecoo-j7/2027/summit/features-and-specs",
+    "https://www.chasingcars.com.au/news/new-car-prices/jaecoo-j7-my27-chery-refreshes-eclipse-cross-zr-v-and-karoq-rival/",
+    "https://evcentral.com.au/2027-jaecoo-j7-shs-p-gets-cheaper-and-more-powerful-new-260kw-awd-phev-flagship-joins-range-for-47990-drive-away/"
+   ],
+   "lastVerifiedDate": "2026-11-10",
+   "notes": "Added 10 Nov 2026 (vehicle sweep). MY27 Track ($39,990 d/a, on sale Oct 2026) and Summit 2WD ($44,990 d/a, Sep 2026). Same car as the 2026 J7 row except the maker's battery figure (18.4 kWh unlabelled on Jaecoo AU's page, so usable repeats it) and price. LFP per Chasing Cars, EV Central and CarExpert. Battery warranty 8 years / unlimited km, 6.6 kW AC, 40 kW DC from Jaecoo AU. 100 km EV range is NEDC (Chasing Cars; Jaecoo says 'up to 100 km'); 1.3 L/100km and 15.9 kWh/100km are ADR 81/02, so the WLTP fuel field is blank. System 205 kW / 365 Nm (Chasing Cars, EV Central). 60 L tank, 1,499 cc, published kerb 1,832 kg for the Summit 2WD (tare 1,795) and 0 kg braked towing (750 kg unbraked) from CarExpert's spec data; the Track's mass was not found. Reference L/100km follows the 2026 J7 row. AC phases follow from the 6.6 kW rating (single-phase Type 2 tops out at 7.4 kW); the maker doesn't state them.",
+   "kerbMassKg": 1832
   },
   {
    "id": "F6A7B8C9-0020-0020-0020-000000000001",
