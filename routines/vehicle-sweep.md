@@ -36,7 +36,12 @@ in `SWEEP-PROTOCOL.md` and in the newest report in `sweeps/`.
    the open sweep branch, brought up to date with main), push, and open a
    pull request titled `Vehicle sweep <date>: <short summary>`. The PR text:
    a plain-language summary of each change with its source, what is held and
-   why, and a link to the report. Never merge it.
+   why, and a link to the report. Also list every new car that has a blank
+   (null) in any of `batteryChemistry`, the battery warranty fields,
+   `acChargerKW`, `acChargerPhases`, `acPlugType`, `estimatedHomeChargeHours`,
+   `engineCC` or `engineCylinders`: phones on build 242 and later hide such
+   cars until the developer turns on `showCarsWithBlanks`, so a merge does
+   not put them in front of owners yet. Never merge it.
 9. Always, last: from current main, make a branch
    `claude/check-log-vehicles-<YYYY-MM-DD>` that changes only the `vehicles`
    entry of `checks/last-checked.json` to

@@ -52,6 +52,10 @@ of each month, and the developer reviews its pull request.
   `quietOnKeyOff`, `fullScaleFuelPct`, `petrolFromEngine`,
   `petrolFromFuelFlow`, `fuelSenderLine`. A value present in the download
   always beats the app's own copy, so a wrong one here is worse than none.
+- A new car with a blank in a field build 242 made optional (chemistry,
+  battery warranty, AC rating, phases, plug, home-charge hours, engine cc and
+  cylinders) is hidden on phones until `showCarsWithBlanks` is on. The PR
+  lists those cars, so the developer knows what a merge actually shows.
 - Never add `showCarsWithBlanks`. The developer flips it by hand, and only
   after 1.0.2 is in the App Store, 5 Dec 2026 has passed and old TestFlight
   builds have expired: it unhides cars with blanks on every phone within a day.
