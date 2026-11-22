@@ -37,6 +37,9 @@ concurrency:
 
 jobs:
   rebuild:
+    # The job's own save is pushed with the deploy key, and unlike GitHub's
+    # token that starts workflows: skip it, or each save would start the next.
+    if: github.event_name != 'push' || github.event.head_commit.author.name != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     environment: publish
