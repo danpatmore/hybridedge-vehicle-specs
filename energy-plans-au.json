@@ -1,5 +1,5 @@
 {
-  "version": "0.20.0",
+  "version": "0.21.0",
   "asOf": "2026-11-22",
   "currency": "AUD",
   "disclaimer": "All rates are indicative starting points, not current offers. Electricity prices vary by distribution zone and change at least annually (1 July). The app must always show the user the prefilled numbers and let them correct every rate against their own bill before use.",
@@ -15450,152 +15450,6 @@
               "source": "AER Energy Made Easy CDR feed"
             },
             {
-              "id": "glo803763mr",
-              "name": "GloBird  EASYEV Residential (Flexible Rate  With CL) Citipower",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Flexible",
-                  "start": "16:00",
-                  "end": "23:00",
-                  "days": "all",
-                  "ratePerKWh": 0.605
-                },
-                {
-                  "label": "Flexible",
-                  "start": "11:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.06
-                },
-                {
-                  "label": "Flexible",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.06
-                },
-                {
-                  "label": "Flexible",
-                  "start": "06:00",
-                  "end": "11:00",
-                  "days": "all",
-                  "ratePerKWh": 0.33
-                },
-                {
-                  "label": "Flexible",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.33
-                },
-                {
-                  "label": "Flexible",
-                  "start": "23:00",
-                  "end": "00:00",
-                  "days": "all",
-                  "ratePerKWh": 0.33
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed"
-            },
-            {
-              "id": "glo803764mr",
-              "name": "GloBird  EASYEV Residential (Flexible Rate ) Citipower",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Flexible",
-                  "start": "16:00",
-                  "end": "23:00",
-                  "days": "all",
-                  "ratePerKWh": 0.605
-                },
-                {
-                  "label": "Flexible",
-                  "start": "11:00",
-                  "end": "14:00",
-                  "days": "all",
-                  "ratePerKWh": 0.06
-                },
-                {
-                  "label": "Flexible",
-                  "start": "00:00",
-                  "end": "06:00",
-                  "days": "all",
-                  "ratePerKWh": 0.06
-                },
-                {
-                  "label": "Flexible",
-                  "start": "06:00",
-                  "end": "11:00",
-                  "days": "all",
-                  "ratePerKWh": 0.33
-                },
-                {
-                  "label": "Flexible",
-                  "start": "14:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.33
-                },
-                {
-                  "label": "Flexible",
-                  "start": "23:00",
-                  "end": "00:00",
-                  "days": "all",
-                  "ratePerKWh": 0.33
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed"
-            },
-            {
-              "id": "glo812617mr",
-              "name": "GloBird  Combo FOUR4FREE Residential (Flexible Rate  With CL) Citipower",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Flexible",
-                  "start": "16:00",
-                  "end": "23:00",
-                  "days": "all",
-                  "ratePerKWh": 0.3663
-                },
-                {
-                  "label": "Flexible",
-                  "start": "11:00",
-                  "end": "15:00",
-                  "days": "all",
-                  "ratePerKWh": 0.0
-                },
-                {
-                  "label": "Flexible",
-                  "start": "15:00",
-                  "end": "16:00",
-                  "days": "all",
-                  "ratePerKWh": 0.22
-                },
-                {
-                  "label": "Flexible",
-                  "start": "23:00",
-                  "end": "00:00",
-                  "days": "all",
-                  "ratePerKWh": 0.22
-                },
-                {
-                  "label": "Flexible",
-                  "start": "00:00",
-                  "end": "11:00",
-                  "days": "all",
-                  "ratePerKWh": 0.22
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed"
-            },
-            {
               "id": "glo803761mr",
               "name": "GloBird  EASYEV Residential (Flexible Rate With CL) AusNet Services (electricity)",
               "type": "timeOfUse",
@@ -15736,6 +15590,152 @@
                   "end": "11:00",
                   "days": "all",
                   "ratePerKWh": 0.2288
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed"
+            },
+            {
+              "id": "glo803763mr",
+              "name": "GloBird  EASYEV Residential (Flexible Rate  With CL) Citipower",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Flexible",
+                  "start": "16:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.605
+                },
+                {
+                  "label": "Flexible",
+                  "start": "11:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.06
+                },
+                {
+                  "label": "Flexible",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.06
+                },
+                {
+                  "label": "Flexible",
+                  "start": "06:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Flexible",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Flexible",
+                  "start": "23:00",
+                  "end": "00:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed"
+            },
+            {
+              "id": "glo803764mr",
+              "name": "GloBird  EASYEV Residential (Flexible Rate ) Citipower",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Flexible",
+                  "start": "16:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.605
+                },
+                {
+                  "label": "Flexible",
+                  "start": "11:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.06
+                },
+                {
+                  "label": "Flexible",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.06
+                },
+                {
+                  "label": "Flexible",
+                  "start": "06:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Flexible",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Flexible",
+                  "start": "23:00",
+                  "end": "00:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed"
+            },
+            {
+              "id": "glo812617mr",
+              "name": "GloBird  Combo FOUR4FREE Residential (Flexible Rate  With CL) Citipower",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Flexible",
+                  "start": "16:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3663
+                },
+                {
+                  "label": "Flexible",
+                  "start": "11:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "Flexible",
+                  "start": "15:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.22
+                },
+                {
+                  "label": "Flexible",
+                  "start": "23:00",
+                  "end": "00:00",
+                  "days": "all",
+                  "ratePerKWh": 0.22
+                },
+                {
+                  "label": "Flexible",
+                  "start": "00:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.22
                 }
               ],
               "indicative": false,
