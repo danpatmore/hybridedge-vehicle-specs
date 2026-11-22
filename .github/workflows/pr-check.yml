@@ -48,7 +48,8 @@ jobs:
               cp "$f" "$head/$f"
             fi
           done
-          code=$(grep -vxF -f <(tr ' ' '\n' <<< "$data") "$RUNNER_TEMP/changed.txt" || true)
+          # Sweep reports (sweeps/*.md) are text a routine may add; anything else is code.
+          code=$(grep -vxF -f <(tr ' ' '\n' <<< "$data") "$RUNNER_TEMP/changed.txt" | grep -vE '^sweeps/[^/]+\.md$' || true)
           if [ -n "$code" ]; then
             if [[ "$HEAD_REF" == claude/* ]]; then
               echo "- a routine PR changes files other than data, which routines must never do: $(echo $code)" >> "$out"; status=1
