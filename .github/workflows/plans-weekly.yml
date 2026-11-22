@@ -49,6 +49,7 @@ jobs:
           python3 -I tools/check-plans.py --selftest
 
       - name: Rebuild from the feed
+        id: rebuild
         run: |
           cp energy-plans-au.json "$RUNNER_TEMP/old.json"
           # Plans the developer approved as gone (checks/confirm-delisted.json),
@@ -75,7 +76,16 @@ jobs:
           count=$(python3 -c "import json;d=json.load(open('energy-plans-au.json'));print(sum(len(p['plans']) for s in d['states'] for p in s['providers']))")
           held=$(python3 -c "import json;print(len(json.load(open('energy-plans-au.json')).get('pendingReview') or []))")
           today=$(TZ=Australia/Sydney date +%F)
-          python3 - "$today" "$version" "$count" <<'PY'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python3 -I tools/delisted.py prune energy-plans-au.json
+          mkdir -p "$RUNNER_TEMP/out"
+          cp energy-plans-au.json checks/confirm-delisted.json "$RUNNER_TEMP/out/"
+          base=$(git rev-parse HEAD)
+          for try in 1 2 3; do
+            cp "$RUNNER_TEMP/out/energy-plans-au.json" energy-plans-au.json
+            cp "$RUNNER_TEMP/out/confirm-delisted.json" checks/confirm-delisted.json
+            python3 - "$today" "$version" "$count" <<'PY'
           import json, sys
           today, version, count = sys.argv[1:]
           p = "checks/last-checked.json"
@@ -83,12 +93,21 @@ jobs:
           log["plans"] = {"date": today, "result": f"Energy plans v{version} rebuilt from the government feed ({count} plans)"}
           open(p, "w").write(json.dumps(log, indent=2, ensure_ascii=False) + "\n")
           PY
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          python3 -I tools/delisted.py prune energy-plans-au.json
-          git add energy-plans-au.json checks/last-checked.json checks/confirm-delisted.json
-          git commit -m "Energy plans v$version: weekly rebuild from the government feed ($count plans, $held held for review)"
-          git push
+            git add energy-plans-au.json checks/last-checked.json checks/confirm-delisted.json
+            git commit -q -m "Energy plans v$version: weekly rebuild from the government feed ($count plans, $held held for review)"
+            if git push origin HEAD:main; then exit 0; fi
+            # Refused: something else reached main while this ran. Start again
+            # from main's files, unless main's plans or confirmations changed:
+            # that change starts its own run, which publishes instead.
+            git fetch -q origin main
+            if ! git diff --quiet "$base" FETCH_HEAD -- energy-plans-au.json checks/confirm-delisted.json; then
+              echo "The plans on main changed while this ran, so this run's list is out of date. The run that change started publishes instead." > "$RUNNER_TEMP/refused.md"
+              exit 1
+            fi
+            git reset -q --hard FETCH_HEAD
+          done
+          echo "All checks passed, but GitHub refused the save three times. The next run tries again." > "$RUNNER_TEMP/refused.md"
+          exit 1
 
       - name: Plans to check
         if: success()
@@ -123,11 +142,16 @@ jobs:
             echo "This week's electricity plan update did not publish. Phones keep the list they have, so nothing is broken, but the plans are getting older."
             echo
             if [ -f "$RUNNER_TEMP/summary.md" ]; then cat "$RUNNER_TEMP/summary.md"; fi
-            if [ -f "$RUNNER_TEMP/fetch.log" ]; then
+            if [ -f "$RUNNER_TEMP/refused.md" ]; then echo; cat "$RUNNER_TEMP/refused.md"; fi
+            if [ "${{ steps.rebuild.outcome }}" = "failure" ] && [ -f "$RUNNER_TEMP/fetch.log" ]; then
               echo
               echo "What the script said:"
               echo '```'
-              grep -A40 -E "NOT WRITTEN|Traceback|Error" "$RUNNER_TEMP/fetch.log" | head -60 || tail -30 "$RUNNER_TEMP/fetch.log"
+              if grep -q -E "NOT WRITTEN|Traceback|Error" "$RUNNER_TEMP/fetch.log"; then
+                grep -A40 -E "NOT WRITTEN|Traceback|Error" "$RUNNER_TEMP/fetch.log" | head -60
+              else
+                tail -30 "$RUNNER_TEMP/fetch.log"
+              fi
               echo '```'
             fi
             echo
