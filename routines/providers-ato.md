@@ -86,8 +86,17 @@ is here and in the files named.
    before pushing. Commit on `claude/delisted-<YYYY-MM-DD>` (or update the
    open one), push, and open a pull request titled
    `Plans confirmed gone <date>: <count>`, listing each plan with its page.
-   Say plainly: "Once merged, HybridEdge tells owners on these plans that
-   their plan has ended." If none could be confirmed, no PR.
+   Say plainly what a merge does. HybridEdge never says a plan ended: once
+   a provider's state is certified again, an owner on a confirmed plan gets
+   one "Check your <retailer> plan" alert ("Your plan isn't in the current
+   list. Check your bill or ask your retailer before changing anything.").
+   A provider's state is certified only when NONE of its plans there is
+   still held, so confirming some but not all of a retailer's held plans in
+   a state notifies nobody yet. Work through each retailer and state as a
+   group where you can, and in the PR text list, for each retailer and
+   state, how many held plans are confirmed and how many are still held, and
+   so which ones a merge would actually certify. If none could be confirmed,
+   no PR.
 10. Always, last: from current main, make a branch
    `claude/check-log-providers-<YYYY-MM-DD>` that changes only the
    `providers` and `ato` entries of `checks/last-checked.json`, each

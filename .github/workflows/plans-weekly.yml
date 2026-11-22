@@ -101,7 +101,8 @@ jobs:
                 "the apps say nothing to owners on them. Each month the provider routine checks them on the "
                 "retailers' own sites and opens a pull request adding the ones really gone to "
                 "`checks/confirm-delisted.json`. Merging it confirms them (the plans job runs the script with "
-                "`--confirm-delisted`), and HybridEdge then tells owners on those plans that their plan has ended. "
+                "`--confirm-delisted`). Once none of a retailer's plans in a state is still held, HybridEdge sends an owner "
+                "on a confirmed plan one 'Check your <retailer> plan' alert. "
                 "Never confirm one by editing the plans file.\n")
           print("| State | Retailer | Plan | Identity | Held since |\n|---|---|---|---|---|")
           for h in sorted(held, key=lambda h: (h["since"], h["state"], h["provider"])):
