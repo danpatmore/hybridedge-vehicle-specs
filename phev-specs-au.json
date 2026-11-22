@@ -1,5 +1,5 @@
 {
- "version": "1.34.1",
+ "version": "1.34.2",
  "lastUpdated": "2026-11-22",
  "vehicles": [
   {
@@ -5984,12 +5984,12 @@
    "batteryChemistry": "lfp",
    "batteryWarrantyYears": 8,
    "batteryWarrantyKm": 0,
-   "acChargerKW": null,
-   "acChargerPhases": null,
+   "acChargerKW": 6.6,
+   "acChargerPhases": 1,
    "acPlugType": "type2",
    "dcChargerKW": null,
    "dcPlugType": "ccs2",
-   "estimatedHomeChargeHours": null,
+   "estimatedHomeChargeHours": 5.1,
    "evRangeKmWLTP": 137,
    "evRangeKmNEDC": null,
    "combinedRangeKm": 844,
@@ -6009,10 +6009,13 @@
     "https://www.gwmanz.com/au/ownership/warranty/",
     "https://evcentral.com.au/toyota-rav4-phev-undercut-gwm-haval-h7-plug-in-hybrid-medium-suv-launches-at-49990-drive-away/",
     "https://www.carexpert.com.au/car-news/2027-gwm-haval-h7-price-and-specs-boxy-new-generation-phev-hybrid-suv-reaches-showrooms",
-    "https://www.chasingcars.com.au/news/new-car-prices/haval-h7-2027-all-new-all-hybrid-medium-suv-range-priced-from-45990-driveaway/"
+    "https://www.chasingcars.com.au/news/new-car-prices/haval-h7-2027-all-new-all-hybrid-medium-suv-range-priced-from-45990-driveaway/",
+    "https://evcentral.com.au/cars/gwm/haval-h7/",
+    "https://www.carexpert.com.au/car-reviews/2027-gwm-haval-h7-review",
+    "https://www.carsales.com.au/editorial/details/gwm-haval-h7-vanta-phev-awd-2027-review-153508/"
    ],
-   "lastVerifiedDate": "2026-11-10",
-   "notes": "Added 10 Nov 2026 (vehicle sweep). Needs build 242 or later: earlier builds can't read a car with unpublished fields and leave it out of the list. Launched 2 Nov 2026: Lux $50,990 ($49,990 to 30 Nov), Vanta $53,990 d/a. 33.7 kWh unlabelled, so usable repeats it; LFP per EV Central, Chasing Cars and CarExpert's 29 Oct article (its 26 Oct article said ternary). CarExpert: GWM doesn't publish charging rates for the PHEV, so AC kW, phases, home-charge hours and the DC rate are blank; CCS2 DC, 30 to 80% in 19 min. A 6.6 kW portable cable in the box (NZ review) is the cable, not the car's charger. 137 km EV range, 844 km total, 0.9 L/100km and 24.2 kWh/100km are WLTP (EV Central, CarExpert). 55 L tank (CarExpert; the hybrid has 61 L), 1,500 kg braked towing, kerb 2,150 kg (CarExpert). 1.5 turbo four, 110 kW / 240 Nm, cc not published; front 80 kW and rear 150 kW motors (Chasing Cars); system 320 kW / 670 Nm (GWM AU). Battery warranty 8 years / unlimited km (GWM AU). Reference L/100km follows the Haval H6 rows.",
+   "lastVerifiedDate": "2026-11-22",
+   "notes": "Added 10 Nov 2026 (vehicle sweep). Needs build 242 or later: earlier builds can't read a car with unpublished fields and leave it out of the list. Launched 2 Nov 2026: Lux $50,990 ($49,990 to 30 Nov), Vanta $53,990 d/a. 33.7 kWh unlabelled, so usable repeats it; LFP per EV Central, Chasing Cars and CarExpert's 29 Oct article (its 26 Oct article said ternary). CarExpert: GWM doesn't publish charging rates for the PHEV, so AC kW, phases, home-charge hours and the DC rate are blank; CCS2 DC, 30 to 80% in 19 min. A 6.6 kW portable cable in the box (NZ review) is the cable, not the car's charger. 137 km EV range, 844 km total, 0.9 L/100km and 24.2 kWh/100km are WLTP (EV Central, CarExpert). 55 L tank (CarExpert; the hybrid has 61 L), 1,500 kg braked towing, kerb 2,150 kg (CarExpert). 1.5 turbo four, 110 kW / 240 Nm, cc not published; front 80 kW and rear 150 kW motors (Chasing Cars); system 320 kW / 670 Nm (GWM AU). Battery warranty 8 years / unlimited km (GWM AU). Reference L/100km follows the Haval H6 rows. | 22 Nov 2026 (vehicle sweep): AC charger 6.6 kW per EV Central's H7 spec page (updated 21 Nov 2026), CarExpert's review (10 Nov 2026, JATO Dynamics data, given for the whole H7 range) and carsales' Vanta PHEV review (search snippet; page returns 403). GWM AU still publishes no charging rate. Phases 1 follow from the 6.6 kW rating (single-phase Type 2 tops out at 7.4 kW). Home-charge hours 5.1 = 33.7 kWh / 6.6 kW, the file's usual working. DC rate still blank: 85 kW in CarExpert's JATO table only, and a South African review measured 75 kW peak.",
    "kerbMassKg": 2150
   },
   {
