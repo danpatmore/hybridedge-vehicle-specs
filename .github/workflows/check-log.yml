@@ -1,0 +1,42 @@
+# The Claude routines record each check on a claude/check-log-* branch that
+# changes only checks/last-checked.json (dates and short results, never a
+# figure the apps use). This checks it and merges it into main (22 Nov 2026).
+name: Routine check log
+
+on:
+  push:
+    branches: ["claude/check-log-**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: check-log
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Only the check log changed
+        run: |
+          changed=$(git diff --name-only origin/main...HEAD)
+          echo "Changed: $changed"
+          [ "$changed" = "checks/last-checked.json" ] || { echo "This branch changes more than the check log; not merged."; exit 1; }
+      - name: Merge it into main
+        run: |
+          cp checks/last-checked.json "$RUNNER_TEMP/branch.json"
+          cp tools/merge-check-log.py "$RUNNER_TEMP/merge.py"
+          git checkout -q origin/main
+          python3 -I "$RUNNER_TEMP/merge.py" checks/last-checked.json "$RUNNER_TEMP/branch.json" checks/last-checked.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then echo "Nothing new to record."; else
+            git commit -am "Check log: ${GITHUB_REF_NAME#claude/check-log-}"
+            git push origin HEAD:main
+          fi
+          git push origin --delete "$GITHUB_REF_NAME"
