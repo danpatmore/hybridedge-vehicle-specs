@@ -23,8 +23,12 @@ on:
       - tools/check-plans.py
       - .github/workflows/plans-weekly.yml
 
+# Main is locked: only a PR that passes the data check reaches it, except
+# this job, which saves with its own deploy key. The key lives in the
+# "publish" environment, which only main may use, so a workflow run from any
+# other branch never sees it. GitHub's own token here can only read.
 permissions:
-  contents: write
+  contents: read
   issues: write
 
 concurrency:
@@ -35,6 +39,7 @@ jobs:
   rebuild:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    environment: publish
     env:
       GH_TOKEN: ${{ github.token }}
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
@@ -42,6 +47,8 @@ jobs:
       HELD: "Electricity plans: plans to check on retailer sites"
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Self-tests
         run: |
@@ -70,7 +77,20 @@ jobs:
             --summary "$RUNNER_TEMP/summary.md"
 
       - name: Publish
+        env:
+          DEPLOY_KEY: ${{ secrets.PLANS_DEPLOY_KEY }}
         run: |
+          if [ -z "$DEPLOY_KEY" ]; then
+            echo "The publish environment's PLANS_DEPLOY_KEY is missing, so this run cannot save." > "$RUNNER_TEMP/refused.md"
+            exit 1
+          fi
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy
+          chmod 600 ~/.ssh/deploy
+          # GitHub's published SSH host key, so the save can only go to GitHub.
+          echo "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" > ~/.ssh/known_hosts
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          git remote set-url origin "git@github.com:$GITHUB_REPOSITORY.git"
           cat "$RUNNER_TEMP/summary.md" >> "$GITHUB_STEP_SUMMARY"
           version=$(python3 -c "import json;print(json.load(open('energy-plans-au.json'))['version'])")
           count=$(python3 -c "import json;d=json.load(open('energy-plans-au.json'));print(sum(len(p['plans']) for s in d['states'] for p in s['providers']))")
