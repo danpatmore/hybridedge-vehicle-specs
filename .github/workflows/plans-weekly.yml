@@ -17,6 +17,7 @@ on:
   push:
     branches: [main]
     paths:
+      - energy-plans-au.json        # a hand edit or a merged PR is rebuilt and checked at once
       - tools/fetch-energy-plans.py
       - tools/check-plans.py
       - .github/workflows/plans-weekly.yml
