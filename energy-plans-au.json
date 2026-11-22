@@ -1,5 +1,5 @@
 {
-  "version": "0.21.0",
+  "version": "0.22.0",
   "asOf": "2026-11-22",
   "currency": "AUD",
   "disclaimer": "All rates are indicative starting points, not current offers. Electricity prices vary by distribution zone and change at least annually (1 July). The app must always show the user the prefilled numbers and let them correct every rate against their own bill before use.",
@@ -16988,62 +16988,6 @@
               "source": "originenergy.com.au/ev-power-up, checked 8 Aug 2026: 8c/kWh for scheduled EV charging is published and VERIFIED. IMPORTANT: this is an add-on with no clock window - Origin's app schedules the charging and credits those kWh back to 8c; instant/override charging bills at your underlying plan's rates. Model your scheduled charges with this plan and everything else with your base plan. Needs a compatible EV or smart charger (Tesla, BYD, others), a smart meter, and the Origin app."
             },
             {
-              "id": "or2801088mr",
-              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate with Dedicated Circuit) (AusNet)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3102,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "or2801093mr",
-              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate) (AusNet)",
-              "type": "flat",
-              "flatRatePerKWh": 0.3102,
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
-              "id": "or2800728mr",
-              "name": "Origin Everyday Rewards Variable - Oct'26 (TOU 5 Day with Dedicated Circuit) (AusNet)",
-              "type": "timeOfUse",
-              "windows": [
-                {
-                  "label": "Peak",
-                  "start": "07:00",
-                  "end": "23:00",
-                  "days": "weekday",
-                  "ratePerKWh": 0.401
-                },
-                {
-                  "label": "Off-peak",
-                  "start": "00:00",
-                  "end": "07:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2027
-                },
-                {
-                  "label": "Off-peak",
-                  "start": "23:00",
-                  "end": "00:00",
-                  "days": "all",
-                  "ratePerKWh": 0.2027
-                },
-                {
-                  "label": "Off-peak",
-                  "start": "07:00",
-                  "end": "23:00",
-                  "days": "weekend",
-                  "ratePerKWh": 0.2027
-                }
-              ],
-              "indicative": false,
-              "source": "AER Energy Made Easy CDR feed",
-              "feedInTariffPerKWh": 0.01
-            },
-            {
               "id": "or2801087mr",
               "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate with Dedicated Circuit) (Jemena)",
               "type": "flat",
@@ -17100,26 +17044,26 @@
               "feedInTariffPerKWh": 0.01
             },
             {
-              "id": "or2801085mr",
-              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate with Dedicated Circuit) (Powercor)",
+              "id": "or2801088mr",
+              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate with Dedicated Circuit) (AusNet)",
               "type": "flat",
-              "flatRatePerKWh": 0.2737,
+              "flatRatePerKWh": 0.3102,
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
               "feedInTariffPerKWh": 0.01
             },
             {
-              "id": "or2801090mr",
-              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate) (Powercor)",
+              "id": "or2801093mr",
+              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate) (AusNet)",
               "type": "flat",
-              "flatRatePerKWh": 0.2737,
+              "flatRatePerKWh": 0.3102,
               "indicative": false,
               "source": "AER Energy Made Easy CDR feed",
               "feedInTariffPerKWh": 0.01
             },
             {
-              "id": "or2800733mr",
-              "name": "Origin Everyday Rewards Variable - Oct'26 (TOU 5 Day with Dedicated Circuit) (Powercor)",
+              "id": "or2800728mr",
+              "name": "Origin Everyday Rewards Variable - Oct'26 (TOU 5 Day with Dedicated Circuit) (AusNet)",
               "type": "timeOfUse",
               "windows": [
                 {
@@ -17127,28 +17071,28 @@
                   "start": "07:00",
                   "end": "23:00",
                   "days": "weekday",
-                  "ratePerKWh": 0.3233
+                  "ratePerKWh": 0.401
                 },
                 {
                   "label": "Off-peak",
                   "start": "00:00",
                   "end": "07:00",
                   "days": "all",
-                  "ratePerKWh": 0.2045
+                  "ratePerKWh": 0.2027
                 },
                 {
                   "label": "Off-peak",
                   "start": "23:00",
                   "end": "00:00",
                   "days": "all",
-                  "ratePerKWh": 0.2045
+                  "ratePerKWh": 0.2027
                 },
                 {
                   "label": "Off-peak",
                   "start": "07:00",
                   "end": "23:00",
                   "days": "weekend",
-                  "ratePerKWh": 0.2045
+                  "ratePerKWh": 0.2027
                 }
               ],
               "indicative": false,
@@ -17261,6 +17205,62 @@
                   "end": "23:00",
                   "days": "weekend",
                   "ratePerKWh": 0.1789
+                }
+              ],
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "or2801085mr",
+              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate with Dedicated Circuit) (Powercor)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2737,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "or2801090mr",
+              "name": "Origin Everyday Rewards Variable - Oct'26 (Single Rate) (Powercor)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2737,
+              "indicative": false,
+              "source": "AER Energy Made Easy CDR feed",
+              "feedInTariffPerKWh": 0.01
+            },
+            {
+              "id": "or2800733mr",
+              "name": "Origin Everyday Rewards Variable - Oct'26 (TOU 5 Day with Dedicated Circuit) (Powercor)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak",
+                  "start": "07:00",
+                  "end": "23:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3233
+                },
+                {
+                  "label": "Off-peak",
+                  "start": "00:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2045
+                },
+                {
+                  "label": "Off-peak",
+                  "start": "23:00",
+                  "end": "00:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2045
+                },
+                {
+                  "label": "Off-peak",
+                  "start": "07:00",
+                  "end": "23:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2045
                 }
               ],
               "indicative": false,
