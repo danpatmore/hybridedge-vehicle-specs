@@ -3,7 +3,7 @@
 check-pr.py: the automatic check on every pull request that changes a data
 file (22 Nov 2026). It backs up the developer's review; it does not replace it.
 
-Usage: python3 tools/check-pr.py BASE_DIR HEAD_DIR [--summary FILE]
+Usage: python3 tools/check-pr.py BASE_DIR HEAD_DIR [--summary FILE] [--allow-tester-log]
        python3 tools/check-pr.py --selftest
 BASE_DIR holds main's data files, HEAD_DIR the pull request's (same layout,
 checks/ included). The gate workflow (.github/workflows/pr-check.yml) runs
@@ -15,8 +15,11 @@ whatever is merged reaches every phone within a day):
   - valid JSON, with version and lastUpdated as strings
   - car ids unique; no id on main changed or removed
   - the keys that come from tester logs match main exactly (compared with
-    main, not a fixed list, because those keys are still pushed straight to
-    main by hand)
+    main, not a fixed list, because those keys change on tester evidence).
+    --allow-tester-log lets them change: the gate passes it only for a
+    branch in this repo that is not a routine's (claude/*), which is how the
+    HybridEdge session sends tester-log updates now main is locked. The
+    summary still lists every such change for the developer's review.
   - no showCarsWithBlanks anywhere
   - version higher than main's when any car changed
 energy-plans-au.json: the apps can still read it, and every per-kWh rate is
@@ -67,7 +70,7 @@ def has_key(obj, key):
     return False
 
 
-def check_specs(base, head):
+def check_specs(base, head, allow_tester_log=False, notes=None):
     p = []
     for k in ("version", "lastUpdated"):
         if not isinstance(head.get(k), str):
@@ -93,12 +96,17 @@ def check_specs(base, head):
                 continue
             for k in TESTER_LOG_KEYS:
                 if (k in oc, oc.get(k)) != (k in nc, nc.get(k)):
-                    p.append(f"car list: {oc.get('make')} {oc.get('model')} {oc.get('variant') or ''} ({i}): "
-                             f"'{k}' differs from main (tester-log keys are never changed in a sweep)")
+                    car = f"{oc.get('make')} {oc.get('model')} {oc.get('variant') or ''} ({i})"
+                    if allow_tester_log:
+                        notes.append(f"car list: {car}: tester-log key '{k}' changed; check it matches the tester's log")
+                    else:
+                        p.append(f"car list: {car}: '{k}' differs from main (tester-log keys are never changed in a sweep)")
         for i, nc in new.items():
             if i not in old:
                 added = [k for k in TESTER_LOG_KEYS if k in nc]
-                if added:
+                if added and allow_tester_log:
+                    notes.append(f"car list: new car {i} carries tester-log keys {added}; check they match the tester's log")
+                elif added:
                     p.append(f"car list: new car {i} carries tester-log keys {added}")
         if base.get("vehicles") != cars:
             try:
@@ -153,9 +161,10 @@ def check_confirmations(head, base_dir):
     return [f"confirmations: {x}" for x in tool.problems(head, tool.held(plans))]
 
 
-def check_dirs(base_dir, head_dir):
-    """(problems, files checked)."""
+def check_dirs(base_dir, head_dir, allow_tester_log=False, notes=None):
+    """(problems, files checked). Allowed tester-log changes go in notes."""
     problems, checked = [], []
+    notes = [] if notes is None else notes
     for name in DATA_FILES:
         base, bp = read(base_dir / name)
         head, hp = read(head_dir / name)
@@ -166,7 +175,7 @@ def check_dirs(base_dir, head_dir):
             continue
         checked.append(name)
         if name == "phev-specs-au.json":
-            problems += check_specs(base, head)
+            problems += check_specs(base, head, allow_tester_log, notes)
         elif name == "energy-plans-au.json":
             problems += check_plans(head)
         elif name == "lease-rules-au.json":
@@ -185,11 +194,17 @@ def main():
         i = args.index("--summary")
         summary = args[i + 1]
         del args[i:i + 2]
+    allow = "--allow-tester-log" in args
+    if allow:
+        args.remove("--allow-tester-log")
     base_dir, head_dir = Path(args[0]), Path(args[1])
-    problems, checked = check_dirs(base_dir, head_dir)
+    notes = []
+    problems, checked = check_dirs(base_dir, head_dir, allow, notes)
     text = (f"Checked: {', '.join(checked) or 'no data file changed'}.\n\n"
             + ("**Problems:**\n" + "\n".join(f"- {x}" for x in problems) if problems else "All checks passed.")
             + "\n")
+    if notes:
+        text += "\n**Tester-log changes to review:**\n" + "\n".join(f"- {x}" for x in notes) + "\n"
     print(text)
     if summary:
         Path(summary).write_text(text)
@@ -214,15 +229,17 @@ def selftest():
     log = json.load(open(base / "checks/last-checked.json"))
     results = []
 
-    def case(label, expect_fail, must=None, files=None, raw=None):
+    def case(label, expect_fail, must=None, files=None, raw=None, allow=False, note=None):
         d = tmp / f"case{len(results)}"
         shutil.copytree(base, d)
         for name, obj in (files or {}).items():
             (d / name).write_text(json.dumps(obj, indent=1))
         for name, text in (raw or {}).items():
             (d / name).write_text(text)
-        p, _ = check_dirs(base, d)
+        notes = []
+        p, _ = check_dirs(base, d, allow, notes)
         ok = bool(p) == expect_fail and (must is None or must.lower() in " ".join(p).lower())
+        ok = ok and (note is None or note.lower() in " ".join(notes).lower())
         results.append((ok, label, p[:1]))
 
     def cars(edit, bump=True):
@@ -242,6 +259,15 @@ def selftest():
          cars(lambda s: next(v for v in s["vehicles"] if v.get("packSoC")).update(packSoC={"changed": True})))
     case("a new car carrying tester-log keys", True, "tester-log",
          cars(lambda s: s["vehicles"].append(dict(copy.deepcopy(next(v for v in s["vehicles"] if v.get("packSoC"))), id="NEW-ID-1"))))
+    case("a tester-log key changed in a developer PR", False, None,
+         cars(lambda s: next(v for v in s["vehicles"] if v.get("packSoC")).update(packSoC={"changed": True})),
+         allow=True, note="packSoC")
+    case("a new car carrying tester-log keys in a developer PR", False, None,
+         cars(lambda s: s["vehicles"].append(dict(copy.deepcopy(next(v for v in s["vehicles"] if v.get("packSoC"))), id="NEW-ID-1"))),
+         allow=True, note="NEW-ID-1")
+    case("a car removed in a developer PR", True, "removed", cars(lambda s: s["vehicles"].pop(0)), allow=True)
+    case("showCarsWithBlanks in a developer PR", True, "showCarsWithBlanks",
+         cars(lambda s: s.update(showCarsWithBlanks=True)), allow=True)
     case("showCarsWithBlanks added", True, "showCarsWithBlanks", cars(lambda s: s.update(showCarsWithBlanks=True)))
     case("a car changed, version not bumped", True, "version",
          cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x"), bump=False))

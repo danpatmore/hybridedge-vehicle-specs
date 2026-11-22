@@ -30,6 +30,7 @@ jobs:
           PR: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           set -uo pipefail
           base="$RUNNER_TEMP/base"; head="$RUNNER_TEMP/head"; out="$RUNNER_TEMP/pr.md"
@@ -57,7 +58,11 @@ jobs:
               echo "- also changes code or docs, not checked here; review them as code: $(echo $code)" >> "$out"
             fi
           fi
-          python3 -I tools/check-pr.py "$base" "$head" --summary "$RUNNER_TEMP/data.md" || status=1
+          # Tester-log keys may change only on a developer branch in this repo
+          # (the HybridEdge session's), never a routine's or a fork's.
+          allow=()
+          if [ "$HEAD_REPO" = "$REPO" ] && [[ "$HEAD_REF" != claude/* ]]; then allow=(--allow-tester-log); fi
+          python3 -I tools/check-pr.py "$base" "$head" --summary "$RUNNER_TEMP/data.md" "${allow[@]}" || status=1
           cat "$RUNNER_TEMP/data.md" >> "$out"
           cat "$out" >> "$GITHUB_STEP_SUMMARY"
           cat "$out"
