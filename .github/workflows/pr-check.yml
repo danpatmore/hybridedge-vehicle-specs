@@ -1,53 +1,63 @@
-# Runs on every pull request that changes a data file (22 Nov 2026). It backs
-# up the developer's review of routine PRs; it never merges anything.
+# The gate on every pull request (22 Nov 2026, reworked after Codex round 157).
+# It runs from main (pull_request_target), so a PR cannot change the check
+# that certifies it: main's validators run on the PR's data files, which are
+# copied out as plain text. Nothing from the PR is ever run, and the token is
+# read-only. It backs up the developer's review; it never merges anything.
 name: Data PR check
 
 on:
-  pull_request:
-    paths:
-      - phev-specs-au.json
-      - energy-plans-au.json
-      - lease-rules-au.json
-      - checks/confirm-delisted.json
+  pull_request_target:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
-  pull-requests: write
+  pull-requests: read
 
 jobs:
-  check:
+  data-pr-check:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Compare with main
-        run: |
-          set +e
-          mkdir -p "$RUNNER_TEMP/base"
-          for f in phev-specs-au.json energy-plans-au.json lease-rules-au.json; do
-            git show "origin/${{ github.base_ref }}:$f" > "$RUNNER_TEMP/base/$f" 2>/dev/null || rm -f "$RUNNER_TEMP/base/$f"
-          done
-          python3 -I tools/check-pr.py "$RUNNER_TEMP/base" . --summary "$RUNNER_TEMP/pr.md"; status=$?
-          if ! git diff --quiet "origin/${{ github.base_ref }}" -- checks/confirm-delisted.json; then
-            python3 -I tools/delisted.py check "$RUNNER_TEMP/base/energy-plans-au.json" | tee -a "$RUNNER_TEMP/pr.md" || status=1
-          fi
-          cat "$RUNNER_TEMP/pr.md" >> "$GITHUB_STEP_SUMMARY"
-          echo "$status" > "$RUNNER_TEMP/status"
-          exit $status
-      # Routine PRs are opened under the developer's own account, and GitHub
-      # never notifies you of your own actions. A comment from the bot does,
-      # so the GitHub app pings the developer's phone.
-      - name: Ping the developer about a new routine PR
-        if: always() && github.event.action == 'opened' && startsWith(github.head_ref, 'claude/')
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Check the PR's data with main's tools
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: |
-          if [ "$(cat "$RUNNER_TEMP/status" 2>/dev/null)" = "0" ]; then
-            verdict="The automatic check passed."
-          else
-            verdict="The automatic check found problems (see Checks)."
+          set -uo pipefail
+          base="$RUNNER_TEMP/base"; head="$RUNNER_TEMP/head"; out="$RUNNER_TEMP/pr.md"
+          mkdir -p "$base/checks" "$head/checks"
+          : > "$out"
+          status=0
+          gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[].filename' > "$RUNNER_TEMP/changed.txt" || exit 1
+          data="phev-specs-au.json energy-plans-au.json lease-rules-au.json checks/last-checked.json checks/confirm-delisted.json"
+          for f in $data; do
+            [ -f "$f" ] && cp "$f" "$base/$f"
+            if grep -qxF "$f" "$RUNNER_TEMP/changed.txt"; then
+              if ! gh api "repos/$REPO/contents/$f?ref=$HEAD_SHA" -H "Accept: application/vnd.github.raw" > "$head/$f"; then
+                echo "- $f is deleted or unreadable in this PR" >> "$out"; status=1
+              fi
+            elif [ -f "$f" ]; then
+              cp "$f" "$head/$f"
+            fi
+          done
+          code=$(grep -vxF -f <(tr ' ' '\n' <<< "$data") "$RUNNER_TEMP/changed.txt" || true)
+          if [ -n "$code" ]; then
+            if [[ "$HEAD_REF" == claude/* ]]; then
+              echo "- a routine PR changes files other than data, which routines must never do: $(echo $code)" >> "$out"; status=1
+            else
+              echo "- also changes code or docs, not checked here; review them as code: $(echo $code)" >> "$out"
+            fi
           fi
-          gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" \
-            --body "New data change from a scheduled routine, ready for your review. $verdict Nothing reaches phones until you merge it."
+          python3 -I tools/check-pr.py "$base" "$head" --summary "$RUNNER_TEMP/data.md" || status=1
+          cat "$RUNNER_TEMP/data.md" >> "$out"
+          cat "$out" >> "$GITHUB_STEP_SUMMARY"
+          cat "$out"
+          exit $status

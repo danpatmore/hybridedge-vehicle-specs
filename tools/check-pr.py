@@ -4,7 +4,11 @@ check-pr.py: the automatic check on every pull request that changes a data
 file (22 Nov 2026). It backs up the developer's review; it does not replace it.
 
 Usage: python3 tools/check-pr.py BASE_DIR HEAD_DIR [--summary FILE]
-BASE_DIR holds main's files, HEAD_DIR the pull request's.
+       python3 tools/check-pr.py --selftest
+BASE_DIR holds main's data files, HEAD_DIR the pull request's (same layout,
+checks/ included). The gate workflow (.github/workflows/pr-check.yml) runs
+main's copy of this file on data copied out of the PR, never the PR's code
+(Codex round 157).
 
 phev-specs-au.json (HybridEdge has no version check on the car list, so
 whatever is merged reaches every phone within a day):
@@ -19,6 +23,9 @@ energy-plans-au.json: the apps can still read it, and every per-kWh rate is
   between 0c and $1.50.
 lease-rules-au.json: valid JSON, version and asOf strings, provider ids
   unique, and every provider with a rule has a source or says why not.
+checks/last-checked.json: only dated, short results (tools/merge-check-log.py).
+checks/confirm-delisted.json: every entry well formed and held on main
+  (tools/delisted.py).
 """
 
 import importlib.util
@@ -129,17 +136,27 @@ def check_rules(head):
     return p
 
 
-def main():
-    args = sys.argv[1:]
-    summary = None
-    if "--summary" in args:
-        i = args.index("--summary")
-        summary = args[i + 1]
-        del args[i:i + 2]
-    base_dir, head_dir = Path(args[0]), Path(args[1])
+DATA_FILES = ("phev-specs-au.json", "energy-plans-au.json", "lease-rules-au.json",
+              "checks/last-checked.json", "checks/confirm-delisted.json")
+
+
+def check_log(base, head):
+    _, p = _load_tool("merge-check-log").merge(base or {}, head)
+    return [f"check log: {x}" for x in p]
+
+
+def check_confirmations(head, base_dir):
+    plans = base_dir / "energy-plans-au.json"
+    if not plans.exists():
+        return ["confirmations: main has no plans file to check them against"]
+    tool = _load_tool("delisted")
+    return [f"confirmations: {x}" for x in tool.problems(head, tool.held(plans))]
+
+
+def check_dirs(base_dir, head_dir):
+    """(problems, files checked)."""
     problems, checked = [], []
-    for name, fn in (("phev-specs-au.json", "specs"), ("energy-plans-au.json", "plans"),
-                     ("lease-rules-au.json", "rules")):
+    for name in DATA_FILES:
         base, bp = read(base_dir / name)
         head, hp = read(head_dir / name)
         if hp:
@@ -148,12 +165,28 @@ def main():
         if head is None or head == base:
             continue
         checked.append(name)
-        if fn == "specs":
+        if name == "phev-specs-au.json":
             problems += check_specs(base, head)
-        elif fn == "plans":
+        elif name == "energy-plans-au.json":
             problems += check_plans(head)
-        else:
+        elif name == "lease-rules-au.json":
             problems += check_rules(head)
+        elif name == "checks/last-checked.json":
+            problems += check_log(base, head)
+        else:
+            problems += check_confirmations(head, base_dir)
+    return problems, checked
+
+
+def main():
+    args = sys.argv[1:]
+    summary = None
+    if "--summary" in args:
+        i = args.index("--summary")
+        summary = args[i + 1]
+        del args[i:i + 2]
+    base_dir, head_dir = Path(args[0]), Path(args[1])
+    problems, checked = check_dirs(base_dir, head_dir)
     text = (f"Checked: {', '.join(checked) or 'no data file changed'}.\n\n"
             + ("**Problems:**\n" + "\n".join(f"- {x}" for x in problems) if problems else "All checks passed.")
             + "\n")
@@ -163,5 +196,93 @@ def main():
     raise SystemExit(1 if problems else 0)
 
 
+def selftest():
+    """The gate's own cases (Codex round 157's outside runner, made part of the
+    repo), each run against a changed copy of this repo's current data."""
+    import copy
+    import shutil
+    import tempfile
+    root = Path(__file__).resolve().parent.parent
+    tmp = Path(tempfile.mkdtemp())
+    base = tmp / "base"
+    for name in DATA_FILES:
+        if (root / name).exists():
+            (base / name).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(root / name, base / name)
+    specs = json.load(open(base / "phev-specs-au.json"))
+    plans = json.load(open(base / "energy-plans-au.json"))
+    log = json.load(open(base / "checks/last-checked.json"))
+    results = []
+
+    def case(label, expect_fail, must=None, files=None, raw=None):
+        d = tmp / f"case{len(results)}"
+        shutil.copytree(base, d)
+        for name, obj in (files or {}).items():
+            (d / name).write_text(json.dumps(obj, indent=1))
+        for name, text in (raw or {}).items():
+            (d / name).write_text(text)
+        p, _ = check_dirs(base, d)
+        ok = bool(p) == expect_fail and (must is None or must.lower() in " ".join(p).lower())
+        results.append((ok, label, p[:1]))
+
+    def cars(edit, bump=True):
+        s = copy.deepcopy(specs)
+        edit(s)
+        if bump:
+            s["version"] = "999.0.0"
+        return {"phev-specs-au.json": s}
+
+    case("nothing changed", False)
+    case("a car removed", True, "removed", cars(lambda s: s["vehicles"].pop(0)))
+    case("a car id changed", True, "removed", cars(lambda s: s["vehicles"][5].update(id="00000000-0000-0000-0000-000000000000")))
+    case("a duplicate id", True, "duplicate", cars(lambda s: s["vehicles"].append(copy.deepcopy(s["vehicles"][3]))))
+    case("a tester-log key removed", True, "petrolFromFuelFlow",
+         cars(lambda s: [v.pop("petrolFromFuelFlow", None) for v in s["vehicles"]]))
+    case("a tester-log key changed", True, "packSoC",
+         cars(lambda s: next(v for v in s["vehicles"] if v.get("packSoC")).update(packSoC={"changed": True})))
+    case("a new car carrying tester-log keys", True, "tester-log",
+         cars(lambda s: s["vehicles"].append(dict(copy.deepcopy(next(v for v in s["vehicles"] if v.get("packSoC"))), id="NEW-ID-1"))))
+    case("showCarsWithBlanks added", True, "showCarsWithBlanks", cars(lambda s: s.update(showCarsWithBlanks=True)))
+    case("a car changed, version not bumped", True, "version",
+         cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x"), bump=False))
+    case("a car note changed, version bumped", False, None,
+         cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x")))
+    case("lastUpdated dropped", True, "lastUpdated", cars(lambda s: s.pop("lastUpdated")))
+    case("invalid JSON", True, "json", raw={"phev-specs-au.json": "{ not json"})
+    p2 = copy.deepcopy(plans)
+    p2["states"][0]["providers"][0]["plans"][0]["flatRatePerKWh"] = 2.5
+    case("a plan rate of $2.50", True, "outside", {"energy-plans-au.json": p2})
+    p3 = copy.deepcopy(plans)
+    p3.pop("states")
+    case("a plans file the apps cannot read", True, "could not read", {"energy-plans-au.json": p3})
+    l1 = copy.deepcopy(log)
+    l1["vehicles"] = {"date": str(__import__("datetime").date.today()), "result": "no changes"}
+    case("a check log with a dated result", False, None, {"checks/last-checked.json": l1})
+    l2 = copy.deepcopy(log)
+    l2["vehicles"] = {"date": "2026-11-22", "result": "x", "version": "9.9.9"}
+    case("a check log entry carrying a figure", True, "vehicles", {"checks/last-checked.json": l2})
+    l3 = copy.deepcopy(log)
+    l3["kerbMassKg"] = 1
+    case("a check log with an unexpected key", True, "unexpected", {"checks/last-checked.json": l3})
+    held = plans.get("pendingReview") or []
+    if held:
+        k = f"{held[0]['state']}|{held[0]['provider']}|{held[0]['identity']}"
+        good = {"key": k, "checked": "2026-11-22", "page": "https://example.com/plan", "finding": "not offered"}
+        case("a confirmation of a held plan", False, None, {"checks/confirm-delisted.json": {"plans": [good]}})
+        case("a confirmation of a plan main does not hold", True, "not held",
+             {"checks/confirm-delisted.json": {"plans": [dict(good, key="NSW|Nobody|xyz123abc")]}})
+        case("a confirmation with no https page", True, "https",
+             {"checks/confirm-delisted.json": {"plans": [dict(good, page="http://x")]}})
+    shutil.rmtree(tmp, ignore_errors=True)
+    bad = [r for r in results if not r[0]]
+    for ok, label, p in results:
+        print(f"{'PASS' if ok else 'FAIL'}  {label}" + (f"  [{p[0]}]" if p else ""))
+    assert not bad, f"{len(bad)} case(s) failed"
+    print(f"check-pr selftest ok ({len(results)} cases)")
+
+
 if __name__ == "__main__":
-    main()
+    if "--selftest" in sys.argv:
+        selftest()
+    else:
+        main()
