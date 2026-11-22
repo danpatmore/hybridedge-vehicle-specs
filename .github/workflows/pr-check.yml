@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   check:
@@ -33,4 +34,20 @@ jobs:
             python3 -I tools/delisted.py check "$RUNNER_TEMP/base/energy-plans-au.json" | tee -a "$RUNNER_TEMP/pr.md" || status=1
           fi
           cat "$RUNNER_TEMP/pr.md" >> "$GITHUB_STEP_SUMMARY"
+          echo "$status" > "$RUNNER_TEMP/status"
           exit $status
+      # Routine PRs are opened under the developer's own account, and GitHub
+      # never notifies you of your own actions. A comment from the bot does,
+      # so the GitHub app pings the developer's phone.
+      - name: Ping the developer about a new routine PR
+        if: always() && github.event.action == 'opened' && startsWith(github.head_ref, 'claude/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(cat "$RUNNER_TEMP/status" 2>/dev/null)" = "0" ]; then
+            verdict="The automatic check passed."
+          else
+            verdict="The automatic check found problems (see Checks)."
+          fi
+          gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" \
+            --body "New data change from a scheduled routine, ready for your review. $verdict Nothing reaches phones until you merge it."
