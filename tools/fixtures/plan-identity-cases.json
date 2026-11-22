@@ -1,0 +1,19 @@
+{
+  "note": "One identity rule for a plan, read by the plan tool's --selftest (Tools/fetch-energy-plans.py base_id) and the app's tests (EnergyPlanWatch.planIdentity). Codex round 108, P1.",
+  "cases": [
+    {"id": "ENE745432MRE23@EME", "identity": "ene745432mre"},
+    {"id": "ene745432mre23", "identity": "ene745432mre"},
+    {"id": "ene745432mre24", "identity": "ene745432mre"},
+    {"id": "ENE745432MRE", "identity": "ene745432mre"},
+    {"id": "1st1161464mre1", "identity": "1st1161464mre"},
+    {"id": "1ST1161464MRE2@EME", "identity": "1st1161464mre"},
+    {"id": "1st1161153mbe2", "identity": "1st1161153mbe"},
+    {"id": "1ST1161153MBE10", "identity": "1st1161153mbe"},
+    {"id": "AGL1234567MR@EME", "identity": "agl1234567mr"},
+    {"id": "agl123456", "identity": "agl123456"},
+    {"id": "123456", "identity": "123456"},
+    {"id": "ea-ev-night-boost", "identity": "ea-ev-night-boost"},
+    {"id": "Ergon-T11", "identity": "ergon-t11"},
+    {"id": "aurora-t93-2", "identity": "aurora-t93-2"}
+  ]
+}

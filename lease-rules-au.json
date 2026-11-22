@@ -1,0 +1,312 @@
+{
+  "version": "1.0.0",
+  "asOf": "2026-11-04",
+  "note": "Novated lease provider rules for home charging claims, as ChargeBack ships them (LeaseProvider.swift). Not downloaded by ChargeBack yet: an approved change here still needs an app update until the app reads this file. Every rule needs a source on the provider's own pages or forms.",
+  "providers": [
+    {
+      "id": "smartsalary",
+      "title": "Smartsalary / Smart Leasing",
+      "offersActualCost": true,
+      "paysPHEVHomeCharging": null,
+      "needsDedicatedMeter": true,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Smartsalary's EV Homecharging Expense Claim Form, with opening and closing odometer readings and dates",
+          "Lodge it in your Smart account or the Smart Salary Packaging app"
+        ],
+        "actualCost": [
+          "Charging data from a dedicated meter or your home charger",
+          "Smartsalary doesn't accept a household meter on its own"
+        ]
+      },
+      "notes": "Per-km 5.47c (guide 4 Aug 2026), for fully electric cars. Actual cost needs a dedicated meter; household meter cannot be used. PHEV claim process not stated.",
+      "sources": [
+        "https://www.smart.com.au/news-and-reviews/ev-charging-claims-guide/",
+        "https://www.smart.com.au/novated-leasing/electric-vehicles-ev/ev-charging/",
+        "https://account.smartsalary.com.au/sites/default/files/document_repo/Form%20-%20EV%20Homecharging%20Expense%20Claim%20-%20Smartsalary.pdf"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "maxxia",
+      "title": "Maxxia / RemServ / Oly",
+      "offersActualCost": true,
+      "paysPHEVHomeCharging": true,
+      "needsDedicatedMeter": true,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Maxxia's Electric Vehicle Home Charging Rate form, with your odometer at 1 April and now, sent by email or post",
+          "Keep an odometer logbook, and one electricity bill if they ask"
+        ],
+        "actualCost": [
+          "Metering from your home charger or a separate smart meter",
+          "An electricity bill showing your cost per kWh, uploaded under EV charging"
+        ]
+      },
+      "notes": "Shortcut 4.2c to 31 Mar 2026, 5.47c from 1 Apr 2026, pure EVs only. Eligible PHEVs can use the invoice (actual cost) method. One method per FBT year.",
+      "sources": [
+        "https://www.maxxia.com.au/news/novated-leasing/nitty-gritty-ev-charging-claims-novated-lease",
+        "https://www.remserv.com.au/news/novated-leasing/nitty-gritty-ev-charging-claims-novated-lease",
+        "https://www.maxxia.com.au/news/novated-leasing/claiming-ev-charging-novated-lease-you-have-choice",
+        "https://www.maxxia.com.au/faq/electric-vehicle/can-i-package-electricity-used-charge-vehicle",
+        "https://www.maxxia.com.au/fbt-year-end/faq",
+        "https://doc.maxxia.com.au/Document/Maxxia/MAXMKG_EVChargingShortcutClaimForm.pdf",
+        "https://www.oly.com.au/info-and-news/electric-car/ev-peasy-with-oly-the-ins-and-outs-of-ev-charging-claims"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "paywise",
+      "title": "Paywise",
+      "offersActualCost": true,
+      "paysPHEVHomeCharging": true,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Odometer photos at the start and end of the period"
+        ],
+        "actualCost": [
+          "Your charging records and your electricity bill"
+        ]
+      },
+      "notes": "Per-km 5.47c from 1 Apr 2026 (4.2c before), not for PHEVs. Actual cost from app or meter records plus a bill; PHEVs claim actual cost. Same method all FBT year.",
+      "sources": [
+        "https://www.paywise.com.au/ev/",
+        "https://www.paywise.com.au/faqs/"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "easi",
+      "title": "Easi",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": true,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Easi's EV Charge Claim form with a photo of your odometer",
+          "Easi asks for claims each quarter"
+        ],
+        "actualCost": [
+          "Easi's EV Charge Claim form with a photo of your odometer",
+          "Easi asks for claims each quarter"
+        ]
+      },
+      "notes": "Per-km only (support page 5.47c; the claim form still says $0.0420). PHEVs claimable per km.",
+      "sources": [
+        "https://support.easifleet.com.au/ev-phev-charging",
+        "https://support.easifleet.com.au/reimbursement-of-vehicle-expenses",
+        "https://support.easifleet.com.au/hubfs/EV%20Charging%20form.pdf"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "orix",
+      "title": "ORIX",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": null,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Your odometer reading in ORIX's online declaration each quarter (March, June, September and December)"
+        ],
+        "actualCost": [
+          "Your odometer reading in ORIX's online declaration each quarter (March, June, September and December)"
+        ]
+      },
+      "notes": "Home charging per km only, 5.47c. 'By Receipt' covers public charging only. PHEV not stated. Method changes only at 1 April.",
+      "sources": [
+        "https://www.orix.com.au/electric-vehicle-charging-options/"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "sgFleet",
+      "title": "SG Fleet / LeasePlan",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": null,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Opening and closing odometer readings (declaration)",
+          "A copy of your electricity bill, in your name at your home address",
+          "Add a Budgeted Electricity (Fuel) budget first, then claim in mySG"
+        ],
+        "actualCost": [
+          "Opening and closing odometer readings (declaration)",
+          "A copy of your electricity bill, in your name at your home address",
+          "Add a Budgeted Electricity (Fuel) budget first, then claim in mySG"
+        ]
+      },
+      "notes": "Per-km per PCG 2024/2 (declaration T&Cs still say 4.2c). Actual cost not stated. PHEV pages conflict: one lists PHEV home charging, two say battery EVs only.",
+      "sources": [
+        "https://www.sgfleet.com/au/mysg-portal/novated-lease-claimable-expenses",
+        "https://www.sgfleet.com/au/pcg-declaration-and-terms-and-conditions",
+        "https://www.sgfleet.com/au/mysg-portal/reimbursements",
+        "https://www.sgfleet.com/au/budgeted-electricity-home-charging",
+        "https://www.sgfleet.com/au/novated-leasing/ev-welcome-pack"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "novatedLeaseAustralia",
+      "title": "Novated Lease Australia",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": null,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": true,
+      "checklist": {
+        "flatRate": [
+          "Before and after odometer photos, through the NLA app",
+          "NLA suggests claiming every 3 months or 5,000 km"
+        ],
+        "actualCost": [
+          "Before and after odometer photos, through the NLA app",
+          "NLA suggests claiming every 3 months or 5,000 km"
+        ]
+      },
+      "notes": "Per-km 5.47c for home or public charging (an old FAQ still repeats 4.2c). No actual cost for home. PHEV not stated. Method fixed for the whole lease.",
+      "sources": [
+        "https://www.novatedleaseaustralia.com.au/electric-cars",
+        "https://www.novatedleaseaustralia.com.au/electric-cars/most-popular"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "fleetPartners",
+      "title": "FleetPartners",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": false,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Your odometer reading at the end of March each year"
+        ],
+        "actualCost": [
+          "Your odometer reading at the end of March each year"
+        ]
+      },
+      "notes": "Per-km (EV FAQ says 4.2c, personal-benefits FAQ says 5.47c). Actual cost not stated. No home charging claims for PHEVs.",
+      "sources": [
+        "https://www.fleetpartners.com.au/resources/faqs/faqs-ev",
+        "https://www.fleetpartners.com.au/resources/faqs/faqs-personal-benefits"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "fleetcare",
+      "title": "Fleetcare",
+      "offersActualCost": true,
+      "paysPHEVHomeCharging": false,
+      "needsDedicatedMeter": true,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "A photo of your odometer",
+          "Fleetcare usually pays per-km claims at the end of the FBT year"
+        ],
+        "actualCost": [
+          "Receipts or invoices for your charging",
+          "Home charging tracked by a smart meter or a separate circuit",
+          "Submit through the Fleetcare Novated Lease Portal"
+        ]
+      },
+      "notes": "Shortcut (FAQ still says 4.2c) or invoice method; home charging at actual cost only if tracked by a smart meter or separate circuit. Blog (1 Jul 2025): hybrids and PHEVs don't qualify. One method per FBT year.",
+      "sources": [
+        "https://www.fleetcare.com.au/novated-leasing/electric-car",
+        "https://www.fleetcare.com.au/novated-leasing/frequently-asked-questions",
+        "https://www.fleetcare.com.au/news-fleettorque/electric-vehicles/how-to-claim-charging-costs"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "toyotaFleet",
+      "title": "Toyota Fleet Management",
+      "offersActualCost": true,
+      "paysPHEVHomeCharging": true,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Toyota Fleet Management's form TFM024, with your odometer at 1 April and 31 March",
+          "An EV odometer declaration, with a photo or screenshot of the closing odometer",
+          "An electricity bill for your home, dated within the period, that you're named on or share (with solar, a net cost)"
+        ],
+        "actualCost": [
+          "Toyota Fleet Management's form TFM024",
+          "Receipts or a bank statement showing what you paid",
+          "Receipts for any public charging not paid with the TFM EV Charge Card"
+        ]
+      },
+      "notes": "Form TFM024 (07/2026). Per-km 5.47c from 1 Apr 2026, battery EV only. Actual cost for plug-in or battery EVs. Choose one option only.",
+      "sources": [
+        "https://toyotafleetmanagement.com.au/content/dam/tfm/downloads/pdf/novated/tfm024_novated-vehicle-expense-form_10198.pdf",
+        "https://toyotafleetmanagement.com.au/download/"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "cbb",
+      "title": "CBB",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": false,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "CBB's Novated EV Recharge Cost Claim Form, with opening and closing odometer readings and dates",
+          "CBB takes claims at the start of each FBT quarter: April, July, October and January"
+        ],
+        "actualCost": [
+          "CBB's Novated EV Recharge Cost Claim Form, with opening and closing odometer readings and dates",
+          "CBB takes claims at the start of each FBT quarter: April, July, October and January"
+        ]
+      },
+      "notes": "Per-km only, 5.47c. Does not apply to PHEVs.",
+      "sources": [
+        "https://www.cbb.com.au/uploads/Form-EV-Actual-Recharge-Cost-Claim-FormV1-editable.pdf",
+        "https://www.cbb.com.au/resources/"
+      ],
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "savvy",
+      "title": "Savvy",
+      "offersActualCost": false,
+      "paysPHEVHomeCharging": null,
+      "needsDedicatedMeter": false,
+      "methodFixedForWholeLease": false,
+      "checklist": {
+        "flatRate": [
+          "Opening and closing odometer readings",
+          "Submit it as a reimbursement through the Savvy Driver Portal"
+        ],
+        "actualCost": [
+          "Opening and closing odometer readings",
+          "Submit it as a reimbursement through the Savvy Driver Portal"
+        ]
+      },
+      "notes": "From Savvy's Driver Instruction Manual (PDF supplied to the developer; no public link found yet). The next routine run should find a public source or flag it.",
+      "sources": [],
+      "checked": null
+    }
+  ],
+  "defaults": {
+    "checklist": {
+      "flatRate": [
+        "Odometer photos at the start and end of the period",
+        "A recent home electricity bill"
+      ],
+      "actualCost": [
+        "A recent electricity bill showing the rates used"
+      ]
+    }
+  }
+}

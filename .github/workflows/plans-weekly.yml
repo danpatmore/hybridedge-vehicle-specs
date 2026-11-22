@@ -1,0 +1,125 @@
+# Electricity plans, rebuilt every week from the government's Energy Made Easy
+# feed and published if every check passes (22 Nov 2026). Nothing here is
+# Claude: it is the plain script, run on GitHub's servers.
+name: Electricity plans (weekly)
+
+on:
+  schedule:
+    - cron: "0 18 * * 0"    # Monday 5am Sydney (4am in winter)
+    - cron: "0 18 30 6 *"   # 1 July
+    - cron: "0 18 1-6 7 *"  # 2 to 7 July, while retailers reset prices
+  workflow_dispatch:
+    inputs:
+      skip_gst_check:
+        description: "Skip the GST check (only if you know prices really moved)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - tools/fetch-energy-plans.py
+      - tools/check-plans.py
+      - .github/workflows/plans-weekly.yml
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: plans
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      STOPPED: "Electricity plans: weekly update stopped"
+      HELD: "Electricity plans: plans to check on retailer sites"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Self-tests
+        run: |
+          python3 -I tools/fetch-energy-plans.py --selftest
+          python3 -I tools/check-plans.py --selftest
+
+      - name: Rebuild from the feed
+        run: |
+          cp energy-plans-au.json "$RUNNER_TEMP/old.json"
+          set -o pipefail
+          python3 -I tools/fetch-energy-plans.py 2>&1 | tee "$RUNNER_TEMP/fetch.log"
+
+      - name: Check the new list
+        run: |
+          skip=""
+          if [ "${{ inputs.skip_gst_check }}" = "true" ]; then skip="--skip-gst"; fi
+          python3 -I tools/check-plans.py "$RUNNER_TEMP/old.json" energy-plans-au.json $skip \
+            --summary "$RUNNER_TEMP/summary.md"
+
+      - name: Publish
+        run: |
+          cat "$RUNNER_TEMP/summary.md" >> "$GITHUB_STEP_SUMMARY"
+          version=$(python3 -c "import json;print(json.load(open('energy-plans-au.json'))['version'])")
+          count=$(python3 -c "import json;d=json.load(open('energy-plans-au.json'));print(sum(len(p['plans']) for s in d['states'] for p in s['providers']))")
+          held=$(python3 -c "import json;print(len(json.load(open('energy-plans-au.json')).get('pendingReview') or []))")
+          today=$(TZ=Australia/Sydney date +%F)
+          python3 - "$today" "$version" "$count" <<'PY'
+          import json, sys
+          today, version, count = sys.argv[1:]
+          p = "checks/last-checked.json"
+          log = json.load(open(p))
+          log["plans"] = {"date": today, "result": f"Energy plans v{version} rebuilt from the government feed ({count} plans)"}
+          open(p, "w").write(json.dumps(log, indent=2, ensure_ascii=False) + "\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add energy-plans-au.json checks/last-checked.json
+          git commit -m "Energy plans v$version: weekly rebuild from the government feed ($count plans, $held held for review)"
+          git push
+
+      - name: Plans to check
+        if: success()
+        run: |
+          python3 - "$RUN_URL" > "$RUNNER_TEMP/held.md" <<'PY'
+          import json, sys
+          d = json.load(open("energy-plans-au.json"))
+          held = d.get("pendingReview") or []
+          print(f"The government feed no longer lists these {len(held)} plans. Until each is checked, "
+                "the apps say nothing to owners on them. Check each on the retailer's own site. "
+                "Confirming one that has really gone is done by running "
+                "`tools/fetch-energy-plans.py --confirm-delisted 'STATE|Provider|identity'`, never by editing the file.\n")
+          print("| State | Retailer | Plan | Identity | Held since |\n|---|---|---|---|---|")
+          for h in sorted(held, key=lambda h: (h["since"], h["state"], h["provider"])):
+              print(f"| {h['state']} | {h['provider']} | {h['name']} | `{h['identity']}` | {h['since']} |")
+          print(f"\nUpdated by the weekly run: {sys.argv[1]}")
+          PY
+          if python3 -c "import json,sys;sys.exit(0 if json.load(open('energy-plans-au.json')).get('pendingReview') else 1)"; then
+            tools/issue.sh refresh "$HELD" "$RUNNER_TEMP/held.md"
+          else
+            tools/issue.sh clear "$HELD" "No plans are held for review any more."
+          fi
+          tools/issue.sh clear "$STOPPED" "The weekly update worked again: $RUN_URL"
+
+      - name: Say why it stopped
+        if: failure()
+        run: |
+          {
+            echo "This week's electricity plan update did not publish. Phones keep the list they have, so nothing is broken, but the plans are getting older."
+            echo
+            if [ -f "$RUNNER_TEMP/summary.md" ]; then cat "$RUNNER_TEMP/summary.md"; fi
+            if [ -f "$RUNNER_TEMP/fetch.log" ]; then
+              echo
+              echo "What the script said:"
+              echo '```'
+              grep -A40 -E "NOT WRITTEN|Traceback|Error" "$RUNNER_TEMP/fetch.log" | head -60 || tail -30 "$RUNNER_TEMP/fetch.log"
+              echo '```'
+            fi
+            echo
+            echo "Full log: $RUN_URL"
+            echo
+            echo "If only the GST check stopped it and you know prices really changed, run it again with the check off: Actions tab, Electricity plans (weekly), Run workflow, tick Skip the GST check."
+          } > "$RUNNER_TEMP/stopped.md"
+          tools/issue.sh raise "$STOPPED" "$RUNNER_TEMP/stopped.md"

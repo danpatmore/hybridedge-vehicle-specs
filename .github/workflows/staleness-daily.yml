@@ -1,0 +1,49 @@
+# The daily alarm (22 Nov 2026): one issue, which the GitHub app sends to the
+# developer's phone, if any dataset has gone unchecked past its limit. It
+# closes itself when everything is fresh again.
+name: Data staleness alarm (daily)
+
+on:
+  schedule:
+    - cron: "0 20 * * *"   # 7am Sydney (6am in winter)
+  workflow_dispatch:
+    inputs:
+      pretend_today:
+        description: "Test only: check as if today were this date (YYYY-MM-DD)"
+        type: string
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - tools/check-staleness.py
+      - .github/workflows/staleness-daily.yml
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TITLE: "Data is out of date"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check every dataset's age
+        id: age
+        run: |
+          set +e
+          python3 -I tools/check-staleness.py --today "${{ inputs.pretend_today }}" --summary "$RUNNER_TEMP/age.md"
+          echo "stale=$?" >> "$GITHUB_OUTPUT"
+          cat "$RUNNER_TEMP/age.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Raise or clear the alarm
+        run: |
+          if [ "${{ steps.age.outputs.stale }}" = "1" ]; then
+            tools/issue.sh refresh "$TITLE" "$RUNNER_TEMP/age.md"
+          elif [ "${{ steps.age.outputs.stale }}" = "0" ]; then
+            tools/issue.sh clear "$TITLE" "Everything is within its limit again."
+          else
+            exit 1
+          fi

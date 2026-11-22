@@ -1,0 +1,32 @@
+# Runs on every pull request that changes a data file (22 Nov 2026). It backs
+# up the developer's review of routine PRs; it never merges anything.
+name: Data PR check
+
+on:
+  pull_request:
+    paths:
+      - phev-specs-au.json
+      - energy-plans-au.json
+      - lease-rules-au.json
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Compare with main
+        run: |
+          set +e
+          mkdir -p "$RUNNER_TEMP/base"
+          for f in phev-specs-au.json energy-plans-au.json lease-rules-au.json; do
+            git show "origin/${{ github.base_ref }}:$f" > "$RUNNER_TEMP/base/$f" 2>/dev/null || rm -f "$RUNNER_TEMP/base/$f"
+          done
+          python3 -I tools/check-pr.py "$RUNNER_TEMP/base" . --summary "$RUNNER_TEMP/pr.md"; status=$?
+          cat "$RUNNER_TEMP/pr.md" >> "$GITHUB_STEP_SUMMARY"
+          exit $status
