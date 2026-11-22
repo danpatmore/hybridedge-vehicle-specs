@@ -31,13 +31,17 @@ is here and in the files named.
 2. Check for an open pull request from an earlier run (branch
    `claude/provider-rules-*`). If there is one, update that branch instead of
    opening another.
-3. For every provider in `lease-rules-au.json`: open each of its `sources`,
-   and search the provider's own site for anything newer (EV charging pages,
+3. For every provider in `lease-rules-au.json`: open EACH of its `sources`
+   (not just the first), and search the provider's own site for anything newer (EV charging pages,
    claim forms, FAQs). A provider with no sources needs one found, or a note
    saying none is public. Compare what each says with every field. Only the
    provider's own pages and forms count; press and comparison sites do not.
 4. For the ATO rate: read the ATO's EV home charging rate page and PCG 2024/2
-   on ato.gov.au. A rate counts only when the ATO publishes it.
+   on ato.gov.au. A rate counts only when the ATO publishes it, and only a
+   page you actually read counts: a search result summary is not the ATO's
+   word. ato.gov.au often refuses automated requests (HTTP 403); try the
+   page, the ATO's "Rates" pages and the legal database, and if none can be
+   read, the ATO has NOT been checked this run (see step 10).
 5. If a rule changed: edit `lease-rules-au.json` (the provider's fields,
    `notes`, `sources`, `checked` set to today), bump `version` (minor for a
    change of rule, patch for wording) and set `asOf` to today. Keep the
@@ -69,7 +73,9 @@ is here and in the files named.
    is no longer offered: its page is gone or says closed, or the retailer's
    current plan list for that network leaves it out. If you can't tell (the
    page won't load, the site needs an address, or anything is ambiguous),
-   leave it held and say so in the PR text. For each plan confirmed, add to
+   leave it held and say so in the PR text. This step is not optional: check
+   every held plan, oldest first. If there are too many to finish, check at
+   least 20 and say in your reply how many are left. For each plan confirmed, add to
    `plans` in `checks/confirm-delisted.json`:
    `{"key": "<STATE|Provider|identity, built from the pendingReview entry>",
    "name": "<plan name>", "checked": "<today>", "page": "<https link you
@@ -87,6 +93,13 @@ is here and in the files named.
    `providers` and `ato` entries of `checks/last-checked.json`, each
    `{"date": "<today, Sydney>", "result": "<one line: PR link, or 'no changes'>"}`,
    commit and push it. A workflow merges it into main. Do not open a PR for it.
+   Record only what you really checked. If you could not read the ATO's own
+   page, leave the `ato` entry exactly as it is. If you could not read a
+   provider's own pages, name it in the `providers` result ("no changes;
+   not readable: SG Fleet"), and leave the `providers` entry as it is if you
+   could not read most of them. The daily alarm relies on these dates being
+   true. When anything could not be checked, also send a push notification
+   saying what and why.
 
 ## Never
 
