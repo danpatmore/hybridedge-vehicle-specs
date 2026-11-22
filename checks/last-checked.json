@@ -2,7 +2,7 @@
   "note": "When each dataset was last checked, written by the scheduled jobs (dates and results only, never a figure the apps use). The daily staleness alarm reads this. Dates are Sydney dates.",
   "plans": {
     "date": "2026-11-23",
-    "result": "Energy plans v0.19.0 rebuilt from the government feed (933 plans)"
+    "result": "Energy plans v0.20.0 rebuilt from the government feed (933 plans)"
   },
   "vehicles": {
     "date": "2026-11-22",
