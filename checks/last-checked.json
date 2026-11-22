@@ -5,8 +5,8 @@
     "result": "Energy plans v0.15.0 rebuilt from the government feed (933 plans)"
   },
   "vehicles": {
-    "date": "2026-11-10",
-    "result": "Vehicle sweep (by hand); car list v1.34.0"
+    "date": "2026-11-22",
+    "result": "https://github.com/danpatmore/hybridedge-vehicle-specs/pull/4"
   },
   "providers": {
     "date": "2026-11-22",
