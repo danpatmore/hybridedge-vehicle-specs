@@ -13,7 +13,7 @@
     "result": "no changes"
   },
   "ato": {
-    "date": "2026-11-22",
-    "result": "no changes"
+    "date": "2026-11-07",
+    "result": "ATO EV home charging rate checked (by hand): 4.20c to 31 Mar 2026, 5.47c from 1 Apr 2026. The 22 Nov routine could not read ato.gov.au (403)."
   }
 }
