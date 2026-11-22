@@ -1,7 +1,19 @@
 {
   "note": "When each dataset was last checked, written by the scheduled jobs (dates and results only, never a figure the apps use). The daily staleness alarm reads this. Dates are Sydney dates.",
-  "plans": {"date": "2026-11-05", "result": "Energy plans v0.13.0 rebuilt from the government feed (by hand)"},
-  "vehicles": {"date": "2026-11-10", "result": "Vehicle sweep (by hand); car list v1.34.0"},
-  "providers": {"date": "2026-11-04", "result": "Provider pages and forms rechecked (by hand); lease-rules-au.json v1.0.0"},
-  "ato": {"date": "2026-11-07", "result": "ATO EV home charging rate checked (by hand): 4.20c to 31 Mar 2026, 5.47c from 1 Apr 2026"}
+  "plans": {
+    "date": "2026-11-22",
+    "result": "Energy plans v0.14.0 rebuilt from the government feed (933 plans)"
+  },
+  "vehicles": {
+    "date": "2026-11-10",
+    "result": "Vehicle sweep (by hand); car list v1.34.0"
+  },
+  "providers": {
+    "date": "2026-11-04",
+    "result": "Provider pages and forms rechecked (by hand); lease-rules-au.json v1.0.0"
+  },
+  "ato": {
+    "date": "2026-11-07",
+    "result": "ATO EV home charging rate checked (by hand): 4.20c to 31 Mar 2026, 5.47c from 1 Apr 2026"
+  }
 }
