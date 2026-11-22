@@ -15,7 +15,11 @@ Set up 22 Nov 2026. Everything runs on GitHub's or Anthropic's servers.
 edits to plans (WA and NT, `ALWAYS_INCLUDE`) go here. `--keep-from` is for
 manual recovery only. A plan the feed stops listing is held in
 `pendingReview` and confirmed gone only with `--confirm-delisted`, never by
-editing the file.
+editing the file. The monthly provider routine checks held plans on the
+retailers' own sites and opens a pull request adding the ones really gone to
+`checks/confirm-delisted.json`; once merged, the plans job runs the script
+with those confirmations and drops each from the list once it is no longer
+held (`tools/delisted.py`).
 
 `lease-rules-au.json` is not downloaded by ChargeBack yet: an approved
 change there needs an app update until the app reads it. ATO rates go in

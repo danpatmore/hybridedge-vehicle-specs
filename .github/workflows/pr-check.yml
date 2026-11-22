@@ -8,6 +8,7 @@ on:
       - phev-specs-au.json
       - energy-plans-au.json
       - lease-rules-au.json
+      - checks/confirm-delisted.json
 
 permissions:
   contents: read
@@ -28,5 +29,8 @@ jobs:
             git show "origin/${{ github.base_ref }}:$f" > "$RUNNER_TEMP/base/$f" 2>/dev/null || rm -f "$RUNNER_TEMP/base/$f"
           done
           python3 -I tools/check-pr.py "$RUNNER_TEMP/base" . --summary "$RUNNER_TEMP/pr.md"; status=$?
+          if ! git diff --quiet "origin/${{ github.base_ref }}" -- checks/confirm-delisted.json; then
+            python3 -I tools/delisted.py check "$RUNNER_TEMP/base/energy-plans-au.json" | tee -a "$RUNNER_TEMP/pr.md" || status=1
+          fi
           cat "$RUNNER_TEMP/pr.md" >> "$GITHUB_STEP_SUMMARY"
           exit $status

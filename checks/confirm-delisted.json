@@ -1,0 +1,4 @@
+{
+  "note": "Plans held for review (pendingReview in energy-plans-au.json) that have been checked on the retailer's own site and found really gone. Added only by a pull request the developer approves. The plans job passes each one to tools/fetch-energy-plans.py --confirm-delisted, then drops it from here once it is no longer held. Once published, HybridEdge tells owners on these plans that their plan has ended.",
+  "plans": []
+}

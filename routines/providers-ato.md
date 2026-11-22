@@ -59,7 +59,30 @@ is here and in the files named.
    phones only after ChargeBack's built-in rules are updated in an app
    release (until the app downloads lease-rules-au.json). ATO rate changes
    reach phones without a release." Never merge it.
-9. Always, last: from current main, make a branch
+9. Plans held for review (a separate pull request). `pendingReview` in
+   `energy-plans-au.json` lists plans the government feed stopped listing;
+   the apps say nothing to owners on them until each is confirmed gone. For
+   each held plan not already in `checks/confirm-delisted.json`, look on the
+   retailer's own site (its plan list or the plan's own page or fact sheet
+   for that state and network; Energy Made Easy or comparison sites do not
+   count). Confirm a plan only when the retailer's own site clearly shows it
+   is no longer offered: its page is gone or says closed, or the retailer's
+   current plan list for that network leaves it out. If you can't tell (the
+   page won't load, the site needs an address, or anything is ambiguous),
+   leave it held and say so in the PR text. For each plan confirmed, add to
+   `plans` in `checks/confirm-delisted.json`:
+   `{"key": "<STATE|Provider|identity, built from the pendingReview entry>",
+   "name": "<plan name>", "checked": "<today>", "page": "<https link you
+   read>", "finding": "<what the page showed, in under 25 words>"}`.
+   Change nothing else, and never edit `energy-plans-au.json` for this: once
+   the developer merges the PR, the plans job runs the script with these
+   confirmations. Run `python3 tools/delisted.py check energy-plans-au.json`
+   before pushing. Commit on `claude/delisted-<YYYY-MM-DD>` (or update the
+   open one), push, and open a pull request titled
+   `Plans confirmed gone <date>: <count>`, listing each plan with its page.
+   Say plainly: "Once merged, HybridEdge tells owners on these plans that
+   their plan has ended." If none could be confirmed, no PR.
+10. Always, last: from current main, make a branch
    `claude/check-log-providers-<YYYY-MM-DD>` that changes only the
    `providers` and `ato` entries of `checks/last-checked.json`, each
    `{"date": "<today, Sydney>", "result": "<one line: PR link, or 'no changes'>"}`,
@@ -69,5 +92,6 @@ is here and in the files named.
 
 - Merge anything, push to main, or edit workflows or tools.
 - Touch plans, `pendingReview` or `completeFor` in `energy-plans-au.json`.
+  Delistings go only through `checks/confirm-delisted.json` (step 9).
 - Put tester names, support codes or the developer's name in anything you
   write: this repo is public.

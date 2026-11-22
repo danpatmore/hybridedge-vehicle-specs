@@ -18,6 +18,7 @@ on:
     branches: [main]
     paths:
       - energy-plans-au.json        # a hand edit or a merged PR is rebuilt and checked at once
+      - checks/confirm-delisted.json  # an approved delisting PR
       - tools/fetch-energy-plans.py
       - tools/check-plans.py
       - .github/workflows/plans-weekly.yml
@@ -50,8 +51,15 @@ jobs:
       - name: Rebuild from the feed
         run: |
           cp energy-plans-au.json "$RUNNER_TEMP/old.json"
+          # Plans the developer approved as gone (checks/confirm-delisted.json),
+          # passed only while still held: the script refuses any other.
+          python3 -I tools/delisted.py args energy-plans-au.json > "$RUNNER_TEMP/confirm.txt"
+          args=()
+          while IFS= read -r key; do args+=("$key"); done < "$RUNNER_TEMP/confirm.txt"
+          echo "Confirming ${#args[@]} plan(s) gone"
+          if [ ${#args[@]} -gt 0 ]; then args=(--confirm-delisted "${args[@]}"); fi
           set -o pipefail
-          python3 -I tools/fetch-energy-plans.py 2>&1 | tee "$RUNNER_TEMP/fetch.log"
+          python3 -I tools/fetch-energy-plans.py "${args[@]}" 2>&1 | tee "$RUNNER_TEMP/fetch.log"
 
       - name: Check the new list
         run: |
@@ -77,7 +85,8 @@ jobs:
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add energy-plans-au.json checks/last-checked.json
+          python3 -I tools/delisted.py prune energy-plans-au.json
+          git add energy-plans-au.json checks/last-checked.json checks/confirm-delisted.json
           git commit -m "Energy plans v$version: weekly rebuild from the government feed ($count plans, $held held for review)"
           git push
 
@@ -89,9 +98,11 @@ jobs:
           d = json.load(open("energy-plans-au.json"))
           held = d.get("pendingReview") or []
           print(f"The government feed no longer lists these {len(held)} plans. Until each is checked, "
-                "the apps say nothing to owners on them. Check each on the retailer's own site. "
-                "Confirming one that has really gone is done by running "
-                "`tools/fetch-energy-plans.py --confirm-delisted 'STATE|Provider|identity'`, never by editing the file.\n")
+                "the apps say nothing to owners on them. Each month the provider routine checks them on the "
+                "retailers' own sites and opens a pull request adding the ones really gone to "
+                "`checks/confirm-delisted.json`. Merging it confirms them (the plans job runs the script with "
+                "`--confirm-delisted`), and HybridEdge then tells owners on those plans that their plan has ended. "
+                "Never confirm one by editing the plans file.\n")
           print("| State | Retailer | Plan | Identity | Held since |\n|---|---|---|---|---|")
           for h in sorted(held, key=lambda h: (h["since"], h["state"], h["provider"])):
               print(f"| {h['state']} | {h['provider']} | {h['name']} | `{h['identity']}` | {h['since']} |")
