@@ -9,7 +9,7 @@ Set up 22 Nov 2026. Everything runs on GitHub's or Anthropic's servers.
 | Provider rules and ATO rate | 9am on the 6th, plus 25 March and 25 June | Claude routine | A pull request changing `lease-rules-au.json` or `atoHomeChargingRates` in the plans file |
 | Staleness alarm | 7am daily | GitHub Actions, `tools/check-staleness.py` | One issue if plans are over 14 days, vehicles 45, providers or ATO 60 |
 | PR check | every data pull request | GitHub Actions, `tools/check-pr.py` | Fails a PR that breaks a database rule |
-| Check log | when a routine finishes | GitHub Actions, `tools/merge-check-log.py` | Merges the routine's `claude/check-log-*` branch (dates only) into `checks/last-checked.json` |
+| Check log | when a routine finishes | A pull request from the routine's `claude/check-log-*` branch | The developer merges it. (The auto-merge workflow was removed on 22 Nov 2026 after Codex round 157: a push-triggered workflow runs the branch's own copy, so it could write anything to main.) |
 
 `tools/fetch-energy-plans.py` is the only copy of the plan builder. Hand
 edits to plans (WA and NT, `ALWAYS_INCLUDE`) go here. `--keep-from` is for

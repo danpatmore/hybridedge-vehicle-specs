@@ -69,8 +69,8 @@ of each month, and the developer reviews its pull request.
 
 - Always: a `claude/check-log-<date>` branch that changes only the
   `vehicles` entry of `checks/last-checked.json`
-  (`{"date": "YYYY-MM-DD", "result": "<one line>"}`). A workflow checks it and
-  merges it into main, so the daily staleness alarm knows the sweep ran even
+  (`{"date": "YYYY-MM-DD", "result": "<one line>"}`), with a pull request the
+  developer merges, so the daily staleness alarm knows the sweep ran even
   when nothing changed.
 - When something changed: one pull request with the data change and the
   report. If an earlier sweep PR is still open, update that one instead of

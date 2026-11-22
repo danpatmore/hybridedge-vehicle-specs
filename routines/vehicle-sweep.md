@@ -46,7 +46,8 @@ in `SWEEP-PROTOCOL.md` and in the newest report in `sweeps/`.
    `claude/check-log-vehicles-<YYYY-MM-DD>` that changes only the `vehicles`
    entry of `checks/last-checked.json` to
    `{"date": "<today, Sydney>", "result": "<one line: PR link, or 'no changes'>"}`,
-   commit and push it. A workflow merges it into main. Do not open a PR for it.
+   commit and push it, and open a pull request titled
+   `Check log: vehicles <date>` for the developer to merge. Never merge it.
 
 ## Never
 

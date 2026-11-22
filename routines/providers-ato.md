@@ -101,7 +101,8 @@ is here and in the files named.
    `claude/check-log-providers-<YYYY-MM-DD>` that changes only the
    `providers` and `ato` entries of `checks/last-checked.json`, each
    `{"date": "<today, Sydney>", "result": "<one line: PR link, or 'no changes'>"}`,
-   commit and push it. A workflow merges it into main. Do not open a PR for it.
+   commit and push it, and open a pull request titled
+   `Check log: providers <date>` for the developer to merge. Never merge it.
    Record only what you really checked. If you could not read the ATO's own
    page, leave the `ato` entry exactly as it is. If you could not read a
    provider's own pages, name it in the `providers` result ("no changes;
