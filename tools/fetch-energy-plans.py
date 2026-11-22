@@ -741,17 +741,29 @@ def generate(src, keep_files=(), quiet=False, confirm=()):
             missing.append((st, prov, name, ident))
 
     # A CONFIRMATION NAMES THE PLAN A PERSON CHECKED (Codex round 109, P1).
-    # It must be one the last run held for review and still be missing now:
-    # a plan nobody was shown, or one back in the feed, is refused, and every
-    # plan missing that nobody confirmed stays held.
+    # It must be one the last run held for review and still be missing now: a
+    # plan nobody was shown is refused, and every plan missing that nobody
+    # confirmed stays held. A held plan the feed lists again (Codex round 157,
+    # P2) has reconciled itself: the confirmation is not used, the plan is
+    # kept as listed, and the run goes ahead, so one stale approval cannot
+    # stop every later update. Any other confirmation that no longer fits is
+    # refused.
     missing_keys = {review_key(st, prov, ident) for (st, prov, _, ident) in missing}
+    generate.back_in_feed = []
     for key in sorted(confirm):
         if key not in held:
             failures.append(f"--confirm-delisted {key!r}: not held for review in this list, "
                             "so nobody was shown it (run without the flag to see what is held)")
         elif key not in missing_keys:
-            failures.append(f"--confirm-delisted {key!r}: it is back in the feed or no longer "
-                            "carried, so there is nothing to confirm")
+            h = held[key]
+            if (h["state"], h["identity"]) in listed_in_by_brand.get(h["provider"], set()):
+                generate.back_in_feed.append(key)
+                say(f"  --confirm-delisted {key!r}: back in the feed, so kept as listed "
+                    "and the confirmation is not used")
+            else:
+                failures.append(f"--confirm-delisted {key!r}: no longer carried, so there is "
+                                "nothing to confirm")
+    confirm = confirm - set(generate.back_in_feed)
     generate.last_failures = list(failures)
     if failures:
         say("\nNOT WRITTEN: the list would be partial, and the app would read a plan the")
@@ -1176,10 +1188,16 @@ def end_to_end(http):
     ok, _ = run(feed([one_page(top)]), confirm=[A])
     assert not ok and any("not held for review" in f for f in generate.last_failures), \
         "a confirmation of a plan nobody was shown was taken"
-    # A confirmation of a plan back in the feed is stale. Refused.
-    ok, _ = run(feed([one_page(top + [low])]), start=gen1, confirm=[A])
-    assert not ok and any("back in the feed" in f for f in generate.last_failures), \
-        "a stale confirmation was taken"
+    # A confirmed plan back in the feed (Codex round 157, P2): reconciled, not
+    # refused. The run publishes with the plan kept as listed, nothing is
+    # held, the state is certified, and the confirmation is reported unused,
+    # so the plans job can drop it from checks/confirm-delisted.json.
+    ok, back = run(feed([one_page(top + [low])]), start=gen1, confirm=[A])
+    assert ok, f"a confirmed plan back in the feed stopped the run: {generate.last_failures}"
+    assert generate.back_in_feed == [A], "the unused confirmation was not reported"
+    assert "1st1161464mre2" in qld_ids(back), "the plan back in the feed was not kept"
+    assert not back.get("pendingReview"), "the plan back in the feed is still held"
+    assert "QLD|1st Energy" in back["completeFor"], "the reconciled state was not certified"
     # The provider failing while a plan is confirmed. Refused, list intact.
     ok, _ = run(feed([http(503)]), start=gen1, confirm=[A])
     assert not ok, "a confirmation went through with the provider failing"

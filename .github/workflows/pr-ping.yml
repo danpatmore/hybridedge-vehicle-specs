@@ -1,0 +1,26 @@
+# Routine PRs are opened under the developer's own account, and GitHub never
+# notifies you of your own actions. A comment from the bot does, so the GitHub
+# app pings the developer's phone (22 Nov 2026). It checks nothing out and
+# runs nothing from the PR; it only comments.
+name: Routine PR ping
+
+on:
+  pull_request_target:
+    types: [opened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  ping:
+    if: startsWith(github.event.pull_request.head.ref, 'claude/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment "$PR" --repo "$REPO" --body "New data change from a scheduled routine, ready for your review. The automatic check is under Checks. Nothing reaches phones until you merge it."

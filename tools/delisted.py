@@ -6,8 +6,10 @@ checks/confirm-delisted.json (22 Nov 2026).
   python3 tools/delisted.py args PLANS.json        print one confirmation per line,
                                                    only for plans still held in PLANS.json
   python3 tools/delisted.py prune PLANS.json       drop entries no longer held
-  python3 tools/delisted.py check BASE_PLANS.json  exit 1 if the list is malformed or
-                                                   names a plan BASE_PLANS.json does not hold
+  python3 tools/delisted.py check BASE_PLANS.json [LIST.json]
+                                                   exit 1 if the list (default: the repo's)
+                                                   is malformed or names a plan
+                                                   BASE_PLANS.json does not hold
 
 The fetch tool refuses a confirmation of a plan that is not held (one back in
 the feed, or already confirmed), so only held ones are passed. An entry needs
@@ -56,7 +58,8 @@ def problems(lst, held_keys):
 
 def main():
     cmd, plans_path = sys.argv[1], sys.argv[2]
-    lst = json.load(open(LIST)) if LIST.exists() else {"plans": []}
+    list_path = Path(sys.argv[3]) if cmd == "check" and len(sys.argv) > 3 else LIST
+    lst = json.load(open(list_path)) if list_path.exists() else {"plans": []}
     keys = held(plans_path)
     if cmd == "args":
         for e in lst.get("plans", []):
