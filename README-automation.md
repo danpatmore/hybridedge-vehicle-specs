@@ -11,6 +11,10 @@ Set up 22 Nov 2026. Everything runs on GitHub's or Anthropic's servers.
 | PR check | every data pull request | GitHub Actions, `tools/check-pr.py` | Fails a PR that breaks a database rule |
 | Check log | when a routine finishes | A pull request from the routine's `claude/check-log-*` branch | The developer merges it. (The auto-merge workflow was removed on 22 Nov 2026 after Codex round 157: a push-triggered workflow runs the branch's own copy, so it could write anything to main.) |
 
+The plans job saves to main with its own deploy key ("Weekly plans job"),
+kept as `PLANS_DEPLOY_KEY` in the `publish` environment, which only main can
+use. GitHub's own token in every workflow can only read the code.
+
 `tools/fetch-energy-plans.py` is the only copy of the plan builder. Hand
 edits to plans (WA and NT, `ALWAYS_INCLUDE`) go here. `--keep-from` is for
 manual recovery only. A plan the feed stops listing is held in
