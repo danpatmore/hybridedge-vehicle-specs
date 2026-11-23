@@ -99,7 +99,9 @@ def b64url(b):
     return base64.urlsafe_b64encode(b).rstrip(b"=").decode()
 
 
-GATE_PERMISSIONS = {"checks": "write", "issues": "write", "contents": "read", "pull_requests": "read"}
+# GitHub needs pull request write, not issues write, for a comment on a pull
+# request (a 403 on PR #9, 23 Nov 2026).
+GATE_PERMISSIONS = {"checks": "write", "issues": "write", "contents": "read", "pull_requests": "write"}
 
 
 def app_token(repo, permissions=GATE_PERMISSIONS):
