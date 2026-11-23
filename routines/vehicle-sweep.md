@@ -31,7 +31,8 @@ in `SWEEP-PROTOCOL.md` and in the newest report in `sweeps/`.
    changes. Do not touch ids or the tester-log keys, and never add
    `showCarsWithBlanks`.
 7. Run `python3 tools/check-pr.py <dir with main's files> .` before pushing
-   and fix anything it reports.
+   and fix anything it reports. It must list nothing under "Needs your word": those
+   are changes only the developer makes.
 8. If anything changed: commit on `claude/vehicle-sweep-<YYYY-MM-DD>` (or
    the open sweep branch, brought up to date with main), push, and open a
    pull request titled `Vehicle sweep <date>: <short summary>`. The PR text:
@@ -52,6 +53,9 @@ in `SWEEP-PROTOCOL.md` and in the newest report in `sweeps/`.
 ## Never
 
 - Merge anything, push to main, or edit workflows or tools.
+- Comment "approve" (or anything like the data gate's phrase) on a pull
+  request. Only the developer approves, and the gate ignores a comment made
+  through the Claude app anyway.
 - Put tester names, support codes or the developer's name in anything you
   write: this repo is public.
-- Change `energy-plans-au.json` or `lease-rules-au.json`.
+- Change `energy-plans-au.json`, `lease-rules-au.json` or anything in `inputs/`.

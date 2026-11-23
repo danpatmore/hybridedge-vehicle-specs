@@ -1,6 +1,13 @@
 # Electricity plans, rebuilt every week from the government's Energy Made Easy
 # feed and published if every check passes (22 Nov 2026). Nothing here is
 # Claude: it is the plain script, run on GitHub's servers.
+#
+# It runs only on its schedule or when someone taps Run workflow (Codex round
+# 158): no push starts it, so its own save can't start the next run, and no
+# commit can skip it. A merged change to its inputs (inputs/, the
+# confirmations) is published by the next run. Nothing a run is given changes
+# what it checks: the GST check is turned off only by inputs/plans-options.json,
+# which needs the developer's approval like any other change.
 name: Electricity plans (weekly)
 
 on:
@@ -9,19 +16,6 @@ on:
     - cron: "0 18 30 6 *"   # 1 July
     - cron: "0 18 1-6 7 *"  # 2 to 7 July, while retailers reset prices
   workflow_dispatch:
-    inputs:
-      skip_gst_check:
-        description: "Skip the GST check (only if you know prices really moved)"
-        type: boolean
-        default: false
-  push:
-    branches: [main]
-    paths:
-      - energy-plans-au.json        # a hand edit or a merged PR is rebuilt and checked at once
-      - checks/confirm-delisted.json  # an approved delisting PR
-      - tools/fetch-energy-plans.py
-      - tools/check-plans.py
-      - .github/workflows/plans-weekly.yml
 
 # Main is locked: only a PR that passes the data check reaches it, except
 # this job, which saves with its own deploy key. The key lives in the
@@ -37,9 +31,6 @@ concurrency:
 
 jobs:
   rebuild:
-    # The job's own save is pushed with the deploy key, and unlike GitHub's
-    # token that starts workflows: skip it, or each save would start the next.
-    if: github.event_name != 'push' || github.event.head_commit.author.name != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     environment: publish
@@ -74,10 +65,8 @@ jobs:
 
       - name: Check the new list
         run: |
-          skip=""
-          if [ "${{ inputs.skip_gst_check }}" = "true" ]; then skip="--skip-gst"; fi
-          python3 -I tools/check-plans.py "$RUNNER_TEMP/old.json" energy-plans-au.json $skip \
-            --summary "$RUNNER_TEMP/summary.md"
+          python3 -I tools/check-plans.py "$RUNNER_TEMP/old.json" energy-plans-au.json \
+            --confirmed "$RUNNER_TEMP/confirm.txt" --summary "$RUNNER_TEMP/summary.md"
 
       - name: Publish
         env:
@@ -120,11 +109,12 @@ jobs:
             git commit -q -m "Energy plans v$version: weekly rebuild from the government feed ($count plans, $held held for review)"
             if git push origin HEAD:main; then exit 0; fi
             # Refused: something else reached main while this ran. Start again
-            # from main's files, unless main's plans or confirmations changed:
-            # that change starts its own run, which publishes instead.
+            # from main's files, unless what this run read changed (the plans,
+            # their inputs or the tools): then this list is out of date, and
+            # the next run publishes instead.
             git fetch -q origin main
-            if ! git diff --quiet "$base" FETCH_HEAD -- energy-plans-au.json checks/confirm-delisted.json; then
-              echo "The plans on main changed while this ran, so this run's list is out of date. The run that change started publishes instead." > "$RUNNER_TEMP/refused.md"
+            if ! git diff --quiet "$base" FETCH_HEAD -- energy-plans-au.json checks/confirm-delisted.json inputs tools; then
+              echo "What this run read changed on main while it ran, so its list is out of date. The next run (Monday, or Run workflow now) publishes instead." > "$RUNNER_TEMP/refused.md"
               exit 1
             fi
             git reset -q --hard FETCH_HEAD
@@ -142,8 +132,8 @@ jobs:
           print(f"The government feed no longer lists these {len(held)} plans. Until each is checked, "
                 "the apps say nothing to owners on them. Each month the provider routine checks them on the "
                 "retailers' own sites and opens a pull request adding the ones really gone to "
-                "`checks/confirm-delisted.json`. Merging it confirms them (the plans job runs the script with "
-                "`--confirm-delisted`). Once none of a retailer's plans in a state is still held, HybridEdge sends an owner "
+                "`checks/confirm-delisted.json`. Once it is merged, the next run of this job confirms them (it runs "
+                "the script with `--confirm-delisted`). Once none of a retailer's plans in a state is still held, HybridEdge sends an owner "
                 "on a confirmed plan one 'Check your <retailer> plan' alert. "
                 "Never confirm one by editing the plans file.\n")
           print("| State | Retailer | Plan | Identity | Held since |\n|---|---|---|---|---|")
@@ -180,6 +170,6 @@ jobs:
             echo
             echo "Full log: $RUN_URL"
             echo
-            echo "If only the GST check stopped it and you know prices really changed, run it again with the check off: Actions tab, Electricity plans (weekly), Run workflow, tick Skip the GST check."
+            echo "If only the GST check stopped it and you know prices really changed: set skipGstCheckUntil in inputs/plans-options.json to a date up to 14 days away, in a pull request you approve, then Run workflow."
           } > "$RUNNER_TEMP/stopped.md"
           tools/issue.sh raise "$STOPPED" "$RUNNER_TEMP/stopped.md"

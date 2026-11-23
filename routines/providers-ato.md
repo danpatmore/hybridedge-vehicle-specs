@@ -19,10 +19,11 @@ is here and in the files named.
 - The ATO EV home charging rate (PCG 2024/2, dollars per km, by FBT year
   starting 1 April). ChargeBack has these built in: 4.20c for the FBT years
   starting 2022 to 2025, and 5.47c for the year starting 1 April 2026. A
-  rate for a later year goes into `atoHomeChargingRates` in
-  `energy-plans-au.json`, keyed by the FBT start year as a string, value in
-  dollars per km (for example `{"2027": <rate>}`), which ChargeBack already
-  reads.
+  rate for a later year goes into `inputs/ato-home-charging-rates.json`:
+  under `rates`, keyed by the FBT start year as a string, value in dollars
+  per km (for example `"2027": <rate>`), and under `sources`, the same year
+  with the ato.gov.au page you read. The weekly plans job copies it into the
+  plans file, which ChargeBack already reads.
 
 ## Steps
 
@@ -46,23 +47,22 @@ is here and in the files named.
    `notes`, `sources`, `checked` set to today), bump `version` (minor for a
    change of rule, patch for wording) and set `asOf` to today. Keep the
    existing formatting.
-6. If the ATO published a rate ChargeBack doesn't have: add it to
-   `atoHomeChargingRates` in `energy-plans-au.json`, placed right after
-   `disclaimer`, and change nothing else in that file. Do not bump its
-   `version` (the weekly plans job does that within 7 days). Edit it with
-   Python, `json.load` then `json.dumps(db, indent=2, ensure_ascii=False)`
-   with no trailing newline, so the rest of the file is byte-for-byte the same.
+6. If the ATO published a rate ChargeBack doesn't have: add it, with its
+   page, to `inputs/ato-home-charging-rates.json` (above). Never edit
+   `energy-plans-au.json`: the gate refuses any change to it. The weekly
+   plans job publishes the rate within 7 days of the merge.
 7. Run `python3 tools/check-pr.py <dir with main's files> .` and fix anything
-   it reports.
+   it reports. It must list nothing under "Needs your word": those
+   are changes only the developer makes.
 8. If anything changed: commit on `claude/provider-rules-<YYYY-MM-DD>` (or
-   the open branch; when it touches `energy-plans-au.json`, redo the change
-   on main's current file rather than merging text), push, and open a pull
+   the open branch, brought up to date with main), push, and open a pull
    request titled `Provider rules <date>: <short summary>`. In the PR text,
    for each change: the provider, what changed, a quote of under 15 words
    from the page, and its link. Say plainly: "Provider rule changes reach
    phones only after ChargeBack's built-in rules are updated in an app
    release (until the app downloads lease-rules-au.json). ATO rate changes
-   reach phones without a release." Never merge it.
+   reach phones without a release, at the plans job's next run after the
+   merge." Never merge it.
 9. Plans held for review (a separate pull request). `pendingReview` in
    `energy-plans-au.json` lists plans the government feed stopped listing;
    the apps say nothing to owners on them until each is confirmed gone. For
@@ -114,6 +114,10 @@ is here and in the files named.
 ## Never
 
 - Merge anything, push to main, or edit workflows or tools.
+- Comment "approve" (or anything like the data gate's phrase) on a pull
+  request. Only the developer approves, and the gate ignores a comment made
+  through the Claude app anyway.
+- Edit `inputs/plans-hand-kept.json` or `inputs/plans-options.json`.
 - Touch plans, `pendingReview` or `completeFor` in `energy-plans-au.json`.
   Delistings go only through `checks/confirm-delisted.json` (step 9).
 - Put tester names, support codes or the developer's name in anything you
