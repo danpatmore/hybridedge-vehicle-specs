@@ -64,7 +64,9 @@ itself, so changing it is a code change.
   keys`, `showCarsWithBlanks`, `hand-kept plans`, `GST check off`,
   `workflows`, `code`, `ATO home-charging rates`, `lease provider rules`
   (the last two list each year or provider, old and new values, and
-  sources). It counts only from the repository owner, typed by a person,
+  sources). The gate's comment also lists every car added or changed, field
+  by field, old to new; car changes need no category, because the code
+  already covers the exact contents and every sweep would carry one. It counts only from the repository owner, typed by a person,
   never edited, and when GitHub says no app made it. The Claude app acts as
   the developer, but GitHub marks what it does as made through the app, so a
   routine can open a pull request and never approve one. The code is a hash

@@ -180,7 +180,7 @@ def snapshot(repo, number, token):
 
 
 def gather(repo, pr, files, token, base_dir, head_dir):
-    """(problems, checked, needs) for the PR's snapshot, its data fetched by
+    """(problems, checked, needs, cars changed) for the PR's snapshot, its data fetched by
     blob id next to main's."""
     problems, needs = check_pr.check_paths(files)
     if len(files) >= MAX_FILES:
@@ -200,8 +200,9 @@ def gather(repo, pr, files, token, base_dir, head_dir):
             (head_dir / name).write_bytes(data)
         elif (ROOT / name).exists() and not f:
             shutil.copy(ROOT / name, head_dir / name)
-    p, checked = check_pr.check_dirs(base_dir, head_dir, needs)
-    return problems + p, checked, needs
+    info = []
+    p, checked = check_pr.check_dirs(base_dir, head_dir, needs, info)
+    return problems + p, checked, needs, info
 
 
 def decide(problems, needs, files, comments, owner):
@@ -246,11 +247,11 @@ def main():
     if pr["state"] != "open" and not dry:
         print(f"PR {number} is {pr['state']}; nothing to do")
         return
-    problems, checked, needs = gather(repo, pr, files, token, base_dir, head_dir)
+    problems, checked, needs, info = gather(repo, pr, files, token, base_dir, head_dir)
     owner = pr["base"]["repo"]["owner"]["login"]
     comments = paged(f"/repos/{repo}/issues/{number}/comments", token)
     conclusion, title, phrase, approver = decide(problems, needs, files, comments, owner)
-    summary = check_pr.summary_text(problems, checked, needs)
+    summary = check_pr.summary_text(problems, checked, needs, info)
     plan_inputs = any(f["filename"] in PLAN_INPUTS for f in files)
     body = comment_body(title, summary, phrase, approver, plan_inputs)
     print(body)
