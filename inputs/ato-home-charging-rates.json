@@ -1,0 +1,5 @@
+{
+  "about": "ATO EV home charging rates (PCG 2024/2, dollars per km) for FBT years ChargeBack does not have built in (it has 4.20c for 2022 to 2025 and 5.47c from 1 April 2026), keyed by the FBT start year. Each rate needs the ato.gov.au page it came from. The weekly plans job copies the rates into energy-plans-au.json as atoHomeChargingRates.",
+  "rates": {},
+  "sources": {}
+}

@@ -15,8 +15,20 @@ both apps download (and prints a summary).
 
 22 Nov 2026: moved from the HybridEdge app repo to the specs repo, where a
 weekly GitHub Actions job runs it (.github/workflows/plans-weekly.yml). This is
-the only copy. Hand edits (WA/NT plans, ALWAYS_INCLUDE) go here and in the
-published file, never the app's bundled copy.
+the only copy.
+
+23 Nov 2026 (Codex round 158, P1): the published file is this tool's output
+only; no pull request may edit it. What people keep by hand comes from input
+files the tool reads and checks on every run:
+  inputs/plans-hand-kept.json         every plan not from the feed (WA, NT,
+                                      NZ, Amber, Ergon, retailers' EV plans,
+                                      a tester's bill), by state and provider
+  inputs/ato-home-charging-rates.json the ATO's EV home charging rates
+                                      ChargeBack does not have built in, each
+                                      with the ATO page it came from
+The tool's own record of the last run (carried feed plans, plans held for
+review, the version) still comes from the published file, which only this
+tool writes.
 
 19 Oct 2026 rebuild (the developer's EnergyAustralia notice): reads the
 shipped list rather than the July copy in Docs/Data, names each NSW plan for
@@ -121,6 +133,11 @@ FEED_STATES = ("NSW", "QLD", "SA", "ACT", "TAS")
 # the app, finding the state uncertified, says nothing.
 UNCERTIFIED_FEED_STATES = ("VIC",)
 SOURCE = "AER Energy Made Easy CDR feed"
+# Per-kWh usage and feed-in rates outside this are refused (0c is a real
+# free window). The weekly checks (check-plans.py) use the same figure.
+MAX_RATE = 1.50
+HAND_KEPT = "inputs/plans-hand-kept.json"
+ATO_RATES = "inputs/ato-home-charging-rates.json"
 ctx = ssl.create_default_context()
 
 
@@ -513,6 +530,131 @@ def validate(db):
     return probs
 
 
+def is_feed(pl):
+    return (pl.get("source") or "").startswith(SOURCE)
+
+
+def rates_of(pl):
+    """Every per-kWh usage and feed-in rate a plan carries (not supply)."""
+    rates = []
+    if pl.get("flatRatePerKWh") is not None:
+        rates.append(pl["flatRatePerKWh"])
+    for w in pl.get("windows") or []:
+        rates.append(w.get("ratePerKWh"))
+        if w.get("overCapRatePerKWh") is not None:
+            rates.append(w["overCapRatePerKWh"])
+    if pl.get("feedInTariffPerKWh") is not None:
+        rates.append(pl["feedInTariffPerKWh"])
+    return rates
+
+
+def extract_hand_kept(db):
+    """A list's plans that are not from the feed, in the shape of
+    inputs/plans-hand-kept.json (how that file was made on 23 Nov 2026, and
+    the self-test's way of making one)."""
+    import copy
+    db = copy.deepcopy(db)
+    states = []
+    for s in db["states"]:
+        provs = []
+        for p in s["providers"]:
+            plans = [pl for pl in p["plans"] if not is_feed(pl)]
+            if plans:
+                provs.append({"name": p["name"], **({"note": p["note"]} if p.get("note") else {}),
+                              "plans": plans})
+        if provs:
+            states.append({"code": s["code"], "name": s["name"], "providers": provs})
+    return {"states": states}
+
+
+def hand_kept_problems(doc):
+    """What is wrong with inputs/plans-hand-kept.json; empty means the tool
+    may use it. Each plan must read in the apps, have a dashed id (feed ids
+    never have one, so the two can't collide), not claim the feed as its
+    source, and carry rates from 0c to $1.50; ids are unique in a state."""
+    import re
+    if not isinstance(doc, dict) or not isinstance(doc.get("states"), list):
+        return ["hand-kept plans: 'states' missing or not a list"]
+    probs = [f"hand-kept plans: {x}" for x in validate(
+        {"version": "0", "asOf": "x", "currency": "AUD", "disclaimer": "x",
+         "fallbackPlans": [], "states": doc["states"]})]
+    if probs:
+        return probs[:20]
+    codes = [s["code"] for s in doc["states"]]
+    if len(codes) != len(set(codes)):
+        probs.append("hand-kept plans: a state is listed twice")
+    for s in doc["states"]:
+        if not re.fullmatch(r"[A-Z]{2,3}", s["code"]):
+            probs.append(f"hand-kept plans: state code {s['code']!r}")
+        names = [p["name"] for p in s["providers"]]
+        if len(names) != len(set(names)):
+            probs.append(f"hand-kept plans: {s['code']}: a provider is listed twice")
+        ids = []
+        for p in s["providers"]:
+            if not p["plans"]:
+                probs.append(f"hand-kept plans: {s['code']} {p['name']}: no plans")
+            for pl in p["plans"]:
+                where = f"hand-kept plans: {s['code']} {p['name']} {pl['id']}"
+                ids.append(pl["id"])
+                if "-" not in pl["id"]:
+                    probs.append(f"{where}: a hand-kept id needs a dash, so it can't be taken for a feed plan")
+                if is_feed(pl):
+                    probs.append(f"{where}: the source says the feed, but the feed's plans come from the feed")
+                for r in rates_of(pl):
+                    if not isinstance(r, (int, float)) or isinstance(r, bool) or r < 0 or r > MAX_RATE:
+                        probs.append(f"{where}: rate {r!r} outside 0c to ${MAX_RATE:.2f}")
+        if len(ids) != len(set(ids)):
+            probs.append(f"hand-kept plans: {s['code']}: a plan id is listed twice")
+    return probs
+
+
+def ato_problems(doc):
+    """inputs/ato-home-charging-rates.json: {"rates": {"<FBT start year>":
+    dollars per km}, "sources": {"<year>": "<the ato.gov.au page read>"}}.
+    Every rate needs its ATO page."""
+    import re
+    if not isinstance(doc, dict) or not isinstance(doc.get("rates"), dict) \
+            or not isinstance(doc.get("sources"), dict):
+        return ["ATO rates: 'rates' and 'sources' must both be objects"]
+    probs = []
+    for year, rate in doc["rates"].items():
+        if not re.fullmatch(r"20\d\d", year):
+            probs.append(f"ATO rates: {year!r} is not an FBT start year")
+        if not isinstance(rate, (int, float)) or isinstance(rate, bool) or not 0 < rate <= 0.5:
+            probs.append(f"ATO rates: {year}: {rate!r} is not dollars per km")
+        src = doc["sources"].get(year)
+        if not (isinstance(src, str) and re.match(r"https://(www\.)?ato\.gov\.au/", src)):
+            probs.append(f"ATO rates: {year}: needs the ato.gov.au page it came from")
+    return probs
+
+
+def merge_states(prior_states, cdr_states, hand_kept):
+    """The published states: each feed provider's plans with that provider's
+    hand-kept plans first, then the hand-kept providers the feed has not, in
+    the input file's order. States keep the published order, even one left
+    with no plan (the feed's plans for it come back on a later run only
+    through it); a state new in the input goes last."""
+    import copy
+    hand_by_state = {s["code"]: s for s in copy.deepcopy(hand_kept)["states"]}
+    names = {s["code"]: s["name"] for s in prior_states}
+    names.update({c: s["name"] for c, s in hand_by_state.items()})
+    codes = [s["code"] for s in prior_states]
+    codes += [c for c in hand_by_state if c not in codes]
+    out = []
+    for code in codes:
+        hand_provs = hand_by_state.get(code, {}).get("providers", [])
+        by_name = {p["name"]: p for p in hand_provs}
+        feed = cdr_states.get(code, {})
+        provs = []
+        for pname, plans in sorted(feed.items()):
+            hp = by_name.get(pname, {})
+            provs.append({"name": pname, **({"note": hp["note"]} if hp.get("note") else {}),
+                          "plans": list(hp.get("plans", [])) + plans})
+        provs += [dict(hp) for hp in hand_provs if hp["name"] not in feed]
+        out.append({"code": code, "name": names[code], "providers": provs})
+    return out
+
+
 def report(old, new):
     """What changed between two lists, by plan (ids lose their version)."""
     def index(db):
@@ -562,7 +704,9 @@ def main():
             print("--confirm-delisted names each plan checked, as the tool printed it:")
             print("  --confirm-delisted 'QLD|1st Energy|1st1161464mre'")
             raise SystemExit(2)
-    if not generate(src, keep_files, confirm=confirm):
+    hand_kept = json.load(open(root / HAND_KEPT))
+    ato = json.load(open(root / ATO_RATES))
+    if not generate(src, keep_files, confirm=confirm, hand_kept=hand_kept, ato=ato):
         raise SystemExit(1)
 
 
@@ -571,12 +715,23 @@ def review_key(state, provider, identity):
     return f"{state}|{provider}|{identity}"
 
 
-def generate(src, keep_files=(), quiet=False, confirm=()):
+def generate(src, keep_files=(), quiet=False, confirm=(), hand_kept=None, ato=None):
     """Read the feed, merge, reconcile and write `src`. Returns True when
     written; on any refusal nothing is written and `src` is left as it was.
+    `hand_kept` and `ato` are the input files (main() always passes both);
     `quiet` is the self-test's."""
     say = (lambda *a, **k: None) if quiet else print
-    hand = json.load(open(src))
+    hand = json.load(open(src))   # the last run's output
+    if hand_kept is None:
+        hand_kept = extract_hand_kept(hand)
+    ato = ato or {"rates": {}, "sources": {}}
+    bad = hand_kept_problems(hand_kept) + ato_problems(ato)
+    generate.last_failures = bad
+    if bad:
+        say("\nNOT WRITTEN: an input file is wrong:")
+        for b in bad[:40]:
+            say("  ", b)
+        return False
 
     # --- GST: EMPIRICALLY PROVEN ex-GST (30 Jul 2026): Ergon T11 regulated
     # rate is 28.895 c/kWh inc GST; the CDR feed returns 0.26268, and
@@ -772,46 +927,10 @@ def generate(src, keep_files=(), quiet=False, confirm=()):
             say("  ", f_)
         return False
 
-    # Drop plans from any previous CDR run — they are fully regenerated.
-    for s_ in hand["states"]:
-        for p_ in s_["providers"]:
-            p_["plans"] = [pl for pl in p_["plans"]
-                           if not (pl.get("source") or "").startswith(SOURCE)]
-        s_["providers"] = [p_ for p_ in s_["providers"] if p_["plans"]]
-
-    # --- merge: CDR replaces the providers it found; hand entries kept for
-    # WA/NT, for providers the CDR missed, and every hand-kept (dashed) plan,
-    # Victoria's included, and a tester's own plan.
-    out_states = []
-    for s in hand["states"]:
-        code = s["code"]
-        if code in cdr_states:
-            merged_providers = []
-            cdr_provs = cdr_states[code]
-            hand_provs = {p["name"]: p for p in s["providers"]}
-            for pname, plans in sorted(cdr_provs.items()):
-                extra = []
-                if pname in hand_provs:
-                    # keep tester-sourced or verified hand plans not superseded
-                    for hp in hand_provs[pname]["plans"]:
-                        # Preserve every hand-crafted plan: tester-reported,
-                        # bill-verified, and hand-built sets all carry dashed
-                        # ids; CDR planIds are bare alphanumerics. (2 Aug:
-                        # the old rule deleted the Engie bill plan.)
-                        if ("tester-reported" in (hp.get("source") or "")
-                                or "-" in hp.get("id", "")):
-                            extra.append(hp)
-                note = hand_provs.get(pname, {}).get("note")
-                merged_providers.append({"name": pname,
-                                         **({"note": note} if note else {}),
-                                         "plans": extra + plans})
-            for pname, hp in hand_provs.items():
-                if pname not in cdr_provs:
-                    merged_providers.append(hp)
-            out_states.append({"code": code, "name": s["name"],
-                               "providers": merged_providers})
-        else:
-            out_states.append(s)
+    # --- merge: the feed's plans, freshly read, and the hand-kept plans from
+    # their input file (23 Nov 2026, Codex round 158). Nothing kept by hand
+    # comes from the last output, so the input file is the only way in.
+    out_states = merge_states(hand["states"], cdr_states, hand_kept)
 
     import datetime
     out = dict(hand)
@@ -819,6 +938,9 @@ def generate(src, keep_files=(), quiet=False, confirm=()):
     out["version"] = f"{major}.{minor + 1}.0"
     out["asOf"] = datetime.date.today().isoformat()
     out["states"] = out_states
+    out.pop("atoHomeChargingRates", None)
+    if ato["rates"]:
+        out["atoHomeChargingRates"] = dict(sorted(ato["rates"].items()))
     # Every brand, page and listed plan was read and every carried plan
     # accounted for (Codex rounds 106 and 108). The list certifies only what
     # was checked (Codex round 109): each feed provider read in full, in a
@@ -1315,6 +1437,45 @@ def end_to_end(http):
     ok, out = run(feed([one_page([biz, home, low])]), start=carried_biz)
     assert ok and "1st4000000mbe1" in qld_ids(out), \
         f"a business plan the list carried was dropped while still offered: {generate.last_failures}"
+
+    # 11. THE INPUT FILES (23 Nov 2026, Codex round 158): hand-kept plans and
+    #     ATO rates come only from inputs/, never from the last output.
+    def wa(db):
+        return [pl for st in db["states"] if st["code"] == "WA" for pr in st["providers"] for pl in pr["plans"]]
+    tampered = json.loads(json.dumps(hand))   # the output edited by hand
+    wa(tampered)[0].update(flatRatePerKWh=0.99, closing=True)
+    ok, out = run(feed([one_page(top + [low])]), start=tampered, hand_kept=extract_hand_kept(hand))
+    assert ok and wa(out) == wa(hand), "a hand edit of the output survived a rebuild"
+    newer = extract_hand_kept(hand)
+    newer["states"][0]["providers"][0]["plans"][0]["flatRatePerKWh"] = 0.33
+    newer["states"].append({"code": "NT", "name": "Northern Territory", "providers": [{"name": "Jacana Energy",
+        "plans": [{"id": "jacana-flat", "name": "Flat", "type": "flat", "flatRatePerKWh": 0.27, "source": "retailer site"}]}]})
+    ok, out = run(feed([one_page(top + [low])]), hand_kept=newer)
+    assert ok and wa(out)[0]["flatRatePerKWh"] == 0.33, "a hand-kept change in the input was not published"
+    assert [st["code"] for st in out["states"]] == ["QLD", "WA", "NT"], "a new hand-kept state was not added last"
+    ok, out = run(feed([one_page(top + [low])]), hand_kept={"states": []})
+    assert ok and wa(out) == [] and [st["code"] for st in out["states"]] == ["QLD", "WA"], \
+        "a plan removed from the input stayed, or its state was dropped"
+    for label, edit in [("an id with no dash", lambda pl: pl.update(id="synergy1")),
+                        ("a $2 rate", lambda pl: pl.update(flatRatePerKWh=2.0)),
+                        ("a negative rate", lambda pl: pl.update(flatRatePerKWh=-0.1)),
+                        ("the feed as its source", lambda pl: pl.update(source=SOURCE)),
+                        ("a plan the apps can't read", lambda pl: pl.update(type="weird"))]:
+        bad = extract_hand_kept(hand)
+        edit(bad["states"][0]["providers"][0]["plans"][0])
+        ok, _ = run(feed([one_page(top + [low])]), hand_kept=bad)
+        assert not ok and generate.last_failures, f"a hand-kept plan with {label} was published"
+    ato = {"rates": {"2027": 0.0612}, "sources": {"2027": "https://www.ato.gov.au/law/view/document?docid=COG/PCG20242/NAT/ATO/00001"}}
+    ok, out = run(feed([one_page(top + [low])]), ato=ato)
+    assert ok and out["atoHomeChargingRates"] == {"2027": 0.0612}, "the ATO rate was not published"
+    ok, out = run(feed([one_page(top + [low])]), start=dict(hand, atoHomeChargingRates={"2027": 0.9}))
+    assert ok and "atoHomeChargingRates" not in out, "an ATO rate edited into the output survived"
+    for label, bad in [("no source", {"rates": {"2027": 0.06}, "sources": {}}),
+                       ("a source off ato.gov.au", {"rates": {"2027": 0.06}, "sources": {"2027": "https://example.com/ato"}}),
+                       ("cents, not dollars", {"rates": {"2027": 6.12}, "sources": ato["sources"]}),
+                       ("a year that isn't one", {"rates": {"27": 0.06}, "sources": {"27": ato["sources"]["2027"]}})]:
+        ok, _ = run(feed([one_page(top + [low])]), ato=bad)
+        assert not ok, f"an ATO rate with {label} was published"
 
 
 if __name__ == "__main__":
