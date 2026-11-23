@@ -52,8 +52,10 @@ is here and in the files named.
    `energy-plans-au.json`: the gate refuses any change to it. The weekly
    plans job publishes the rate within 7 days of the merge.
 7. Run `python3 tools/check-pr.py <dir with main's files> .` and fix anything
-   it reports. It must list nothing under "Needs your word": those
-   are changes only the developer makes.
+   it reports. Under "Needs your word" it may list only "ATO home-charging
+   rates" and "lease provider rules", with each change, old and new, and its
+   source: the developer reads that list before approving. Anything else
+   there is a change only the developer makes.
 8. If anything changed: commit on `claude/provider-rules-<YYYY-MM-DD>` (or
    the open branch, brought up to date with main), push, and open a pull
    request titled `Provider rules <date>: <short summary>`. In the PR text,

@@ -25,6 +25,13 @@ What it decides, and posts as the check "data-gate":
          hand-kept plans, workflows, code), so any new change needs a new
          approval, but bringing the branch up to date with main does not
          unless it changes the PR's own files.
+One commit per decision (Codex round 159, P1): the gate reads the PR, lists
+its changes with GitHub's compare of the PR's base and head commits (fixed
+ids, so the list belongs to that head and no other), reads the PR again and
+posts nothing if the head moved (the run for the new head decides). Every
+changed data file is fetched by its blob id from that list and checked
+against it, so what is validated, what the approval code hashes and the
+commit the check is posted on are the same commit.
 Who posts it: the "data-gate" check comes from the developer's own GitHub App
 (GATE_APP_ID, GATE_APP_KEY in the main-only "gate" environment), and main's
 ruleset requires the check from that app. Any workflow can post a check
@@ -154,12 +161,30 @@ def approval(comments, owner, phrase):
     return None
 
 
-def gather(repo, number, token, base_dir, head_dir):
-    """(pr, files, problems, checked, needs) for the PR, its data copied out
-    as text next to main's."""
+MAX_FILES = 300   # GitHub's compare lists at most this many changed files
+
+
+def blob_sha(data):
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def snapshot(repo, number, token):
+    """(pr, files) for one head commit, or None if the PR's head moved while
+    its changes were listed (Codex round 159, P1)."""
     pr = api(f"/repos/{repo}/pulls/{number}", token)
-    files = paged(f"/repos/{repo}/pulls/{number}/files", token)
+    head, base = pr["head"]["sha"], pr["base"]["sha"]
+    files = api(f"/repos/{repo}/compare/{base}...{head}?per_page=1", token).get("files") or []
+    if api(f"/repos/{repo}/pulls/{number}", token)["head"]["sha"] != head:
+        return None
+    return pr, files
+
+
+def gather(repo, pr, files, token, base_dir, head_dir):
+    """(problems, checked, needs) for the PR's snapshot, its data fetched by
+    blob id next to main's."""
     problems, needs = check_pr.check_paths(files)
+    if len(files) >= MAX_FILES:
+        problems.append(f"{len(files)} or more files changed, more than the gate can list; split the PR")
     changed = {f["filename"]: f for f in files}
     for name in check_pr.DATA_FILES:
         for d in (base_dir, head_dir):
@@ -168,11 +193,15 @@ def gather(repo, number, token, base_dir, head_dir):
             shutil.copy(ROOT / name, base_dir / name)
         f = changed.get(name)
         if f and f["status"] in ("added", "modified", "changed"):
-            (head_dir / name).write_bytes(api(f"/repos/{repo}/contents/{name}?ref={pr['head']['sha']}", token, raw=True))
+            blob = api(f"/repos/{repo}/git/blobs/{f['sha']}", token)
+            data = base64.b64decode(blob["content"])
+            if blob_sha(data) != f["sha"]:
+                problems.append(f"{name}: GitHub's copy doesn't match its blob id")
+            (head_dir / name).write_bytes(data)
         elif (ROOT / name).exists() and not f:
             shutil.copy(ROOT / name, head_dir / name)
     p, checked = check_pr.check_dirs(base_dir, head_dir, needs)
-    return pr, files, problems + p, checked, needs
+    return problems + p, checked, needs
 
 
 def decide(problems, needs, files, comments, owner):
@@ -209,10 +238,15 @@ def main():
     token = os.environ.get("GH_TOKEN") if dry else app_token(repo)
     tmp = Path(tempfile.mkdtemp())
     base_dir, head_dir = tmp / "base", tmp / "head"
-    pr, files, problems, checked, needs = gather(repo, number, token, base_dir, head_dir)
+    snap = snapshot(repo, number, token)
+    if snap is None:
+        print(f"PR {number} moved to a new commit while this ran; the run for that commit decides. Nothing posted.")
+        return
+    pr, files = snap
     if pr["state"] != "open" and not dry:
         print(f"PR {number} is {pr['state']}; nothing to do")
         return
+    problems, checked, needs = gather(repo, pr, files, token, base_dir, head_dir)
     owner = pr["base"]["repo"]["owner"]["login"]
     comments = paged(f"/repos/{repo}/issues/{number}/comments", token)
     conclusion, title, phrase, approver = decide(problems, needs, files, comments, owner)
