@@ -82,10 +82,16 @@ def check(get, app_id):
             problems.append(f"required checks are {checks}, expected data-gate from the gate app ({app_id}) only")
         if rsc.get("strict_required_status_checks_policy") is not True:
             problems.append("branches need not be up to date before merging")
+        # GitHub shows the bypass list only to someone who can edit the
+        # ruleset, and this app only reads (first run, 23 Nov 2026: None). It
+        # is checked when GitHub does show it; otherwise the readback says so.
         bypass = d.get("bypass_actors")
-        lines.append(f"  bypass list: {bypass}")
-        if [(b.get("actor_type"), b.get("bypass_mode")) for b in bypass or []] != [("DeployKey", "always")]:
-            problems.append(f"the bypass list is {bypass}, expected deploy keys only")
+        if bypass is None:
+            lines.append("  bypass list: not shown to a read-only app (the developer's screen: deploy keys only)")
+        else:
+            lines.append(f"  bypass list: {bypass}")
+            if [(b.get("actor_type"), b.get("bypass_mode")) for b in bypass] != [("DeployKey", "always")]:
+                problems.append(f"the bypass list is {bypass}, expected deploy keys only")
 
     keys = read("deploy keys", "/keys") or []
     seen = [(k.get("title"), fingerprint(k["key"]), k.get("read_only")) for k in keys]
@@ -172,6 +178,7 @@ def selftest():
     assert broken(lambda d: d.update({"/actions/secrets": {"total_count": 1, "secrets": [{"name": "X"}]}}))
     assert broken(lambda d: d["/actions/permissions/workflow"].update(default_workflow_permissions="write"))
     assert broken(lambda d: d.pop("/keys")), "an unreadable setting passed"
+    assert not broken(lambda d: d["/rulesets/1"].update(bypass_actors=None)), "a hidden bypass list failed"
     print("settings-check selftest ok")
 
 
