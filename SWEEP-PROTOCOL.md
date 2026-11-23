@@ -67,8 +67,11 @@ of each month, and the developer reviews its pull request.
 - This repo is public: no tester names, support codes or the developer's
   name in notes, reports, commits or PRs.
 - Sessions on the developer's Mac push branches only (their token can't
-  open, comment on or merge a pull request); the developer opens the PR from
-  the phone. Cloud routines open their own PRs, and never approve one.
+  open or comment on a pull request); the developer opens the PR from the
+  phone. Cloud routines open their own PRs, and never approve one. The
+  developer approves in the GitHub app on the phone only. Never sign in to
+  GitHub on the Mac, and never ask the developer to: an approval typed in a
+  Mac browser is one an agent could have typed.
 
 ## What each scheduled run leaves
 
