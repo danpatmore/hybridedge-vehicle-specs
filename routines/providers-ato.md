@@ -117,8 +117,8 @@ is here and in the files named.
 
 - Merge anything, push to main, or edit workflows or tools.
 - Comment "approve" (or anything like the data gate's phrase) on a pull
-  request. Only the developer approves, and the gate ignores a comment made
-  through the Claude app anyway.
+  request. Only the developer approves, on the phone, and the gate ignores
+  a comment made through the Claude app anyway.
 - Edit `inputs/plans-hand-kept.json` or `inputs/plans-options.json`.
 - Touch plans, `pendingReview` or `completeFor` in `energy-plans-au.json`.
   Delistings go only through `checks/confirm-delisted.json` (step 9).

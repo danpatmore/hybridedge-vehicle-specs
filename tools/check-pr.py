@@ -178,13 +178,31 @@ def short(v, n=120):
     return t if len(t) <= n else t[:n] + "…"
 
 
+def ato_changes(base, head):
+    """Every changed field, old and new: rate and source for each FBT year,
+    then any other key (Codex round 160, P2: a source-only edit shows too)."""
+    base = base if isinstance(base, dict) else {}
+    part = lambda doc, key: doc.get(key) if isinstance(doc.get(key), dict) else {}
+    years = set()
+    for doc in (base, head):
+        years |= set(part(doc, "rates")) | set(part(doc, "sources"))
+    rows = []
+    for y in sorted(years):
+        fields = [f"{label} {short(part(base, key).get(y), 300)} to {short(part(head, key).get(y), 300)}"
+                  for label, key in (("rate (dollars per km)", "rates"), ("source", "sources"))
+                  if part(base, key).get(y) != part(head, key).get(y)]
+        if fields:
+            rows.append(f"ATO rate for the FBT year from 1 April {y}: " + "; ".join(fields))
+    for k in sorted((set(base) | set(head)) - {"rates", "sources"}):
+        if base.get(k) != head.get(k):
+            rows.append(f"ATO rates file, {k}: {short(base.get(k))} to {short(head.get(k))}")
+    return rows
+
+
 def check_ato(base, head, needs):
     p = _load_tool("fetch-energy-plans").ato_problems(head)
-    old, new = (base or {}).get("rates") or {}, head.get("rates") or {}
-    rows = [f"ATO rate for the FBT year from 1 April {y}: {short(old.get(y))} to {short(new.get(y))} dollars per km"
-            f" (source: {(head.get('sources') or {}).get(y) or (base or {}).get('sources', {}).get(y)})"
-            for y in sorted(set(old) | set(new)) if old.get(y) != new.get(y)]
-    need(needs, "ATO home-charging rates", "; ".join(rows) or "ATO rates file changed (sources or notes)")
+    for row in ato_changes(base, head):
+        need(needs, "ATO home-charging rates", row)
     return p
 
 
@@ -345,17 +363,28 @@ def main():
     raise SystemExit(1 if problems else 0)
 
 
-def summary_text(problems, checked, needs, info=()):
+def summary_text(problems, checked, needs, info=(), diff_url=None):
+    """The gate's comment. Long values are cut and long lists stop, so when
+    anything is cut it says so and links the exact diff (Codex round 160, P2)."""
     text = (f"Checked: {', '.join(checked) or 'no data file changed'}.\n\n"
             + ("**Problems (this can't merge):**\n" + "\n".join(f"- {x}" for x in problems)
                if problems else "All data checks passed.")
             + "\n")
+    cut = False
     if info:
         text += f"\n**Cars changed ({len(info)}):**\n" + "\n".join(f"- {x}" for x in info[:60]) + "\n"
         if len(info) > 60:
-            text += f"- and {len(info) - 60} more; see the PR's files\n"
+            text += f"- and {len(info) - 60} more cars, not listed here\n"
+        cut = len(info) > 60 or any("…" in x for x in info[:60])
     for cat, details in needs.items():
         text += f"\n**Needs your word: {cat}**\n" + "\n".join(f"- {x}" for x in details[:30]) + "\n"
+        if len(details) > 30:
+            text += f"- and {len(details) - 30} more, not listed here\n"
+        cut = cut or len(details) > 30 or any("…" in x for x in details[:30])
+    if cut:
+        text += ("\nThis summary is shortened: values ending in … are cut, and long lists stop. "
+                 + (f"The full change is here: {diff_url}" if diff_url else "The PR's Files tab has the full change.")
+                 + "\n")
     return text
 
 
@@ -491,6 +520,27 @@ def selftest():
     case("lease rules: a provider with no source or note", True, "no source", {"lease-rules-au.json": r2})
     case("ATO: a rate with no source", True, "ato.gov.au",
          {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={})})
+    # A source-only edit lists the old and new source (Codex round 160, P2).
+    src2 = "https://www.ato.gov.au/businesses-and-organisations/y"
+    a1 = dict(ato, rates={"2027": 0.0612}, sources={"2027": src})
+    needs = {}
+    p = check_ato(a1, dict(a1, sources={"2027": src2}), needs)
+    rows = needs.get("ATO home-charging rates") or []
+    results.append((not p and len(rows) == 1 and src in rows[0] and src2 in rows[0] and "rate" not in rows[0].split(":")[1],
+                    "ATO: a source-only edit lists the old and new source", rows[:1] or p[:1]))
+    needs = {}
+    check_ato(a1, dict(a1, about="new words"), needs)
+    rows = needs.get("ATO home-charging rates") or []
+    results.append((len(rows) == 1 and "about" in rows[0] and "new words" in rows[0],
+                    "ATO: a note-only edit lists the old and new note", rows[:1]))
+    # Shortened values and lists say so, with the diff (Codex round 160, P2).
+    long = cars(lambda s: s["vehicles"][10].update(notes="x" * 200))["phev-specs-au.json"]
+    t = summary_text([], ["phev-specs-au.json"], {}, car_changes(specs, long), "https://diff")
+    results.append(("shortened" in t and "https://diff" in t, "a cut car value says the summary is shortened", []))
+    t = summary_text([], ["phev-specs-au.json"], {}, [f"car {i}" for i in range(61)], "https://diff")
+    results.append(("1 more cars" in t and "shortened" in t, "more than 60 cars says the list stops", []))
+    t = summary_text([], ["phev-specs-au.json"], {}, ["car: notes \"a\" to \"b\""], "https://diff")
+    results.append(("shortened" not in t, "a short summary doesn't claim to be cut", []))
 
     import datetime
     soon = str(datetime.date.today() + datetime.timedelta(days=7))
