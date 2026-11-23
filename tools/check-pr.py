@@ -23,16 +23,23 @@ whatever is merged reaches every phone within a day):
   - a tester-log key that differs from main: needs "tester-log keys"
   - showCarsWithBlanks only at the top, true or false; a change to it
     needs "showCarsWithBlanks"
+  - every car added or changed is listed, field by field, old to new, so
+    the developer sees each one before approving (Codex round 159, P2: a
+    list rather than a "car specifications" category, which every sweep
+    would carry)
 energy-plans-au.json: never changed by a PR (Codex round 158, P1). It is the
   weekly plans job's output; its inputs are below.
 inputs/plans-hand-kept.json: the builder's own checks (every plan readable,
   dashed ids, 0c to $1.50); any change needs "hand-kept plans".
 inputs/ato-home-charging-rates.json: dollars per km by FBT year, each with
-  its ato.gov.au page.
+  its ato.gov.au page; any change needs "ATO home-charging rates", listing
+  each year's old and new rate and its page (Codex round 159, P2).
 inputs/plans-options.json: skipGstCheckUntil null, or a date no more than 14
   days away; setting one needs "GST check off".
 lease-rules-au.json: valid JSON, version and asOf strings, provider ids
-  unique, and every provider with a rule has a source or says why not.
+  unique, and every provider with a rule has a source or says why not; any
+  change needs "lease provider rules", listing each provider's changed
+  fields, old and new, and its sources (Codex round 159, P2).
 checks/last-checked.json: only dated, short results (tools/merge-check-log.py).
 checks/confirm-delisted.json: every entry well formed and held on main
   (tools/delisted.py).
@@ -83,6 +90,22 @@ def has_key(obj, key):
 
 def need(needs, category, detail):
     needs.setdefault(category, []).append(detail)
+
+
+def car_changes(base, head):
+    """Each car added or changed, field by field, old to new."""
+    old = {c.get("id"): c for c in (base or {}).get("vehicles") or []}
+    rows = []
+    for c in head.get("vehicles") or []:
+        name = f"{c.get('make')} {c.get('model')} {c.get('variant') or ''}".strip()
+        o = old.get(c.get("id"))
+        if o is None:
+            rows.append(f"new car: {name} ({c.get('id')})")
+        elif o != c:
+            fields = [f"{k} {short(o.get(k), 60)} to {short(c.get(k), 60)}"
+                      for k in sorted(set(o) | set(c)) if o.get(k) != c.get(k)]
+            rows.append(f"{name}: " + "; ".join(fields))
+    return rows
 
 
 def check_specs(base, head, needs):
@@ -150,8 +173,19 @@ def check_hand_kept(base, head, needs):
     return p
 
 
-def check_ato(head):
-    return _load_tool("fetch-energy-plans").ato_problems(head)
+def short(v, n=120):
+    t = json.dumps(v, ensure_ascii=False)
+    return t if len(t) <= n else t[:n] + "…"
+
+
+def check_ato(base, head, needs):
+    p = _load_tool("fetch-energy-plans").ato_problems(head)
+    old, new = (base or {}).get("rates") or {}, head.get("rates") or {}
+    rows = [f"ATO rate for the FBT year from 1 April {y}: {short(old.get(y))} to {short(new.get(y))} dollars per km"
+            f" (source: {(head.get('sources') or {}).get(y) or (base or {}).get('sources', {}).get(y)})"
+            for y in sorted(set(old) | set(new)) if old.get(y) != new.get(y)]
+    need(needs, "ATO home-charging rates", "; ".join(rows) or "ATO rates file changed (sources or notes)")
+    return p
 
 
 def check_options(head, needs, today=None):
@@ -173,7 +207,31 @@ def check_options(head, needs, today=None):
     return []
 
 
-def check_rules(head):
+def rules_changes(base, head):
+    """Each provider's changed fields, old and new, with its sources."""
+    old = {x.get("id"): x for x in (base or {}).get("providers") or []}
+    new = {x.get("id"): x for x in head.get("providers") or [] if isinstance(x, dict)}
+    rows = []
+    for pid in sorted(set(old) | set(new), key=str):
+        a, b = old.get(pid), new.get(pid)
+        if a == b:
+            continue
+        if a is None or b is None:
+            rows.append(f"provider {pid} {'added' if a is None else 'removed'}")
+            continue
+        fields = [f"{k}: {short(a.get(k))} to {short(b.get(k))}" for k in sorted(set(a) | set(b))
+                  if a.get(k) != b.get(k) and k != "sources"]
+        if a.get("sources") != b.get("sources"):
+            fields.append("sources changed")
+        rows.append(f"provider {pid}: " + "; ".join(fields) + f" (sources: {', '.join(b.get('sources') or []) or 'none'})")
+    for k in sorted(set(base or {}) | set(head)):
+        if k != "providers" and (base or {}).get(k) != head.get(k):
+            rows.append(f"{k}: {short((base or {}).get(k))} to {short(head.get(k))}")
+    return rows
+
+
+def check_rules(base, head, needs):
+    need(needs, "lease provider rules", "lease rules: " + (" | ".join(rules_changes(base, head)) or "changed"))
     p = []
     for k in ("version", "asOf"):
         if not isinstance(head.get(k), str):
@@ -233,11 +291,12 @@ def check_confirmations(head, base_dir):
     return [f"confirmations: {x}" for x in tool.problems(head, tool.held(plans))]
 
 
-def check_dirs(base_dir, head_dir, needs=None):
+def check_dirs(base_dir, head_dir, needs=None, info=None):
     """(problems, files checked); what needs the developer's word goes in
-    `needs`, {category: [details]}."""
+    `needs`, {category: [details]}, and each changed car in `info`."""
     problems, checked = [], []
     needs = {} if needs is None else needs
+    info = [] if info is None else info
     for name in DATA_FILES:
         base, bp = read(base_dir / name)
         head, hp = read(head_dir / name)
@@ -249,16 +308,18 @@ def check_dirs(base_dir, head_dir, needs=None):
         checked.append(name)
         if name == "phev-specs-au.json":
             problems += check_specs(base, head, needs)
+            if isinstance(head.get("vehicles"), list):
+                info += car_changes(base, head)
         elif name == "energy-plans-au.json":
             problems.append(PLANS_OUTPUT)
         elif name == "inputs/plans-hand-kept.json":
             problems += check_hand_kept(base, head, needs)
         elif name == "inputs/ato-home-charging-rates.json":
-            problems += check_ato(head)
+            problems += check_ato(base, head, needs)
         elif name == "inputs/plans-options.json":
             problems += check_options(head, needs)
         elif name == "lease-rules-au.json":
-            problems += check_rules(head)
+            problems += check_rules(base, head, needs)
         elif name == "checks/last-checked.json":
             problems += check_log(base, head)
         else:
@@ -275,19 +336,24 @@ def main():
         del args[i:i + 2]
     base_dir, head_dir = Path(args[0]), Path(args[1])
     needs = {}
-    problems, checked = check_dirs(base_dir, head_dir, needs)
-    text = summary_text(problems, checked, needs)
+    info = []
+    problems, checked = check_dirs(base_dir, head_dir, needs, info)
+    text = summary_text(problems, checked, needs, info)
     print(text)
     if summary:
         Path(summary).write_text(text)
     raise SystemExit(1 if problems else 0)
 
 
-def summary_text(problems, checked, needs):
+def summary_text(problems, checked, needs, info=()):
     text = (f"Checked: {', '.join(checked) or 'no data file changed'}.\n\n"
             + ("**Problems (this can't merge):**\n" + "\n".join(f"- {x}" for x in problems)
                if problems else "All data checks passed.")
             + "\n")
+    if info:
+        text += f"\n**Cars changed ({len(info)}):**\n" + "\n".join(f"- {x}" for x in info[:60]) + "\n"
+        if len(info) > 60:
+            text += f"- and {len(info) - 60} more; see the PR's files\n"
     for cat, details in needs.items():
         text += f"\n**Needs your word: {cat}**\n" + "\n".join(f"- {x}" for x in details[:30]) + "\n"
     return text
@@ -372,6 +438,12 @@ def selftest():
          cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x"), bump=False))
     case("a car note changed, version bumped", False, None,
          cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x")))
+    s2 = copy.deepcopy(specs)
+    s2["version"] = "999.0.0"
+    s2["vehicles"][10]["notes"] = "changed"
+    rows = car_changes(specs, s2)
+    results.append((len(rows) == 1 and "notes" in rows[0] and "to \"changed\"" in rows[0],
+                    "a changed car is listed with its field, old and new", rows[:1]))
     case("lastUpdated dropped", True, "lastUpdated", cars(lambda s: s.pop("lastUpdated")))
     case("invalid JSON", True, "json", raw={"phev-specs-au.json": "{ not json"})
 
@@ -405,8 +477,18 @@ def selftest():
     h3["states"][0]["providers"][0]["plans"][0]["flatRatePerKWh"] = 1.60
     case("hand-kept plans: a $1.60 rate", True, "outside", {"inputs/plans-hand-kept.json": h3})
     src = "https://www.ato.gov.au/businesses-and-organisations/x"
-    case("ATO: a rate with its ATO page", False, None,
-         {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={"2027": src})})
+    case("ATO: a rate with its ATO page: needs the developer's word", False, None,
+         {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={"2027": src})},
+         need="ATO home-charging rates")
+    rules = json.load(open(base / "lease-rules-au.json"))
+    r1 = copy.deepcopy(rules)
+    r1["providers"][0]["needsDedicatedMeter"] = not r1["providers"][0].get("needsDedicatedMeter")
+    case("lease rules: a provider rule changed: needs the developer's word", False, None,
+         {"lease-rules-au.json": r1}, need="lease provider rules")
+    r2 = copy.deepcopy(rules)
+    r2["providers"][0]["sources"] = []
+    r2["providers"][0]["notes"] = ""
+    case("lease rules: a provider with no source or note", True, "no source", {"lease-rules-au.json": r2})
     case("ATO: a rate with no source", True, "ato.gov.au",
          {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={})})
 
