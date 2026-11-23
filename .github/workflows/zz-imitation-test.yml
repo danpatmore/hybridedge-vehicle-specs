@@ -1,0 +1,17 @@
+# TEST ONLY, NEVER MERGE (Codex round 158, P1 3). Checks whether a workflow a
+# pull request adds can stand in for the required check: its job is named
+# data-pr-check and passes, 60 seconds after the real gate, which fails this
+# PR because it removes a car.
+name: Imitation test (never merge)
+
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  imitation:
+    name: data-pr-check
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 60
