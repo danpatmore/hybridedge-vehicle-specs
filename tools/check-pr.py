@@ -23,6 +23,10 @@ whatever is merged reaches every phone within a day):
   - a tester-log key that differs from main: needs "tester-log keys"
   - showCarsWithBlanks only at the top, true or false; a change to it
     needs "showCarsWithBlanks"
+  - every car added or changed is listed, field by field, old to new, so
+    the developer sees each one before approving (Codex round 159, P2: a
+    list rather than a "car specifications" category, which every sweep
+    would carry)
 energy-plans-au.json: never changed by a PR (Codex round 158, P1). It is the
   weekly plans job's output; its inputs are below.
 inputs/plans-hand-kept.json: the builder's own checks (every plan readable,
@@ -86,6 +90,22 @@ def has_key(obj, key):
 
 def need(needs, category, detail):
     needs.setdefault(category, []).append(detail)
+
+
+def car_changes(base, head):
+    """Each car added or changed, field by field, old to new."""
+    old = {c.get("id"): c for c in (base or {}).get("vehicles") or []}
+    rows = []
+    for c in head.get("vehicles") or []:
+        name = f"{c.get('make')} {c.get('model')} {c.get('variant') or ''}".strip()
+        o = old.get(c.get("id"))
+        if o is None:
+            rows.append(f"new car: {name} ({c.get('id')})")
+        elif o != c:
+            fields = [f"{k} {short(o.get(k), 60)} to {short(c.get(k), 60)}"
+                      for k in sorted(set(o) | set(c)) if o.get(k) != c.get(k)]
+            rows.append(f"{name}: " + "; ".join(fields))
+    return rows
 
 
 def check_specs(base, head, needs):
@@ -271,11 +291,12 @@ def check_confirmations(head, base_dir):
     return [f"confirmations: {x}" for x in tool.problems(head, tool.held(plans))]
 
 
-def check_dirs(base_dir, head_dir, needs=None):
+def check_dirs(base_dir, head_dir, needs=None, info=None):
     """(problems, files checked); what needs the developer's word goes in
-    `needs`, {category: [details]}."""
+    `needs`, {category: [details]}, and each changed car in `info`."""
     problems, checked = [], []
     needs = {} if needs is None else needs
+    info = [] if info is None else info
     for name in DATA_FILES:
         base, bp = read(base_dir / name)
         head, hp = read(head_dir / name)
@@ -287,6 +308,8 @@ def check_dirs(base_dir, head_dir, needs=None):
         checked.append(name)
         if name == "phev-specs-au.json":
             problems += check_specs(base, head, needs)
+            if isinstance(head.get("vehicles"), list):
+                info += car_changes(base, head)
         elif name == "energy-plans-au.json":
             problems.append(PLANS_OUTPUT)
         elif name == "inputs/plans-hand-kept.json":
@@ -313,19 +336,24 @@ def main():
         del args[i:i + 2]
     base_dir, head_dir = Path(args[0]), Path(args[1])
     needs = {}
-    problems, checked = check_dirs(base_dir, head_dir, needs)
-    text = summary_text(problems, checked, needs)
+    info = []
+    problems, checked = check_dirs(base_dir, head_dir, needs, info)
+    text = summary_text(problems, checked, needs, info)
     print(text)
     if summary:
         Path(summary).write_text(text)
     raise SystemExit(1 if problems else 0)
 
 
-def summary_text(problems, checked, needs):
+def summary_text(problems, checked, needs, info=()):
     text = (f"Checked: {', '.join(checked) or 'no data file changed'}.\n\n"
             + ("**Problems (this can't merge):**\n" + "\n".join(f"- {x}" for x in problems)
                if problems else "All data checks passed.")
             + "\n")
+    if info:
+        text += f"\n**Cars changed ({len(info)}):**\n" + "\n".join(f"- {x}" for x in info[:60]) + "\n"
+        if len(info) > 60:
+            text += f"- and {len(info) - 60} more; see the PR's files\n"
     for cat, details in needs.items():
         text += f"\n**Needs your word: {cat}**\n" + "\n".join(f"- {x}" for x in details[:30]) + "\n"
     return text
@@ -410,6 +438,12 @@ def selftest():
          cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x"), bump=False))
     case("a car note changed, version bumped", False, None,
          cars(lambda s: s["vehicles"][10].update(notes=(s["vehicles"][10].get("notes") or "") + " x")))
+    s2 = copy.deepcopy(specs)
+    s2["version"] = "999.0.0"
+    s2["vehicles"][10]["notes"] = "changed"
+    rows = car_changes(specs, s2)
+    results.append((len(rows) == 1 and "notes" in rows[0] and "to \"changed\"" in rows[0],
+                    "a changed car is listed with its field, old and new", rows[:1]))
     case("lastUpdated dropped", True, "lastUpdated", cars(lambda s: s.pop("lastUpdated")))
     case("invalid JSON", True, "json", raw={"phev-specs-au.json": "{ not json"})
 
