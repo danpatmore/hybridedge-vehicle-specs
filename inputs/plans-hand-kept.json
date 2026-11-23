@@ -1,0 +1,1480 @@
+{
+  "about": "Every plan in energy-plans-au.json that does not come from the government feed. The weekly plans job (tools/fetch-energy-plans.py) reads this file, checks it and copies these plans into the published list; nobody edits the published list itself. Changes need the developer's approval comment on the pull request. Ids must contain a dash; rates are dollars per kWh, 0 to 1.50.",
+  "states": [
+    {
+      "code": "QLD",
+      "name": "Queensland",
+      "providers": [
+        {
+          "name": "AGL",
+          "plans": [
+            {
+              "id": "agl-qld-night-saver-ev",
+              "name": "Night Saver EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV overnight",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "All other times",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.32
+                }
+              ],
+              "indicative": true,
+              "source": "agl.com.au Night Saver EV plan page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('Charge for only 8c/kWh between 12 and 6am'). Proven ABSENT from AGL's government CDR feed (all 1,276 plans checked), so day rates are network-dependent indicative estimates - correct against your bill. Needs an EV in the household and a smart meter. 8c does not apply to controlled load.",
+              "notes": "The 8c midnight to 6 am EV window is AGL's published rate to June 2026 and may change. The daytime rate varies by plan and region, check your bill and edit it here. Requires a digital meter."
+            }
+          ]
+        },
+        {
+          "name": "Alinta Energy",
+          "plans": [
+            {
+              "id": "alinta-qld-flat",
+              "name": "HomeDeal (flat)",
+              "type": "flat",
+              "flatRatePerKWh": 0.29,
+              "indicative": true,
+              "source": "placeholder, verify against alintaenergy.com.au"
+            },
+            {
+              "id": "alinta-homeev-qld",
+              "name": "HomeEV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "All other times",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.29
+                }
+              ],
+              "indicative": true,
+              "source": "alintaenergy.com.au HomeEV page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('just 8c/kWh from 12am to 6am'). Day rates and the official state list are postcode-gated - the day figure here is an indicative estimate, correct against your bill. Proof of EV ownership and a smart meter required; reasonable use policy applies to the 8c window."
+            }
+          ]
+        },
+        {
+          "name": "Origin Energy",
+          "plans": [
+            {
+              "id": "origin-ev-power-up-qld",
+              "name": "EV Power Up (scheduled charging add-on)",
+              "type": "flat",
+              "flatRatePerKWh": 0.08,
+              "indicative": false,
+              "source": "originenergy.com.au/ev-power-up, checked 8 Aug 2026: 8c/kWh for scheduled EV charging is published and VERIFIED. IMPORTANT: this is an add-on with no clock window - Origin's app schedules the charging and credits those kWh back to 8c; instant/override charging bills at your underlying plan's rates. Model your scheduled charges with this plan and everything else with your base plan. Needs a compatible EV or smart charger (Tesla, BYD, others), a smart meter, and the Origin app."
+            }
+          ]
+        },
+        {
+          "name": "Red Energy",
+          "plans": [
+            {
+              "id": "red-ev-saver-qld",
+              "name": "Red EV Saver",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free EV window (weekends)",
+                  "start": "12:00",
+                  "end": "14:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "00:00",
+                  "end": "12:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2797
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.2797
+                },
+                {
+                  "label": "Anytime",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.2797
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au EV Saver T&C (24 Jun 2025) + Energy Made Easy RED552839MRE, checked 8 Aug 2026: free usage 12pm-2pm Sat+Sun is published and VERIFIED. All other times are a flat anytime rate that varies by network and is only shown at postcode quote - the flat figure here is an indicative estimate, correct it against your bill. Needs a smart meter and an EV registered in your name. No lock-in."
+            },
+            {
+              "id": "red-solar-sharer-qld",
+              "name": "Solar Sharer Offer",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free daily window",
+                  "start": "11:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0,
+                  "freeCapKWhPerDay": 24,
+                  "overCapRatePerKWh": 0.2797
+                },
+                {
+                  "label": "All other times",
+                  "start": "00:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2797
+                },
+                {
+                  "label": "All other times",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2797
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au/solar-sharer-offer, checked 8 Aug 2026: the free daily window (capped 24 kWh/day) is published and VERIFIED. Rates outside the free window are postcode-quoted and may run higher than a standard flat plan - the flat figure here is an indicative estimate, correct it against your bill. Smart meter required; QLD is South East Queensland only."
+            }
+          ]
+        },
+        {
+          "name": "Amber Electric",
+          "plans": [
+            {
+              "id": "amber-wholesale-qld",
+              "name": "Amber - Wholesale Passthrough",
+              "type": "flat",
+              "flatRatePerKWh": 0.25,
+              "indicative": true,
+              "source": "Amber passes through the NEM wholesale spot price, which changes every 30 minutes and can spike or go negative — no fixed rate exists. The 25c here is a placeholder: EDIT it to your typical charging-time rate from the Amber app, or enter the actual rate on each charge. True dynamic pricing support is planned."
+            }
+          ]
+        },
+        {
+          "name": "Ergon Energy",
+          "note": "Regional Queensland (regulated). South-east QLD uses the retailers below.",
+          "plans": [
+            {
+              "id": "ergon-flat-t11",
+              "name": "Residential Flat (Tariff 11)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2889,
+              "indicative": false,
+              "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)"
+            },
+            {
+              "id": "ergon-t12f-free-window",
+              "name": "Tariff 12F (free midday window)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free midday",
+                  "start": "11:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0,
+                  "freeCapKWhPerDay": 24,
+                  "overCapRatePerKWh": 0.081
+                },
+                {
+                  "label": "Afternoon",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.081
+                },
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.489
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "21:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2641
+                }
+              ],
+              "indicative": false,
+              "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)",
+              "notes": "Free 11 am to 2 pm capped at 24 kWh per day, then 8.1c. Matches an EV plan a tester reported, now CDR-verified."
+            },
+            {
+              "id": "ergon-t12e-solar-soaker",
+              "name": "Tariff 12E (solar soaker)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Off-peak midday",
+                  "start": "11:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.07
+                },
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4721
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "21:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2559
+                }
+              ],
+              "indicative": false,
+              "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)",
+              "notes": "7c midday window, the standout EV daytime rate in regional QLD."
+            },
+            {
+              "id": "ergon-t12d-tou",
+              "name": "Tariff 12D (time of use)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Off-peak midday",
+                  "start": "11:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1851
+                },
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4065
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "21:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2504
+                }
+              ],
+              "indicative": false,
+              "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)"
+            },
+            {
+              "id": "ergon-t31-controlled",
+              "name": "Tariff 31 controlled load (charger on its own circuit)",
+              "type": "flat",
+              "flatRatePerKWh": 0.1666,
+              "indicative": false,
+              "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)",
+              "notes": "Only if your charger is wired to the controlled load circuit. Ergon energises it at least 8 hours a day, usually overnight, at times they control."
+            },
+            {
+              "id": "ergon-t33-controlled",
+              "name": "Tariff 33 controlled load (charger on its own circuit)",
+              "type": "flat",
+              "flatRatePerKWh": 0.1676,
+              "indicative": false,
+              "source": "CDR feed cdr.energymadeeasy.gov.au/ergon, fetched 31 Jul 2026 (FY26-27 notified prices, GST added)",
+              "notes": "Only if your charger is wired to the controlled load circuit. Ergon energises it at least 16 hours a day at times they control."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "NSW",
+      "name": "New South Wales",
+      "providers": [
+        {
+          "name": "AGL",
+          "plans": [
+            {
+              "id": "agl-night-saver-ev-nsw",
+              "name": "Night Saver EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV Night",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "06:00",
+                  "end": "10:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2882
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "10:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2052
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "14:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2882
+                },
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4362
+                },
+                {
+                  "label": "Off Peak",
+                  "start": "21:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2882
+                }
+              ],
+              "indicative": true,
+              "source": "Full rate card VERIFIED from a NSW customer's AGL app (Ausgrid area, 9 Aug 2026): EV Night 8c 12am-6am, Off Peak 28.82c, Shoulder 20.52c 10am-2pm, Peak 43.62c 3pm-9pm, all inc GST. Supply 87.16c/day, solar FiT 4c ex GST. Night Saver EV overlays YOUR network's TOU windows, so times and day rates differ outside Ausgrid - check your bill and correct here. 8c window is AGL-published, absent from the CDR feed."
+            }
+          ]
+        },
+        {
+          "name": "Alinta Energy",
+          "plans": [
+            {
+              "id": "alinta-nsw-flat",
+              "name": "HomeDeal (flat)",
+              "type": "flat",
+              "flatRatePerKWh": 0.31,
+              "indicative": true,
+              "source": "placeholder, verify against alintaenergy.com.au"
+            },
+            {
+              "id": "alinta-homeev-nsw",
+              "name": "HomeEV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "All other times",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.31
+                }
+              ],
+              "indicative": true,
+              "source": "alintaenergy.com.au HomeEV page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('just 8c/kWh from 12am to 6am'). Day rates and the official state list are postcode-gated - the day figure here is an indicative estimate, correct against your bill. Proof of EV ownership and a smart meter required; reasonable use policy applies to the 8c window."
+            }
+          ]
+        },
+        {
+          "name": "EnergyAustralia",
+          "plans": [
+            {
+              "id": "ea-ev-night-boost",
+              "name": "EV Night Boost (closing)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Super Off-Peak (EV)",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.07
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "06:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.28
+                },
+                {
+                  "label": "Peak",
+                  "start": "14:00",
+                  "end": "20:00",
+                  "days": "all",
+                  "ratePerKWh": 0.58
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "20:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.28
+                }
+              ],
+              "indicative": true,
+              "source": "energyaustralia.com.au EV Night Boost page, 8 Aug 2026: the 7c 00:00-06:00 Super Off-Peak window is published and VERIFIED; day/peak rates are behind signup and are indicative Ausgrid-zone estimates - correct every rate against your welcome pack. NSW only, smart meter required, solar FiT 1.0c.",
+              "notes": "EnergyAustralia is closing this plan. Customers on it move to the plan named in their notice, on the date it gives. Once you have moved, pick your new plan here so charges are priced at your new rates.",
+              "closing": true
+            }
+          ]
+        },
+        {
+          "name": "Engie",
+          "plans": [
+            {
+              "id": "engie-nsw-solar-bill",
+              "name": "NSW ENGIE Solar",
+              "type": "flat",
+              "flatRatePerKWh": 0.3886,
+              "indicative": false,
+              "source": "Customer bill, Dec 2025 (Endeavour zone)",
+              "notes": "Single rate any time, 9% guaranteed discount and GST included. Billed as blocks: first 420 kWh per 30 days at 38.86c, above that 40.80c. Solar feed-in 12c. Controlled load meter (26.14c) is separate and usually not the EV circuit."
+            }
+          ]
+        },
+        {
+          "name": "Origin Energy",
+          "plans": [
+            {
+              "id": "origin-ev-power-up-nsw",
+              "name": "EV Power Up (scheduled charging add-on)",
+              "type": "flat",
+              "flatRatePerKWh": 0.08,
+              "indicative": false,
+              "source": "originenergy.com.au/ev-power-up, checked 8 Aug 2026: 8c/kWh for scheduled EV charging is published and VERIFIED. IMPORTANT: this is an add-on with no clock window - Origin's app schedules the charging and credits those kWh back to 8c; instant/override charging bills at your underlying plan's rates. Model your scheduled charges with this plan and everything else with your base plan. Needs a compatible EV or smart charger (Tesla, BYD, others), a smart meter, and the Origin app."
+            }
+          ]
+        },
+        {
+          "name": "Red Energy",
+          "plans": [
+            {
+              "id": "red-ev-saver-nsw",
+              "name": "Red EV Saver",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free EV window (weekends)",
+                  "start": "12:00",
+                  "end": "14:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "00:00",
+                  "end": "12:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3493
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3493
+                },
+                {
+                  "label": "Anytime",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3493
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au EV Saver T&C (24 Jun 2025) + Energy Made Easy RED552839MRE, checked 8 Aug 2026: free usage 12pm-2pm Sat+Sun is published and VERIFIED. All other times are a flat anytime rate that varies by network and is only shown at postcode quote - the flat figure here is an indicative estimate, correct it against your bill. Needs a smart meter and an EV registered in your name. No lock-in."
+            },
+            {
+              "id": "red-solar-sharer-nsw",
+              "name": "Solar Sharer Offer",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free daily window",
+                  "start": "11:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0,
+                  "freeCapKWhPerDay": 24,
+                  "overCapRatePerKWh": 0.3493
+                },
+                {
+                  "label": "All other times",
+                  "start": "00:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3493
+                },
+                {
+                  "label": "All other times",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3493
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au/solar-sharer-offer, checked 8 Aug 2026: the free daily window (capped 24 kWh/day) is published and VERIFIED. Rates outside the free window are postcode-quoted and may run higher than a standard flat plan - the flat figure here is an indicative estimate, correct it against your bill. Smart meter required; QLD is South East Queensland only."
+            }
+          ]
+        },
+        {
+          "name": "Amber Electric",
+          "plans": [
+            {
+              "id": "amber-wholesale-nsw",
+              "name": "Amber - Wholesale Passthrough",
+              "type": "flat",
+              "flatRatePerKWh": 0.25,
+              "indicative": true,
+              "source": "Amber passes through the NEM wholesale spot price, which changes every 30 minutes and can spike or go negative — no fixed rate exists. The 25c here is a placeholder: EDIT it to your typical charging-time rate from the Amber app, or enter the actual rate on each charge. True dynamic pricing support is planned."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "VIC",
+      "name": "Victoria",
+      "providers": [
+        {
+          "name": "AGL",
+          "plans": [
+            {
+              "id": "agl-vic-ev",
+              "name": "Night Saver EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "Day",
+                  "start": "06:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.27
+                },
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.42
+                },
+                {
+                  "label": "Evening",
+                  "start": "21:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.27
+                }
+              ],
+              "indicative": true,
+              "source": "agl.com.au Night Saver EV plan page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('Charge for only 8c/kWh between 12 and 6am'). Proven ABSENT from AGL's government CDR feed (all 1,276 plans checked), so day rates are network-dependent indicative estimates - correct against your bill. Needs an EV in the household and a smart meter. 8c does not apply to controlled load."
+            }
+          ]
+        },
+        {
+          "name": "Alinta Energy",
+          "plans": [
+            {
+              "id": "alinta-homeev-vic",
+              "name": "HomeEV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "All other times",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.26
+                }
+              ],
+              "indicative": true,
+              "source": "alintaenergy.com.au HomeEV page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('just 8c/kWh from 12am to 6am'). Day rates and the official state list are postcode-gated - the day figure here is an indicative estimate, correct against your bill. Proof of EV ownership and a smart meter required; reasonable use policy applies to the 8c window."
+            }
+          ]
+        },
+        {
+          "name": "GloBird Energy",
+          "plans": [
+            {
+              "id": "globird-easyev-vic",
+              "name": "Easy EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV overnight window",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.06
+                },
+                {
+                  "label": "Morning",
+                  "start": "06:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3
+                },
+                {
+                  "label": "EV daytime window",
+                  "start": "11:00",
+                  "end": "14:00",
+                  "days": "all",
+                  "ratePerKWh": 0.06
+                },
+                {
+                  "label": "Afternoon",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3
+                },
+                {
+                  "label": "Peak",
+                  "start": "16:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.45
+                },
+                {
+                  "label": "Late evening",
+                  "start": "23:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3
+                }
+              ],
+              "indicative": true,
+              "source": "globirdenergy.com.au/energy-saver/easy-ev, checked 8 Aug 2026: 6c inc GST 11am-2pm and 12am-6am every day is published and VERIFIED. Other rates are postcode-document-gated - indicative estimates, correct against your bill. Third-party listings report the 6c rate applies to the first 20 kWh/day averaged over the billing period - check your plan document. Must own or regularly access an EV."
+            }
+          ]
+        },
+        {
+          "name": "OVO Energy",
+          "plans": [
+            {
+              "id": "ovo-free4",
+              "name": "The Free 4 Plan (free 11am to 3pm)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free daytime",
+                  "start": "11:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4
+                },
+                {
+                  "label": "Standard",
+                  "start": "21:00",
+                  "end": "11:00",
+                  "days": "all",
+                  "ratePerKWh": 0.28
+                }
+              ],
+              "indicative": true,
+              "source": "ovoenergy.com.au The Free 4 Plan, checked 30 Jul 2026",
+              "notes": "No daily cap on the free window; excludes controlled load; smart meter required. Also sold in NSW, QLD, and SA. Rates outside the free window vary by network zone."
+            },
+            {
+              "id": "ovo-ev-plan-vic",
+              "name": "The EV Plan",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.045
+                },
+                {
+                  "label": "Day",
+                  "start": "06:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.28
+                },
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4
+                },
+                {
+                  "label": "Evening",
+                  "start": "21:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.28
+                }
+              ],
+              "indicative": true,
+              "source": "pages.ovoenergy.com.au/the-ev-plan, checked 8 Aug 2026: $0.045/kWh midnight-6am is published and VERIFIED (dropped from the older 8c). Day/peak rates are postcode-quoted - indicative estimates, correct against your bill. Smart meter and an EV required."
+            }
+          ]
+        },
+        {
+          "name": "Origin Energy",
+          "plans": [
+            {
+              "id": "origin-ev-power-up-vic",
+              "name": "EV Power Up (scheduled charging add-on)",
+              "type": "flat",
+              "flatRatePerKWh": 0.08,
+              "indicative": false,
+              "source": "originenergy.com.au/ev-power-up, checked 8 Aug 2026: 8c/kWh for scheduled EV charging is published and VERIFIED. IMPORTANT: this is an add-on with no clock window - Origin's app schedules the charging and credits those kWh back to 8c; instant/override charging bills at your underlying plan's rates. Model your scheduled charges with this plan and everything else with your base plan. Needs a compatible EV or smart charger (Tesla, BYD, others), a smart meter, and the Origin app."
+            }
+          ]
+        },
+        {
+          "name": "Red Energy",
+          "plans": [
+            {
+              "id": "red-ev-saver-vic",
+              "name": "Red EV Saver",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free EV window (weekends)",
+                  "start": "12:00",
+                  "end": "14:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "00:00",
+                  "end": "12:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.3
+                },
+                {
+                  "label": "Anytime",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au EV Saver T&C (24 Jun 2025) + Energy Made Easy RED552839MRE, checked 8 Aug 2026: free usage 12pm-2pm Sat+Sun is published and VERIFIED. All other times are a flat anytime rate that varies by network and is only shown at postcode quote - the flat figure here is an indicative estimate, correct it against your bill. Needs a smart meter and an EV registered in your name. No lock-in."
+            }
+          ]
+        },
+        {
+          "name": "Amber Electric",
+          "plans": [
+            {
+              "id": "amber-wholesale-vic",
+              "name": "Amber - Wholesale Passthrough",
+              "type": "flat",
+              "flatRatePerKWh": 0.25,
+              "indicative": true,
+              "source": "Amber passes through the NEM wholesale spot price, which changes every 30 minutes and can spike or go negative — no fixed rate exists. The 25c here is a placeholder: EDIT it to your typical charging-time rate from the Amber app, or enter the actual rate on each charge. True dynamic pricing support is planned."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "SA",
+      "name": "South Australia",
+      "providers": [
+        {
+          "name": "AGL",
+          "plans": [
+            {
+              "id": "agl-night-saver-ev-sa",
+              "name": "Night Saver EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "All other times",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.42
+                }
+              ],
+              "indicative": true,
+              "source": "agl.com.au Night Saver EV plan page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('Charge for only 8c/kWh between 12 and 6am'). Proven ABSENT from AGL's government CDR feed (all 1,276 plans checked), so day rates are network-dependent indicative estimates - correct against your bill. Needs an EV in the household and a smart meter. 8c does not apply to controlled load."
+            }
+          ]
+        },
+        {
+          "name": "Alinta Energy",
+          "plans": [
+            {
+              "id": "alinta-sa-flat",
+              "name": "HomeDeal (flat)",
+              "type": "flat",
+              "flatRatePerKWh": 0.36,
+              "indicative": true,
+              "source": "placeholder, verify against alintaenergy.com.au"
+            },
+            {
+              "id": "alinta-homeev-sa",
+              "name": "HomeEV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "EV super off-peak",
+                  "start": "00:00",
+                  "end": "06:00",
+                  "days": "all",
+                  "ratePerKWh": 0.08
+                },
+                {
+                  "label": "All other times",
+                  "start": "06:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.36
+                }
+              ],
+              "indicative": true,
+              "source": "alintaenergy.com.au HomeEV page, checked 8 Aug 2026: 8c/kWh 12am-6am is published and VERIFIED ('just 8c/kWh from 12am to 6am'). Day rates and the official state list are postcode-gated - the day figure here is an indicative estimate, correct against your bill. Proof of EV ownership and a smart meter required; reasonable use policy applies to the 8c window."
+            }
+          ]
+        },
+        {
+          "name": "Origin Energy",
+          "plans": [
+            {
+              "id": "origin-ev-power-up-sa",
+              "name": "EV Power Up (scheduled charging add-on)",
+              "type": "flat",
+              "flatRatePerKWh": 0.08,
+              "indicative": false,
+              "source": "originenergy.com.au/ev-power-up, checked 8 Aug 2026: 8c/kWh for scheduled EV charging is published and VERIFIED. IMPORTANT: this is an add-on with no clock window - Origin's app schedules the charging and credits those kWh back to 8c; instant/override charging bills at your underlying plan's rates. Model your scheduled charges with this plan and everything else with your base plan. Needs a compatible EV or smart charger (Tesla, BYD, others), a smart meter, and the Origin app."
+            }
+          ]
+        },
+        {
+          "name": "Red Energy",
+          "plans": [
+            {
+              "id": "red-ev-saver-sa",
+              "name": "Red EV Saver",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free EV window (weekends)",
+                  "start": "12:00",
+                  "end": "14:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "00:00",
+                  "end": "12:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.4169
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.4169
+                },
+                {
+                  "label": "Anytime",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.4169
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au EV Saver T&C (24 Jun 2025) + Energy Made Easy RED552839MRE, checked 8 Aug 2026: free usage 12pm-2pm Sat+Sun is published and VERIFIED. All other times are a flat anytime rate that varies by network and is only shown at postcode quote - the flat figure here is an indicative estimate, correct it against your bill. Needs a smart meter and an EV registered in your name. No lock-in."
+            },
+            {
+              "id": "red-solar-sharer-sa",
+              "name": "Solar Sharer Offer",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free daily window",
+                  "start": "12:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0,
+                  "freeCapKWhPerDay": 24,
+                  "overCapRatePerKWh": 0.4169
+                },
+                {
+                  "label": "All other times",
+                  "start": "00:00",
+                  "end": "12:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4169
+                },
+                {
+                  "label": "All other times",
+                  "start": "15:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4169
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au/solar-sharer-offer, checked 8 Aug 2026: the free daily window (capped 24 kWh/day) is published and VERIFIED. Rates outside the free window are postcode-quoted and may run higher than a standard flat plan - the flat figure here is an indicative estimate, correct it against your bill. Smart meter required; QLD is South East Queensland only."
+            }
+          ]
+        },
+        {
+          "name": "Amber Electric",
+          "plans": [
+            {
+              "id": "amber-wholesale-sa",
+              "name": "Amber - Wholesale Passthrough",
+              "type": "flat",
+              "flatRatePerKWh": 0.25,
+              "indicative": true,
+              "source": "Amber passes through the NEM wholesale spot price, which changes every 30 minutes and can spike or go negative — no fixed rate exists. The 25c here is a placeholder: EDIT it to your typical charging-time rate from the Amber app, or enter the actual rate on each charge. True dynamic pricing support is planned."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "WA",
+      "name": "Western Australia",
+      "providers": [
+        {
+          "name": "Synergy",
+          "plans": [
+            {
+              "id": "synergy-a1",
+              "name": "Home Plan (A1, flat)",
+              "type": "flat",
+              "flatRatePerKWh": 0.31,
+              "indicative": true,
+              "source": "placeholder, verify against synergy.net.au"
+            },
+            {
+              "id": "synergy-midday-saver",
+              "name": "Midday Saver",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Super off-peak midday",
+                  "start": "09:00",
+                  "end": "15:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0885
+                },
+                {
+                  "label": "Peak",
+                  "start": "15:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.5533
+                },
+                {
+                  "label": "Off-peak",
+                  "start": "21:00",
+                  "end": "09:00",
+                  "days": "all",
+                  "ratePerKWh": 0.2434
+                }
+              ],
+              "indicative": false,
+              "source": "synergy.net.au, effective 1 Jul 2026"
+            }
+          ]
+        },
+        {
+          "name": "Horizon Power",
+          "note": "Regional WA; prices equalised with Perth's A1 rate.",
+          "plans": [
+            {
+              "id": "horizon-flat",
+              "name": "Home (flat)",
+              "type": "flat",
+              "flatRatePerKWh": 0.31,
+              "indicative": true,
+              "source": "placeholder, verify against horizonpower.com.au"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "TAS",
+      "name": "Tasmania",
+      "providers": [
+        {
+          "name": "Aurora Energy",
+          "plans": [
+            {
+              "id": "aurora-t31",
+              "name": "Residential (Tariff 31, existing customers only)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2795,
+              "indicative": false,
+              "source": "auroraenergy.com.au, effective 1 Jul 2026"
+            },
+            {
+              "id": "aurora-t32",
+              "name": "Residential (Tariff 32, current default)",
+              "type": "flat",
+              "flatRatePerKWh": 0.2475,
+              "indicative": false,
+              "source": "auroraenergy.com.au, effective 1 Jul 2026"
+            },
+            {
+              "id": "aurora-t93",
+              "name": "Peak and Off-Peak (Tariff 93)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Peak morning",
+                  "start": "07:00",
+                  "end": "10:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3619
+                },
+                {
+                  "label": "Peak evening",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.3619
+                },
+                {
+                  "label": "Off-peak",
+                  "start": "21:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1702
+                },
+                {
+                  "label": "Off-peak day",
+                  "start": "10:00",
+                  "end": "16:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1702
+                },
+                {
+                  "label": "Off-peak weekend morning",
+                  "start": "07:00",
+                  "end": "10:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.1702
+                },
+                {
+                  "label": "Off-peak weekend evening",
+                  "start": "16:00",
+                  "end": "21:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.1702
+                }
+              ],
+              "indicative": false,
+              "source": "auroraenergy.com.au, effective 1 Jul 2026"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ACT",
+      "name": "Australian Capital Territory",
+      "providers": [
+        {
+          "name": "Red Energy",
+          "plans": [
+            {
+              "id": "red-ev-saver-act",
+              "name": "Red EV Saver",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free EV window (weekends)",
+                  "start": "12:00",
+                  "end": "14:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "00:00",
+                  "end": "12:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.301
+                },
+                {
+                  "label": "All other times (weekends)",
+                  "start": "14:00",
+                  "end": "24:00",
+                  "days": "weekend",
+                  "ratePerKWh": 0.301
+                },
+                {
+                  "label": "Anytime",
+                  "start": "00:00",
+                  "end": "24:00",
+                  "days": "weekday",
+                  "ratePerKWh": 0.301
+                }
+              ],
+              "indicative": true,
+              "source": "redenergy.com.au EV Saver T&C (24 Jun 2025) + Energy Made Easy RED552839MRE, checked 8 Aug 2026: free usage 12pm-2pm Sat+Sun is published and VERIFIED. All other times are a flat anytime rate that varies by network and is only shown at postcode quote - the flat figure here is an indicative estimate, correct it against your bill. Needs a smart meter and an EV registered in your name. No lock-in."
+            }
+          ]
+        },
+        {
+          "name": "Amber Electric",
+          "plans": [
+            {
+              "id": "amber-wholesale-act",
+              "name": "Amber - Wholesale Passthrough",
+              "type": "flat",
+              "flatRatePerKWh": 0.25,
+              "indicative": true,
+              "source": "Amber passes through the NEM wholesale spot price, which changes every 30 minutes and can spike or go negative — no fixed rate exists. The 25c here is a placeholder: EDIT it to your typical charging-time rate from the Amber app, or enter the actual rate on each charge. True dynamic pricing support is planned."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "NT",
+      "name": "Northern Territory",
+      "providers": [
+        {
+          "name": "Jacana Energy",
+          "plans": [
+            {
+              "id": "jacana-flat",
+              "name": "Standard (flat)",
+              "type": "flat",
+              "flatRatePerKWh": 0.28,
+              "indicative": true,
+              "source": "placeholder, verify against jacanaenergy.com.au"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "NZ",
+      "name": "New Zealand",
+      "providers": [
+        {
+          "name": "Contact Energy",
+          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
+          "plans": [
+            {
+              "id": "nz-contact-good-nights",
+              "name": "Good Nights (free 9pm to midnight)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Free evening",
+                  "start": "21:00",
+                  "end": "24:00",
+                  "days": "all",
+                  "ratePerKWh": 0.0
+                },
+                {
+                  "label": "All other times",
+                  "start": "00:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.32
+                }
+              ],
+              "indicative": true,
+              "source": "Public rate cards, checked Aug 2026 (indicative)",
+              "notes": "Three hours of free power every evening from 9 pm. NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            }
+          ]
+        },
+        {
+          "name": "Electric Kiwi",
+          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
+          "plans": [
+            {
+              "id": "nz-electrickiwi-movemaster",
+              "name": "MoveMaster (half price nights)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night (half price)",
+                  "start": "23:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.16
+                },
+                {
+                  "label": "Morning peak",
+                  "start": "07:00",
+                  "end": "09:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "09:00",
+                  "end": "17:00",
+                  "days": "all",
+                  "ratePerKWh": 0.27
+                },
+                {
+                  "label": "Evening peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.4
+                },
+                {
+                  "label": "Late shoulder",
+                  "start": "21:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.27
+                }
+              ],
+              "indicative": true,
+              "source": "Public rate cards, checked Aug 2026 (indicative)",
+              "notes": "Also includes a free Hour of Power daily (user-picked off-peak hour, not modelled). NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            }
+          ]
+        },
+        {
+          "name": "Genesis Energy",
+          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
+          "plans": [
+            {
+              "id": "nz-genesis-flat",
+              "name": "Energy Basic (flat rate)",
+              "type": "flat",
+              "flatRatePerKWh": 0.32,
+              "indicative": true,
+              "source": "Public rate cards, checked Aug 2026 (indicative)",
+              "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            },
+            {
+              "id": "nz-genesis-ev",
+              "name": "Energy EV (half price nights)",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night (half price)",
+                  "start": "21:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.17
+                },
+                {
+                  "label": "Day",
+                  "start": "07:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.34
+                }
+              ],
+              "indicative": true,
+              "source": "NZ rates vary by network region — indicative NZD from retailer-published plans (Aug 2026); edit every rate to your bill."
+            }
+          ]
+        },
+        {
+          "name": "Mercury",
+          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
+          "plans": [
+            {
+              "id": "nz-mercury-flat",
+              "name": "Open Term (flat rate)",
+              "type": "flat",
+              "flatRatePerKWh": 0.31,
+              "indicative": true,
+              "source": "Public rate cards, checked Aug 2026 (indicative)",
+              "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            },
+            {
+              "id": "nz-mercury-offpeak",
+              "name": "Off Peak / EV",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night",
+                  "start": "23:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.185
+                },
+                {
+                  "label": "Day",
+                  "start": "07:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.32
+                }
+              ],
+              "indicative": true,
+              "source": "NZ rates vary by network region — indicative NZD from retailer-published plans (Aug 2026); edit every rate to your bill."
+            }
+          ]
+        },
+        {
+          "name": "Meridian Energy",
+          "note": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving.",
+          "plans": [
+            {
+              "id": "nz-meridian-ev-tou",
+              "name": "EV TOU Fixed Rate Standard",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night",
+                  "start": "21:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.1743
+                },
+                {
+                  "label": "Day",
+                  "start": "07:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.3215
+                }
+              ],
+              "indicative": false,
+              "source": "A tester's bill (Palmerston North, 24 Jul 2026)",
+              "notes": "Bill-verified: Night 10 hours at 17.43c, Day 14 hours at 32.15c, both NZD including GST. Daily charge 106.52c/day not modelled. Rates differ by network region."
+            },
+            {
+              "id": "nz-meridian-simple-flat",
+              "name": "Simple (flat rate)",
+              "type": "flat",
+              "flatRatePerKWh": 0.31,
+              "indicative": true,
+              "source": "Public rate cards, checked Aug 2026 (indicative)",
+              "notes": "NZ rates vary by lines-company region. Rates are NZD including 15% GST. Edit any figure from your bill before saving."
+            }
+          ]
+        },
+        {
+          "name": "Octopus Energy",
+          "plans": [
+            {
+              "id": "nz-octopus-peaker",
+              "name": "OctopusPeaker",
+              "type": "timeOfUse",
+              "windows": [
+                {
+                  "label": "Night",
+                  "start": "23:00",
+                  "end": "07:00",
+                  "days": "all",
+                  "ratePerKWh": 0.17
+                },
+                {
+                  "label": "Peak",
+                  "start": "07:00",
+                  "end": "09:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Peak",
+                  "start": "17:00",
+                  "end": "21:00",
+                  "days": "all",
+                  "ratePerKWh": 0.33
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "09:00",
+                  "end": "17:00",
+                  "days": "all",
+                  "ratePerKWh": 0.25
+                },
+                {
+                  "label": "Shoulder",
+                  "start": "21:00",
+                  "end": "23:00",
+                  "days": "all",
+                  "ratePerKWh": 0.25
+                }
+              ],
+              "indicative": true,
+              "source": "NZ rates vary by network region — indicative NZD from retailer-published plans (Aug 2026); edit every rate to your bill."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

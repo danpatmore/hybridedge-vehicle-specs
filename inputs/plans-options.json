@@ -1,0 +1,4 @@
+{
+  "about": "Switches for the weekly plans job's checks. skipGstCheckUntil: null, or a date (YYYY-MM-DD) no more than 14 days after the change, until which the GST check (median rate moving more than 5% in a week) is skipped. Use it only when prices really moved. Changes need the developer's approval comment.",
+  "skipGstCheckUntil": null
+}

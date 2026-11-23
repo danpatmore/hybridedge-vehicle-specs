@@ -1,9 +1,15 @@
-# The gate on every pull request (22 Nov 2026, reworked after Codex round 157).
-# It runs from main (pull_request_target), so a PR cannot change the check
-# that certifies it: main's validators run on the PR's data files, which are
-# copied out as plain text. Nothing from the PR is ever run, and the token is
-# read-only. It backs up the developer's review; it never merges anything.
-name: Data PR check
+# The gate on every pull request (22 Nov 2026; reworked after Codex rounds
+# 157 and 158). It runs from main (pull_request_target), so a PR cannot change
+# the check that certifies it: main's tools/gate.py checks the PR's data,
+# copied out as plain text, and looks for the developer's approval comment.
+# Nothing from the PR is ever run.
+#
+# The result is posted as the check "data-gate" by the developer's own GitHub
+# App, whose key is in the "gate" environment, which only main may use. Main's
+# ruleset requires data-gate from that app, so a workflow a PR adds, which
+# reports as GitHub Actions, cannot stand in for it. gate-approval.yml runs
+# the same gate when the developer comments.
+name: Data gate
 
 on:
   pull_request_target:
@@ -11,59 +17,24 @@ on:
 
 permissions:
   contents: read
-  pull-requests: read
+
+concurrency:
+  group: gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
 
 jobs:
-  data-pr-check:
+  run-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    environment: gate
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.repository.default_branch }}
           persist-credentials: false
-
-      - name: Check the PR's data with main's tools
+      - name: Gate
         env:
-          GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
-          PR: ${{ github.event.pull_request.number }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          HEAD_REF: ${{ github.event.pull_request.head.ref }}
-          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-        run: |
-          set -uo pipefail
-          base="$RUNNER_TEMP/base"; head="$RUNNER_TEMP/head"; out="$RUNNER_TEMP/pr.md"
-          mkdir -p "$base/checks" "$head/checks"
-          : > "$out"
-          status=0
-          gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[].filename' > "$RUNNER_TEMP/changed.txt" || exit 1
-          data="phev-specs-au.json energy-plans-au.json lease-rules-au.json checks/last-checked.json checks/confirm-delisted.json"
-          for f in $data; do
-            [ -f "$f" ] && cp "$f" "$base/$f"
-            if grep -qxF "$f" "$RUNNER_TEMP/changed.txt"; then
-              if ! gh api "repos/$REPO/contents/$f?ref=$HEAD_SHA" -H "Accept: application/vnd.github.raw" > "$head/$f"; then
-                echo "- $f is deleted or unreadable in this PR" >> "$out"; status=1
-              fi
-            elif [ -f "$f" ]; then
-              cp "$f" "$head/$f"
-            fi
-          done
-          # Sweep reports (sweeps/*.md) are text a routine may add; anything else is code.
-          code=$(grep -vxF -f <(tr ' ' '\n' <<< "$data") "$RUNNER_TEMP/changed.txt" | grep -vE '^sweeps/[^/]+\.md$' || true)
-          if [ -n "$code" ]; then
-            if [[ "$HEAD_REF" == claude/* ]]; then
-              echo "- a routine PR changes files other than data, which routines must never do: $(echo $code)" >> "$out"; status=1
-            else
-              echo "- also changes code or docs, not checked here; review them as code: $(echo $code)" >> "$out"
-            fi
-          fi
-          # Tester-log keys may change only on a developer branch in this repo
-          # (the HybridEdge session's), never a routine's or a fork's.
-          allow=()
-          if [ "$HEAD_REPO" = "$REPO" ] && [[ "$HEAD_REF" != claude/* ]]; then allow=(--allow-tester-log); fi
-          python3 -I tools/check-pr.py "$base" "$head" --summary "$RUNNER_TEMP/data.md" "${allow[@]}" || status=1
-          cat "$RUNNER_TEMP/data.md" >> "$out"
-          cat "$out" >> "$GITHUB_STEP_SUMMARY"
-          cat "$out"
-          exit $status
+          GATE_APP_ID: ${{ vars.GATE_APP_ID }}
+          GATE_APP_KEY: ${{ secrets.GATE_APP_KEY }}
+        run: python3 -I tools/gate.py "${{ github.event.pull_request.number }}"
