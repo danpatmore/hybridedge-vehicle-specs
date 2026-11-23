@@ -66,6 +66,9 @@ of each month, and the developer reviews its pull request.
   phone silently keeps its old copy.
 - This repo is public: no tester names, support codes or the developer's
   name in notes, reports, commits or PRs.
+- Sessions on the developer's Mac push branches only (their token can't
+  open, comment on or merge a pull request); the developer opens the PR from
+  the phone. Cloud routines open their own PRs, and never approve one.
 
 ## What each scheduled run leaves
 
