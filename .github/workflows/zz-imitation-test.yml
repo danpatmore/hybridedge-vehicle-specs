@@ -1,0 +1,22 @@
+# TEST ONLY, NEVER MERGE (Codex round 158, P1 3). A workflow a pull request
+# adds, posting a passing "data-gate" twice, as GitHub Actions: a check run
+# (the job's name) and a commit status. Main's ruleset should accept
+# data-gate only from the developer's gate app, so neither should count.
+name: Imitation test (never merge)
+
+on: pull_request
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  imitation:
+    name: data-gate
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 60
+      - name: Post a commit status called data-gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/${{ github.repository }}/statuses/${{ github.event.pull_request.head.sha }}" -f state=success -f context=data-gate -f description="imitation test"
