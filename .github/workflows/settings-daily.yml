@@ -1,0 +1,48 @@
+# Reads back, from GitHub itself, the settings the data jobs depend on: the
+# ruleset, deploy keys, environments, secrets and Actions' token (23 Nov 2026,
+# Codex round 158). The readback is in this job's public log; anything unlike
+# tools/settings-check.py's expectations raises one issue.
+name: Settings check (daily)
+
+on:
+  schedule:
+    - cron: "30 20 * * *"   # 7:30am Sydney (6:30am in winter)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: gate
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TITLE: "Repository settings are not as expected"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read the settings back
+        id: read
+        env:
+          REPO: ${{ github.repository }}
+          GATE_APP_ID: ${{ vars.GATE_APP_ID }}
+          GATE_APP_KEY: ${{ secrets.GATE_APP_KEY }}
+        run: |
+          set +e
+          python3 -I tools/settings-check.py --summary "$RUNNER_TEMP/settings.md"
+          echo "drift=$?" >> "$GITHUB_OUTPUT"
+          cat "$RUNNER_TEMP/settings.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Raise or clear the alarm
+        run: |
+          if [ "${{ steps.read.outputs.drift }}" = "0" ]; then
+            tools/issue.sh clear "$TITLE" "The settings are as expected again."
+          elif [ -f "$RUNNER_TEMP/settings.md" ]; then
+            tools/issue.sh refresh "$TITLE" "$RUNNER_TEMP/settings.md"
+            exit 1
+          else
+            exit 1
+          fi
