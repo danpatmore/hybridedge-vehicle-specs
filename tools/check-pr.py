@@ -28,11 +28,14 @@ energy-plans-au.json: never changed by a PR (Codex round 158, P1). It is the
 inputs/plans-hand-kept.json: the builder's own checks (every plan readable,
   dashed ids, 0c to $1.50); any change needs "hand-kept plans".
 inputs/ato-home-charging-rates.json: dollars per km by FBT year, each with
-  its ato.gov.au page.
+  its ato.gov.au page; any change needs "ATO home-charging rates", listing
+  each year's old and new rate and its page (Codex round 159, P2).
 inputs/plans-options.json: skipGstCheckUntil null, or a date no more than 14
   days away; setting one needs "GST check off".
 lease-rules-au.json: valid JSON, version and asOf strings, provider ids
-  unique, and every provider with a rule has a source or says why not.
+  unique, and every provider with a rule has a source or says why not; any
+  change needs "lease provider rules", listing each provider's changed
+  fields, old and new, and its sources (Codex round 159, P2).
 checks/last-checked.json: only dated, short results (tools/merge-check-log.py).
 checks/confirm-delisted.json: every entry well formed and held on main
   (tools/delisted.py).
@@ -150,8 +153,19 @@ def check_hand_kept(base, head, needs):
     return p
 
 
-def check_ato(head):
-    return _load_tool("fetch-energy-plans").ato_problems(head)
+def short(v, n=120):
+    t = json.dumps(v, ensure_ascii=False)
+    return t if len(t) <= n else t[:n] + "…"
+
+
+def check_ato(base, head, needs):
+    p = _load_tool("fetch-energy-plans").ato_problems(head)
+    old, new = (base or {}).get("rates") or {}, head.get("rates") or {}
+    rows = [f"ATO rate for the FBT year from 1 April {y}: {short(old.get(y))} to {short(new.get(y))} dollars per km"
+            f" (source: {(head.get('sources') or {}).get(y) or (base or {}).get('sources', {}).get(y)})"
+            for y in sorted(set(old) | set(new)) if old.get(y) != new.get(y)]
+    need(needs, "ATO home-charging rates", "; ".join(rows) or "ATO rates file changed (sources or notes)")
+    return p
 
 
 def check_options(head, needs, today=None):
@@ -173,7 +187,31 @@ def check_options(head, needs, today=None):
     return []
 
 
-def check_rules(head):
+def rules_changes(base, head):
+    """Each provider's changed fields, old and new, with its sources."""
+    old = {x.get("id"): x for x in (base or {}).get("providers") or []}
+    new = {x.get("id"): x for x in head.get("providers") or [] if isinstance(x, dict)}
+    rows = []
+    for pid in sorted(set(old) | set(new), key=str):
+        a, b = old.get(pid), new.get(pid)
+        if a == b:
+            continue
+        if a is None or b is None:
+            rows.append(f"provider {pid} {'added' if a is None else 'removed'}")
+            continue
+        fields = [f"{k}: {short(a.get(k))} to {short(b.get(k))}" for k in sorted(set(a) | set(b))
+                  if a.get(k) != b.get(k) and k != "sources"]
+        if a.get("sources") != b.get("sources"):
+            fields.append("sources changed")
+        rows.append(f"provider {pid}: " + "; ".join(fields) + f" (sources: {', '.join(b.get('sources') or []) or 'none'})")
+    for k in sorted(set(base or {}) | set(head)):
+        if k != "providers" and (base or {}).get(k) != head.get(k):
+            rows.append(f"{k}: {short((base or {}).get(k))} to {short(head.get(k))}")
+    return rows
+
+
+def check_rules(base, head, needs):
+    need(needs, "lease provider rules", "lease rules: " + (" | ".join(rules_changes(base, head)) or "changed"))
     p = []
     for k in ("version", "asOf"):
         if not isinstance(head.get(k), str):
@@ -254,11 +292,11 @@ def check_dirs(base_dir, head_dir, needs=None):
         elif name == "inputs/plans-hand-kept.json":
             problems += check_hand_kept(base, head, needs)
         elif name == "inputs/ato-home-charging-rates.json":
-            problems += check_ato(head)
+            problems += check_ato(base, head, needs)
         elif name == "inputs/plans-options.json":
             problems += check_options(head, needs)
         elif name == "lease-rules-au.json":
-            problems += check_rules(head)
+            problems += check_rules(base, head, needs)
         elif name == "checks/last-checked.json":
             problems += check_log(base, head)
         else:
@@ -405,8 +443,18 @@ def selftest():
     h3["states"][0]["providers"][0]["plans"][0]["flatRatePerKWh"] = 1.60
     case("hand-kept plans: a $1.60 rate", True, "outside", {"inputs/plans-hand-kept.json": h3})
     src = "https://www.ato.gov.au/businesses-and-organisations/x"
-    case("ATO: a rate with its ATO page", False, None,
-         {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={"2027": src})})
+    case("ATO: a rate with its ATO page: needs the developer's word", False, None,
+         {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={"2027": src})},
+         need="ATO home-charging rates")
+    rules = json.load(open(base / "lease-rules-au.json"))
+    r1 = copy.deepcopy(rules)
+    r1["providers"][0]["needsDedicatedMeter"] = not r1["providers"][0].get("needsDedicatedMeter")
+    case("lease rules: a provider rule changed: needs the developer's word", False, None,
+         {"lease-rules-au.json": r1}, need="lease provider rules")
+    r2 = copy.deepcopy(rules)
+    r2["providers"][0]["sources"] = []
+    r2["providers"][0]["notes"] = ""
+    case("lease rules: a provider with no source or note", True, "no source", {"lease-rules-au.json": r2})
     case("ATO: a rate with no source", True, "ato.gov.au",
          {"inputs/ato-home-charging-rates.json": dict(ato, rates={"2027": 0.0612}, sources={})})
 

@@ -59,9 +59,12 @@ itself, so changing it is a code change.
   which only main's workflows can use.
 - **Nothing merges without the developer's approval comment.** The gate
   gives a phrase on each PR, such as `approve 3f9a1c27d0b4e851`, plus `with
-  ...` naming anything a routine must never change: `tester-log keys`,
-  `showCarsWithBlanks`, `hand-kept plans`, `GST check off`, `workflows`,
-  `code`. It counts only from the repository owner, typed by a person,
+  ...` naming anything a routine must never change, or a change to
+  published financial guidance that the developer must read: `tester-log
+  keys`, `showCarsWithBlanks`, `hand-kept plans`, `GST check off`,
+  `workflows`, `code`, `ATO home-charging rates`, `lease provider rules`
+  (the last two list each year or provider, old and new values, and
+  sources). It counts only from the repository owner, typed by a person,
   never edited, and when GitHub says no app made it. The Claude app acts as
   the developer, but GitHub marks what it does as made through the app, so a
   routine can open a pull request and never approve one. The code is a hash
@@ -79,6 +82,12 @@ itself, so changing it is a code change.
   deploy key is added.
 - **GitHub's own token** in every workflow is read-only by default and can't
   create or approve pull requests. There are no repository-level secrets.
+- **One commit per decision** (Codex round 159): the gate lists a PR's
+  changes with a compare of its base and head commit ids, reads the PR again
+  and posts nothing if the head moved, and fetches each data file by the
+  blob id in that list. What it checks, what the approval code covers and
+  the commit it posts on are always the same commit
+  (`tools/test-gate-race.py`).
 - **The gate** (`pr-check.yml`) uses `pull_request_target`, so it always
   runs main's copy and never the PR's code. GitHub blocks that trigger in
   public repos from 2 Dec 2026 unless a policy allows it: the Actions policy
@@ -87,10 +96,31 @@ itself, so changing it is a code change.
   `gate-approval.yml` uses `issue_comment`, which also always runs main's
   copy.
 
+## Checking the settings yourself
+
+The daily settings check is an alarm, not proof: the gate app can only
+read, and GitHub hides the ruleset's bypass list from it. Once a month (the
+7th, after the provider routine), and whenever its issue opens, the
+developer looks at:
+
+- repo Settings → Rules → Protect main: bypass list "Deploy keys" only;
+  `data-gate` from HybridEdge data gate; up to date; merge only;
+- repo Settings → Deploy keys: only "Weekly plans job";
+- repo Settings → Environments: `gate` and `publish`, each `main` only;
+- account Settings → Applications: only Claude and HybridEdge data gate on
+  this repo, with the permissions in the round 158 report;
+- account Settings → Developer settings → Personal access tokens: only the
+  fine-grained push token (Contents write), no classic token;
+- account Settings → Security log, the last month: any ruleset, deploy
+  key, environment, app or token change the developer didn't make.
+
 ## How to send a change
 
 - **Car data, provider rules, ATO rates, confirmations, the check log:** a
-  branch and a pull request (routines use `claude/*`). The developer reads
+  branch and a pull request (routines use `claude/*`). Sessions on the
+  developer's Mac push branches only: their token can't open, comment on or
+  merge a pull request, so the developer opens each one from the phone
+  (`https://github.com/danpatmore/hybridedge-vehicle-specs/pull/new/<branch>`). The developer reads
   it, then replies with the gate's phrase and merges.
 - **Tester-log keys, `showCarsWithBlanks`, hand-kept plans, code:** the
   same, from the HybridEdge session or the developer, never a routine. The
