@@ -84,19 +84,82 @@ itself, so changing it is a code change.
   deploy key is added.
 - **GitHub's own token** in every workflow is read-only by default and can't
   create or approve pull requests. There are no repository-level secrets.
-- **One commit per decision** (Codex round 159): the gate lists a PR's
-  changes with a compare of its base and head commit ids, reads the PR again
-  and posts nothing if the head moved, and fetches each data file by the
-  blob id in that list. What it checks, what the approval code covers and
-  the commit it posts on are always the same commit
-  (`tools/test-gate-race.py`).
+- **One commit per decision** (Codex rounds 159 and 160): the gate lists a
+  PR's changes with a compare of its base and head commit ids, reads the PR
+  again and posts nothing if the head, the base commit or the target branch
+  moved, fetches each data file by the blob id in that list, and reads
+  main's copy of each data file at the saved base commit, not the
+  workflow's checkout of main. What it checks, what the approval code covers
+  and the commit it posts on always come from one base and one head
+  (`tools/test-gate-race.py`). The code also covers the branch the PR merges
+  into, so retargeting a PR needs a new approval.
 - **The gate** (`pr-check.yml`) uses `pull_request_target`, so it always
-  runs main's copy and never the PR's code. GitHub blocks that trigger in
+  runs main's copy and never the PR's code. It runs when a PR is opened,
+  pushed to, reopened or edited (a retarget is an edit). GitHub blocks that trigger in
   public repos from 2 Dec 2026 unless a policy allows it: the Actions policy
   "Allow PR checks from main" allows it for `pr-check.yml` (and the retired
   `pr-ping.yml`, whose ping the gate's own comment now gives) only.
   `gate-approval.yml` uses `issue_comment`, which also always runs main's
   copy.
+
+## Approvals happen on the phone only
+
+The gate can't tell an approval the developer typed from one typed by an
+agent driving a browser where the developer is signed in to GitHub. So
+(Codex round 160, P1 1; done and checked 23 Nov 2026, see the round 160
+report):
+
+- GitHub is signed out on the Mac in every browser and profile: Chrome,
+  Safari and the Claude desktop app's built-in browser. No GitHub password
+  or passkey is saved anywhere the Mac can use without the phone; 1Password
+  asks each time, and the developer never approves a GitHub sign-in on the
+  Mac. The Mac's GitHub web sessions are revoked, and Claude in Chrome is
+  removed.
+- Every approval, and every GitHub setting change, happens on the phone:
+  the GitHub app, or Safari on the phone. Never the Mac's browser, not even
+  once.
+- The Mac keeps only its git token (Contents read and write on six repos).
+  It can push branches, and can't comment, open a PR or change a setting.
+  It can merge a PR that is already approved, before the developer taps
+  Merge: GitHub ties merging to Contents write and can't split them. It
+  can't merge one that isn't approved.
+- Cloudflare is signed out on the Mac too, and its Claude connection is
+  removed, because Cloudflare can publish the websites without GitHub.
+
+A separate approver account used only on the phone would be stronger (the
+gate would accept that login only). The developer chose not to for now: a
+second personal account has to be a paid one under GitHub's terms.
+
+## The websites
+
+`hybridedge-website` and `stuffed-website` are protected the same way
+(Codex round 160, P1 2): a change reaches the live site only after the
+developer's approval on the phone.
+
+- Each has a ruleset "Protect main": pull request required, merge commits
+  only, up to date, the check `site-gate` from HybridEdge data gate, no
+  force push or deletion, no bypass. Both repos are public, because GitHub
+  only enforces rulesets on private repos on a paid plan; the sites already
+  publish every file in them.
+- `.github/workflows/site-gate.yml` (`pull_request_target`: opened,
+  pushed, reopened, edited) and `site-gate-approval.yml` (a comment
+  starting "approve") check out this repo's main and run `tools/gate.py
+  --site`. It has no data rules: it lists the files, links the full diff
+  and passes only with the developer's phrase over the PR's exact files and
+  target branch (`with workflows` for a change under `.github/`). The app's
+  key is in each repo's `gate` environment, main only. So a change to
+  `tools/gate.py` here changes both websites' gate, which is why it needs
+  the developer's word (`code`).
+- Cloudflare Pages (projects `hybridedge-website` and `getstuffed`) builds
+  production from `main` only. Preview deployments are off (23 Nov 2026)
+  and the old previews were deleted, so a branch push publishes nothing.
+  Every custom domain points at production.
+- How a change goes live: each website's `README.md`. In short, a session
+  pushes a branch and gives the developer the PR link; the developer opens
+  it, approves on the phone and merges.
+- The other repos the Mac's token can push to (`HybridEdge`,
+  `digital-shoebox`, `screenshot-studio`) are working repos: a push there
+  publishes nothing by itself.
 
 ## Checking the settings yourself
 
@@ -114,16 +177,22 @@ developer looks at:
 - account Settings → Developer settings → Personal access tokens: only the
   fine-grained push token (Contents write), no classic token;
 - account Settings → Security log, the last month: any ruleset, deploy
-  key, environment, app or token change the developer didn't make.
+  key, environment, app or token change the developer didn't make;
+- account Settings → Sessions: no web session on the Mac;
+- each website: Settings → Rules → Protect main (`site-gate` from
+  HybridEdge data gate, up to date, merge only, no bypass), Environments
+  (`gate`, main only), and in Cloudflare (on the phone), Pages → the
+  project → Settings → Builds: production branch `main`, previews none.
 
 ## How to send a change
 
 - **Car data, provider rules, ATO rates, confirmations, the check log:** a
   branch and a pull request (routines use `claude/*`). Sessions on the
-  developer's Mac push branches only: their token can't open, comment on or
-  merge a pull request, so the developer opens each one from the phone
+  developer's Mac push branches only: their token can't open or comment on
+  a pull request, so the developer opens each one from the phone
   (`https://github.com/danpatmore/hybridedge-vehicle-specs/pull/new/<branch>`). The developer reads
-  it, then replies with the gate's phrase and merges.
+  it, then replies with the gate's phrase in the GitHub app on the phone,
+  never on the Mac, and merges.
 - **Tester-log keys, `showCarsWithBlanks`, hand-kept plans, code:** the
   same, from the HybridEdge session or the developer, never a routine. The
   phrase then names what changed, so the developer has to say so to merge.

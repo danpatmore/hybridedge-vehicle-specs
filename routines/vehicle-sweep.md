@@ -54,8 +54,8 @@ in `SWEEP-PROTOCOL.md` and in the newest report in `sweeps/`.
 
 - Merge anything, push to main, or edit workflows or tools.
 - Comment "approve" (or anything like the data gate's phrase) on a pull
-  request. Only the developer approves, and the gate ignores a comment made
-  through the Claude app anyway.
+  request. Only the developer approves, on the phone, and the gate ignores
+  a comment made through the Claude app anyway.
 - Put tester names, support codes or the developer's name in anything you
   write: this repo is public.
 - Change `energy-plans-au.json`, `lease-rules-au.json` or anything in `inputs/`.
