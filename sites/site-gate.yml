@@ -1,0 +1,42 @@
+# The site gate (23 Nov 2026, Codex round 160). Nothing reaches the live
+# site without the developer's approval, typed on the phone.
+#
+# Main is locked by the ruleset "Protect main", which requires the check
+# "site-gate" from the developer's own GitHub App (HybridEdge data gate).
+# This job posts it. It uses pull_request_target, so it always runs main's
+# copy of this file and never the PR's code. The gate itself is
+# tools/gate.py --site from the specs repo's main
+# (danpatmore/hybridedge-vehicle-specs), which is locked the same way. The
+# app's key is in the "gate" environment, which only main may use.
+# site-gate-approval.yml runs the same gate when the developer comments.
+name: Site gate
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  run-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: gate
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: danpatmore/hybridedge-vehicle-specs
+          ref: main
+          path: gate
+          persist-credentials: false
+      - name: Gate
+        env:
+          REPO: ${{ github.repository }}
+          GATE_APP_ID: ${{ vars.GATE_APP_ID }}
+          GATE_APP_KEY: ${{ secrets.GATE_APP_KEY }}
+        run: python3 -I gate/tools/gate.py --site "${{ github.event.pull_request.number }}"
