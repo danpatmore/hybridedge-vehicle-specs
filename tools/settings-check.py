@@ -8,9 +8,11 @@ Secrets read-only; it can change nothing) and the job prints them in its
 public log. Anything unlike what is written here raises one issue.
 
 Usage: python3 tools/settings-check.py [--summary FILE]
-       (GATE_APP_ID and GATE_APP_KEY from the "gate" environment)
+       (GATE_APP_ID and GATE_APP_KEY from the "gate" environment;
+       CF_PAGES_TOKEN, a read-only Cloudflare Pages token, if set)
 
-What it expects:
+It reads this repo and the two websites (Codex round 160, P1 2), which the
+gate app is also installed on. What it expects of this repo:
   - one active ruleset on the default branch: no deletion, no force push,
     every change through a pull request merged with a merge commit, and the
     check "data-gate" required from the gate app only, with the branch up to
@@ -21,6 +23,15 @@ What it expects:
   - no repository-level Actions secrets (a workflow on any branch could
     read those; ours live in the main-only environments)
   - Actions' own token read-only, unable to approve pull requests
+  - the repo public: on a free account GitHub enforces rulesets on public
+    repos only
+
+Of each website (hybridedge-website, stuffed-website): the same ruleset
+with "site-gate" required from the gate app, no bypass, no deploy key,
+environment "gate" from main only, no repository secrets, the read-only
+Actions token, public, and exactly the two gate workflows on main, the same
+bytes as this repo's sites/ copies. With CF_PAGES_TOKEN set, each site's
+Cloudflare Pages project builds production from main and no previews.
 """
 
 import base64
@@ -29,6 +40,7 @@ import importlib.util
 import json
 import os
 import sys
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -38,15 +50,23 @@ _spec.loader.exec_module(gate)
 
 DEPLOY_KEY = ("Weekly plans job", "SHA256:4Qp4Creqed/l8Hr8V1hpsXDqSxbUV5P4bLXXrSFobs8")
 ENVIRONMENTS = ("gate", "publish")
-PERMISSIONS = {"administration": "read", "actions": "read", "secrets": "read", "metadata": "read"}
+PERMISSIONS = {"administration": "read", "actions": "read", "secrets": "read", "metadata": "read",
+               "contents": "read"}
+SPECS = {"check": "data-gate", "keys": [DEPLOY_KEY], "environments": ENVIRONMENTS, "workflows": None}
+SITE_WORKFLOWS = ("site-gate.yml", "site-gate-approval.yml")
+SITE = {"check": "site-gate", "keys": [], "environments": ("gate",), "workflows": SITE_WORKFLOWS}
+# The websites and their Cloudflare Pages projects.
+SITES = {"danpatmore/hybridedge-website": "hybridedge-website", "danpatmore/stuffed-website": "getstuffed"}
 
 
 def fingerprint(key):
     return "SHA256:" + base64.b64encode(hashlib.sha256(base64.b64decode(key.split()[1])).digest()).decode().rstrip("=")
 
 
-def check(get, app_id):
-    """(lines read back, problems). `get` reads one API path."""
+def check(get, app_id, expect=None):
+    """(lines read back, problems) for one repo. `get` reads one API path
+    under the repo ("" is the repo itself); `expect` is SPECS or SITE."""
+    expect = expect or SPECS
     lines, problems = [], []
 
     def read(label, path):
@@ -78,31 +98,33 @@ def check(get, app_id):
         rsc = rules.get("required_status_checks", {})
         checks = rsc.get("required_status_checks")
         lines.append(f"  required checks: {checks}; up to date first: {rsc.get('strict_required_status_checks_policy')}")
-        if checks != [{"context": "data-gate", "integration_id": app_id}]:
-            problems.append(f"required checks are {checks}, expected data-gate from the gate app ({app_id}) only")
+        if checks != [{"context": expect["check"], "integration_id": app_id}]:
+            problems.append(f"required checks are {checks}, expected {expect['check']} from the gate app ({app_id}) only")
         if rsc.get("strict_required_status_checks_policy") is not True:
             problems.append("branches need not be up to date before merging")
         # GitHub shows the bypass list only to someone who can edit the
         # ruleset, and this app only reads (first run, 23 Nov 2026: None). It
         # is checked when GitHub does show it; otherwise the readback says so.
         bypass = d.get("bypass_actors")
+        want = [("DeployKey", "always")] if expect["keys"] else []
         if bypass is None:
-            lines.append("  bypass list: not shown to a read-only app (the developer's screen: deploy keys only)")
+            lines.append("  bypass list: not shown to a read-only app (the developer's screen: "
+                         + ("deploy keys only)" if want else "empty)"))
         else:
             lines.append(f"  bypass list: {bypass}")
-            if [(b.get("actor_type"), b.get("bypass_mode")) for b in bypass] != [("DeployKey", "always")]:
-                problems.append(f"the bypass list is {bypass}, expected deploy keys only")
+            if [(b.get("actor_type"), b.get("bypass_mode")) for b in bypass] != want:
+                problems.append(f"the bypass list is {bypass}, expected " + ("deploy keys only" if want else "nobody"))
 
     keys = read("deploy keys", "/keys") or []
     seen = [(k.get("title"), fingerprint(k["key"]), k.get("read_only")) for k in keys]
     lines.append(f"Deploy keys: {seen}")
-    if [(t, f) for t, f, _ in seen] != [DEPLOY_KEY]:
-        problems.append(f"expected only the deploy key {DEPLOY_KEY}, found {[(t, f) for t, f, _ in seen]}")
+    if [(t, f) for t, f, _ in seen] != list(expect["keys"]):
+        problems.append(f"expected deploy keys {list(expect['keys'])}, found {[(t, f) for t, f, _ in seen]}")
 
     envs = read("environments", "/environments") or {}
     names = sorted(e["name"] for e in envs.get("environments", []))
     lines.append(f"Environments: {names}")
-    for name in ENVIRONMENTS:
+    for name in expect["environments"]:
         e = next((x for x in envs.get("environments", []) if x["name"] == name), None)
         if not e:
             problems.append(f"environment '{name}' is missing")
@@ -123,14 +145,80 @@ def check(get, app_id):
     lines.append(f"Actions token: {wf}")
     if wf.get("default_workflow_permissions") != "read" or wf.get("can_approve_pull_request_reviews") is not False:
         problems.append("Actions' own token is not read-only, or can approve pull requests")
+
+    info = read("the repository", "") or {}
+    lines.append(f"Visibility: {info.get('visibility')}")
+    if info and info.get("private") is not False:
+        problems.append("the repo is not public, so GitHub (free plan) stops enforcing its ruleset")
+
+    if expect["workflows"] is not None:
+        listed = read("workflows", "/contents/.github/workflows?ref=main") or []
+        names = sorted(x.get("name") for x in listed)
+        lines.append(f"Workflows on main: {names}")
+        if names != sorted(expect["workflows"]):
+            problems.append(f"workflows on main are {names}, expected {sorted(expect['workflows'])} only")
+        for x in listed:
+            mine = ROOT / "sites" / x.get("name", "")
+            if mine.exists() and x.get("sha") != blob_sha(mine.read_bytes()):
+                problems.append(f"{x['name']} on main differs from this repo's sites/{x['name']}")
     return lines, problems
+
+
+def blob_sha(data):
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def pages_check(get, project):
+    """(lines, problems) for one Cloudflare Pages project: production from
+    main, no previews (Codex round 160: a preview is a public publish)."""
+    p = get(project)
+    cfg = (p.get("source") or {}).get("config") or {}
+    lines = [f"Cloudflare Pages {project}: production branch {p.get('production_branch')}, "
+             f"previews {cfg.get('preview_deployment_setting')}, domains {p.get('domains')}"]
+    problems = []
+    if p.get("production_branch") != "main":
+        problems.append(f"Cloudflare {project}: production branch is {p.get('production_branch')}, expected main")
+    if cfg.get("preview_deployment_setting") != "none":
+        problems.append(f"Cloudflare {project}: branch previews are {cfg.get('preview_deployment_setting')}, expected none")
+    return lines, problems
+
+
+def cloudflare(token):
+    def call(path):
+        req = urllib.request.Request("https://api.cloudflare.com/client/v4" + path)
+        req.add_header("Authorization", f"Bearer {token}")
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.load(r)["result"]
+    account = call("/accounts")[0]["id"]
+    return lambda project: call(f"/accounts/{account}/pages/projects/{project}")
 
 
 def main():
     repo = os.environ.get("REPO", "danpatmore/hybridedge-vehicle-specs")
     app_id = int(os.environ["GATE_APP_ID"])
-    token = gate.app_token(repo, PERMISSIONS)
-    lines, problems = check(lambda path: gate.api(f"/repos/{repo}{path}", token), app_id)
+    lines, problems = [], []
+    for name, expect in [(repo, SPECS)] + [(site, SITE) for site in SITES]:
+        lines.append(f"== {name}")
+        try:
+            token = gate.app_token(name, PERMISSIONS)
+        except Exception as e:
+            problems.append(f"{name}: the gate app can't read it ({e}); is it still installed there?")
+            continue
+        got, probs = check(lambda path, n=name, t=token: gate.api(f"/repos/{n}{path}", t), app_id, expect)
+        lines += got
+        problems += [f"{name}: {p}" for p in probs]
+    lines.append("== Cloudflare")
+    if os.environ.get("CF_PAGES_TOKEN"):
+        try:
+            get = cloudflare(os.environ["CF_PAGES_TOKEN"])
+            for project in SITES.values():
+                got, probs = pages_check(get, project)
+                lines += got
+                problems += probs
+        except Exception as e:
+            problems.append(f"Cloudflare: could not be read ({e})")
+    else:
+        lines.append("not checked: no read-only Cloudflare token (CF_PAGES_TOKEN) in the gate environment")
     text = "**Read back from GitHub:**\n\n```\n" + "\n".join(lines) + "\n```\n\n" + (
         "**Not as expected:**\n" + "\n".join(f"- {p}" for p in problems) if problems else "All as expected.") + "\n"
     print(text)
@@ -157,9 +245,11 @@ def selftest():
         "/environments/publish/deployment-branch-policies": {"branch_policies": [{"name": "main", "type": "branch"}]},
         "/actions/secrets": {"total_count": 0, "secrets": []},
         "/actions/permissions/workflow": {"default_workflow_permissions": "read", "can_approve_pull_request_reviews": False},
+        "": {"private": False, "visibility": "public"},
     }
     global DEPLOY_KEY
     DEPLOY_KEY = ("Weekly plans job", fingerprint(key))
+    SPECS["keys"] = [DEPLOY_KEY]
     assert check(good.get, 7)[1] == [], check(good.get, 7)[1]
     def broken(edit):
         d = json.loads(json.dumps(good))
@@ -179,6 +269,36 @@ def selftest():
     assert broken(lambda d: d["/actions/permissions/workflow"].update(default_workflow_permissions="write"))
     assert broken(lambda d: d.pop("/keys")), "an unreadable setting passed"
     assert not broken(lambda d: d["/rulesets/1"].update(bypass_actors=None)), "a hidden bypass list failed"
+    assert broken(lambda d: d[""].update(private=True, visibility="private")), "a private repo passed"
+
+    # A website (Codex round 160, P1 2).
+    wf = {n: (ROOT / "sites" / n).read_bytes() for n in SITE_WORKFLOWS}
+    site = json.loads(json.dumps(good))
+    site["/rulesets/1"]["rules"][3]["parameters"]["required_status_checks"][0]["context"] = "site-gate"
+    site["/rulesets/1"]["bypass_actors"] = []
+    site["/keys"] = []
+    site["/environments"] = {"environments": [{"name": "gate", "deployment_branch_policy": {
+        "protected_branches": False, "custom_branch_policies": True}}]}
+    site["/contents/.github/workflows?ref=main"] = [{"name": n, "sha": blob_sha(b)} for n, b in wf.items()]
+    assert check(site.get, 7, SITE)[1] == [], check(site.get, 7, SITE)[1]
+    def site_broken(edit):
+        d = json.loads(json.dumps(site))
+        edit(d)
+        return check(lambda path: d[path], 7, SITE)[1]
+    assert site_broken(lambda d: d["/rulesets/1"]["rules"][3]["parameters"]["required_status_checks"][0].update(context="data-gate"))
+    assert site_broken(lambda d: d["/rulesets/1"].update(bypass_actors=[{"actor_type": "DeployKey", "bypass_mode": "always"}]))
+    assert site_broken(lambda d: d["/keys"].append({"title": "x", "key": key, "read_only": True}))
+    assert site_broken(lambda d: d["/contents/.github/workflows?ref=main"].append({"name": "deploy.yml", "sha": "0" * 40}))
+    assert site_broken(lambda d: d["/contents/.github/workflows?ref=main"][0].update(sha="0" * 40)), "a changed gate workflow passed"
+    assert site_broken(lambda d: d[""].update(private=True)), "a private website passed"
+    assert not site_broken(lambda d: d["/rulesets/1"].update(bypass_actors=None)), "a hidden bypass list failed"
+
+    # Cloudflare Pages.
+    proj = {"production_branch": "main", "domains": ["x.pages.dev"],
+            "source": {"config": {"preview_deployment_setting": "none"}}}
+    assert pages_check(lambda p: proj, "x")[1] == []
+    assert pages_check(lambda p: dict(proj, source={"config": {"preview_deployment_setting": "all"}}), "x")[1]
+    assert pages_check(lambda p: dict(proj, production_branch="launch"), "x")[1]
     print("settings-check selftest ok")
 
 
