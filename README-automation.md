@@ -9,7 +9,7 @@ Everything runs on GitHub's or Anthropic's servers.
 | Vehicle sweep | 9am on the 2nd and 16th | Claude routine, following `SWEEP-PROTOCOL.md` | A pull request with a report in `sweeps/` |
 | Provider rules and ATO rate | 9am on the 6th, plus 25 March and 25 June | Claude routine | A pull request changing `lease-rules-au.json` or `inputs/ato-home-charging-rates.json` |
 | Staleness alarm | 7am daily | GitHub Actions, `tools/check-staleness.py` | One issue if plans are over 14 days, vehicles 45, providers or ATO 60 |
-| Settings check | 7:30am daily | GitHub Actions, `tools/settings-check.py` | Reads the ruleset, deploy keys, environments, secrets and Actions' token back from GitHub into its public log; one issue if any differ |
+| Settings check | 7:30am daily | GitHub Actions, `tools/settings-check.py` | Reads back, for this repo and both websites, the ruleset, deploy keys, environments, secrets, Actions' token and visibility, and each website's gate workflows (against `sites/`), plus Cloudflare's preview setting when a read-only Cloudflare token is set; into its public log, one issue if any differ |
 | Data gate | every pull request, and every "approve" comment | GitHub Actions, `tools/gate.py` with `tools/check-pr.py` | The required check `data-gate` (below) |
 
 ## The plans file is output only
@@ -164,7 +164,13 @@ developer's approval on the phone.
 ## Checking the settings yourself
 
 The daily settings check is an alarm, not proof: the gate app can only
-read, and GitHub hides the ruleset's bypass list from it. Once a month (the
+read, and GitHub hides the ruleset's bypass list from it. It reads this
+repo and both websites (24 Nov 2026). `sites/` holds the exact website gate
+workflows it compares against, so a change to a website's workflows needs
+the same change here, or the alarm opens. Cloudflare is read only when the
+`gate` environment has `CF_PAGES_TOKEN` (a Cloudflare API token with Pages
+Read only) and `settings-daily.yml` passes it; until then the log says
+"not checked". Once a month (the
 7th, after the provider routine), and whenever its issue opens, the
 developer looks at:
 
