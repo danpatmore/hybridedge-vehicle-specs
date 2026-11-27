@@ -1,5 +1,7 @@
 # Scheduled data jobs
 
+Copyright 2026 HybridEdge. All rights reserved. See LICENSE. The data here is published only for the HybridEdge and ChargeBack apps and may not be reused.
+
 Set up 22 Nov 2026; locked down 23 Nov after Codex rounds 157 and 158.
 Everything runs on GitHub's or Anthropic's servers.
 
