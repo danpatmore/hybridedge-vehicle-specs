@@ -1,0 +1,20 @@
+Copyright (c) 2026 HybridEdge. All rights reserved.
+
+This repository and the data in it, including phev-specs-au.json,
+energy-plans-au.json and lease-rules-au.json, are published only so the
+HybridEdge and ChargeBack apps can download them. Being able to see or
+download them does not give you permission to use them.
+
+No licence is granted. You may not copy, republish, redistribute, scrape,
+sell or use this data, or the tools, instructions and research in this
+repository, in whole or in part, in any other app, website, service,
+dataset or product, without written permission.
+
+Facts and data published by others (for example vehicle makers, energy
+retailers, the Australian Energy Regulator and the ATO) remain theirs and
+are used under their own terms. This notice covers the selection,
+arrangement, checking, corrections and original research in this
+repository, including the OBD and battery-reading routes and the
+calibration figures.
+
+Permission requests: support@hybridedge.com.au
